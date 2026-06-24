@@ -28,7 +28,7 @@ const PROGRAMMES = [
   { code: "MAOL",   name: "Online MA",             level: "PG",      duration: "2 Years",  fee: "₹6,000 total",  specs: 3, slug: "online-ma"           },
   { code: "MCOMOL", name: "Online M.Com",          level: "PG",      duration: "2 Years",  fee: "₹18,000 total", specs: 0, slug: "online-mcom"         },
   // Online — UG
-  { code: "BAOL",   name: "Online BA",             level: "UG",      duration: "3 Years",  fee: "₹7,200 total",  specs: 0, slug: "online-ba"           },
+  { code: "BAOL",   name: "Online BA",             level: "UG",      duration: "3 Years",  fee: "₹6000/sem",  specs: 0, slug: "online-ba"           },
   { code: "BCAOL",  name: "Online BCA",            level: "UG",      duration: "3 Years",  fee: "₹6,000/sem",     specs: 0, slug: "online-bca"          },
   { code: "BCOMOL", name: "Online B.Com",          level: "UG",      duration: "3 Years",  fee: "₹4,000/sem", specs: 0, slug: "online-bcom"         },
   { code: "BBAOL",  name: "Online BBA",            level: "UG",      duration: "3 Years",  fee: "₹39,000 total", specs: 0, slug: "online-bba"          },
@@ -37,19 +37,19 @@ const PROGRAMMES = [
   { code: "PGDOL",  name: "Online PG Diploma",     level: "Diploma", duration: "1-3 Years",   fee: "₹2,400/sem",  specs: 0, slug: "online-pgdiploma"    },
   { code: "COL",    name: "Online Certificate",    level: "Diploma", duration: "6 Months", fee: "₹1,200 total",  specs: 0, slug: "online-pgcertificate"},
   // Distance — PG
-  { code: "MCOM",   name: "Distance M.Com",        level: "PG",      duration: "2 Years",  fee: "₹8,000/year",   specs: 0, slug: "distance-mcom"       },
-  { code: "MA",     name: "Distance MA",           level: "PG",      duration: "2 Years",  fee: "₹6,000/year",   specs: 0, slug: "distance-ma"         },
-  { code: "MSW",    name: "Distance MSW",          level: "PG",      duration: "2 Years",  fee: "₹36,000",  specs: 0, slug: "distance-msw"        },
+  { code: "MCOM",   name: "Distance M.Com",        level: "PG",      duration: "2 Years",  fee: "₹9,300/sem",   specs: 0, slug: "distance-mcom"       },
+  { code: "MA",     name: "Distance MA",           level: "PG",      duration: "2 Years",  fee: "₹15,000 total",   specs: 2, slug: "distance-ma"         },
+  { code: "MSW",    name: "Distance MSW",          level: "PG",      duration: "2 Years",  fee: "₹36,000 total",  specs: 0, slug: "distance-msw"        },
   { code: "MBA",    name: "Distance MBA",          level: "PG",      duration: "2 Years",  fee: "₹16,000/sem",   specs: 3, slug: "distance-mba"        },
-  { code: "MCA",    name: "Distance MCA",          level: "PG",      duration: "2 Years",  fee: "₹12,700/sem",   specs: 0, slug: "distance-mca"        },
+  { code: "MCA",    name: "Distance MCA",          level: "PG",      duration: "2 Years",  fee: "₹13,000/sem",   specs: 0, slug: "distance-mca"        },
   { code: "MSC",    name: "Distance M.Sc",         level: "PG",      duration: "2 Years",  fee: "₹7,500/sem",  specs: 0, slug: "distance-msc"        },
   // Distance — UG
-  { code: "BCOM",   name: "Distance B.Com",        level: "UG",      duration: "3 Years",  fee: "₹5,400/year",   specs: 0, slug: "distance-bcom"       },
-  { code: "BA",     name: "Distance BA",           level: "UG",      duration: "3 Years",  fee: "₹3,500/year",   specs: 0, slug: "distance-ba"         },
-  { code: "BSW",    name: "Distance BSW",          level: "UG",      duration: "3 Years",  fee: "₹6,000/year",   specs: 0, slug: "distance-bsw"        },
-  { code: "BBA",    name: "Distance BBA",          level: "UG",      duration: "3 Years",  fee: "₹10,300/year",  specs: 0, slug: "online-bba"          },
-  { code: "BCA",    name: "Distance BCA",          level: "UG",      duration: "3 Years",  fee: "₹7,100/year",   specs: 0, slug: "distance-bca"        },
-  { code: "BSC",    name: "Distance B.Sc",         level: "UG",      duration: "3 Years",  fee: "₹6,000/year",   specs: 0, slug: "distance-bsc"        },
+  { code: "BCOM",   name: "Distance B.Com",        level: "UG",      duration: "3 Years",  fee: "₹14,400 total",   specs: 0, slug: "distance-bcom"       },
+  { code: "BA",     name: "Distance BA",           level: "UG",      duration: "3 Years",  fee: "₹15,900 total",   specs: 0, slug: "distance-ba"         },
+  { code: "BSW",    name: "Distance BSW",          level: "UG",      duration: "3 Years",  fee: "₹19,500 total",   specs: 0, slug: "distance-bsw"        },
+  { code: "BBA",    name: "Distance BBA",          level: "UG",      duration: "3 Years",  fee: "₹30,900 total",  specs: 0, slug: "distance-bba"          },
+  { code: "BCA",    name: "Distance BCA",          level: "UG",      duration: "3 Years",  fee: "₹8,300/sem",   specs: 0, slug: "distance-bca"        },
+  { code: "BSC",    name: "Distance B.Sc",         level: "UG",      duration: "3 Years",  fee: "₹18,900 total",   specs: 0, slug: "distance-bsc"        },
 ];
 
 const FILTERS = ["All", "Online", "Distance", "PG", "UG", "Diploma"];
@@ -59,32 +59,27 @@ const ONLINE_SERVICES = [
     name: "eGyankosh",
     desc: "India's national digital repository — access e-books, video lectures, and past question papers.",
     icon: "📚",
-    href: "https://egyankosh.ac.in/",
   },
   {
     name: "Gyan Darshan",
     desc: "Dedicated DTH educational channel broadcasting curriculum content across India.",
     icon: "📡",
-    href: "http://gd.ignouonline.ac.in/gyandarshan/",
   },
   {
     name: "Gyan Vani",
     desc: "Educational FM radio network streaming lectures and study programmes nationwide.",
     icon: "🎙️",
-    href: "http://gd.ignouonline.ac.in/gyandhara/",
   },
   {
     name: "IGNOU Library",
     desc: "Digital library OPAC giving access to journals, theses, and academic resources.",
     icon: "🏛️",
-    href: "http://libraryopac.ignou.ac.in/",
   },
   {
     name: "Samarth Portal",
     desc: "Your 24/7 student dashboard — access materials, submit assignments, track status.",
     icon: "🖥️",
-    href: "https://ignouiop.samarth.edu.in/",
-  },
+  }
 ];
 
 const STRENGTHS = [
@@ -108,7 +103,7 @@ const ANNOUNCEMENTS = [
 
 function Badge({ children, variant = "blue" }) {
   const variants = {
-    blue: "bg-blue-100 text-blue-800",
+    blue: "bg-[#D6EAF3] text-[#094f72]",
     amber: "bg-amber-100 text-amber-800",
     green: "bg-emerald-100 text-emerald-800",
     navy: "bg-[#0F1F3D] text-white",
@@ -123,7 +118,7 @@ function Badge({ children, variant = "blue" }) {
 function AccentDivider() {
   return (
     <div className="flex items-center gap-2 mb-4">
-      <div className="h-0.5 w-8 bg-blue-600 rounded-full" />
+      <div className="h-0.5 w-8 bg-[#0B6089] rounded-full" />
       <div className="h-0.5 w-3 bg-blue-300 rounded-full" />
     </div>
   );
@@ -131,7 +126,7 @@ function AccentDivider() {
 
 // ─── Sections ─────────────────────────────────────────────────────────────────
 
-function Navbar({ scrolled }) {
+function Navbar({ scrolled, openWizard}) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -158,7 +153,7 @@ function Navbar({ scrolled }) {
                 key={l.href}
                 href={l.href}
                 className={`text-sm font-medium transition-colors ${
-                  scrolled ? "text-slate-600 hover:text-blue-700" : "text-blue-100 hover:text-white"
+                  scrolled ? "text-slate-600 hover:text-[#0B6089]" : "text-blue-100 hover:text-white"
                 }`}
               >
                 {l.label}
@@ -167,14 +162,12 @@ function Navbar({ scrolled }) {
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
-            <a
-              href=" "
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-semibold px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+            <button
+              onClick={openWizard}
+              className="text-sm font-semibold px-4 py-2 rounded-lg bg-[#0B6089] text-white hover:bg-[#0B6089] transition-colors"
             >
               Apply Now
-            </a>
+            </button>
           </div>
 
           {/* Mobile hamburger */}
@@ -200,21 +193,19 @@ function Navbar({ scrolled }) {
               {l.label}
             </a>
           ))}
-          <a
-            href=" "
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 text-sm font-semibold text-center px-4 py-2.5 rounded-lg bg-blue-600 text-white"
+          <button
+            onClick={openWizard}
+            className="text-sm font-semibold px-4 py-2 rounded-lg bg-[#0B6089] text-white hover:bg-[#0B6089] transition-colors"
           >
             Apply Now
-          </a>
+          </button>
         </div>
       )}
     </header>
   );
 }
 
-function HeroSection() {
+function HeroSection({ openWizard }) {
   const [announcementIdx, setAnnouncementIdx] = useState(0);
 
   useEffect(() => {
@@ -286,19 +277,19 @@ function HeroSection() {
       </div>
 
       {/* Announcement ticker */}
-      <div className="relative mt-16 bg-blue-900/50 border-b border-blue-800/40">
+      <div className="relative mt-16 bg-[#083d5a]/50 border-b border-[#094f72]/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center gap-3">
           <span className="flex-shrink-0 text-[10px] font-bold uppercase tracking-widest bg-amber-400 text-amber-900 px-2 py-0.5 rounded-full">
             Latest
           </span>
-          <p key={announcementIdx} className="text-xs text-blue-200 truncate transition-all">
+          <p key={announcementIdx} className="text-xs text-[#a8d4e6] truncate transition-all">
             {ANNOUNCEMENTS[announcementIdx]}
           </p>
           <a
             href=" "
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-shrink-0 text-[10px] text-blue-400 hover:text-blue-200 font-medium ml-auto"
+            className="flex-shrink-0 text-[10px] text-[#4a9fc0] hover:text-[#a8d4e6] font-medium ml-auto"
           >
             View all →
           </a>
@@ -310,41 +301,36 @@ function HeroSection() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-6">
-              <div className="h-px w-8 bg-blue-500" />
-              <span className="text-blue-400 text-xs font-semibold uppercase tracking-[0.2em]">
+              <div className="h-px w-8 bg-[#0d70a0]" />
+              <span className="text-[#4a9fc0] text-xs font-semibold uppercase tracking-[0.2em]">
                 Established 1985 · Act of Parliament
               </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.05] tracking-tight mb-6">
               Education{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-200">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4a9fc0] to-[#a8d4e6]">
                 without walls.
               </span>
               <br />
               Learning beyond borders.
             </h1>
 
-            <p className="text-base sm:text-lg text-blue-200/80 leading-relaxed max-w-xl mb-10">
+            <p className="text-base sm:text-lg text-[#a8d4e6]/80 leading-relaxed max-w-xl mb-10">
               IGNOU's Centre for Online Education brings UGC-approved, NAAC A++ certified degrees to
               38 lakh+ learners across 25 countries — at a price that's never a barrier.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
-              <a
-                href=" "
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-600/30"
+              <button
+                onClick={openWizard}
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#0B6089] hover:bg-[#0d70a0] text-white font-semibold text-sm rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#0B6089]/30"
               >
                 Get Free Counselling
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </a>
+              </button>
               <a
                 href="#programmes"
-                className="inline-flex items-center gap-2 px-6 py-3.5 border border-blue-700/60 text-blue-200 hover:text-white hover:border-blue-500 font-semibold text-sm rounded-xl transition-all duration-200"
+                className="inline-flex items-center gap-2 px-6 py-3.5 border border-[#0B6089]/60 text-[#a8d4e6] hover:text-white hover:border-blue-500 font-semibold text-sm rounded-xl transition-all duration-200"
               >
                 Browse Programmes
               </a>
@@ -360,7 +346,7 @@ function HeroSection() {
               ].map((b) => (
                 <span
                   key={b.label}
-                  className="flex items-center gap-2 text-sm font-semibold text-blue-300 border border-blue-800 rounded-full px-4 py-2"
+                  className="flex items-center gap-2 text-sm font-semibold text-white border border-[#0B6089] rounded-full px-4 py-2 bg-white/40"
                 >
                   <img
                     src={b.logo}
@@ -378,13 +364,13 @@ function HeroSection() {
       </div>
 
       {/* Stats bar */}
-      <div className="relative z-20 border-t border-blue-900/60 bg-[#0A1A30]/80 backdrop-blur-sm">
+      <div className="relative z-20 border-t border-[#083d5a]/60 bg-[#0A1A30]/80 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 divide-x divide-blue-900/40">
             {STATS.map((s) => (
               <div key={s.label} className="py-5 px-4 text-center first:border-l-0">
-                <div className="text-2xl font-black text-blue-400">{s.value}</div>
-                <div className="text-[11px] text-blue-300/60 mt-0.5">{s.label}</div>
+                <div className="text-2xl font-black text-[#4a9fc0]">{s.value}</div>
+                <div className="text-[11px] text-[#7cbdd6]/60 mt-0.5">{s.label}</div>
               </div>
             ))}
           </div>
@@ -394,7 +380,7 @@ function HeroSection() {
   );
 }
 
-function AboutSection() {
+function AboutSection({ openWizard }) {
   return (
     <section id="about" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -418,31 +404,29 @@ function AboutSection() {
               25 countries, IGNOU has ranked #1 in NIRF 2025 for open universities.
             </p>
             <div className="flex gap-4">
-              <a
-                href="https://iop.ignouonline.ac.in/aboutUs"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-semibold text-blue-700 hover:text-blue-900 flex items-center gap-1.5 transition-colors"
+              <button
+                onClick={openWizard}
+                className="text-sm font-semibold text-[#0B6089] hover:text-blue-900 flex items-center gap-1.5 transition-colors"
               >
                 Read more about IGNOU
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </a>
+              </button>
             </div>
           </div>
 
           {/* Credential cards */}
           <div className="grid grid-cols-2 gap-4">
             {[
-              { label: "NAAC Rating", value: "A++", sub: "Highest academic quality grade", color: "bg-blue-50 border-blue-100" },
+              { label: "NAAC Rating", value: "A++", sub: "Highest academic quality grade", color: "bg-[#EBF4F9] border-[#D6EAF3]" },
               { label: "NIRF Rank", value: "#1", sub: "Open Universities 2025", color: "bg-slate-50 border-slate-100" },
               { label: "Programmes", value: "20+", sub: "Online & distance modes", color: "bg-slate-50 border-slate-100" },
-              { label: "Students", value: "38L+", sub: "Active enrolled learners", color: "bg-blue-50 border-blue-100" },
+              { label: "Students", value: "38L+", sub: "Active enrolled learners", color: "bg-[#EBF4F9] border-[#D6EAF3]" },
             ].map((c) => (
               <div key={c.label} className={`rounded-2xl border p-5 ${c.color}`}>
                 <p className="text-xs font-semibold text-slate-500 mb-1">{c.label}</p>
-                <p className="text-3xl font-black text-blue-700 mb-1">{c.value}</p>
+                <p className="text-3xl font-black text-[#0B6089] mb-1">{c.value}</p>
                 <p className="text-xs text-slate-500 leading-tight">{c.sub}</p>
               </div>
             ))}
@@ -453,7 +437,7 @@ function AboutSection() {
   );
 }
 
-function ProgrammesSection() {
+function ProgrammesSection({ openWizard }) {
   const [filter, setFilter] = useState("All");
   const [expandCourses, setExpandCourses] = useState(false);
   const sectionRef = useRef(null);
@@ -497,8 +481,8 @@ function ProgrammesSection() {
               onClick={() => setFilter(f)}
               className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
                 filter === f
-                  ? "bg-blue-700 text-white shadow-sm"
-                  : "bg-white text-slate-600 border border-slate-200 hover:border-blue-300"
+                  ? "bg-[#0B6089] text-white shadow-sm"
+                  : "bg-white text-slate-600 border border-slate-200 hover:border-[#7cbdd6]"
               }`}
             >
               {f}
@@ -511,7 +495,7 @@ function ProgrammesSection() {
           {displayedCourses.map((prog) => (
             <div
               key={prog.code}
-              className="group bg-white rounded-2xl border border-slate-100 p-5 hover:border-blue-300 hover:shadow-md transition-all duration-200 flex flex-col"
+              className="group bg-white rounded-2xl border border-slate-100 p-5 hover:border-[#7cbdd6] hover:shadow-md transition-all duration-200 flex flex-col"
             >
               <div className="flex items-start justify-between mb-3">
                 <div className="flex gap-1.5 flex-wrap">
@@ -525,12 +509,18 @@ function ProgrammesSection() {
               </div>
               <h3 className="text-sm font-bold text-slate-800 leading-snug mb-auto">{prog.name}</h3>
               <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-xs font-semibold text-blue-700">{prog.fee}</span>
+                <span className="text-xs font-semibold text-[#0B6089]">{prog.fee}</span>
                 <span className="text-[11px] text-slate-400">{prog.duration}</span>
               </div>
               {prog.specs > 0 && (
                 <p className="text-[11px] text-slate-400 mt-1">{prog.specs} specialisations</p>
               )}
+              <button
+                onClick={(e) => { e.stopPropagation(); openWizard(prog.name); }}
+                className="mt-3 w-full py-2 rounded-lg bg-[#EBF4F9] hover:bg-[#0B6089] text-[#0B6089] hover:text-white border border-[#b0d4e8] hover:border-[#0B6089] text-xs font-semibold transition-all duration-200"
+              >
+                Apply Now →
+              </button>
             </div>
           ))}
         </div>
@@ -542,7 +532,7 @@ function ProgrammesSection() {
                 hasInteracted.current = true;
                 setExpandCourses(!expandCourses);
               }}
-              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-blue-700 text-blue-700 font-semibold text-sm rounded-xl hover:bg-blue-700 hover:text-white transition-all duration-200"
+              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[#0B6089] text-[#0B6089] font-semibold text-sm rounded-xl hover:bg-[#0B6089] hover:text-white transition-all duration-200"
             >
               {expandCourses ? (
                 <>
@@ -595,7 +585,7 @@ function StrengthsSection() {
             {[...STRENGTHS, ...STRENGTHS].map((s, idx) => (
               <div
                 key={`${s.title}-${idx}`}
-                className="group rounded-2xl border border-slate-100 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 p-6 text-center transition-all duration-200 flex-shrink-0 w-80"
+                className="group rounded-2xl border border-slate-100 bg-slate-50 hover:bg-[#EBF4F9] hover:border-[#b0d4e8] p-6 text-center transition-all duration-200 flex-shrink-0 w-80"
               >
                 <div className="text-3xl mb-4">{s.icon}</div>
                 <h3 className="text-sm font-bold text-slate-800 mb-2">{s.title}</h3>
@@ -661,7 +651,7 @@ const TIMELINE_STEPS = [
   },
 ];
 
-function AdmissionsSection() {
+function AdmissionsSection({ openWizard }) {
   const [activeStep, setActiveStep] = useState(0);
   const stepRefs = useRef([]);
   const sectionRef = useRef(null);
@@ -689,18 +679,18 @@ function AdmissionsSection() {
         <div className="py-20 grid lg:grid-cols-2 gap-12 items-end">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="h-px w-8 bg-blue-500" />
-              <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest">
+              <div className="h-px w-8 bg-[#0d70a0]" />
+              <span className="text-[#4a9fc0] text-xs font-semibold uppercase tracking-widest">
                 Admissions 2026
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight mb-5">
               Don't apply alone.{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-200">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4a9fc0] to-[#a8d4e6]">
                 Here's why.
               </span>
             </h2>
-            <p className="text-blue-200/70 text-sm leading-relaxed">
+            <p className="text-[#a8d4e6]/70 text-sm leading-relaxed">
               The IGNOU Samarth portal has no guidance built in. Most students pick the wrong programme,
               upload wrong documents, or miss fee deadlines — on their own. Our counsellors
               sit alongside you at every step so none of that happens to you.
@@ -716,18 +706,18 @@ function AdmissionsSection() {
                 <strong className="text-amber-300">June 30, 2026</strong>.
               </p>
             </div>
-            <a
-              href="https://learningshala.com/contact"
-              className="flex items-center justify-between gap-4 bg-blue-600 hover:bg-blue-500 transition-colors rounded-2xl p-5 group"
+            <button
+              onClick={openWizard}
+              className="flex items-center justify-between gap-4 bg-[#0B6089] hover:bg-[#0d70a0] transition-colors rounded-2xl p-5 group"
             >
               <div>
                 <p className="text-white font-bold text-sm mb-0.5">Talk to a counsellor first</p>
-                <p className="text-blue-200 text-xs">Free · No commitment · Takes 15 minutes</p>
+                <p className="text-[#a8d4e6] text-xs">Free · No commitment · Takes 15 minutes</p>
               </div>
               <svg className="w-5 h-5 text-white flex-shrink-0 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </a>
+            </button>
           </div>
         </div>
 
@@ -737,7 +727,7 @@ function AdmissionsSection() {
           {/* LEFT — sticky step tracker (desktop only) */}
           <div className="hidden lg:block w-64 flex-shrink-0 sticky top-24 h-fit">
             <div className="relative flex flex-col gap-1">
-              <div className="absolute left-[13px] top-5 bottom-5 w-px bg-blue-900/60" />
+              <div className="absolute left-[13px] top-5 bottom-5 w-px bg-[#083d5a]/60" />
               {TIMELINE_STEPS.map((step, i) => {
                 const isLS = step.who === "ls";
                 const isActive = activeStep === i;
@@ -751,16 +741,16 @@ function AdmissionsSection() {
                     <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-black border transition-all duration-300 z-10 ${
                       isActive
                         ? isLS
-                          ? "bg-blue-600 border-blue-400 text-white scale-110 shadow-lg shadow-blue-600/40"
+                          ? "bg-[#0B6089] border-blue-400 text-white scale-110 shadow-lg shadow-[#0B6089]/40"
                           : "bg-slate-500 border-slate-400 text-white scale-110"
                         : isPast
-                        ? "bg-blue-900 border-blue-800 text-blue-400"
+                        ? "bg-[#083d5a] border-[#094f72] text-[#4a9fc0]"
                         : "bg-[#0d1f38] border-blue-950 text-blue-950"
                     }`}>
                       {isPast && !isActive ? "✓" : String(i + 1).padStart(2, "0")}
                     </div>
                     <span className={`text-xs font-semibold leading-tight transition-all duration-300 ${
-                      isActive ? "text-white" : isPast ? "text-blue-700" : "text-blue-950"
+                      isActive ? "text-white" : isPast ? "text-[#0B6089]" : "text-blue-950"
                     }`}>
                       {step.title}
                     </span>
@@ -784,10 +774,10 @@ function AdmissionsSection() {
                   <div className={`w-full rounded-2xl p-6 sm:p-8 border transition-all duration-500 ${
                     isActive
                       ? isLS
-                        ? "bg-blue-950/80 border-blue-600/60 shadow-xl shadow-blue-900/30"
+                        ? "bg-[#06293d]/80 border-[#0B6089]/60 shadow-xl shadow-blue-900/30"
                         : "bg-slate-800/80 border-slate-500/60 shadow-xl shadow-slate-900/30"
                       : isLS
-                      ? "bg-blue-950/30 border-blue-900/30"
+                      ? "bg-[#06293d]/30 border-[#083d5a]/30"
                       : "bg-slate-800/20 border-slate-800/30"
                   }`}>
 
@@ -797,13 +787,13 @@ function AdmissionsSection() {
                         {/* Number badge */}
                         <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-black border-2 transition-all duration-500 ${
                           isLS
-                            ? "bg-blue-600 border-blue-400 text-white"
+                            ? "bg-[#0B6089] border-blue-400 text-white"
                             : "bg-slate-700 border-slate-500 text-white"
                         }`}>
                           {String(i + 1).padStart(2, "0")}
                         </div>
                         <div>
-                          <span className="text-[10px] font-bold uppercase tracking-widest text-blue-400/60 block">
+                          <span className="text-[10px] font-bold uppercase tracking-widest text-[#4a9fc0]/60 block">
                             {step.label}
                           </span>
                           <span className={`text-[10px] font-bold uppercase tracking-widest text-white px-2 py-0.5 rounded-full ${step.pillColor}`}>
@@ -823,7 +813,7 @@ function AdmissionsSection() {
 
                     {/* Description */}
                     <p className={`text-sm leading-relaxed mb-5 transition-all duration-500 ${
-                      isActive ? "text-blue-200/80" : "text-blue-300/30"
+                      isActive ? "text-[#a8d4e6]/80" : "text-[#7cbdd6]/30"
                     }`}>
                       {step.desc}
                     </p>
@@ -832,13 +822,13 @@ function AdmissionsSection() {
                     <div className={`flex items-start gap-2 rounded-xl px-4 py-3 transition-all duration-500 ${
                       isActive
                         ? isLS
-                          ? "bg-blue-600/[0.15] border border-blue-600/[0.25]"
+                          ? "bg-[#0B6089]/[0.15] border border-[#0B6089]/[0.25]"
                           : "bg-slate-700/40 border border-slate-600/30"
                         : "bg-transparent border border-transparent"
                     }`}>
-                      <span className={`mt-0.5 flex-shrink-0 font-bold transition-colors duration-500 ${isActive ? "text-blue-400" : "text-transparent"}`}></span>
+                      <span className={`mt-0.5 flex-shrink-0 font-bold transition-colors duration-500 ${isActive ? "text-[#4a9fc0]" : "text-transparent"}`}></span>
                       <p className={`text-xs leading-relaxed italic transition-all duration-500 ${
-                        isActive ? "text-blue-200/80" : "text-transparent"
+                        isActive ? "text-[#a8d4e6]/80" : "text-transparent"
                       }`}>
                         {step.highlight}
                       </p>
@@ -852,15 +842,15 @@ function AdmissionsSection() {
 
         {/* Bottom CTA */}
         <div className="pb-20 text-center">
-          <a
-            href="https://learningshala.com/contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-600/25"
+          <button
+            onClick={openWizard}
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#0B6089] hover:bg-[#0d70a0] text-white font-semibold text-sm rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#0B6089]/25"
           >
             Book a free call — July 2026 seats filling fast
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
-          </a>
+          </button>
         </div>
 
       </div>
@@ -868,7 +858,7 @@ function AdmissionsSection() {
   );
 }
 
-function ServicesSection() {
+function ServicesSection({ openWizard }) {
   const selectedServices = [
     ONLINE_SERVICES.find(s => s.name === "Samarth Portal"),
     ONLINE_SERVICES.find(s => s.name === "Gyan Darshan"),
@@ -890,29 +880,27 @@ function ServicesSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 auto-rows-max">
           {selectedServices.map((svc, idx) => (
-            <a
+            <div
               key={svc.name}
-              href={svc.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`group bg-white rounded-2xl border border-slate-100 hover:border-blue-200 hover:shadow-md transition-all duration-200 ${
+              onClick={openWizard}
+              className={`group bg-white rounded-2xl border border-slate-100 hover:border-[#b0d4e8] hover:shadow-md transition-all duration-200 ${
                 idx === 0 ? "md:col-span-2 lg:col-span-2 lg:row-span-2 p-12" : "p-6"
               }`}
             >
               <div className={`flex ${idx === 0 ? "flex-col h-full" : "flex-row"} items-start ${idx === 0 ? "gap-6" : "gap-4"}`}>
-                <div className={`rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0 ${
+                <div className={`rounded-xl bg-[#EBF4F9] border border-[#D6EAF3] flex items-center justify-center flex-shrink-0 ${
                   idx === 0 ? "w-24 h-24 text-6xl" : "w-11 h-11 text-xl"
                 }`}>
                   {svc.icon}
                 </div>
                 <div className={idx === 0 ? "flex-1" : ""}>
-                  <h3 className={`font-bold ${idx === 0 ? "text-3xl" : "text-sm"} text-slate-800 mb-3 group-hover:text-blue-700 transition-colors`}>
+                  <h3 className={`font-bold ${idx === 0 ? "text-3xl" : "text-sm"} text-slate-800 mb-3 group-hover:text-[#0B6089] transition-colors`}>
                     {svc.name}
                   </h3>
                   <p className={`${idx === 0 ? "text-base" : "text-xs"} text-slate-500 leading-relaxed`}>{svc.desc}</p>
                 </div>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>
@@ -992,7 +980,7 @@ function FAQSection() {
                   {faq.question}
                 </h3>
 
-                <p className="text-sm text-blue-200/70 leading-relaxed">
+                <p className="text-sm text-[#a8d4e6]/70 leading-relaxed">
                   {faq.answer}
                 </p>
               </div>
@@ -1001,7 +989,7 @@ function FAQSection() {
           {/* Right Column */}
           <div className="lg:sticky lg:top-24 h-fit">
 
-            <p className="text-blue-400 text-[10px] font-bold uppercase tracking-[0.25em] mb-3">
+            <p className="text-[#4a9fc0] text-[10px] font-bold uppercase tracking-[0.25em] mb-3">
               Frequently Asked Questions
             </p>
 
@@ -1009,7 +997,7 @@ function FAQSection() {
               Everything You Need To Know
             </h2>
 
-            <p className="text-sm text-blue-200/60 leading-relaxed">
+            <p className="text-sm text-[#a8d4e6]/60 leading-relaxed">
               Find answers to the most common questions about admissions,
               eligibility, fees, examinations, recognition and student support.
             </p>
@@ -1022,7 +1010,7 @@ function FAQSection() {
   );
 }
 
-function CTASection() {
+function CTASection({ openWizard }) {
   return (
     <section
       id="contact"
@@ -1062,7 +1050,7 @@ function CTASection() {
               {/* LEFT */}
               <div className="p-8 lg:px-12 lg:py-10 z-20">
 
-                <p className="text-blue-400 text-xs font-bold uppercase tracking-[0.2em] mb-4">
+                <p className="text-[#4a9fc0] text-xs font-bold uppercase tracking-[0.2em] mb-4">
                   Free Counselling
                 </p>
 
@@ -1070,7 +1058,7 @@ function CTASection() {
                   Advance Your Learning Journey
                 </h2>
 
-                <p className="text-blue-200/70 mb-10 max-w-lg">
+                <p className="text-[#a8d4e6]/70 mb-10 max-w-lg">
                   Connect with an IGNOU academic advisor and get guidance on
                   programmes, eligibility, admissions, fees and career outcomes.
                 </p>
@@ -1081,23 +1069,23 @@ function CTASection() {
                     <input
                       type="text"
                       placeholder="Full Name"
-                      className="w-full bg-white/5 rounded-xl px-4 py-3 text-white border border-white/10 placeholder:text-blue-200/40"
+                      className="w-full bg-white/5 rounded-xl px-4 py-3 text-white border border-white/10 placeholder:text-[#a8d4e6]/40"
                     />
 
                     <input
                       type="email"
                       placeholder="Email Address"
-                      className="w-full bg-white/5 rounded-xl px-4 py-3 text-white border border-white/10 placeholder:text-blue-200/40"
+                      className="w-full bg-white/5 rounded-xl px-4 py-3 text-white border border-white/10 placeholder:text-[#a8d4e6]/40"
                     />
                   </div>
 
                   <input
                     type="tel"
                     placeholder="Mobile Number"
-                    className="w-full bg-white/5 rounded-xl px-4 py-3 text-white border border-white/10 placeholder:text-blue-200/40"
+                    className="w-full bg-white/5 rounded-xl px-4 py-3 text-white border border-white/10 placeholder:text-[#a8d4e6]/40"
                   />
 
-                  <label className="flex gap-3 items-start text-xs text-blue-300/70">
+                  <label className="flex gap-3 items-start text-xs text-[#7cbdd6]/70">
                     <input type="checkbox" className="mt-0.5" />
                     I agree to receive admission updates, counselling calls,
                     emails and WhatsApp communication from IGNOU.
@@ -1106,11 +1094,10 @@ function CTASection() {
                   <div className="flex flex-wrap gap-3 pt-2">
 
                     <button
-                      type="submit"
                       className="
                         px-8 py-4
-                        bg-blue-600
-                        hover:bg-blue-500
+                        bg-[#0B6089]
+                        hover:bg-[#0d70a0]
                         text-white
                         font-semibold
                         rounded-xl
@@ -1120,10 +1107,7 @@ function CTASection() {
                       Book a Free Call
                     </button>
 
-                    <a
-                      href="https://wa.me/919999999999"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button
                       className="
                         px-8 py-4
                         bg-green-600
@@ -1135,7 +1119,7 @@ function CTASection() {
                       "
                     >
                       Reach Out on WhatsApp
-                    </a>
+                    </button>
 
                   </div>
                 </form>
@@ -1234,24 +1218,6 @@ function CTASection() {
                     </div>
 
                   </div>
-
-                  <div className="flex gap-3 mt-8">
-                    {["f", "in", "▶", "ig"].map((s) => (
-                      <div
-                        key={s}
-                        className="
-                          w-10 h-10
-                          rounded-full
-                          bg-slate-100
-                          flex items-center justify-center
-                          text-slate-600
-                        "
-                      >
-                        {s}
-                      </div>
-                    ))}
-                  </div>
-
                 </div>
 
                 {/* PROGRAMMES */}
@@ -1268,7 +1234,7 @@ function CTASection() {
                     <a
                       key={item}
                       href="#"
-                      className="block mb-3 text-slate-500 hover:text-blue-700"
+                      className="block mb-3 text-slate-500 hover:text-[#0B6089]"
                     >
                       {item}
                     </a>
@@ -1291,7 +1257,7 @@ function CTASection() {
                     <a
                       key={item}
                       href="#"
-                      className="block mb-3 text-slate-500 hover:text-blue-700"
+                      className="block mb-3 text-slate-500 hover:text-[#0B6089]"
                     >
                       {item}
                     </a>
@@ -1327,7 +1293,7 @@ function CTASection() {
                   <div className="space-y-4">
 
                     <div>
-                      <div className="text-3xl font-black text-blue-700">
+                      <div className="text-3xl font-black text-[#0B6089]">
                         38L+
                       </div>
                       <div className="text-slate-500">
@@ -1336,7 +1302,7 @@ function CTASection() {
                     </div>
 
                     <div>
-                      <div className="text-3xl font-black text-blue-700">
+                      <div className="text-3xl font-black text-[#0B6089]">
                         A++
                       </div>
                       <div className="text-slate-500">
@@ -1345,7 +1311,7 @@ function CTASection() {
                     </div>
 
                     <div>
-                      <div className="text-3xl font-black text-blue-700">
+                      <div className="text-3xl font-black text-[#0B6089]">
                         1985
                       </div>
                       <div className="text-slate-500">
@@ -1360,13 +1326,11 @@ function CTASection() {
               </div>
 
               <div className="border-t border-slate-200 mt-12 pt-6 flex justify-between text-sm text-slate-500">
-                <span>
-                  © {new Date().getFullYear()} Indira Gandhi National Open University.
-                </span>
-
-                <span>
-                  Established by Act of Parliament, 1985
-                </span>
+                <p>
+                  Disclaimer: We act solely as an information partner and do not conduct or facilitate admissions to IGNOU. For admissions, please visit the official IGNOU website or contact the university directly. IGNOU University holds full rights to request changes or removal of any non-relevant content. Images used are for illustrative purposes only and do not directly represent the respective colleges or universities.
+                </p>
+    
+                <p> © {new Date().getFullYear()} </p>
               </div>
 
             </div>
@@ -1379,10 +1343,336 @@ function CTASection() {
   );
 }
 
+// ─── Counselling Wizard ───────────────────────────────────────────────────────
+
+const WIZARD_PROGRAMMES = [
+  "Online MBA", "Online MCA", "Online MA", "Online M.Com",
+  "Online BA", "Online BCA", "Online B.Com", "Online BBA",
+  "Distance MBA", "Distance MCA", "Distance MA", "Distance M.Com", "Distance MSW", "Distance M.Sc", 
+  "Distance B.Com", "Distance BA", "Distance BBA", "Distance BCA", "Distance BSW", "Distance B.Sc", 
+  "Online Diploma", "Online PG Diploma", "Online Certificate", "Not sure yet",
+];
+
+const BUDGET_OPTIONS = [
+  { label: "Under ₹10,000", value: "under_10k" },
+  { label: "₹10,000 – ₹25,000", value: "10k_25k" },
+  { label: "₹25,000 – ₹50,000", value: "25k_50k" },
+  { label: "Above ₹50,000", value: "above_50k" },
+];
+
+const QUALIFICATION_OPTIONS = [
+  "10th Pass", "12th Pass", "Diploma Holder", 
+  "Graduate", "Post Graduate",
+];
+
+const STEPS = [
+  { id: "programme", title: "What would you like to study?", subtitle: "Pick the programme you're interested in" },
+  { id: "budget", title: "What's your budget?", subtitle: "We'll find options that fit" },
+  { id: "eligibility", title: "Your current qualification", subtitle: "We'll check if you're eligible" },
+  { id: "contact", title: "Almost there!", subtitle: "Where should we send your counselling details?" },
+];
+
+function CounsellingWizard({ onClose, initialProgramme = "" }) {
+  const [step, setStep] = useState(initialProgramme ? 1 : 0);
+  const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState({
+    programme: initialProgramme,
+    budget: "",
+    qualification: "",
+    name: "",
+    phone: "",
+    email: "",
+    preferredTime: "",
+  });
+
+  const update = (key, val) => setForm((f) => ({ ...f, [key]: val }));
+
+  const canNext = () => {
+    if (step === 0) return !!form.programme;
+    if (step === 1) return !!form.budget;
+    if (step === 2) return !!form.qualification;
+    if (step === 3) return form.name && form.phone && form.email;
+    return false;
+  };
+
+  const handleSubmit = () => {
+    // Replace this with your actual API call / form submission
+    console.log("Wizard submission:", form);
+    setSubmitted(true);
+  };
+
+  const progress = ((step) / STEPS.length) * 100;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      {/* Backdrop */}
+      <div
+        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+        onClick={onClose}
+      />
+
+      {/* Modal */}
+      <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden">
+
+        {/* Close */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 transition-colors"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        {submitted ? (
+          /* ── Post submission screen ── */
+          <div className="p-8 text-center">
+            <div className="w-16 h-16 bg-[#EBF4F9] rounded-full flex items-center justify-center mx-auto mb-5">
+              <svg className="w-8 h-8 text-[#0B6089]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 className="text-2xl font-black text-slate-900 mb-2">You're all set, {form.name.split(" ")[0]}!</h3>
+            <p className="text-slate-500 text-sm leading-relaxed mb-6">
+              Our counsellor will call you within <strong className="text-slate-700">24 hours</strong> to discuss{" "}
+              <strong className="text-slate-700">{form.programme}</strong> and answer all your questions — for free.
+            </p>
+
+            <div className="bg-[#EBF4F9] border border-[#D6EAF3] rounded-2xl p-5 text-left mb-6">
+              <p className="text-xs font-bold uppercase tracking-widest text-[#0B6089] mb-3">Your details</p>
+              <div className="flex flex-col gap-2">
+                {[
+                  { label: "Programme", val: form.programme },
+                  { label: "Budget", val: BUDGET_OPTIONS.find(b => b.value === form.budget)?.label },
+                  { label: "Qualification", val: form.qualification },
+                  { label: "Contact", val: `${form.phone} · ${form.email}` },
+                ].map((row) => (
+                  <div key={row.label} className="flex justify-between gap-4 text-sm">
+                    <span className="text-slate-400">{row.label}</span>
+                    <span className="text-slate-700 font-medium text-right">{row.val}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <p className="text-xs text-slate-400 mb-1">While you wait, explore:</p>
+              <div className="grid grid-cols-2 gap-2">
+                <a
+                  href="#programmes"
+                  onClick={onClose}
+                  className="text-sm font-semibold text-[#0B6089] border border-[#b0d4e8] rounded-xl py-2.5 text-center hover:bg-[#EBF4F9] transition-colors"
+                >
+                  Browse Courses
+                </a>
+                <a
+                  href="#admissions"
+                  onClick={onClose}
+                  className="text-sm font-semibold text-[#0B6089] border border-[#b0d4e8] rounded-xl py-2.5 text-center hover:bg-[#EBF4F9] transition-colors"
+                >
+                  Admission Steps
+                </a>
+              </div>
+            </div>
+
+            <button
+              onClick={onClose}
+              className="mt-4 text-xs text-slate-400 hover:text-slate-600 transition-colors"
+            >
+              Close
+            </button>
+          </div>
+        ) : (
+          <>
+            {/* ── Header ── */}
+            <div className="bg-[#061122] px-6 pt-7 pb-6">
+              {/* Progress bar */}
+              <div className="flex items-center gap-2 mb-5">
+                {STEPS.map((s, i) => (
+                  <div
+                    key={i}
+                    className={`h-1 flex-1 rounded-full transition-all duration-500 ${
+                      i <= step ? "bg-[#0d70a0]" : "bg-white/10"
+                    }`}
+                  />
+                ))}
+              </div>
+              <p className="text-[#4a9fc0] text-xs font-semibold uppercase tracking-widest mb-1">
+                Step {step + 1} of {STEPS.length}
+              </p>
+              <h3 className="text-xl font-black text-white">{STEPS[step].title}</h3>
+              <p className="text-[#7cbdd6]/60 text-sm mt-1">{STEPS[step].subtitle}</p>
+            </div>
+
+            {/* ── Body ── */}
+            <div className="px-6 py-6 max-h-[55vh] overflow-y-auto">
+
+              {/* Step 0 — Programme */}
+              {step === 0 && (
+                <div className="grid grid-cols-2 gap-2">
+                  {WIZARD_PROGRAMMES.map((p) => (
+                    <button
+                      key={p}
+                      onClick={() => update("programme", p)}
+                      className={`text-left text-sm px-3 py-2.5 rounded-xl border font-medium transition-all ${
+                        form.programme === p
+                          ? "bg-[#0B6089] border-[#0B6089] text-white"
+                          : "bg-white border-slate-200 text-slate-700 hover:border-[#7cbdd6]"
+                      }`}
+                    >
+                      {p}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Step 1 — Budget */}
+              {step === 1 && (
+                <div className="flex flex-col gap-3">
+                  {BUDGET_OPTIONS.map((b) => (
+                    <button
+                      key={b.value}
+                      onClick={() => update("budget", b.value)}
+                      className={`flex items-center justify-between px-4 py-3.5 rounded-xl border font-medium text-sm transition-all ${
+                        form.budget === b.value
+                          ? "bg-[#0B6089] border-[#0B6089] text-white"
+                          : "bg-white border-slate-200 text-slate-700 hover:border-[#7cbdd6]"
+                      }`}
+                    >
+                      {b.label}
+                      {form.budget === b.value && (
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Step 2 — Eligibility */}
+              {step === 2 && (
+                <div className="flex flex-col gap-2">
+                  <div className="bg-[#EBF4F9] border border-[#D6EAF3] rounded-xl p-3 mb-2">
+                    <p className="text-xs text-[#0B6089] leading-relaxed">
+                      <strong>Don't worry</strong> — most IGNOU programmes require only 10+2. We'll confirm your eligibility in the call.
+                    </p>
+                  </div>
+                  {QUALIFICATION_OPTIONS.map((q) => (
+                    <button
+                      key={q}
+                      onClick={() => update("qualification", q)}
+                      className={`flex items-center justify-between px-4 py-3 rounded-xl border font-medium text-sm transition-all ${
+                        form.qualification === q
+                          ? "bg-[#0B6089] border-[#0B6089] text-white"
+                          : "bg-white border-slate-200 text-slate-700 hover:border-[#7cbdd6]"
+                      }`}
+                    >
+                      {q}
+                      {form.qualification === q && (
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Step 3 — Contact */}
+              {step === 3 && (
+                <div className="flex flex-col gap-4">
+                  <div>
+                    <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5 block">Full Name</label>
+                    <input
+                      type="text"
+                      placeholder="Priya Sharma"
+                      value={form.name}
+                      onChange={(e) => update("name", e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 placeholder:text-slate-300"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5 block">Phone Number</label>
+                    <input
+                      type="tel"
+                      placeholder="+91 98765 43210"
+                      value={form.phone}
+                      onChange={(e) => update("phone", e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 placeholder:text-slate-300"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5 block">Email Address</label>
+                    <input
+                      type="email"
+                      placeholder="priya@email.com"
+                      value={form.email}
+                      onChange={(e) => update("email", e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 placeholder:text-slate-300"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5 block">
+                      Best time to call <span className="text-slate-300 normal-case font-normal">(optional)</span>
+                    </label>
+                    <select
+                      value={form.preferredTime}
+                      onChange={(e) => update("preferredTime", e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 bg-white"
+                    >
+                      <option value="">Any time</option>
+                      <option value="morning">Morning (9am – 12pm)</option>
+                      <option value="afternoon">Afternoon (12pm – 4pm)</option>
+                      <option value="evening">Evening (4pm – 8pm)</option>
+                    </select>
+                  </div>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    By submitting, you agree to be contacted by our counsellor. We never share your details with third parties.
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* ── Footer ── */}
+            <div className="px-6 pb-6 flex items-center gap-3">
+              {step > 0 && (
+                <button
+                  onClick={() => setStep(step - 1)}
+                  className="px-4 py-3 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors"
+                >
+                  Back
+                </button>
+              )}
+              <button
+                onClick={step === STEPS.length - 1 ? handleSubmit : () => setStep(step + 1)}
+                disabled={!canNext()}
+                className={`flex-1 py-3 rounded-xl text-sm font-bold transition-all ${
+                  canNext()
+                    ? "bg-[#0B6089] hover:bg-[#0B6089] text-white"
+                    : "bg-slate-100 text-slate-300 cursor-not-allowed"
+                }`}
+              >
+                {step === STEPS.length - 1 ? "Book my free counselling →" : "Continue →"}
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ─── Page Component ──────────────────────────────────────────────────────────
 
 export default function IGNOUHomePage() {
   const [scrolled, setScrolled] = useState(false);
+  const [wizardOpen, setWizardOpen] = useState(false);
+  const [wizardProgramme, setWizardProgramme] = useState("");
+  const openWizard = (programme = "") => {
+    setWizardProgramme(programme);
+    setWizardOpen(true);
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -1392,17 +1682,18 @@ export default function IGNOUHomePage() {
 
   return (
     <div className="font-sans antialiased">
-      <Navbar scrolled={scrolled} />
+      <Navbar scrolled={scrolled} openWizard={openWizard} />
       <main>
-        <HeroSection />
-        <AboutSection />
-        <ProgrammesSection />
-        <AdmissionsSection />
-        <ServicesSection />
+        <HeroSection openWizard={openWizard} />
+        <AboutSection openWizard={openWizard} />
+        <ProgrammesSection openWizard={openWizard} />
+        <AdmissionsSection openWizard={openWizard} />
+        <ServicesSection openWizard={openWizard} />
         <StrengthsSection />
         <FAQSection />
+        <CTASection openWizard={openWizard} />
       </main>
-      <CTASection />
+      {wizardOpen && <CounsellingWizard onClose={() => { setWizardOpen(false); setWizardProgramme(""); }} initialProgramme={wizardProgramme} />}
     </div>
   );
 }

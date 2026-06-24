@@ -437,7 +437,7 @@ function AboutSection({ openWizard }) {
   );
 }
 
-function ProgrammesSection({ openWizard }) {
+function ProgrammesSection({ openWizard, openProgrammeWizard }) {
   const [filter, setFilter] = useState("All");
   const [expandCourses, setExpandCourses] = useState(false);
   const sectionRef = useRef(null);
@@ -516,7 +516,7 @@ function ProgrammesSection({ openWizard }) {
                 <p className="text-[11px] text-slate-400 mt-1">{prog.specs} specialisations</p>
               )}
               <button
-                onClick={(e) => { e.stopPropagation(); openWizard(prog.name); }}
+                onClick={(e) => { e.stopPropagation(); openProgrammeWizard(prog.name); }}
                 className="mt-3 w-full py-2 rounded-lg bg-[#EBF4F9] hover:bg-[#0B6089] text-[#0B6089] hover:text-white border border-[#b0d4e8] hover:border-[#0B6089] text-xs font-semibold transition-all duration-200"
               >
                 Apply Now →
@@ -1372,8 +1372,8 @@ const STEPS = [
   { id: "contact", title: "Almost there!", subtitle: "Where should we send your counselling details?" },
 ];
 
-function CounsellingWizard({ onClose, initialProgramme = "" }) {
-  const [step, setStep] = useState(initialProgramme ? 1 : 0);
+function CounsellingWizard({ onClose, initialProgramme = "", initialStep = 0}) {
+  const [step, setStep] = useState(initialStep);
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     programme: initialProgramme,
@@ -1669,8 +1669,17 @@ export default function IGNOUHomePage() {
   const [scrolled, setScrolled] = useState(false);
   const [wizardOpen, setWizardOpen] = useState(false);
   const [wizardProgramme, setWizardProgramme] = useState("");
-  const openWizard = (programme = "") => {
+  const [wizardStartStep, setWizardStartStep] = useState(0);
+
+  const openWizard = () => {
+    setWizardProgramme("");
+    setWizardStartStep(0);
+    setWizardOpen(true);
+  };
+
+  const openProgrammeWizard = (programme) => {
     setWizardProgramme(programme);
+    setWizardStartStep(1);
     setWizardOpen(true);
   };
 
@@ -1686,14 +1695,24 @@ export default function IGNOUHomePage() {
       <main>
         <HeroSection openWizard={openWizard} />
         <AboutSection openWizard={openWizard} />
-        <ProgrammesSection openWizard={openWizard} />
+        <ProgrammesSection openWizard={openWizard} openProgrammeWizard={openProgrammeWizard} />
         <AdmissionsSection openWizard={openWizard} />
         <ServicesSection openWizard={openWizard} />
         <StrengthsSection />
         <FAQSection />
         <CTASection openWizard={openWizard} />
       </main>
-      {wizardOpen && <CounsellingWizard onClose={() => { setWizardOpen(false); setWizardProgramme(""); }} initialProgramme={wizardProgramme} />}
+      {wizardOpen && (
+        <CounsellingWizard
+          onClose={() => {
+            setWizardOpen(false);
+            setWizardProgramme("");
+            setWizardStartStep(0);
+          }}
+          initialProgramme={wizardProgramme}
+          initialStep={wizardStartStep}
+        />
+      )}
     </div>
   );
 }

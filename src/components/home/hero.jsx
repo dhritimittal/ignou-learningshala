@@ -40,39 +40,12 @@ export default function HeroSection({ openWizard }) {
             inset-0
             bg-gradient-to-r
             from-[#F7FAFC]
-            via-[#F7FAFC]/95
+            via-[#F7FAFC]/75
             via-[#F7FAFC]/60
             to-transparent
           "
         />
-
-        {/* Dark overlay for readability */}
-        <div
-          className="
-            absolute
-            inset-0
-            bg-white/15
-          "
-        />
-      </div>
-      {/* Background geometry */}
-      <div className="absolute inset-0 pointer-events-none z-10">
-        {/* Large arc — the signature element */}
-        <svg className="absolute -right-40 -top-40 w-[700px] h-[700px] opacity-20" viewBox="0 0 700 700" fill="none">
-          <circle cx="350" cy="350" r="320" stroke="#0B6089" strokeWidth="1.5" />
-          <circle cx="350" cy="350" r="240" stroke="#0B6089" strokeWidth="0.8" />
-          <circle cx="350" cy="350" r="160" stroke="#60A5FA" strokeWidth="0.5" />
-        </svg>
-        {/* Grid dot pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.08]"
-          style={{
-            backgroundImage: "radial-gradient(circle, #0B6089 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
-        />
-        {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#F7FAFC] to-transparent" />
+        
       </div>
 
       {/* Announcement ticker */}

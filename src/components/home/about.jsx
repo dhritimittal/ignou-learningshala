@@ -6,7 +6,7 @@ import Badge from "@/components/ui/badge";
 
 export default function AboutSection({ openWizard }) {
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" className="py-6 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
@@ -49,14 +49,14 @@ export default function AboutSection({ openWizard }) {
           {/* Credential cards */}
           <div className="grid grid-cols-2 gap-4">
             {[
-              { label: "NAAC Rating", value: "A++", sub: "Highest academic quality grade", color: "bg-[#FFF7D9] border-[#F6C94A]/40" },
-              { label: "NIRF Rank", value: "#1", sub: "Open Universities 2025", color: "bg-[#FFF7D9] border-[#F6C94A]/40" },
-              { label: "Programmes", value: "20+", sub: "Online & distance modes", color: "bg-[#FFF7D9] border-[#F6C94A]/40" },
-              { label: "Students", value: "38L+", sub: "Active enrolled learners", color: "bg-[#FFF7D9] border-[#F6C94A]/40" },
+              { label: "NAAC Rating", value: "A++", sub: "Highest academic quality grade", color: "bg-[#F6C94A] border-[#F6C94A]/40" },
+              { label: "NIRF Rank", value: "#1", sub: "Open Universities 2025", color: "bg-[#F6C94A] border-[#F6C94A]/40" },
+              { label: "Programmes", value: "20+", sub: "Online & distance modes", color: "bg-[#F6C94A] border-[#F6C94A]/40" },
+              { label: "Students", value: "38L+", sub: "Active enrolled learners", color: "bg-[#F6C94A] border-[#F6C94A]/40" },
             ].map((c) => (
               <div key={c.label} className={`rounded-2xl border p-5 ${c.color}`}>
                 <p className="text-xs font-semibold text-slate-500 mb-1">{c.label}</p>
-                <p className="text-3xl font-black text-[#B8860B] mb-1">{c.value}</p>
+                <p className="text-3xl font-black text-black mb-1">{c.value}</p>
                 <p className="text-xs text-slate-500 leading-tight">{c.sub}</p>
               </div>
             ))}

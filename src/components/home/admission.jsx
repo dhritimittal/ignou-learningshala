@@ -79,7 +79,7 @@ export default function AdmissionsSection({ openWizard }) {
           {/* LEFT — sticky step tracker (desktop only) */}
           <div className="hidden lg:block w-64 flex-shrink-0 sticky top-24 h-fit">
             <div className="relative flex flex-col gap-1">
-              <div className="absolute left-[13px] top-5 bottom-5 w-px bg-[#F6C94A]/40" />
+              <div className="absolute left-8 top-5 bottom-5 w-px bg-[#F6C94A]/40" />
               {TIMELINE_STEPS.map((step, i) => {
                 const isLS = step.who === "ls";
                 const isActive = activeStep === i;
@@ -90,7 +90,7 @@ export default function AdmissionsSection({ openWizard }) {
                     onClick={() => stepRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" })}
                     className="flex items-center gap-3 px-3 py-2 rounded-xl text-left transition-all duration-300 hover:bg-white/5"
                   >
-                    <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-black border transition-all duration-300 z-10 ${
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-black border transition-all duration-300 z-10 ${
                       isActive
                         ? isLS
                           ? "bg-[#F6C94A] border-[#FFE79A] text-[#061122] scale-110 shadow-lg shadow-[#0B6089]/40"

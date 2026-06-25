@@ -5,16 +5,17 @@ import { useState, useEffect, useRef } from "react";
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 
-import Navbar from "@/components/navbar";
-import HeroSection from "@/components/hero";
-import AboutSection from "@/components/about";
-import ProgrammesSection from "@/components/programme";
-import StrengthsSection from "@/components/strength";
-import AdmissionsSection from "@/components/admission";
-import ServicesSection from "@/components/services";
-import FAQSection from "@/components/faqs";
-import CTASection from "@/components/cta";
-import CounsellingWizard from "@/components/counsellingwizard";
+import Navbar from "@/components/layout/navbar";
+import HeroSection from "@/components/home/hero";
+import AboutSection from "@/components/home/about";
+import DegreeSection from "@/components/home/degree";
+import ProgrammesSection from "@/components/home/programme";
+import StrengthsSection from "@/components/home/strength";
+import AdmissionsSection from "@/components/home/admission";
+import ServicesSection from "@/components/home/services";
+import FAQSection from "@/components/home/faqs";
+import CTASection from "@/components/layout/cta";
+import CounsellingWizard from "@/components/shared/counsellingwizard";
 // ─── Page Component ──────────────────────────────────────────────────────────
 
 export default function IGNOUHomePage() {
@@ -59,6 +60,7 @@ export default function IGNOUHomePage() {
       <main>
         <HeroSection openWizard={openWizard} />
         <AboutSection openWizard={openWizard} />
+        <DegreeSection />
         <ProgrammesSection openWizard={openWizard} openProgrammeWizard={openProgrammeWizard} />
         <AdmissionsSection openWizard={openWizard} />
         <ServicesSection openServiceWizard={openServiceWizard} />

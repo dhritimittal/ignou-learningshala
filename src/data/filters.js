@@ -1,0 +1,1 @@
+export const FILTERS = ["All", "Online", "Distance", "PG", "UG", "Diploma"];

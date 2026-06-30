@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { STRENGTHS } from "@/data/strengths";
+import { STRENGTHS } from "@/data/home/strengths";
 import AccentDivider from "@/components/ui/accentdivider";
 import Badge from "@/components/ui/badge";
 

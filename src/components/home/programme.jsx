@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { PROGRAMMES } from "@/data/programmes";
-import { FILTERS } from "@/data/filters";
+import { PROGRAMMES } from "@/data/home/programmes";
+import { FILTERS } from "@/data/home/filters";
 import AccentDivider from "@/components/ui/accentdivider";
 import Badge from "@/components/ui/badge";
 

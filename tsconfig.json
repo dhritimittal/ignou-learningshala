@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "src/components/course/layout/navbar.jsx", "src/components/course/layout/megamenu.jsx", "src/app/course/[slug]/page.jsx"  ],
   "exclude": ["node_modules"]
 }

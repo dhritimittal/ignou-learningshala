@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { NAV_LINKS } from "@/data/navlinks";
+import { NAV_LINKS } from "@/data/home/navlinks";
+import { MessageCircle } from "lucide-react";
 
 export default function Navbar({ scrolled, openWizard}) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -45,6 +46,14 @@ export default function Navbar({ scrolled, openWizard}) {
             >
               Apply Now
             </button>
+            <a
+              href="https://wa.me/919999999999"
+              target="_blank"
+              className="text-sm font-semibold px-4 py-2 rounded-lg bg-[#25D366] text-white hover:bg-[#1EBE5D] transition-colors flex items-center gap-2"
+            >
+              <MessageCircle size={16} />
+              Reach out on WhatsApp
+            </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -53,7 +62,7 @@ export default function Navbar({ scrolled, openWizard}) {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5" fill="none" stroke="black" viewBox="0 0 24 24">
               {menuOpen
                 ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}

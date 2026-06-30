@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { ONLINE_SERVICES } from "@/data/services";
+import { ONLINE_SERVICES } from "@/data/home/services";
 import AccentDivider from "@/components/ui/accentdivider";
 import Badge from "@/components/ui/badge";
 

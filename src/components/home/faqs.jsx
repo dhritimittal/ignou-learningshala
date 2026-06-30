@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { FAQS } from "@/data/faqs";
+import { FAQS } from "@/data/home/faqs";
 
 export default function FAQSection() {
   return (

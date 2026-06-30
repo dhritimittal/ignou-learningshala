@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { TIMELINE_STEPS } from "@/data/timeline";
+import { TIMELINE_STEPS } from "@/data/home/timeline";
 
 export default function AdmissionsSection({ openWizard }) {
   const [activeStep, setActiveStep] = useState(0);

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ANNOUNCEMENTS } from "@/data/announcements";
-import { STATS } from "@/data/stats";
+import { ANNOUNCEMENTS } from "@/data/home/announcements";
+import { STATS } from "@/data/home/stats";
 
 export default function HeroSection({ openWizard }) {
   const [announcementIdx, setAnnouncementIdx] = useState(0);

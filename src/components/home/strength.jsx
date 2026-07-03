@@ -7,7 +7,7 @@ import Badge from "@/components/ui/badge";
 
 export default function StrengthsSection() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-8 bg-white">
       <style>{`
         @keyframes scrollHorizontal {
           0% { transform: translateX(0); }

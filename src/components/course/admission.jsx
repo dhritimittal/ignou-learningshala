@@ -24,21 +24,21 @@ export default function AdmissionsSection({ openWizard }) {
   }, []);
 
   return (
-    <section id="admissions" ref={sectionRef} className="bg-gradient-to-b from-[#FFFDF7] via-[#FFF9EB] to-[#FFF4D6]">
+    <section id="admissions" ref={sectionRef} className="bg-gradient-to-b from-[#F8FCFF] via-[#F2F9FD] to-[#EAF6FC]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div className="py-8 grid lg:grid-cols-2 gap-12 items-end">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="h-px w-8 bg-[#F6C94A]" />
-              <span className="text-[#F6C94A] text-xs font-semibold uppercase tracking-widest">
+              <div className="h-px w-8 bg-[#0B6089]" />
+              <span className="text-[#0B6089] text-xs font-semibold uppercase tracking-widest">
                 Admissions 2026
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-black leading-tight mb-5">
               Don't apply alone.{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F6C94A] via-[#FFD96A] to-[#FFE79A]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B6089] via-[#2D8DBB] to-[#5FB4DB]">
                 Here's why.
               </span>
             </h2>
@@ -50,21 +50,21 @@ export default function AdmissionsSection({ openWizard }) {
           </div>
 
           <div className="flex flex-col gap-3">
-            <div className="bg-[#F6C94A]/10 border border-[#F6C94A]/30 rounded-2xl p-5">
-              <p className="text-[#F6C94A] text-sm font-bold mb-2">Current Deadline</p>
+            <div className="bg-[#0B6089]/10 border border-[#0B6089]/20 rounded-2xl p-5">
+              <p className="text-[#0B6089] text-sm font-bold mb-2">Current Deadline</p>
               <p className="text-black/80 text-xs leading-relaxed">
                 July 2026 session — Fresh applications close{" "}
-                <strong className="text-[#FFD96A]">July 15, 2026</strong>. Re-registration closes{" "}
-                <strong className="text-[#FFD96A]">June 30, 2026</strong>.
+                <strong className="text-[#2D8DBB]">July 15, 2026</strong>. Re-registration closes{" "}
+                <strong className="text-[#2D8DBB]">June 30, 2026</strong>.
               </p>
             </div>
             <button
               onClick={openWizard}
-              className="flex items-center justify-between gap-4 bg-[#F6C94A] hover:bg-[#FFD96A] text-[#061122] transition-colors rounded-2xl p-5 group"
+              className="flex items-center justify-between gap-4 bg-[#0B6089] hover:bg-[#2D8DBB] text-[#061122] transition-colors rounded-2xl p-5 group"
             >
               <div>
-                <p className="text-black font-bold text-sm mb-0.5">Talk to a counsellor first</p>
-                <p className="text-black/70 text-xs translate-x-7">Free · No commitment · Takes 15 minutes</p>
+                <p className="text-white font-bold text-sm mb-0.5">Talk to a counsellor first</p>
+                <p className="text-white/70 text-xs translate-x-7">Free · No commitment · Takes 15 minutes</p>
               </div>
               <svg className="w-5 h-5 text-white flex-shrink-0 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -79,7 +79,7 @@ export default function AdmissionsSection({ openWizard }) {
           {/* LEFT — sticky step tracker (desktop only) */}
           <div className="hidden lg:block w-64 flex-shrink-0 sticky top-24 h-fit">
             <div className="relative flex flex-col gap-1">
-              <div className="absolute left-8 top-5 bottom-5 w-px bg-[#F6C94A]/40" />
+              <div className="absolute left-8 top-5 bottom-5 w-px bg-[#0B6089]/40" />
               {TIMELINE_STEPS.map((step, i) => {
                 const isLS = step.who === "ls";
                 const isActive = activeStep === i;
@@ -93,16 +93,16 @@ export default function AdmissionsSection({ openWizard }) {
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-black border transition-all duration-300 z-10 ${
                       isActive
                         ? isLS
-                          ? "bg-[#F6C94A] border-[#FFE79A] text-[#061122] scale-110 shadow-lg shadow-[#0B6089]/40"
-                          : "bg-[#F6C94A] border-[#FFE79A] text-[#061122] scale-110"
+                          ? "bg-[#0B6089] border-[#5FB4DB] text-white scale-110 shadow-lg shadow-[#0B6089]/40"
+                          : "bg-[#0B6089] border-[#5FB4DB] text-white scale-110"
                         : isPast
-                        ? "bg-white border-yellow-200 text-[#C79A22]"
-                        : "bg-white border-yellow-200 text-[#C79A22]"
+                        ? "bg-white border-#5FB4DB text-[#0B6089]"
+                        : "bg-white border-#5FB4DB text-[#0B6089]"
                     }`}>
                       {isPast && !isActive ? "✓" : String(i + 1).padStart(2, "0")}
                     </div>
                     <span className={`text-xs font-semibold leading-tight transition-all duration-300 ${
-                      isActive ? "text-[#F6C94A]" : isPast ? "text-black" : "text-black"
+                      isActive ? "text-[#0B6089]" : isPast ? "text-black" : "text-black"
                     }`}>
                       {step.title}
                     </span>
@@ -126,11 +126,11 @@ export default function AdmissionsSection({ openWizard }) {
                   <div className={`w-full rounded-2xl p-6 sm:p-8 border transition-all duration-500 ${
                     isActive
                       ? isLS
-                        ? "bg-white/80 border-[#F6C94A]/40 shadow-xl shadow-[#F6C94A]/20"
-                        : "bg-white/80 border-[#F6C94A]/40 shadow-xl shadow-[#F6C94A]/20"
+                        ? "bg-white/80 border-[#0B6089]/40 shadow-xl shadow-[#0B6089]/20"
+                        : "bg-white/80 border-[#0B6089]/40 shadow-xl shadow-[#0B6089]/20"
                       : isLS
-                      ? "bg-[#FFFCF3] border-[#F5E6AE]"
-                      : "bg-[#FFFCF3] border-[#F5E6AE]"
+                      ? "bg-[#F7FBFE] border-[#D7EAF4]"
+                      : "bg-[#F7FBFE] border-[#D7EAF4]"
                   }`}>
 
                     {/* Step header */}
@@ -139,8 +139,8 @@ export default function AdmissionsSection({ openWizard }) {
                         {/* Number badge */}
                         <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-black border-2 transition-all duration-500 ${
                           isLS
-                            ? "bg-[#F6C94A] text-[#061122] border-[#FFE79A]"
-                            : "bg-[#F6C94A] text-[#061122] border-[#FFE79A]"
+                            ? "bg-[#0B6089] text-white border-[#5FB4DB]"
+                            : "bg-[#0B6089] text-white border-[#5FB4DB]"
                         }`}>
                           {String(i + 1).padStart(2, "0")}
                         </div>
@@ -174,11 +174,11 @@ export default function AdmissionsSection({ openWizard }) {
                     <div className={`flex items-start gap-2 rounded-xl px-4 py-3 transition-all duration-500 ${
                       isActive
                         ? isLS
-                          ? "bg-[#F6C94A]/[0.15] border border-[#F6C94A]/[0.25]"
-                          : "bg-[#F6C94A]/[0.15] border border-[#F6C94A]/[0.25]"
+                          ? "bg-[#0B6089]/[0.15] border border-[#0B6089]/[0.25]"
+                          : "bg-[#0B6089]/[0.15] border border-[#0B6089]/[0.25]"
                         : "bg-transparent border border-transparent"
                     }`}>
-                      <span className={`mt-0.5 flex-shrink-0 font-bold transition-colors duration-500 ${isActive ? "text-[#FFD96A]" : "text-transparent"}`}></span>
+                      <span className={`mt-0.5 flex-shrink-0 font-bold transition-colors duration-500 ${isActive ? "text-[#2D8DBB]" : "text-transparent"}`}></span>
                       <p className={`text-xs leading-relaxed italic transition-all duration-500 ${
                         isActive ? "text-black/80" : "text-transparent"
                       }`}>
@@ -196,7 +196,7 @@ export default function AdmissionsSection({ openWizard }) {
         <div className="pb-8 text-center">
           <button
             onClick={openWizard}
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#F6C94A] hover:bg-[#FFD96A] text-[#061122] font-semibold text-sm rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#0B6089]/25"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#0B6089] hover:bg-[#2D8DBB] text-white font-semibold text-sm rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#0B6089]/25"
           >
             Book a free call — July 2026 seats filling fast
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react";
 import { ChevronDown, MessageCircle } from "lucide-react";
 import ProgrammeMegaMenu from "./megamenu";
+import { AnimatePresence, motion } from "framer-motion";
 
-export default function CourseNavbar({ scrolled, openWizard }) {
+export default function CourseNavbar({ scrolled, openWizard, course, heroVisible}) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [programmeOpen, setProgrammeOpen] = useState(false);
 
   return (
     <header
@@ -26,38 +26,47 @@ export default function CourseNavbar({ scrolled, openWizard }) {
           </div>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8 relative">
-
-            <div
-              className="relative"
-              onMouseEnter={() => setProgrammeOpen(true)}
-              onMouseLeave={() => setProgrammeOpen(false)}
-            >
-              <button
-                className={`flex items-center gap-2 text-sm font-medium transition-colors ${
-                  scrolled
-                    ? "text-slate-600 hover:text-[#0B6089]"
-                    : "text-black"
-                }`}
-              >
-                Programmes
-
-                <ChevronDown
-                  size={16}
-                  className={`transition-transform ${
-                    programmeOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              <ProgrammeMegaMenu
-                open={programmeOpen}
-                openWizard={openWizard}
-              />
-
-            </div>
-
-          </nav>
+          <nav className="hidden md:flex items-center relative">
+            <AnimatePresence mode="wait">
+              {heroVisible ? (
+                <motion.div
+                  key="mega-menu"
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{
+                    duration: .22,
+                    ease: "easeOut",
+                  }}
+                  className="flex items-center"
+                >
+                  <ProgrammeMegaMenu />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="course-nav"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  transition={{
+                    duration: .22,
+                    ease: "easeOut",
+                  }}
+                  className="flex items-center gap-8"
+                >
+                  <span className="font-semibold text-[#061122] whitespace-nowrap">
+                    {course.name}
+                  </span>
+                  <a href="#overview">Overview</a>
+                  <a href="#fees">Fees</a>
+                  <a href="#specializations">Specializations</a>
+                  <a href="#curriculum">Curriculum</a>
+                  <a href="#reviews">Reviews</a>
+                  <a href="#faq">FAQ</a>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </nav>        
 
           <div className="hidden md:flex items-center gap-3">
             <button
@@ -96,35 +105,7 @@ export default function CourseNavbar({ scrolled, openWizard }) {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-slate-100 px-4 py-4 flex flex-col gap-3">
-          <div
-            className="relative"
-            onMouseEnter={() => setProgrammeOpen(true)}
-            onMouseLeave={() => setProgrammeOpen(false)}
-          >
-            <button
-              className={`flex items-center gap-2 text-sm font-medium transition-colors ${
-                scrolled
-                  ? "text-slate-600 hover:text-[#0B6089]"
-                  : "text-black"
-              }`}
-            >
-              Programmes
-
-              <ChevronDown
-                size={16}
-                className={`transition-transform ${
-                  programmeOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-
-            <ProgrammeMegaMenu
-              open={programmeOpen}
-              openWizard={openWizard}
-            />
-
-          </div>
-
+          <ProgrammeMegaMenu/>
           <button
             onClick={openWizard}
             className="text-sm font-semibold px-4 py-2 rounded-lg bg-[#0B6089] text-white hover:bg-[#0B6089] transition-colors"

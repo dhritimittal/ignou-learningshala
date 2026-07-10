@@ -5,6 +5,7 @@ import { PROGRAMMES } from "@/data/home/programmes";
 import { FILTERS } from "@/data/home/filters";
 import AccentDivider from "@/components/ui/accentdivider";
 import Badge from "@/components/ui/badge";
+import Link from "next/link";
 
 export default function ProgrammesSection({ openWizard, openProgrammeWizard }) {
   const [filter, setFilter] = useState("All");
@@ -84,12 +85,12 @@ export default function ProgrammesSection({ openWizard, openProgrammeWizard }) {
               {prog.specs > 0 && (
                 <p className="text-[11px] text-slate-400 mt-1">{prog.specs} specialisations</p>
               )}
-              <button
-                onClick={(e) => { e.stopPropagation(); openProgrammeWizard(prog.name); }}
-                className="mt-3 w-full py-2 rounded-lg bg-[#EBF4F9] hover:bg-[#0B6089] text-[#0B6089] hover:text-white border border-[#b0d4e8] hover:border-[#0B6089] text-xs font-semibold transition-all duration-200"
+              <Link
+                href={`/course/${prog.slug}`}
+                className="mt-3 w-full py-2 rounded-lg bg-[#EBF4F9] hover:bg-[#0B6089] text-[#0B6089] hover:text-white border border-[#b0d4e8] hover:border-[#0B6089] text-xs font-semibold transition-all duration-200 text-center"
               >
                 Apply Now →
-              </button>
+              </Link>
             </div>
           ))}
         </div>

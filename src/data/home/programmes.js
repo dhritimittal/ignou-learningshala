@@ -1,6 +1,6 @@
 export const PROGRAMMES = [
   // Online — PG
-  { code: "MBAOL",  name: "Online MBA",            level: "PG",      duration: "2 Years",  fee: "₹14,000/sem",   specs: 4, slug: "online-mba"          },
+  { code: "MBAL",  name: "Online MBA",            level: "PG",      duration: "2 Years",  fee: "₹14,000/sem",   specs: 4, slug: "online-mba"          },
   { code: "MCAOL",  name: "Online MCA",            level: "PG",      duration: "2 Years",  fee: "₹12,700/sem",   specs: 0, slug: "online-mca"          },
   { code: "MCOMOL", name: "Online M.Com",          level: "PG",      duration: "2 Years",  fee: "₹18,000 total", specs: 0, slug: "online-mcom"         },
   { code: "MAOL",   name: "Online MA",             level: "PG",      duration: "2 Years",  fee: "₹6,000 total",  specs: 3, slug: "online-ma"           },

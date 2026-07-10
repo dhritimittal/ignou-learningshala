@@ -36,8 +36,8 @@ export default function ProgrammesSection({ openWizard, openProgrammeWizard }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <AccentDivider />
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-3">Courses at IGNOU</h2>
-          <p className="text-slate-500 max-w-xl mx-auto text-sm">
+          <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-3">Courses at IGNOU</h2>
+          <p className="text-muted-foreground max-w-xl mx-auto text-sm">
             23 UGC-DEB approved programmes across online and distance modes — from UG to PG, designed for
             working professionals and fresh graduates alike.
           </p>
@@ -51,8 +51,8 @@ export default function ProgrammesSection({ openWizard, openProgrammeWizard }) {
               onClick={() => setFilter(f)}
               className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
                 filter === f
-                  ? "bg-[#0B6089] text-white shadow-sm"
-                  : "bg-white text-slate-600 border border-slate-200 hover:border-[#7cbdd6]"
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "bg-white text-muted-foreground border border-muted-foreground hover:border-primary/40"
               }`}
             >
               {f}
@@ -65,7 +65,7 @@ export default function ProgrammesSection({ openWizard, openProgrammeWizard }) {
           {displayedCourses.map((prog) => (
             <div
               key={prog.code}
-              className="group bg-white rounded-2xl border border-slate-100 p-5 hover:border-[#7cbdd6] hover:shadow-md transition-all duration-200 flex flex-col"
+              className="group bg-white rounded-2xl border border-muted-foreground p-5 hover:border-primary/40 hover:shadow-md transition-all duration-200 flex flex-col"
             >
               <div className="flex items-start justify-between mb-3">
                 <div className="flex gap-1.5 flex-wrap">
@@ -78,16 +78,16 @@ export default function ProgrammesSection({ openWizard, openProgrammeWizard }) {
                 </div>
               </div>
               <h3 className="text-sm font-bold text-slate-800 leading-snug mb-auto">{prog.name}</h3>
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-xs font-semibold text-[#0B6089]">{prog.fee}</span>
-                <span className="text-[11px] text-slate-400">{prog.duration}</span>
+              <div className="mt-4 pt-3 border-t border-muted-foreground flex items-center justify-between">
+                <span className="text-xs font-semibold text-primary">{prog.fee}</span>
+                <span className="text-[11px] text-foreground">{prog.duration}</span>
               </div>
               {prog.specs > 0 && (
-                <p className="text-[11px] text-slate-400 mt-1">{prog.specs} specialisations</p>
+                <p className="text-[11px] text-foreground mt-1">{prog.specs} specialisations</p>
               )}
               <Link
                 href={`/course/${prog.slug}`}
-                className="mt-3 w-full py-2 rounded-lg bg-[#EBF4F9] hover:bg-[#0B6089] text-[#0B6089] hover:text-white border border-[#b0d4e8] hover:border-[#0B6089] text-xs font-semibold transition-all duration-200 text-center"
+                className="mt-3 w-full py-2 rounded-lg bg-secondary hover:bg-primary text-primary hover:text-primary-foreground border border-primary/20 hover:border-primary text-xs font-semibold transition-all duration-200 text-center"
               >
                 Apply Now →
               </Link>
@@ -102,7 +102,7 @@ export default function ProgrammesSection({ openWizard, openProgrammeWizard }) {
                 hasInteracted.current = true;
                 setExpandCourses(!expandCourses);
               }}
-              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[#0B6089] text-[#0B6089] font-semibold text-sm rounded-xl hover:bg-[#0B6089] hover:text-white transition-all duration-200"
+              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary font-semibold text-sm rounded-xl hover:bg-primary hover:text-primary-foreground transition-all duration-200"
             >
               {expandCourses ? (
                 <>

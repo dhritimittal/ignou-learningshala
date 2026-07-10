@@ -14,7 +14,7 @@ export default function DegreeSection() {
             <AccentDivider />
             <h2 className="text-4xl lg:text-4xl font-black text-slate-900 leading-tight mb-6">
               An IGNOU degree that's
-              <span className="block bg-gradient-to-r from-[#0B6089] to-[#4A9FC0] bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
                 recognised everywhere.
               </span>
             </h2>
@@ -38,7 +38,7 @@ export default function DegreeSection() {
                   key={item}
                   className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3"
                 >
-                  <div className="w-8 h-8 rounded-full bg-[#FFF7D9] flex items-center justify-center text-[#C79A22] font-bold">
+                  <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center text-accent-dark font-bold">
                     ✓
                   </div>
 
@@ -50,7 +50,7 @@ export default function DegreeSection() {
 
             </div>
 
-            <div className="rounded-2xl border border-[#F6C94A]/30 bg-[#FFF9E8] p-4 mb-6">
+            <div className="rounded-2xl border border-accent/30 bg-accent-tint p-4 mb-6">
 
               <div className="flex gap-3">
 
@@ -79,8 +79,8 @@ export default function DegreeSection() {
                     px-7
                     py-3.5
                     rounded-xl
-                    bg-[#0B6089]
-                    hover:bg-[#0d70a0]
+                    bg-primary
+                    hover:bg-primary-hover
                     text-white
                     font-semibold
                     transition-all
@@ -102,13 +102,13 @@ export default function DegreeSection() {
 
             <div className="absolute inset-0 flex justify-center items-center">
 
-              <div className="w-[420px] h-[420px] rounded-full bg-[#EBF4F9]" />
+              <div className="w-[420px] h-[420px] rounded-full bg-secondary" />
 
             </div>
 
             {/* decorative ring */}
 
-            <div className="absolute w-[460px] h-[460px] rounded-full border border-[#D6EAF3]" />
+            <div className="absolute w-[460px] h-[460px] rounded-full border border-primary/15" />
 
             {/* certificate */}
 
@@ -160,11 +160,11 @@ export default function DegreeSection() {
               "
             >
 
-              <div className="text-[#C79A22] text-xs font-bold uppercase tracking-widest mb-1">
+              <div className="text-accent-dark text-xs font-bold uppercase tracking-widest mb-1">
                 Accreditation
               </div>
 
-              <div className="text-3xl font-black text-[#0B6089]">
+              <div className="text-3xl font-black text-primary">
                 NAAC A++
               </div>
 
@@ -188,7 +188,7 @@ export default function DegreeSection() {
               "
             >
 
-              <div className="text-[#C79A22] text-xs font-bold uppercase tracking-widest mb-1">
+              <div className="text-accent-dark text-xs font-bold uppercase tracking-widest mb-1">
                 Recognition
               </div>
 

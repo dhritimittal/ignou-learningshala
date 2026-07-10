@@ -5,7 +5,7 @@ import { FAQS } from "@/data/home/faqs";
 
 export default function FAQSection() {
   return (
-    <section id="faq" className="py-16 pb-0 bg-[#061122]">
+    <section id="faq" className="py-16 pb-0 bg-foreground">
       <div className="max-w-7xl mx-auto px-6">
 
         <div className="grid lg:grid-cols-[1fr_360px] gap-16">
@@ -22,7 +22,7 @@ export default function FAQSection() {
                   {faq.question}
                 </h3>
 
-                <p className="text-sm text-[#a8d4e6]/70 leading-relaxed">
+                <p className="text-sm text-primary-light leading-relaxed">
                   {faq.answer}
                 </p>
               </div>
@@ -31,7 +31,7 @@ export default function FAQSection() {
           {/* Right Column */}
           <div className="lg:sticky lg:top-24 h-fit">
 
-            <p className="text-[#4a9fc0] text-[10px] font-bold uppercase tracking-[0.25em] mb-3">
+            <p className="text-primary-light text-[10px] font-bold uppercase tracking-[0.25em] mb-3">
               Frequently Asked Questions
             </p>
 
@@ -39,7 +39,7 @@ export default function FAQSection() {
               Everything You Need To Know
             </h2>
 
-            <p className="text-sm text-[#a8d4e6]/60 leading-relaxed">
+            <p className="text-sm text-primary-light leading-relaxed">
               Find answers to the most common questions about admissions,
               eligibility, fees, examinations, recognition and student support.
             </p>

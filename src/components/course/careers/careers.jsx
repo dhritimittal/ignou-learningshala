@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import CareerStat from "./career-stat";
 import CareerJob from "./career-job";
 
@@ -7,18 +9,40 @@ import {
   IndianRupee,
   TrendingUp,
   Building2,
-  ArrowRight,
   PhoneCall,
 } from "lucide-react";
+
+const INITIAL_VISIBLE = 6;
+
+function parseMaxSalary(salary) {
+  const nums = salary.match(/\d+(\.\d+)?/g);
+  if (!nums) return 0;
+  return parseFloat(nums[nums.length - 1]);
+}
 
 export default function Careers({ data, openWizard }) {
   const career = data.career;
 
+  const [showAll, setShowAll] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const categories = [
+    "All",
+    ...new Set(career.jobs.map((job) => job.category).filter(Boolean)),
+  ];
+
+  const sortedJobs = [...career.jobs]
+    .filter(
+      (job) => activeCategory === "All" || job.category === activeCategory
+    )
+    .sort((a, b) => parseMaxSalary(b.salary) - parseMaxSalary(a.salary));
+
+  const topMax = sortedJobs.length ? parseMaxSalary(sortedJobs[0].salary) : 1;
+  const visibleJobs = showAll ? sortedJobs : sortedJobs.slice(0, INITIAL_VISIBLE);
+  const remaining = sortedJobs.length - visibleJobs.length;
+
   return (
-    <section
-      id="careers"
-      className="py-10"
-    >
+    <section id="careers" className="py-10">
       <div className="mx-auto max-w-7xl px-6">
 
         {/* Header */}
@@ -35,54 +59,96 @@ export default function Careers({ data, openWizard }) {
           {career.description}
         </p>
 
-        <div className="mt-6">
-            <div className="grid gap-4 md:grid-cols-3">
+        {/* Navy stat band */}
 
-                <CareerStat
-                    icon={IndianRupee}
-                    value={career.averagePackage}
-                    label="Average Package"
-                />
+        <div className="mt-8 overflow-hidden rounded-t-2xl border border-[#E8D49A] bg-[#FFF8E6]">
+          <div className="grid grid-cols-3 divide-x divide-[#E8D49A]">
 
-                <CareerStat
-                    icon={TrendingUp}
-                    value={career.salaryHike}
-                    label="Average Salary Hike"
-                />
+            <CareerStat
+              icon={IndianRupee}
+              value={career.averagePackage}
+              label="Average package"
+            />
 
-                <CareerStat
-                    icon={Building2}
-                    value={`${career.industries.length}+`}
-                    label="Hiring Industries"
-                />
+            <CareerStat
+              icon={TrendingUp}
+              value={career.salaryHike}
+              label="Average salary hike"
+              accent
+            />
 
-            </div>
-
-            <div className="mt-6 mx-auto max-w-5xl">
-
-                <h3 className="text-2xl font-bold text-[#061122]">
-                Top Career Opportunities
-                </h3>
-
-                <div className="mt-6 rounded-2xl border border-slate-200 bg-white">
-
-                {career.jobs.map((job, index) => (
-                    <CareerJob
-                    key={job.title}
-                    job={job}
-                    last={index === career.jobs.length - 1}
-                    />
-                ))}
-
-            </div>
+            <CareerStat
+              icon={Building2}
+              value={`${career.industries.length}+`}
+              label="Hiring industries"
+            />
 
           </div>
+        </div>
+
+        {/* Job grid card */}
+
+        <div className="rounded-b-2xl border border-t-0 border-slate-200 bg-white p-6">
+
+          <div className="flex items-center justify-between">
+            <h3 className="text-xl font-bold text-[#061122]">
+              Top career opportunities
+            </h3>
+            <span className="text-xs font-medium text-slate-400">
+              Sorted by package
+            </span>
+          </div>
+
+          {categories.length > 2 && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => {
+                    setActiveCategory(cat);
+                    setShowAll(false);
+                  }}
+                  className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+                    activeCategory === cat
+                      ? "bg-[#061122] text-white"
+                      : "border border-slate-200 text-slate-500 hover:border-[#0B6089]/40 hover:text-[#0B6089]"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          )}
+
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            {visibleJobs.map((job, index) => (
+              <CareerJob
+                key={job.title}
+                job={job}
+                isTop={index === 0 && activeCategory === "All"}
+                barPct={Math.max(
+                  30,
+                  Math.round((parseMaxSalary(job.salary) / topMax) * 100)
+                )}
+                delay={index * 0.05}
+              />
+            ))}
+          </div>
+
+          {remaining > 0 && (
+            <button
+              onClick={() => setShowAll(true)}
+              className="mt-4 w-full rounded-xl border border-[#E8D49A] py-2.5 text-sm font-medium text-[#D39B00] transition-colors hover:border-[#D39B00] hover:bg-[#FFF8E6]"
+            >
+              Show {remaining} more role{remaining > 1 ? "s" : ""}
+            </button>
+          )}
 
         </div>
 
         {/* CTA */}
 
-        <div className="mt-10 overflow-hidden rounded-3xl border border-[#D39B00]/20 bg-gradient-to-r from-[#FFF9EA] via-white to-[#EDF8FD]">
+        <div className="mt-10 overflow-hidden rounded-3xl border border-[#0B6089]/20 bg-gradient-to-r from-[#F6FAFC] via-white to-[#FFFBEE]">
 
           <div className="flex flex-col items-start justify-between gap-8 p-8 lg:flex-row lg:items-center">
 
@@ -90,7 +156,7 @@ export default function Careers({ data, openWizard }) {
 
             <div className="max-w-2xl">
 
-              <span className="inline-flex rounded-full bg-[#FFF3CC] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#D39B00]">
+              <span className="inline-flex rounded-full bg-[#FFF3CC] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#8A6D0F]">
                 Take the Next Step
               </span>
 

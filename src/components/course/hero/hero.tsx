@@ -6,6 +6,7 @@ import {
   Star,
   Users,
 } from "lucide-react";
+import Image from "next/image";
 
 type HeroProps = {
   data: Course;
@@ -105,13 +106,28 @@ export default function Hero({ data }: HeroProps) {
 
               <div className="mt-6 flex flex-wrap gap-3">
 
-                {data.approvals.map((item) => (
+                {data.approvals.map((approvals) => (
 
                   <div
-                    key={item}
-                    className="flex items-center gap-2 text-sm font-semibold bg-white border-slate-200 text-slate-700 shadow-sm border border-[#0B6089] rounded-full px-4 py-2"
+                    className="
+                      flex items-center gap-2
+                      rounded-full
+                      border border-slate-200
+                      bg-white
+                      px-3 py-2
+                      shadow-sm
+                    "
                   >
-                    {item}
+                    <Image
+                      src={approvals.logo}
+                      alt={approvals.name}
+                      width={28}
+                      height={28}
+                    />
+
+                    <span className="font-medium text-sm">
+                      {approvals.name}
+                    </span>
                   </div>
 
                 ))}

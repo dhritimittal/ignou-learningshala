@@ -91,12 +91,6 @@ export default function SemesterItem({ semester }) {
 
               </div>
 
-              {/* Arrow */}
-
-              <ChevronRight
-                size={16}
-                className="ml-6 shrink-0 text-[#D39B00]"
-              />
             </div>
 
         ))}

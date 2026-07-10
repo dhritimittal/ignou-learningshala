@@ -8,6 +8,13 @@ export interface CourseSpecialization {
   demand: string;
 }
 
+export interface FacultyMember {
+  id: number;
+  name: string;
+  designation: string;
+  image: string;
+}
+
 export interface Career {
   description: string;
   averagePackage: string;
@@ -50,7 +57,11 @@ export interface Course {
   rating: number;
   students: string;
 
-  approvals: string[];
+  approvals: {
+    name: string;
+    logo: string;
+  }[];
+
   highlights: string[];
   curriculum: {
     credits: number;
@@ -69,6 +80,8 @@ export interface Course {
   learning: Learning;
   examination: Examination;
   career: Career;
+  faculty: FacultyMember[];
+  reviews: ReviewsData;
 }
 
 export interface Learning {
@@ -82,3 +95,23 @@ export interface Examination {
   description: string;
   paragraphs: string[];
 };
+
+export interface Review {
+  id: number;
+  name: string;
+  rating: number;
+  date: string;
+  review: string;
+}
+
+export interface RatingBreakdown {
+  stars: number;
+  percentage: number;
+}
+
+export interface ReviewsData {
+  averageRating: number;
+  totalReviews: number;
+  breakdown: RatingBreakdown[];
+  reviews: Review[];
+}

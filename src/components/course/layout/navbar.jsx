@@ -52,7 +52,7 @@ export default function CourseNavbar({ scrolled, openWizard, course, heroVisible
                     duration: .22,
                     ease: "easeOut",
                   }}
-                  className="flex items-center gap-8"
+                  className="flex items-center gap-6"
                 >
                   <span className="font-semibold text-[#061122] whitespace-nowrap">
                     {course.name}
@@ -61,8 +61,9 @@ export default function CourseNavbar({ scrolled, openWizard, course, heroVisible
                   <a href="#fees">Fees</a>
                   <a href="#specializations">Specializations</a>
                   <a href="#curriculum">Curriculum</a>
+                  <a href="#careers">Careers</a>
                   <a href="#reviews">Reviews</a>
-                  <a href="#faq">FAQ</a>
+                  
                 </motion.div>
               )}
             </AnimatePresence>

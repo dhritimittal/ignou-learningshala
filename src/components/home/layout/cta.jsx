@@ -54,12 +54,11 @@ export default function CTASection({ openWizard }) {
                 </p>
 
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight">
-                  Advance Your Learning Journey
+                  Write Your Career Story, Your Way
                 </h2>
 
                 <p className="text-[#a8d4e6]/70 mb-10 max-w-full lg:max-w-lg">
-                  Connect with an IGNOU academic advisor and get guidance on
-                  programmes, eligibility, admissions, fees and career outcomes.
+                  Because we stand by you in every step of the journey!
                 </p>
 
                   <div className="flex flex-col sm:flex-row gap-3 pt-2 pb-10 lg:pb-0">

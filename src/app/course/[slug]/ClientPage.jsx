@@ -12,6 +12,8 @@ import Learning from "@/components/course/learning";
 import DegreeSection from "@/components/home/degree";
 import FAQSection from "@/components/home/faqs";
 import Careers from "@/components/course/careers/careers";
+import Faculty from "@/components/course/faculty/faculty";
+import Reviews from "@/components/course/reviews/reviews";
 import { useState, useEffect } from "react";
 import Hero from "@/components/course/hero/hero";
 
@@ -72,6 +74,8 @@ export default function ClientPage({course}) {
         <Learning data={course} />
         <DegreeSection />
         <Careers data={course} openWizard={openWizard} />
+        <Faculty data={course} />
+        <Reviews data={course} />
         <FAQSection />
         <CTASection openWizard={openWizard}/>
       </main>

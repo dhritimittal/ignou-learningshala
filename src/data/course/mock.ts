@@ -24,10 +24,22 @@ export const COURSE_DATA: Record<string, Course> = {
     students: "1.2L+",
 
     approvals: [
-      "UGC Entitled",
-      "AICTE",
-      "NAAC A++",
-      "AIU"
+      {
+        name: "UGC-DEB",
+        logo: "/accreditations/ugc-deb.png",
+      },
+      {
+        name: "AICTE",
+        logo: "/accreditations/aicte.png",
+      },
+      {
+        name: "NAAC A++",
+        logo: "/accreditations/naac.png",
+      },
+      {
+        name: "NIRF",
+        logo: "/accreditations/nirf.png",
+      },
     ],
 
     highlights: [
@@ -436,6 +448,110 @@ export const COURSE_DATA: Record<string, Course> = {
         },
       ],
     },
+    faculty: [
+      {
+        id: 1,
+        name: "Prof. Kaustuva Barik",
+        designation: "Professor",
+        image: "/faculty/kaustuva-barik.jpg",
+      },
+      {
+        id: 2,
+        name: "Dr. Mitoo Das",
+        designation: "Associate Professor",
+        image: "/faculty/mitoo-das.jpg",
+      },
+      {
+        id: 3,
+        name: "Dr. Sudhansh Sharma",
+        designation: "Associate Professor",
+        image: "/faculty/sudhansh-sharma.jpg",
+      },
+      {
+        id: 4,
+        name: "Dr. Shweta Tripathi",
+        designation: "Assistant Professor",
+        image: "/faculty/shweta-tripathi.jpg",
+      },
+      {
+        id: 5,
+        name: "Dr. Vibhuti Gaur",
+        designation: "Associate Professor",
+        image: "/faculty/vibhuti-gaur.jpg",
+      },
+      {
+        id: 6,
+        name: "Dr. Reeta Devi",
+        designation: "Professor",
+        image: "/faculty/reeta-devi.jpg",
+      },
+      {
+        id: 7,
+        name: "Prof. Anurag Saxena",
+        designation: "Professor",
+        image: "/faculty/anurag-saxena.jpg",
+      },
+      {
+        id: 8,
+        name: "Dr. N. Ramya",
+        designation: "Associate Professor",
+        image: "/faculty/n-ramya.jpg",
+      },
+      {
+        id: 9,
+        name: "Prof. N.A. Farooquee",
+        designation: "Professor",
+        image: "/faculty/na-farooquee.jpg",
+      },
+      {
+        id: 10,
+        name: "Prof. Rakhi Sharma",
+        designation: "Professor",
+        image: "/faculty/rakhi-sharma.jpg",
+      },
+    ],
+    reviews: {
+      averageRating: 4.2,
+
+      totalReviews: 245,
+
+      breakdown: [
+        { stars: 5, percentage: 72 },
+        { stars: 4, percentage: 18 },
+        { stars: 3, percentage: 7 },
+        { stars: 2, percentage: 2 },
+        { stars: 1, percentage: 1 },
+      ],
+
+      reviews: [
+        {
+          id: 1,
+          name: "Prajakata Singh",
+          rating: 4,
+          date: "March 2025",
+          review:
+            "I really like the self-paced learning for the IGNOU MBA. It gives me the flexibility to study while working full-time.",
+        },
+
+        {
+          id: 2,
+          name: "Sanaya",
+          rating: 3,
+          date: "February 2025",
+          review:
+            "Initially I was unsure about the recognition of the programme, but after speaking with alumni I felt confident enrolling.",
+        },
+
+        {
+          id: 3,
+          name: "Amit Kumar",
+          rating: 5,
+          date: "January 2025",
+          review:
+            "Affordable fees, quality study material and flexibility make this one of the best options for working professionals.",
+        },
+      ],
+    },
   },
 
   "online-mca": {
@@ -461,8 +577,22 @@ export const COURSE_DATA: Record<string, Course> = {
     students: "48K+",
 
     approvals: [
-      "UGC Entitled",
-      "NAAC A++"
+      {
+        name: "UGC-DEB",
+        logo: "/accreditations/ugc-deb.png",
+      },
+      {
+        name: "AICTE",
+        logo: "/accreditations/aicte.png",
+      },
+      {
+        name: "NAAC A++",
+        logo: "/accreditations/naac.png",
+      },
+      {
+        name: "NIRF",
+        logo: "/accreditations/nirf.png",
+      },
     ],
 
     highlights: [
@@ -871,6 +1001,110 @@ export const COURSE_DATA: Record<string, Course> = {
         },
       ],
     },
+    faculty: [
+      {
+        id: 1,
+        name: "Prof. Kaustuva Barik",
+        designation: "Professor",
+        image: "/faculty/kaustuva-barik.jpg",
+      },
+      {
+        id: 2,
+        name: "Dr. Mitoo Das",
+        designation: "Associate Professor",
+        image: "/faculty/mitoo-das.jpg",
+      },
+      {
+        id: 3,
+        name: "Dr. Sudhansh Sharma",
+        designation: "Associate Professor",
+        image: "/faculty/sudhansh-sharma.jpg",
+      },
+      {
+        id: 4,
+        name: "Dr. Shweta Tripathi",
+        designation: "Assistant Professor",
+        image: "/faculty/shweta-tripathi.jpg",
+      },
+      {
+        id: 5,
+        name: "Dr. Vibhuti Gaur",
+        designation: "Associate Professor",
+        image: "/faculty/vibhuti-gaur.jpg",
+      },
+      {
+        id: 6,
+        name: "Dr. Reeta Devi",
+        designation: "Professor",
+        image: "/faculty/reeta-devi.jpg",
+      },
+      {
+        id: 7,
+        name: "Prof. Anurag Saxena",
+        designation: "Professor",
+        image: "/faculty/anurag-saxena.jpg",
+      },
+      {
+        id: 8,
+        name: "Dr. N. Ramya",
+        designation: "Associate Professor",
+        image: "/faculty/n-ramya.jpg",
+      },
+      {
+        id: 9,
+        name: "Prof. N.A. Farooquee",
+        designation: "Professor",
+        image: "/faculty/na-farooquee.jpg",
+      },
+      {
+        id: 10,
+        name: "Prof. Rakhi Sharma",
+        designation: "Professor",
+        image: "/faculty/rakhi-sharma.jpg",
+      },
+    ],
+        reviews: {
+      averageRating: 4.2,
+
+      totalReviews: 245,
+
+      breakdown: [
+        { stars: 5, percentage: 72 },
+        { stars: 4, percentage: 18 },
+        { stars: 3, percentage: 7 },
+        { stars: 2, percentage: 2 },
+        { stars: 1, percentage: 1 },
+      ],
+
+      reviews: [
+        {
+          id: 1,
+          name: "Prajakata Singh",
+          rating: 4,
+          date: "March 2025",
+          review:
+            "I really like the self-paced learning for the IGNOU MBA. It gives me the flexibility to study while working full-time.",
+        },
+
+        {
+          id: 2,
+          name: "Sanaya",
+          rating: 3,
+          date: "February 2025",
+          review:
+            "Initially I was unsure about the recognition of the programme, but after speaking with alumni I felt confident enrolling.",
+        },
+
+        {
+          id: 3,
+          name: "Amit Kumar",
+          rating: 5,
+          date: "January 2025",
+          review:
+            "Affordable fees, quality study material and flexibility make this one of the best options for working professionals.",
+        },
+      ],
+    },
   },
 
   "distance-mba": {
@@ -896,9 +1130,22 @@ export const COURSE_DATA: Record<string, Course> = {
     students: "95K+",
 
     approvals: [
-      "UGC",
-      "AICTE",
-      "NAAC A++"
+      {
+        name: "UGC-DEB",
+        logo: "/accreditations/ugc-deb.png",
+      },
+      {
+        name: "AICTE",
+        logo: "/accreditations/aicte.png",
+      },
+      {
+        name: "NAAC A++",
+        logo: "/accreditations/naac.png",
+      },
+      {
+        name: "NIRF",
+        logo: "/accreditations/nirf.png",
+      },
     ],
 
     highlights: [
@@ -1304,6 +1551,110 @@ export const COURSE_DATA: Record<string, Course> = {
         {
           title: "Banking Operations Executive",
           salary: "₹2–7 LPA",
+        },
+      ],
+    },
+    faculty: [
+      {
+        id: 1,
+        name: "Prof. Kaustuva Barik",
+        designation: "Professor",
+        image: "/faculty/kaustuva-barik.jpg",
+      },
+      {
+        id: 2,
+        name: "Dr. Mitoo Das",
+        designation: "Associate Professor",
+        image: "/faculty/mitoo-das.jpg",
+      },
+      {
+        id: 3,
+        name: "Dr. Sudhansh Sharma",
+        designation: "Associate Professor",
+        image: "/faculty/sudhansh-sharma.jpg",
+      },
+      {
+        id: 4,
+        name: "Dr. Shweta Tripathi",
+        designation: "Assistant Professor",
+        image: "/faculty/shweta-tripathi.jpg",
+      },
+      {
+        id: 5,
+        name: "Dr. Vibhuti Gaur",
+        designation: "Associate Professor",
+        image: "/faculty/vibhuti-gaur.jpg",
+      },
+      {
+        id: 6,
+        name: "Dr. Reeta Devi",
+        designation: "Professor",
+        image: "/faculty/reeta-devi.jpg",
+      },
+      {
+        id: 7,
+        name: "Prof. Anurag Saxena",
+        designation: "Professor",
+        image: "/faculty/anurag-saxena.jpg",
+      },
+      {
+        id: 8,
+        name: "Dr. N. Ramya",
+        designation: "Associate Professor",
+        image: "/faculty/n-ramya.jpg",
+      },
+      {
+        id: 9,
+        name: "Prof. N.A. Farooquee",
+        designation: "Professor",
+        image: "/faculty/na-farooquee.jpg",
+      },
+      {
+        id: 10,
+        name: "Prof. Rakhi Sharma",
+        designation: "Professor",
+        image: "/faculty/rakhi-sharma.jpg",
+      },
+    ],
+        reviews: {
+      averageRating: 4.2,
+
+      totalReviews: 245,
+
+      breakdown: [
+        { stars: 5, percentage: 72 },
+        { stars: 4, percentage: 18 },
+        { stars: 3, percentage: 7 },
+        { stars: 2, percentage: 2 },
+        { stars: 1, percentage: 1 },
+      ],
+
+      reviews: [
+        {
+          id: 1,
+          name: "Prajakata Singh",
+          rating: 4,
+          date: "March 2025",
+          review:
+            "I really like the self-paced learning for the IGNOU MBA. It gives me the flexibility to study while working full-time.",
+        },
+
+        {
+          id: 2,
+          name: "Sanaya",
+          rating: 3,
+          date: "February 2025",
+          review:
+            "Initially I was unsure about the recognition of the programme, but after speaking with alumni I felt confident enrolling.",
+        },
+
+        {
+          id: 3,
+          name: "Amit Kumar",
+          rating: 5,
+          date: "January 2025",
+          review:
+            "Affordable fees, quality study material and flexibility make this one of the best options for working professionals.",
         },
       ],
     },

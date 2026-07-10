@@ -4,28 +4,24 @@ export default function CareerStat({
   icon: Icon,
   value,
   label,
+  accent = false,
 }) {
   return (
-    <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white px-6 py-5 transition-all duration-300 hover:border-[#D39B00]/30 hover:shadow-sm">
+    <div className="flex flex-col gap-2 px-6 py-5">
 
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#FFF8E6]">
-        <Icon
-          className="h-6 w-6 text-[#D39B00]"
-          strokeWidth={2}
-        />
-      </div>
+      <Icon className="h-4 w-4 text-[#D39B00]" strokeWidth={2} />
 
-      <div className="min-w-0">
+      <p
+        className={`text-2xl font-bold tracking-tight ${
+          accent ? "text-black" : "text-[#F6C94A]"
+        }`}
+      >
+        {value}
+      </p>
 
-        <p className="text-3xl font-black tracking-tight text-[#061122]">
-          {value}
-        </p>
-
-        <p className="mt-1 text-sm font-medium text-slate-500">
-          {label}
-        </p>
-
-      </div>
+      <p className="text-xs font-medium text-[#7A6A32]">
+        {label}
+      </p>
 
     </div>
   );

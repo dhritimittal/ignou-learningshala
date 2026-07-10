@@ -33,19 +33,19 @@ export default function ReviewSummary({ reviews, compact = false }) {
                 key={star}
                 className={`h-6 w-6 ${
                   star <= Math.round(reviews.averageRating)
-                    ? "fill-[#D39B00] text-[#D39B00]"
-                    : "text-slate-300"
+                    ? "fill-accent-dark text-accent-dark"
+                    : "text-muted-foreground"
                 }`}
               />
             ))}
 
           </div>
 
-          <h3 className="mt-5 text-6xl font-bold tracking-tight text-[#0B6089]">
+          <h3 className="mt-5 text-6xl font-bold tracking-tight text-primary">
             {reviews.averageRating.toFixed(1)}
           </h3>
 
-          <p className="mt-2 text-lg font-medium text-slate-600">
+          <p className="mt-2 text-lg font-medium text-muted-foreground">
             Based on {reviews.totalReviews} verified reviews
           </p>
 

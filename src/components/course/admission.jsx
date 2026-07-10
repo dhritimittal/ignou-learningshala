@@ -24,21 +24,21 @@ export default function AdmissionsSection({ openWizard }) {
   }, []);
 
   return (
-    <section id="admissions" ref={sectionRef} className="bg-gradient-to-b from-[#F8FCFF] via-[#F2F9FD] to-[#EAF6FC]">
+    <section id="admissions" ref={sectionRef} className="bg-gradient-to-b from-background via-primary-tint/40 to-primary-tint">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div className="py-8 grid lg:grid-cols-2 gap-12 items-end">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="h-px w-8 bg-[#0B6089]" />
-              <span className="text-[#0B6089] text-xs font-semibold uppercase tracking-widest">
+              <div className="h-px w-8 bg-primary" />
+              <span className="text-primary text-xs font-semibold uppercase tracking-widest">
                 Admissions 2026
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-black leading-tight mb-5">
               Don't apply alone.{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B6089] via-[#2D8DBB] to-[#5FB4DB]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-hover to-primary-light">
                 Here's why.
               </span>
             </h2>
@@ -50,17 +50,17 @@ export default function AdmissionsSection({ openWizard }) {
           </div>
 
           <div className="flex flex-col gap-3">
-            <div className="bg-[#0B6089]/10 border border-[#0B6089]/20 rounded-2xl p-5">
-              <p className="text-[#0B6089] text-sm font-bold mb-2">Current Deadline</p>
+            <div className="bg-primary/10 border border-primary/20 rounded-2xl p-5">
+              <p className="text-primary text-sm font-bold mb-2">Current Deadline</p>
               <p className="text-black/80 text-xs leading-relaxed">
                 July 2026 session — Fresh applications close{" "}
-                <strong className="text-[#2D8DBB]">July 15, 2026</strong>. Re-registration closes{" "}
-                <strong className="text-[#2D8DBB]">June 30, 2026</strong>.
+                <strong className="text-primary-hover">July 15, 2026</strong>. Re-registration closes{" "}
+                <strong className="text-primary-hover">June 30, 2026</strong>.
               </p>
             </div>
             <button
               onClick={openWizard}
-              className="flex items-center justify-between gap-4 bg-[#0B6089] hover:bg-[#2D8DBB] text-[#061122] transition-colors rounded-2xl p-5 group"
+              className="flex items-center justify-between gap-4 bg-primary hover:bg-primary-hover text-foreground transition-colors rounded-2xl p-5 group"
             >
               <div>
                 <p className="text-white font-bold text-sm mb-0.5">Talk to a counsellor first</p>
@@ -79,7 +79,7 @@ export default function AdmissionsSection({ openWizard }) {
           {/* LEFT — sticky step tracker (desktop only) */}
           <div className="hidden lg:block w-64 flex-shrink-0 sticky top-24 h-fit">
             <div className="relative flex flex-col gap-1">
-              <div className="absolute left-8 top-5 bottom-5 w-px bg-[#0B6089]/40" />
+              <div className="absolute left-8 top-5 bottom-5 w-px bg-primary/40" />
               {TIMELINE_STEPS.map((step, i) => {
                 const isLS = step.who === "ls";
                 const isActive = activeStep === i;
@@ -93,16 +93,16 @@ export default function AdmissionsSection({ openWizard }) {
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-black border transition-all duration-300 z-10 ${
                       isActive
                         ? isLS
-                          ? "bg-[#0B6089] border-[#5FB4DB] text-white scale-110 shadow-lg shadow-[#0B6089]/40"
-                          : "bg-[#0B6089] border-[#5FB4DB] text-white scale-110"
+                          ? "bg-primary border-primary-light text-white scale-110 shadow-lg shadow-primary/40"
+                          : "bg-primary border-primary-light text-white scale-110"
                         : isPast
-                        ? "bg-white border-#5FB4DB text-[#0B6089]"
-                        : "bg-white border-#5FB4DB text-[#0B6089]"
+                        ? "bg-white border-primary-light text-primary"
+                        : "bg-white border-primary-light text-primary"
                     }`}>
                       {isPast && !isActive ? "✓" : String(i + 1).padStart(2, "0")}
                     </div>
                     <span className={`text-xs font-semibold leading-tight transition-all duration-300 ${
-                      isActive ? "text-[#0B6089]" : isPast ? "text-black" : "text-black"
+                      isActive ? "text-primary" : isPast ? "text-black" : "text-black"
                     }`}>
                       {step.title}
                     </span>
@@ -126,11 +126,11 @@ export default function AdmissionsSection({ openWizard }) {
                   <div className={`w-full rounded-2xl p-6 sm:p-8 border transition-all duration-500 ${
                     isActive
                       ? isLS
-                        ? "bg-white/80 border-[#0B6089]/40 shadow-xl shadow-[#0B6089]/20"
-                        : "bg-white/80 border-[#0B6089]/40 shadow-xl shadow-[#0B6089]/20"
+                        ? "bg-white/80 border-primary/40 shadow-xl shadow-primary/20"
+                        : "bg-white/80 border-primary/40 shadow-xl shadow-primary/20"
                       : isLS
-                      ? "bg-[#F7FBFE] border-[#D7EAF4]"
-                      : "bg-[#F7FBFE] border-[#D7EAF4]"
+                      ? "bg-primary-tint/50 border-primary/15"
+                      : "bg-primary-tint/50 border-primary/15"
                   }`}>
 
                     {/* Step header */}
@@ -139,8 +139,8 @@ export default function AdmissionsSection({ openWizard }) {
                         {/* Number badge */}
                         <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-black border-2 transition-all duration-500 ${
                           isLS
-                            ? "bg-[#0B6089] text-white border-[#5FB4DB]"
-                            : "bg-[#0B6089] text-white border-[#5FB4DB]"
+                            ? "bg-primary text-white border-primary-light"
+                            : "bg-primary text-white border-primary-light"
                         }`}>
                           {String(i + 1).padStart(2, "0")}
                         </div>
@@ -174,11 +174,11 @@ export default function AdmissionsSection({ openWizard }) {
                     <div className={`flex items-start gap-2 rounded-xl px-4 py-3 transition-all duration-500 ${
                       isActive
                         ? isLS
-                          ? "bg-[#0B6089]/[0.15] border border-[#0B6089]/[0.25]"
-                          : "bg-[#0B6089]/[0.15] border border-[#0B6089]/[0.25]"
+                          ? "bg-primary/[0.15] border border-primary/[0.25]"
+                          : "bg-primary/[0.15] border border-primary/[0.25]"
                         : "bg-transparent border border-transparent"
                     }`}>
-                      <span className={`mt-0.5 flex-shrink-0 font-bold transition-colors duration-500 ${isActive ? "text-[#2D8DBB]" : "text-transparent"}`}></span>
+                      <span className={`mt-0.5 flex-shrink-0 font-bold transition-colors duration-500 ${isActive ? "text-primary-hover" : "text-transparent"}`}></span>
                       <p className={`text-xs leading-relaxed italic transition-all duration-500 ${
                         isActive ? "text-black/80" : "text-transparent"
                       }`}>
@@ -196,7 +196,7 @@ export default function AdmissionsSection({ openWizard }) {
         <div className="pb-8 text-center">
           <button
             onClick={openWizard}
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#0B6089] hover:bg-[#2D8DBB] text-white font-semibold text-sm rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#0B6089]/25"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary hover:bg-primary-hover text-white font-semibold text-sm rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25"
           >
             Book a free call — July 2026 seats filling fast
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

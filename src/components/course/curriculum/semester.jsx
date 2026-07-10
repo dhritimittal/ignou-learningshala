@@ -18,21 +18,21 @@ export default function SemesterItem({ semester }) {
 
             <div className="flex items-center gap-2.5">
 
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#FFF7DD] text-[#D39B00] font-bold text-sm">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent-tint text-accent-dark font-bold text-sm">
                 {semester.id}
                 </div>
 
-                <h3 className="text-lg font-semibold text-[#061122]">
+                <h3 className="text-lg font-semibold text-foreground">
                 {semester.title}
                 </h3>
 
             </div>
 
-            <div className="hidden md:flex items-center gap-1.5 text-slate-500 text-xs">
+            <div className="hidden md:flex items-center gap-1.5 text-muted-foreground text-xs">
 
                 <span>{semester.credits} Credits</span>
 
-                <span className="h-1 w-1 rounded-full bg-[#F6C94A]/30" />
+                <span className="h-1 w-1 rounded-full bg-accent/30" />
 
                 <span>{semester.subjects.length} Subjects</span>
 
@@ -61,7 +61,7 @@ export default function SemesterItem({ semester }) {
                 px-3
                 py-2
                 transition-all
-                hover:border-[#F6C94A]
+                hover:border-accent
                 hover:shadow-sm
               "
             >
@@ -73,7 +73,7 @@ export default function SemesterItem({ semester }) {
 
                 <div className="shrink-0 min-w-[130px]">
 
-                  <span className="text-[11px] font-semibold text-[#D39B00]">
+                  <span className="text-[11px] font-semibold text-accent-dark">
                     {subject.code}
                   </span>
 
@@ -81,11 +81,11 @@ export default function SemesterItem({ semester }) {
 
                 {/* Divider */}
 
-                <div className="h-12 w-px bg-[#F6C94A]/30" />
+                <div className="h-12 w-px bg-accent/30" />
 
                 {/* Subject */}
 
-                <p className="text-[14px] leading-snug font-medium text-[#061122]">
+                <p className="text-[14px] leading-snug font-medium text-foreground">
                   {subject.name}
                 </p>
 

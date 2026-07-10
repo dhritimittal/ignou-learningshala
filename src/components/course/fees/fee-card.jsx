@@ -20,7 +20,7 @@ export default function FeeCard({
         hover:shadow-xl
         ${
           accent
-            ? "border-2 border-[#0B6089]"
+            ? "border-2 border-primary"
             : "border border-slate-200"
         }
       `}
@@ -31,17 +31,17 @@ export default function FeeCard({
 
         <div>
 
-          <p className="text-base text-slate-500">
+          <p className="text-base text-muted-foreground">
             {title}
           </p>
           
           <div className="mt-3 flex items-end gap-3">
-            <h3 className="text-4xl font-black tracking-tight text-[#061122]">
+            <h3 className="text-4xl font-black tracking-tight text-foreground">
                 {amount}
             </h3>
 
             {subtitle && (
-                <p className="mb-1 text-base text-slate-600">
+                <p className="mb-1 text-base text-muted-foreground">
                 {subtitle}
                 </p>
             )}
@@ -49,11 +49,11 @@ export default function FeeCard({
 
         </div>
 
-        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#EAF7FD]">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-tint">
 
           <ArrowUpRight
             size={18}
-            className="text-[#0B6089]"
+            className="text-primary"
           />
 
         </div>
@@ -63,7 +63,7 @@ export default function FeeCard({
       {/* Bottom */}
 
       {description && (
-        <p className="mt-4 text-base leading-7 text-slate-600">
+        <p className="mt-4 text-base leading-7 text-muted-foreground">
           {description}
         </p>
       )}

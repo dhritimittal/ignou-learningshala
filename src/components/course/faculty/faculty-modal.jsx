@@ -76,11 +76,11 @@ export default function FacultyModal({
                   border
                   border-slate-200
                   transition-all
-                  hover:border-[#D39B00]
-                  hover:bg-[#FFF8E6]
+                  hover:border-accent-dark
+                  hover:bg-accent-tint
                 "
               >
-                <X className="h-5 w-5 text-slate-600" />
+                <X className="h-5 w-5 text-muted-foreground" />
               </button>
 
               {/* Image */}
@@ -107,7 +107,7 @@ export default function FacultyModal({
                   text-center
                   text-3xl
                   font-bold
-                  text-[#0B6089]
+                  text-primary
                 "
               >
                 {faculty.name}
@@ -121,7 +121,7 @@ export default function FacultyModal({
                   text-center
                   text-lg
                   font-medium
-                  text-slate-600
+                  text-muted-foreground
                 "
               >
                 {faculty.designation}
@@ -129,7 +129,7 @@ export default function FacultyModal({
 
               {/* Divider */}
 
-              <div className="mx-auto mt-8 h-px w-24 bg-[#D39B00]/40" />
+              <div className="mx-auto mt-8 h-px w-24 bg-accent-dark/40" />
             </div>
           </motion.div>
         </>

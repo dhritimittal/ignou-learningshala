@@ -84,7 +84,7 @@ export default function CounsellingWizard({ onClose, initialProgramme = "", init
         {/* Close */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 transition-colors"
+          className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full -muted-foreground hover:-muted-foreground -muted-foreground transition-colors"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -99,10 +99,10 @@ export default function CounsellingWizard({ onClose, initialProgramme = "", init
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h3 className="text-2xl font-black text-slate-900 mb-2">Success</h3>
-            <p className="text-slate-500 text-sm leading-relaxed mb-6">
+            <h3 className="text-2xl font-black -foreground mb-2">Success</h3>
+            <p className="-muted-foreground text-sm leading-relaxed mb-6">
               Your details have been received. You can now continue to{" "}
-              <strong className="text-slate-700">{service.name}</strong>
+              <strong className="-foreground">{service.name}</strong>
             </p>
 
             <div className="flex flex-col gap-2">
@@ -115,7 +115,7 @@ export default function CounsellingWizard({ onClose, initialProgramme = "", init
               </a>
               <button
                 onClick={onClose}
-                className="w-full py-3 rounded-xl text-sm font-semibold border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors"
+                className="w-full py-3 rounded-xl text-sm font-semibold border -muted-foreground -muted-foreground hover:bg-slate-50 transition-colors"
               >
                 Close
               </button>
@@ -131,10 +131,10 @@ export default function CounsellingWizard({ onClose, initialProgramme = "", init
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h3 className="text-2xl font-black text-slate-900 mb-2">You're all set, {form.name.split(" ")[0]}!</h3>
-            <p className="text-slate-500 text-sm leading-relaxed mb-6">
-              Our counsellor will call you within <strong className="text-slate-700">24 hours</strong> to discuss{" "}
-              <strong className="text-slate-700">{form.programme}</strong> and answer all your questions — for free.
+            <h3 className="text-2xl font-black -foreground mb-2">You're all set, {form.name.split(" ")[0]}!</h3>
+            <p className="-muted-foreground text-sm leading-relaxed mb-6">
+              Our counsellor will call you within <strong className="-foreground">24 hours</strong> to discuss{" "}
+              <strong className="-foreground">{form.programme}</strong> and answer all your questions — for free.
             </p>
 
             <div className="bg-[#EBF4F9] border border-[#D6EAF3] rounded-2xl p-5 text-left mb-6">
@@ -148,7 +148,7 @@ export default function CounsellingWizard({ onClose, initialProgramme = "", init
                 ].map((row) => (
                   <div key={row.label} className="flex justify-between gap-4 text-sm">
                     <span className="text-slate-400">{row.label}</span>
-                    <span className="text-slate-700 font-medium text-right">{row.val}</span>
+                    <span className="-foreground font-medium text-right">{row.val}</span>
                   </div>
                 ))}
               </div>
@@ -176,7 +176,7 @@ export default function CounsellingWizard({ onClose, initialProgramme = "", init
 
             <button
               onClick={onClose}
-              className="mt-4 text-xs text-slate-400 hover:text-slate-600 transition-colors"
+              className="mt-4 text-xs text-slate-400 hover:-muted-foreground transition-colors"
             >
               Close
             </button>
@@ -219,40 +219,40 @@ export default function CounsellingWizard({ onClose, initialProgramme = "", init
                 /* ── Service Mode Body ── */
                 <div className="flex flex-col gap-4">
                   <div className="bg-[#EBF4F9] border border-[#D6EAF3] rounded-2xl p-5 mb-3">
-                    <h4 className="text-lg font-black text-slate-900 mb-2">Continue to {service.name}</h4>
-                    <p className="text-sm text-slate-600">
+                    <h4 className="text-lg font-black -foreground mb-2">Continue to {service.name}</h4>
+                    <p className="text-sm -muted-foreground">
                       We'll verify your details before redirecting you.
                     </p>
                   </div>
 
                   <div>
-                    <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5 block">Full Name</label>
+                    <label className="text-xs font-semibold -muted-foreground uppercase tracking-wide mb-1.5 block">Full Name</label>
                     <input
                       type="text"
                       placeholder="Priya Sharma"
                       value={form.name}
                       onChange={(e) => update("name", e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 placeholder:text-slate-300"
+                      className="w-full px-4 py-3 rounded-xl border -muted-foreground text-sm -foreground focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 placeholder:text-slate-300"
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5 block">Email Address</label>
+                    <label className="text-xs font-semibold -muted-foreground uppercase tracking-wide mb-1.5 block">Email Address</label>
                     <input
                       type="email"
                       placeholder="priya@email.com"
                       value={form.email}
                       onChange={(e) => update("email", e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 placeholder:text-slate-300"
+                      className="w-full px-4 py-3 rounded-xl border -muted-foreground text-sm -foreground focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 placeholder:text-slate-300"
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5 block">Phone Number</label>
+                    <label className="text-xs font-semibold -muted-foreground uppercase tracking-wide mb-1.5 block">Phone Number</label>
                     <input
                       type="tel"
                       placeholder="+91 98765 43210"
                       value={form.phone}
                       onChange={(e) => update("phone", e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 placeholder:text-slate-300"
+                      className="w-full px-4 py-3 rounded-xl border -muted-foreground text-sm -foreground focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 placeholder:text-slate-300"
                     />
                   </div>
                 </div>
@@ -269,7 +269,7 @@ export default function CounsellingWizard({ onClose, initialProgramme = "", init
                       className={`text-left text-sm px-3 py-2.5 rounded-xl border font-medium transition-all ${
                         form.programme === p
                           ? "bg-[#0B6089] border-[#0B6089] text-white"
-                          : "bg-white border-slate-200 text-slate-700 hover:border-[#7cbdd6]"
+                          : "bg-white -muted-foreground -foreground hover:border-[#7cbdd6]"
                       }`}
                     >
                       {p}
@@ -288,7 +288,7 @@ export default function CounsellingWizard({ onClose, initialProgramme = "", init
                       className={`flex items-center justify-between px-4 py-3.5 rounded-xl border font-medium text-sm transition-all ${
                         form.budget === b.value
                           ? "bg-[#0B6089] border-[#0B6089] text-white"
-                          : "bg-white border-slate-200 text-slate-700 hover:border-[#7cbdd6]"
+                          : "bg-white -muted-foreground -foreground hover:border-[#7cbdd6]"
                       }`}
                     >
                       {b.label}
@@ -317,7 +317,7 @@ export default function CounsellingWizard({ onClose, initialProgramme = "", init
                       className={`flex items-center justify-between px-4 py-3 rounded-xl border font-medium text-sm transition-all ${
                         form.qualification === q
                           ? "bg-[#0B6089] border-[#0B6089] text-white"
-                          : "bg-white border-slate-200 text-slate-700 hover:border-[#7cbdd6]"
+                          : "bg-white -muted-foreground -foreground hover:border-[#7cbdd6]"
                       }`}
                     >
                       {q}
@@ -335,43 +335,43 @@ export default function CounsellingWizard({ onClose, initialProgramme = "", init
               {step === 3 && (
                 <div className="flex flex-col gap-4">
                   <div>
-                    <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5 block">Full Name</label>
+                    <label className="text-xs font-semibold -muted-foreground uppercase tracking-wide mb-1.5 block">Full Name</label>
                     <input
                       type="text"
                       placeholder="Priya Sharma"
                       value={form.name}
                       onChange={(e) => update("name", e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 placeholder:text-slate-300"
+                      className="w-full px-4 py-3 rounded-xl border -muted-foreground text-sm -foreground focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 placeholder:text-slate-300"
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5 block">Phone Number</label>
+                    <label className="text-xs font-semibold -muted-foreground uppercase tracking-wide mb-1.5 block">Phone Number</label>
                     <input
                       type="tel"
                       placeholder="+91 98765 43210"
                       value={form.phone}
                       onChange={(e) => update("phone", e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 placeholder:text-slate-300"
+                      className="w-full px-4 py-3 rounded-xl border -muted-foreground text-sm -foreground focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 placeholder:text-slate-300"
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5 block">Email Address</label>
+                    <label className="text-xs font-semibold -muted-foreground uppercase tracking-wide mb-1.5 block">Email Address</label>
                     <input
                       type="email"
                       placeholder="priya@email.com"
                       value={form.email}
                       onChange={(e) => update("email", e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 placeholder:text-slate-300"
+                      className="w-full px-4 py-3 rounded-xl border -muted-foreground text-sm -foreground focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 placeholder:text-slate-300"
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5 block">
+                    <label className="text-xs font-semibold -muted-foreground uppercase tracking-wide mb-1.5 block">
                       Best time to call <span className="text-slate-300 normal-case font-normal">(optional)</span>
                     </label>
                     <select
                       value={form.preferredTime}
                       onChange={(e) => update("preferredTime", e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 bg-white"
+                      className="w-full px-4 py-3 rounded-xl border -muted-foreground text-sm -foreground focus:outline-none focus:border-[#0B6089] focus:ring-2 focus:ring-[#0B6089]/10 bg-white"
                     >
                       <option value="">Any time</option>
                       <option value="morning">Morning (9am – 12pm)</option>
@@ -398,7 +398,7 @@ export default function CounsellingWizard({ onClose, initialProgramme = "", init
                   className={`w-full py-3 rounded-xl text-sm font-bold transition-all ${
                     canNext()
                       ? "bg-[#0B6089] hover:bg-[#0B6089] text-white"
-                      : "bg-slate-100 text-slate-300 cursor-not-allowed"
+                      : "-muted-foreground text-slate-300 cursor-not-allowed"
                   }`}
                 >
                   Continue →
@@ -409,7 +409,7 @@ export default function CounsellingWizard({ onClose, initialProgramme = "", init
                 {step > 0 && (
                   <button
                     onClick={() => setStep(step - 1)}
-                    className="px-4 py-3 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors"
+                    className="px-4 py-3 rounded-xl border -muted-foreground text-sm font-semibold -muted-foreground hover:bg-slate-50 transition-colors"
                   >
                     Back
                   </button>
@@ -420,7 +420,7 @@ export default function CounsellingWizard({ onClose, initialProgramme = "", init
                   className={`flex-1 py-3 rounded-xl text-sm font-bold transition-all ${
                     canNext()
                       ? "bg-[#0B6089] hover:bg-[#0B6089] text-white"
-                      : "bg-slate-100 text-slate-300 cursor-not-allowed"
+                      : "-muted-foreground text-slate-300 cursor-not-allowed"
                   }`}
                 >
                   {step === STEPS.length - 1 ? "Book my free counselling →" : "Continue →"}

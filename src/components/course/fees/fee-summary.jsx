@@ -13,15 +13,15 @@ export default function FeeSummary({ data }) {
 
       <div>
 
-        <span className="text-sm font-semibold uppercase tracking-widest text-[#0B6089]">
+        <span className="text-sm font-semibold uppercase tracking-widest text-primary">
           Total Programme Fee
         </span>
 
-        <h3 className="mt-5 text-4xl lg:text-5xl font-black tracking-tight text-[#061122]">
+        <h3 className="mt-5 text-4xl lg:text-5xl font-black tracking-tight text-foreground">
           {data.fee}
         </h3>
 
-        <p className="mt-3 max-w-lg text-lg leading-7 text-slate-600">
+        <p className="mt-3 max-w-lg text-lg leading-7 text-muted-foreground">
           Complete programme fee inclusive of tuition charges.
           Examination fees and re-registration charges, if applicable,
           are payable separately as per IGNOU guidelines.
@@ -37,10 +37,10 @@ export default function FeeSummary({ data }) {
 
           <IndianRupee
             size={22}
-            className="text-[#0B6089]"
+            className="text-primary"
           />
 
-          <span className="text-lg text-slate-700">
+          <span className="text-lg text-foreground">
             Affordable fee structure with no hidden tuition costs
           </span>
 
@@ -50,10 +50,10 @@ export default function FeeSummary({ data }) {
 
           <GraduationCap
             size={22}
-            className="text-[#0B6089]"
+            className="text-primary"
           />
 
-          <span className="text-lg text-slate-700">
+          <span className="text-lg text-foreground">
             Scholarships & fee concessions available for eligible learners
           </span>
 
@@ -72,13 +72,13 @@ export default function FeeSummary({ data }) {
           gap-3
           rounded-2xl
           border
-          border-[#0B6089]
+          border-primary
           px-6
           py-4
           font-semibold
-          text-[#0B6089]
+          text-primary
           transition
-          hover:bg-[#0B6089]
+          hover:bg-primary
           hover:text-white
         "
         >

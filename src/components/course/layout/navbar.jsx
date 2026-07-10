@@ -11,7 +11,7 @@ export default function CourseNavbar({ scrolled, openWizard, course, heroVisible
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 backdrop-blur-sm shadow-sm border-b border-slate-100" : "bg-transparent"
+        scrolled ? "bg-white/95 backdrop-blur-sm shadow-sm border-b border-slate-200" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,7 +54,7 @@ export default function CourseNavbar({ scrolled, openWizard, course, heroVisible
                   }}
                   className="flex items-center gap-6"
                 >
-                  <span className="font-semibold text-[#061122] whitespace-nowrap">
+                  <span className="font-semibold text-foreground whitespace-nowrap">
                     {course.name}
                   </span>
                   <a href="#overview">Overview</a>
@@ -72,7 +72,7 @@ export default function CourseNavbar({ scrolled, openWizard, course, heroVisible
           <div className="hidden md:flex items-center gap-3">
             <button
               onClick={openWizard}
-              className="text-sm font-semibold px-4 py-2 rounded-lg bg-[#0B6089] text-white hover:bg-[#0B6089] transition-colors"
+              className="text-sm font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary transition-colors"
             >
               Apply Now
             </button>
@@ -90,7 +90,7 @@ export default function CourseNavbar({ scrolled, openWizard, course, heroVisible
 
           {/* Mobile hamburger */}
           <button
-            className={`md:hidden p-2 rounded ${scrolled ? "text-slate-700" : "text-white"}`}
+            className={`md:hidden p-2 rounded ${scrolled ? "text-foreground" : "text-white"}`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -105,11 +105,11 @@ export default function CourseNavbar({ scrolled, openWizard, course, heroVisible
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-slate-100 px-4 py-4 flex flex-col gap-3">
+        <div className="md:hidden bg-white border-t border-slate-200 px-4 py-4 flex flex-col gap-3">
           <ProgrammeMegaMenu/>
           <button
             onClick={openWizard}
-            className="text-sm font-semibold px-4 py-2 rounded-lg bg-[#0B6089] text-white hover:bg-[#0B6089] transition-colors"
+            className="text-sm font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary transition-colors"
           >
             Apply Now
           </button>

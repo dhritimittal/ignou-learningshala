@@ -33,7 +33,7 @@ export default function StrengthsSection() {
             {[...STRENGTHS, ...STRENGTHS].map((s, idx) => (
               <div
                 key={`${s.title}-${idx}`}
-                className="group rounded-2xl border border-muted-foreground bg-slate-50 hover:bg-secondary hover:border-primary/40 p-6 text-center transition-all duration-200 flex-shrink-0 w-80"
+                className="group rounded-2xl border border-slate-200 bg-slate-50 hover:bg-secondary hover:border-primary/40 p-6 text-center transition-all duration-200 flex-shrink-0 w-80"
               >
                 <div className="text-3xl mb-4">{s.icon}</div>
                 <h3 className="text-sm font-bold text-foreground mb-2">{s.title}</h3>

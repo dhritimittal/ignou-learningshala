@@ -9,9 +9,9 @@ import {
 } from "@/components/unlumen-ui/motion-navigation-menu";
 import { PROGRAMMES } from "@/data/home/programmes";
 
-const listHighlightClassName = "bg-[#0B6089]/25 rounded-lg";
+const listHighlightClassName = "bg-primary/25 rounded-lg";
 const contentHighlightClassName =
-  "bg-[#0B6089]/25 rounded-lg";
+  "bg-primary/25 rounded-lg";
 
 const pgProgrammes = PROGRAMMES.filter((p) => p.level === "PG");
 const pgonline = pgProgrammes.filter((p) =>
@@ -42,7 +42,7 @@ export default function ProgrammeMegaMenu() {
         <MotionNavigationMenuItem value="pg">
           <MotionNavigationMenuTrigger>Post Graduation</MotionNavigationMenuTrigger>
           <MotionNavigationMenuContent
-            className="bg-[#EBF4F9] rounded-lg"
+            className="bg-secondary rounded-lg"
             highlightClassName={contentHighlightClassName}
           >
             <div className="grid w-[400px] grid-cols-2 gap-1">
@@ -88,7 +88,7 @@ export default function ProgrammeMegaMenu() {
         <MotionNavigationMenuItem value="ug">
           <MotionNavigationMenuTrigger>Graduation</MotionNavigationMenuTrigger>
           <MotionNavigationMenuContent
-            className="bg-[#EBF4F9] rounded-lg"
+            className="bg-secondary rounded-lg"
             highlightClassName={contentHighlightClassName}
           >
             <div className="grid w-[400px] grid-cols-2 gap-1">
@@ -134,7 +134,7 @@ export default function ProgrammeMegaMenu() {
         <MotionNavigationMenuItem value="others">
           <MotionNavigationMenuTrigger>Others</MotionNavigationMenuTrigger>
           <MotionNavigationMenuContent
-            className="bg-[#EBF4F9] rounded-lg"
+            className="bg-secondary rounded-lg"
             highlightClassName={contentHighlightClassName}
           >
             <div className="grid w-[400px] grid-cols-2 gap-1">              

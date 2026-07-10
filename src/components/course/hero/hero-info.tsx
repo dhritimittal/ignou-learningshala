@@ -61,18 +61,18 @@ export default function HeroInfoCard({ data }: HeroInfoProps) {
 
                       <Icon
                         size={20}
-                        className="text-[#0B6089]"
+                        className="text-primary"
                       />
 
                     </div>
 
                     <div>
 
-                      <p className="text-sm text-slate-500">
+                      <p className="text-sm text-muted-foreground">
                         {item.label}
                       </p>
 
-                      <p className="mt-1 text-lg font-semibold text-[#061122]">
+                      <p className="mt-1 text-lg font-semibold text-foreground">
                         {item.value}
                       </p>
 
@@ -92,10 +92,10 @@ export default function HeroInfoCard({ data }: HeroInfoProps) {
               className="
               w-full
               rounded-2xl
-              bg-[#F6C94A]
+              bg-accent
               py-3
               font-semibold
-              text-[#061122]
+              text-accent-foreground
               transition
               hover:brightness-95
             "
@@ -113,12 +113,12 @@ export default function HeroInfoCard({ data }: HeroInfoProps) {
               gap-2
               rounded-2xl
               border
-              border-[#0B6089]
+              border-primary
               py-3
               font-semibold
-              text-[#0B6089]
+              text-primary
               transition
-              hover:bg-[#0B6089]
+              hover:bg-primary
               hover:text-white
             "
             >
@@ -159,11 +159,11 @@ export default function HeroInfoCard({ data }: HeroInfoProps) {
 
               <div>
 
-                <p className="font-semibold text-[#061122]">
+                <p className="font-semibold text-foreground">
                   20K+ students
                 </p>
 
-                <p className="text-sm text-slate-500">
+                <p className="text-sm text-muted-foreground">
                   already contacted us
                 </p>
 

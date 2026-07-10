@@ -4,9 +4,9 @@ export default function SyllabusButton() {
   return (
     <button
       className="
-        border-[#F6C94A]
-        bg-[#F6C94A]
-        text-[#061122]
+        border-accent
+        bg-accent
+        text-foreground
         inline-flex
         items-center
         gap-2

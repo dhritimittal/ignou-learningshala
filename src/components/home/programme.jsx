@@ -52,7 +52,7 @@ export default function ProgrammesSection({ openWizard, openProgrammeWizard }) {
               className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
                 filter === f
                   ? "bg-primary text-primary-foreground shadow-sm"
-                  : "bg-white text-muted-foreground border border-muted-foreground hover:border-primary/40"
+                  : "bg-white text-muted-foreground border border-slate-200 hover:border-primary/40"
               }`}
             >
               {f}
@@ -65,7 +65,7 @@ export default function ProgrammesSection({ openWizard, openProgrammeWizard }) {
           {displayedCourses.map((prog) => (
             <div
               key={prog.code}
-              className="group bg-white rounded-2xl border border-muted-foreground p-5 hover:border-primary/40 hover:shadow-md transition-all duration-200 flex flex-col"
+              className="group bg-white rounded-2xl border border-slate-200 p-5 hover:border-primary/40 hover:shadow-md transition-all duration-200 flex flex-col"
             >
               <div className="flex items-start justify-between mb-3">
                 <div className="flex gap-1.5 flex-wrap">
@@ -77,8 +77,8 @@ export default function ProgrammesSection({ openWizard, openProgrammeWizard }) {
                   </Badge>
                 </div>
               </div>
-              <h3 className="text-sm font-bold text-slate-800 leading-snug mb-auto">{prog.name}</h3>
-              <div className="mt-4 pt-3 border-t border-muted-foreground flex items-center justify-between">
+              <h3 className="text-sm font-bold -foreground leading-snug mb-auto">{prog.name}</h3>
+              <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between">
                 <span className="text-xs font-semibold text-primary">{prog.fee}</span>
                 <span className="text-[11px] text-foreground">{prog.duration}</span>
               </div>

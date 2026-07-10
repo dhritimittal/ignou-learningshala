@@ -27,7 +27,7 @@ export default function FacultyCard({
         flex-col
         items-center
         rounded-3xl
-        bg-[#0F172A]
+        bg-primary-dark
         p-7
         text-center
         shadow-sm
@@ -35,7 +35,7 @@ export default function FacultyCard({
         duration-300
         hover:shadow-xl
         hover:ring-1
-        hover:ring-[#D39B00]/30
+        hover:ring-accent-dark/30
       "
     >
       {/* Image */}
@@ -72,7 +72,7 @@ export default function FacultyCard({
         className="
           mt-2
           text-base
-          text-slate-300
+          text-muted-foreground
         "
       >
         {faculty.designation}
@@ -80,7 +80,7 @@ export default function FacultyCard({
 
       {/* Accent */}
 
-      <div className="my-5 h-1.5 w-10 rounded-full bg-[#D39B00]/40" />
+      <div className="my-5 h-1.5 w-10 rounded-full bg-accent-dark/40" />
 
       {/* CTA */}
 
@@ -91,7 +91,7 @@ export default function FacultyCard({
           items-center
           gap-2
           font-semibold
-          text-[#F4C430]
+          text-accent
           transition-all
           duration-300
           group-hover:gap-3

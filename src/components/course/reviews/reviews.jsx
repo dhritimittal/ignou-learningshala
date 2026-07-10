@@ -25,15 +25,15 @@ export default function Reviews({ data }) {
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
         >
-          <span className="text-sm font-semibold uppercase tracking-[0.22em] text-[#0B6089]">
+          <span className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
             Reviews
           </span>
 
-          <h2 className="mt-2 text-4xl font-bold tracking-tight text-[#061122]">
+          <h2 className="mt-2 text-4xl font-bold tracking-tight text-foreground">
             Student Reviews & Ratings
           </h2>
 
-          <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
+          <p className="mt-4 max-w-3xl text-lg leading-8 text-muted-foreground">
             Hear directly from learners who have experienced the IGNOU Online
             MBA programme and shared their honest feedback.
           </p>
@@ -70,7 +70,7 @@ export default function Reviews({ data }) {
               items-center
               gap-2
               rounded-2xl
-              bg-[#0B6089]
+              bg-primary
               px-8
               py-4
               text-base
@@ -78,7 +78,7 @@ export default function Reviews({ data }) {
               text-white
               transition-all
               duration-300
-              hover:bg-[#084B6B]
+              hover:bg-primary-dark
             "
           >
             View All Reviews

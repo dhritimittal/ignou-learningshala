@@ -53,8 +53,8 @@ export default function SpecializationTabs({
 
               ${
                 active
-                  ? "border-[#F6C94A] bg-[#F6C94A] text-[#061122] shadow-lg"
-                  : "border-slate-200 bg-white text-slate-700 hover:border-[#F6C94A] hover:bg-[#FFF8DD]"
+                  ? "border-accent bg-accent text-accent-foreground shadow-lg"
+                  : "border-slate-200 bg-white text-foreground hover:border-accent hover:bg-accent-tint"
               }
             `}
           >
@@ -63,8 +63,8 @@ export default function SpecializationTabs({
                 size={18}
                 className={
                   active
-                    ? "text-[#061122]"
-                    : "text-slate-500 group-hover:text-[#D39B00]"
+                    ? "text-accent-foreground"
+                    : "text-muted-foreground group-hover:text-accent-dark"
                 }
               />
             )}

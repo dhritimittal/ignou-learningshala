@@ -30,7 +30,7 @@ export default function ServicesSection({ openServiceWizard }) {
             <div
               key={svc.name}
               onClick={() => openServiceWizard(svc)}
-              className={`group bg-white rounded-2xl border border-muted-foreground hover:border-primary/40 hover:shadow-md transition-all duration-200 ${
+              className={`group bg-white rounded-2xl border border-slate-200 hover:border-primary/40 hover:shadow-md transition-all duration-200 ${
                 idx === 0 ? "md:col-span-2 lg:col-span-2 lg:row-span-2 p-12" : "p-6"
               }`}
             >

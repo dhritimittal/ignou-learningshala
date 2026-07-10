@@ -14,22 +14,22 @@ export default function ScholarshipBanner() {
 
         <div className="flex items-center gap-4">
 
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#EAF7FD]">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-tint">
 
             <GraduationCap
               size={20}
-              className="text-[#0B6089]"
+              className="text-primary"
             />
 
           </div>
 
           <div>
 
-            <p className="font-semibold text-[#061122]">
+            <p className="font-semibold text-foreground">
               Scholarships & Fee Concessions
             </p>
 
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-muted-foreground">
               Eligible learners can avail scholarships,
               fee reimbursement and government financial
               assistance wherever applicable.
@@ -48,11 +48,11 @@ export default function ScholarshipBanner() {
             gap-2
             rounded-xl
             border
-            border-[#0B6089]
+            border-primary
             px-5
             py-3
             font-semibold
-            bg-[#0B6089]
+            bg-primary
             text-white
           "
         >

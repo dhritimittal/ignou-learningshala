@@ -8,11 +8,11 @@ export default function SnapshotGroup({
   columns = 1,
 }) {
   return (
-    <div className="rounded-xl border border-slate-200 transition-all duration-300 hover:border-[#D39B00]/40 hover:shadow-md bg-white p-5">
+    <div className="rounded-xl border border-slate-200 transition-all duration-300 hover:border-accent-dark/40 hover:shadow-md bg-white p-5">
 
       {/* Group Title */}
 
-      <h3 className="text-2xl font-bold text-[#061122]">
+      <h3 className="text-2xl font-bold text-foreground">
         {title}
       </h3>
 

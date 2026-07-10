@@ -39,12 +39,12 @@ export default function SpecializationDetails({ specialization }) {
 
           <div className="flex items-center gap-5">
 
-            <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#FFF8DD]">
+            <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-accent-tint">
 
               {Icon && (
                 <Icon
                   size={26}
-                  className="text-[#D39B00]"
+                  className="text-accent-dark"
                 />
               )}
 
@@ -52,11 +52,11 @@ export default function SpecializationDetails({ specialization }) {
 
             <div>
 
-              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#D39B00]">
+              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-dark">
                 Specialization
               </span>
 
-              <h3 className="mt-1 text-3xl font-bold text-[#061122]">
+              <h3 className="mt-1 text-3xl font-bold text-foreground">
                 {specialization.title}
               </h3>
 
@@ -70,7 +70,7 @@ export default function SpecializationDetails({ specialization }) {
 
           <div className="mt-7">
 
-            <h4 className="text-lg font-semibold text-[#061122]">
+            <h4 className="text-lg font-semibold text-foreground">
               Typical Career Roles
             </h4>
 
@@ -84,10 +84,10 @@ export default function SpecializationDetails({ specialization }) {
                 >
                   <CheckCircle2
                     size={18}
-                    className="text-[#D39B00]"
+                    className="text-accent-dark"
                   />
 
-                  <span className="text-slate-700">
+                  <span className="text-foreground">
                     {career}
                   </span>
 
@@ -103,13 +103,13 @@ export default function SpecializationDetails({ specialization }) {
 
         {/* RIGHT */}
 
-        <div className="border-l border-slate-200 bg-[#FCFDFE] p-7 lg:p-8">
+        <div className="border-l border-slate-200 bg-background p-7 lg:p-8">
 
           <div className="space-y-6">
 
             <div>
 
-              <div className="flex items-center gap-2 text-[#D39B00]">
+              <div className="flex items-center gap-2 text-accent-dark">
 
                 <IndianRupee size={18} />
 
@@ -127,7 +127,7 @@ export default function SpecializationDetails({ specialization }) {
 
             <div>
 
-              <div className="flex items-center gap-2 text-[#D39B00]">
+              <div className="flex items-center gap-2 text-accent-dark">
 
                 <TrendingUp size={18} />
 
@@ -143,9 +143,9 @@ export default function SpecializationDetails({ specialization }) {
 
             </div>
 
-            <div className="rounded-xl bg-[#FFF8DD] p-5">
+            <div className="rounded-xl bg-accent-tint p-5">
 
-                <h4 className="text-center text-[15px] leading-6 font-bold text-[#061122]">
+                <h4 className="text-center text-[15px] leading-6 font-bold text-foreground">
                     Unsure which specialization is right for you?
                 </h4>
 
@@ -154,11 +154,11 @@ export default function SpecializationDetails({ specialization }) {
                     mt-5
                     w-full
                     rounded-xl
-                    bg-[#F6C94A]
+                    bg-accent
                     px-5
                     py-3
                     font-semibold
-                    text-[#061122]
+                    text-accent-foreground
                     transition
                     hover:brightness-95
                     "

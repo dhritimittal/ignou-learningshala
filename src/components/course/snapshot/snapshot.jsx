@@ -129,15 +129,15 @@ export default function Snapshot({ data }) {
     >
       <div className="mx-auto max-w-7xl px-6">
 
-        <span className="text-sm font-semibold uppercase tracking-[0.22em] text-[#F6C94A]">
+        <span className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
           Course Snapshot
         </span>
 
-        <h2 className="mt-2 text-4xl font-bold tracking-tight text-[#061122]">
+        <h2 className="mt-2 text-4xl font-bold tracking-tight text-foreground">
           Course Highlights & Benefits
         </h2>
 
-        <p className="mt-3 max-w-3xl leading-8 text-slate-600">
+        <p className="mt-3 max-w-3xl leading-8 text-muted-foreground">
           Everything you need to know about the programme in one place.
         </p>
 

@@ -155,7 +155,7 @@ export default function CTASection({ openWizard }) {
                         className="h-10"
                       />
                       <div>
-                        <p className="font-semibold text-slate-800">
+                        <p className="font-semibold -foreground">
                           NIRF Ranked
                         </p>
                         <p className="text-sm text-muted-foreground">
@@ -171,7 +171,7 @@ export default function CTASection({ openWizard }) {
                         className="h-10"
                       />
                       <div>
-                        <p className="font-semibold text-slate-800">
+                        <p className="font-semibold -foreground">
                           NAAC A++
                         </p>
                         <p className="text-sm text-muted-foreground">
@@ -291,7 +291,7 @@ export default function CTASection({ openWizard }) {
               <div className="lg:hidden">
 
                 {/* Accreditation Block */}
-                <div className="mb-8 border-b border-slate-200 pb-2 grid grid-cols-3">
+                <div className="mb-8 border-b -muted-foreground pb-2 grid grid-cols-3">
                   
                   <div className="flex items-center gap-3">
                     <img
@@ -406,7 +406,7 @@ export default function CTASection({ openWizard }) {
                 </Accordion>
 
                 {/* Stats */}
-                <div className="mt-8 border-t border-slate-200 pt-2">
+                <div className="mt-8 border-t -muted-foreground pt-2">
 
                   <h3 className="font-bold text-foreground mb-3">
                     IGNOU At A Glance
@@ -450,7 +450,7 @@ export default function CTASection({ openWizard }) {
 
               </div>
 
-              <div className="border-t border-slate-200 mt-2 pt-2 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between text-sm text-muted-foreground">
+              <div className="border-t -muted-foreground mt-2 pt-2 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between text-sm text-muted-foreground">
                 
                 <p className="max-w-2xl">
                   Disclaimer: We act solely as an information partner and do not conduct or facilitate admissions to IGNOU. For admissions, please visit the official IGNOU website or contact the university directly. IGNOU University holds full rights to request changes or removal of any non-relevant content. Images used are for illustrative purposes only and do not directly represent the respective colleges or universities.

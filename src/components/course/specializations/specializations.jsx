@@ -20,7 +20,7 @@ export default function Specializations({ data }) {
 
         <div>
 
-          <span className="text-[#F6C94A] uppercase font-semibold text-sm tracking-widest">
+          <span className="text-accent uppercase font-semibold text-sm tracking-widest">
             {data.specializations.length} Specializations
           </span>
 
@@ -28,7 +28,7 @@ export default function Specializations({ data }) {
             Choose Your Specialization
           </h2>
 
-          <p className="mt-3 text-slate-600 max-w-2xl">
+          <p className="mt-3 text-muted-foreground max-w-2xl">
             Explore specializations aligned with your career goals.
           </p>
 

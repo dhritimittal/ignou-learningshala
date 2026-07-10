@@ -80,11 +80,11 @@ export default function ReviewModal({
 
                   <div>
 
-                    <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#0B6089]">
+                    <span className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
                       Reviews
                     </span>
 
-                    <h2 className="mt-2 text-3xl font-bold text-[#061122]">
+                    <h2 className="mt-2 text-3xl font-bold text-foreground">
                       Student Reviews & Ratings
                     </h2>
 
@@ -102,11 +102,11 @@ export default function ReviewModal({
                       border
                       border-slate-200
                       transition
-                      hover:border-[#0B6089]
-                      hover:bg-[#EAF6FB]
+                      hover:border-primary
+                      hover:bg-primary-tint
                     "
                   >
-                    <X className="h-5 w-5 text-slate-600" />
+                    <X className="h-5 w-5 text-muted-foreground" />
                   </button>
 
                 </div>

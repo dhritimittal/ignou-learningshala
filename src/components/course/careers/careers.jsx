@@ -47,22 +47,22 @@ export default function Careers({ data, openWizard }) {
 
         {/* Header */}
 
-        <span className="text-sm font-semibold uppercase tracking-[0.22em] text-[#D39B00]">
+        <span className="text-sm font-semibold uppercase tracking-[0.22em] text-accent-dark">
           Career Outcomes
         </span>
 
-        <h2 className="mt-2 text-4xl font-bold tracking-tight text-[#061122]">
+        <h2 className="mt-2 text-4xl font-bold tracking-tight text-foreground">
           Build Your Career After IGNOU Online MBA
         </h2>
 
-        <p className="mt-4 max-w-4xl text-lg leading-8 text-slate-600">
+        <p className="mt-4 max-w-4xl text-lg leading-8 text-muted-foreground">
           {career.description}
         </p>
 
         {/* Navy stat band */}
 
-        <div className="mt-8 overflow-hidden rounded-t-2xl border border-[#E8D49A] bg-[#FFF8E6]">
-          <div className="grid grid-cols-3 divide-x divide-[#E8D49A]">
+        <div className="mt-8 overflow-hidden rounded-t-2xl border border-accent/30 bg-accent-tint">
+          <div className="grid grid-cols-3 divide-x divide-accent/20">
 
             <CareerStat
               icon={IndianRupee}
@@ -91,10 +91,10 @@ export default function Careers({ data, openWizard }) {
         <div className="rounded-b-2xl border border-t-0 border-slate-200 bg-white p-6">
 
           <div className="flex items-center justify-between">
-            <h3 className="text-xl font-bold text-[#061122]">
+            <h3 className="text-xl font-bold text-foreground">
               Top career opportunities
             </h3>
-            <span className="text-xs font-medium text-slate-400">
+            <span className="text-xs font-medium text-muted-foreground">
               Sorted by package
             </span>
           </div>
@@ -110,8 +110,8 @@ export default function Careers({ data, openWizard }) {
                   }}
                   className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                     activeCategory === cat
-                      ? "bg-[#061122] text-white"
-                      : "border border-slate-200 text-slate-500 hover:border-[#0B6089]/40 hover:text-[#0B6089]"
+                      ? "bg-foreground text-white"
+                      : "border border-slate-200 text-muted-foreground hover:border-primary/40 hover:text-primary"
                   }`}
                 >
                   {cat}
@@ -138,7 +138,7 @@ export default function Careers({ data, openWizard }) {
           {remaining > 0 && (
             <button
               onClick={() => setShowAll(true)}
-              className="mt-4 w-full rounded-xl border border-[#E8D49A] py-2.5 text-sm font-medium text-[#D39B00] transition-colors hover:border-[#D39B00] hover:bg-[#FFF8E6]"
+              className="mt-4 w-full rounded-xl border border-accent/30 py-2.5 text-sm font-medium text-accent-dark transition-colors hover:border-accent-dark hover:bg-accent-tint"
             >
               Show {remaining} more role{remaining > 1 ? "s" : ""}
             </button>
@@ -148,7 +148,7 @@ export default function Careers({ data, openWizard }) {
 
         {/* CTA */}
 
-        <div className="mt-10 overflow-hidden rounded-3xl border border-[#0B6089]/20 bg-gradient-to-r from-[#F6FAFC] via-white to-[#FFFBEE]">
+        <div className="mt-10 overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-r from-primary-tint via-white to-accent-tint">
 
           <div className="flex flex-col items-start justify-between gap-8 p-8 lg:flex-row lg:items-center">
 
@@ -156,15 +156,15 @@ export default function Careers({ data, openWizard }) {
 
             <div className="max-w-2xl">
 
-              <span className="inline-flex rounded-full bg-[#FFF3CC] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#8A6D0F]">
+              <span className="inline-flex rounded-full bg-accent-tint px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-accent-dark">
                 Take the Next Step
               </span>
 
-              <h3 className="mt-4 text-3xl font-bold tracking-tight text-[#061122]">
+              <h3 className="mt-4 text-3xl font-bold tracking-tight text-foreground">
                 Ready to Start Your MBA Journey?
               </h3>
 
-              <p className="mt-3 max-w-2xl text-lg leading-7 text-slate-600">
+              <p className="mt-3 max-w-2xl text-lg leading-7 text-muted-foreground">
                 Speak with an IGNOU admission expert to get personalized guidance on
                 eligibility, specializations, fees, scholarships and the admission
                 process.
@@ -178,7 +178,7 @@ export default function Careers({ data, openWizard }) {
 
               <button
                 onClick={openWizard}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0B6089] px-7 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-[#084A69]"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-primary-dark"
               >
                 <PhoneCall className="h-5 w-5" />
                 Talk to an Admission Expert

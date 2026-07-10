@@ -12,7 +12,7 @@ export default function Fees({ data }) {
 
         {/* Fee Layout */}
 
-        <div className="rounded-[36px] bg-[#EAF7FD] p-6 lg:p-7">
+        <div className="rounded-[36px] bg-primary-tint p-6 lg:p-7">
 
           <div className="grid lg:grid-cols-[1.35fr_1fr] gap-5">
 

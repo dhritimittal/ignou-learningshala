@@ -12,14 +12,14 @@ export default function DegreeSection() {
           {/* LEFT */}
           <div>
             <AccentDivider />
-            <h2 className="text-4xl lg:text-4xl font-black text-slate-900 leading-tight mb-6">
+            <h2 className="text-4xl lg:text-4xl font-black -foreground leading-tight mb-6">
               An IGNOU degree that's
               <span className="block bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
                 recognised everywhere.
               </span>
             </h2>
 
-            <p className="text-slate-600 text-lg leading-relaxed mb-6">
+            <p className="-muted-foreground text-lg leading-relaxed mb-6">
               Every online degree awarded by IGNOU is issued by the university
               itself and is recognised by UGC-DEB. The degree carries the same
               academic value and can be used for higher education, competitive
@@ -36,13 +36,13 @@ export default function DegreeSection() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3"
+                  className="flex items-center gap-3 rounded-xl border -muted-foreground bg-slate-50 px-4 py-3"
                 >
                   <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center text-accent-dark font-bold">
                     ✓
                   </div>
 
-                  <span className="font-medium text-slate-700">
+                  <span className="font-medium -foreground">
                     {item}
                   </span>
                 </div>
@@ -56,7 +56,7 @@ export default function DegreeSection() {
 
                 <div>
 
-                  <p className="text-sm leading-relaxed text-slate-600">
+                  <p className="text-sm leading-relaxed -muted-foreground">
                     The degree certificate does not distinguish between students
                     based on where they studied.
                   </p>
@@ -120,7 +120,7 @@ export default function DegreeSection() {
                 rounded-3xl
                 shadow-2xl
                 border
-                border-slate-200
+                -muted-foreground
                 p-4
                 rotate-2
                 hover:rotate-0
@@ -156,7 +156,7 @@ export default function DegreeSection() {
                 py-4
                 z-10
                 border
-                border-slate-200
+                -muted-foreground
               "
             >
 
@@ -184,7 +184,7 @@ export default function DegreeSection() {
                 py-4
                 z-20
                 border
-                border-slate-200
+                -muted-foreground
               "
             >
 
@@ -192,7 +192,7 @@ export default function DegreeSection() {
                 Recognition
               </div>
 
-              <div className="text-lg font-bold text-slate-800">
+              <div className="text-lg font-bold -foreground">
                 UGC-DEB Approved
               </div>
 

@@ -21,15 +21,15 @@ export default function Faculty({ data }) {
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
         >
-          <span className="text-sm font-semibold uppercase tracking-[0.22em] text-[#D39B00]">
+          <span className="text-sm font-semibold uppercase tracking-[0.22em] text-accent-dark">
             Faculty
           </span>
 
-          <h2 className="mt-2 text-4xl font-bold tracking-tight text-[#061122]">
+          <h2 className="mt-2 text-4xl font-bold tracking-tight text-foreground">
             Know Your Faculty Before Enrolling
           </h2>
 
-          <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
+          <p className="mt-4 max-w-3xl text-lg leading-8 text-muted-foreground">
             Learn from experienced professors guiding IGNOU's Online MBA
             programme through a blend of academic expertise and practical
             industry insights.

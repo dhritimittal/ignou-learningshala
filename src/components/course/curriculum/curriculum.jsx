@@ -13,7 +13,7 @@ export default function Curriculum({ data }) {
 
           <div>
 
-            <span className="text-[#F6C94A] uppercase font-semibold text-sm tracking-widest">
+            <span className="text-accent uppercase font-semibold text-sm tracking-widest">
               Curriculum
             </span>
 
@@ -21,7 +21,7 @@ export default function Curriculum({ data }) {
               What you'll study.
             </h2>
 
-            <p className="mt-3 text-slate-600 max-w-2xl">
+            <p className="mt-3 text-muted-foreground max-w-2xl">
               Industry-relevant curriculum designed by IGNOU
               covering management fundamentals and advanced
               business concepts.
@@ -33,19 +33,19 @@ export default function Curriculum({ data }) {
 
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 mb-5 text-slate-700">
+        <div className="flex flex-wrap items-center gap-3 mb-5 text-foreground">
 
             <span className="font-semibold">
                 96 Credits
             </span>
 
-            <span className="h-1.5 w-1.5 rounded-full bg-[#F6C94A]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
 
             <span className="font-semibold">
                 4 Semesters
             </span>
 
-            <span className="h-1.5 w-1.5 rounded-full bg-[#F6C94A]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
 
             <span className="font-semibold">
                 24 Subjects

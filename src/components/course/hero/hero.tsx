@@ -26,7 +26,7 @@ export default function Hero({ data }: HeroProps) {
             className="h-full w-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-[#F8FBFD] via-[#F8FBFD]/90 to-[#F8FBFD]/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/20" />
         </div>
 
         <div className="relative mx-auto max-w-[1440px] px-6 lg:px-8 pt-8 pb-10 lg:pt-10 lg:pb-12">
@@ -39,7 +39,7 @@ export default function Hero({ data }: HeroProps) {
 
               {/* Breadcrumb */}
 
-              <div className="mb-8 flex items-center gap-2 text-sm text-[#4a9fc0]">
+              <div className="mb-8 flex items-center gap-2 text-sm text-primary-light">
 
                 <span>Home</span>
 
@@ -55,19 +55,19 @@ export default function Hero({ data }: HeroProps) {
 
               {/* Badge */}
 
-              <span className="inline-flex rounded-full bg-[#0B6089] border border-[#0B6089]/50 px-4 py-2 text-sm font-semibold text-white backdrop-blur">
+              <span className="inline-flex rounded-full bg-primary border border-primary/50 px-4 py-2 text-sm font-semibold text-white backdrop-blur">
                 PG PROGRAMME
               </span>
 
               {/* Heading */}
 
-              <h1 className="mt-5 text-5xl font-black leading-none text-transparent bg-clip-text bg-gradient-to-r from-[#4a9fc0] to-[#a8d4e6] lg:text-7xl">
+              <h1 className="mt-5 text-5xl font-black leading-none text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-primary-light/50 lg:text-7xl">
                 {data.name}
               </h1>
 
               {/* Description */}
 
-              <p className="mt-4 max-w-2xl text-lg lg:text-xl leading-8 text-slate-600">
+              <p className="mt-4 max-w-2xl text-lg lg:text-xl leading-8 text-muted-foreground">
                 {data.description}
               </p>
 
@@ -78,7 +78,7 @@ export default function Hero({ data }: HeroProps) {
                 <div className="flex items-center gap-2">
 
                   <Star
-                    className="fill-[#F6C94A] text-[#F6C94A]"
+                    className="fill-accent text-accent"
                     size={20}
                   />
 

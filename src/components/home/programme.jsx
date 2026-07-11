@@ -77,7 +77,7 @@ export default function ProgrammesSection({ openWizard, openProgrammeWizard }) {
                   </Badge>
                 </div>
               </div>
-              <h3 className="text-sm font-bold -foreground leading-snug mb-auto">{prog.name}</h3>
+              <h3 className="text-sm font-bold text-foreground leading-snug mb-auto">{prog.name}</h3>
               <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between">
                 <span className="text-xs font-semibold text-primary">{prog.fee}</span>
                 <span className="text-[11px] text-foreground">{prog.duration}</span>

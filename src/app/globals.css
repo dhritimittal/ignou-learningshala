@@ -56,6 +56,10 @@
   --color-primary-dark: var(--primary-dark);
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
 :root {
   /* Base */
 

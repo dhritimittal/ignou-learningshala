@@ -132,33 +132,27 @@ export default function CounsellingWizard({
     useEffect(() => {
         if (!open) return;
 
-        const close = (e) => {
-            if (e.key === "Escape") onClose();
+        const handleKeyDown = (e) => {
+            if (e.key === "Escape") {
+                onClose();
+            }
         };
 
-        window.addEventListener("keydown", close);
+        window.addEventListener("keydown", handleKeyDown);
 
-        return () => window.removeEventListener("keydown", close);
-    }, [open]);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [open, onClose]);
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-        
-            {/* Backdrop */}
-            <div
-                className="absolute inset-0 z-0 bg-black/60 backdrop-blur-sm"
-                onClick={onClose}
-            />
-
-            {/* Wizard */}
-            <div className="relative z-10 w-full flex justify-center">
-
                 <WizardShell
                     step={step}
                     totalSteps={STEPS.length}
                     title={STEPS[step].title}
                     subtitle={STEPS[step].subtitle}
                     sidebar={STEPS[step].sidebar}
+                    onClose={onClose}
                     contentClassName={
                         step === 3
                             ? "pb-0"
@@ -215,7 +209,6 @@ export default function CounsellingWizard({
                         </motion.div>
                     </AnimatePresence>
                 </WizardShell>
-            </div>
-        </div>
+
     );
 }

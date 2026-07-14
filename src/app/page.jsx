@@ -15,7 +15,7 @@ import AdmissionsSection from "@/components/home/admission";
 import ServicesSection from "@/components/home/services";
 import FAQSection from "@/components/home/faqs";
 import CTASection from "@/components/home/layout/cta";
-import CounsellingWizard from "@/components/shared/counsellingwizard";
+import CounsellingWizard from "@/components/shared/wizard/counsellingwizard";
 // ─── Page Component ──────────────────────────────────────────────────────────
 
 export default function IGNOUHomePage() {

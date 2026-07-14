@@ -18,26 +18,17 @@ const STATES = {
   TamilNadu: ["Chennai", "Coimbatore"],
 };
 
-export default function SignupForm() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    state: "",
-    city: "",
-  });
+export default function SignupForm({
+    form,
+    update,
+    onSubmit,
+  }) {
 
   const cities = useMemo(() => {
     return STATES[form.state] || [];
   }, [form.state]);
 
-  function update(key, value) {
-    setForm((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  }
-
+  
   function chooseLocation(location) {
     switch (location) {
       case "Delhi NCR":
@@ -67,17 +58,9 @@ export default function SignupForm() {
     }
   }
 
-  function submit(e) {
-    e.preventDefault();
-
-    console.log(form);
-
-    // TODO
-    // call signup api
-  }
 
   return (
-    <form onSubmit={submit} className="space-y-5">
+    <form onSubmit={onSubmit} className="space-y-5">
 
       <div className="lg:hidden">
 
@@ -256,6 +239,14 @@ export default function SignupForm() {
       </label>
 
       {/* CTA */}
+      <div className="sticky bottom-0 bg-background p-4 z-20 px-6">
+        <button
+          type="submit"
+          className="w-full rounded-xl bg-primary py-3 font-semibold text-white transition hover:opacity-90"
+        >
+          Continue →
+        </button>
+      </div>
 
       
 

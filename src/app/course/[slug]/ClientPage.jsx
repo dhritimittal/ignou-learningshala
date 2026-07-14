@@ -1,7 +1,7 @@
 "use client";
 import CourseNavbar from "@/components/course/layout/navbar";
 import CTASection from "@/components/home/layout/cta";
-import CounsellingWizard from "@/components/shared/counsellingwizard";
+import CounsellingWizard from "@/components/shared/wizard/counsellingwizard";
 import Highlights from "@/components/course/highlights";
 import Fees from "@/components/course/fees/fees";
 import AdmissionsSection from "@/components/course/admission";

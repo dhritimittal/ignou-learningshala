@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { getBotReply } from "@/data/chatbot/kb";
+import { getBotReply, isCounsellorIntent } from "@/data/chatbot/kb";
 import CounsellingWizard from "@/components/shared/wizard/counsellingwizard";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -154,7 +154,14 @@ function ChatPanel({ onClose, openWizard }) {
   }
 
   function handleChip(chip) {
-    if (chip === "Talk to a Counsellor" || chip === "Start Counselling") {
+    // Any chip that implies talking to a human → open wizard directly
+    const counsellorChips = [
+      "Talk to a Counsellor",
+      "Start Counselling",
+      "Talk to a counsellor",
+      "Start counselling",
+    ];
+    if (counsellorChips.includes(chip)) {
       openWizard();
       return;
     }
@@ -164,6 +171,14 @@ function ChatPanel({ onClose, openWizard }) {
   function sendMessage(text) {
     const trimmed = text.trim();
     if (!trimmed) return;
+
+    // If the user is asking for a counsellor, open wizard immediately
+    if (isCounsellorIntent(trimmed)) {
+      addUserMessage(trimmed);
+      setInput("");
+      openWizard();
+      return;
+    }
 
     addUserMessage(trimmed);
     setInput("");
@@ -196,16 +211,16 @@ function ChatPanel({ onClose, openWizard }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.85, y: 24 }}
+      initial={{ opacity: 0, scale: 0.92, y: 16 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.88, y: 16 }}
-      transition={{ type: "spring", stiffness: 340, damping: 28 }}
-      className="fixed bottom-[88px] right-4 z-[200] w-[360px] max-w-[calc(100vw-2rem)] rounded-2xl overflow-hidden shadow-2xl border border-border bg-background flex flex-col"
-      style={{ height: "520px" }}
+      exit={{ opacity: 0, scale: 0.92, y: 12 }}
+      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+      className="fixed right-4 z-[200] w-[360px] max-w-[calc(100vw-2rem)] rounded-2xl overflow-hidden shadow-2xl border border-border bg-background flex flex-col"
+      style={{ bottom: "96px", top: "max(72px, env(safe-area-inset-top, 72px))", maxHeight: "calc(100dvh - 72px - 96px)" }}
     >
-      {/* Header */}
-      <div className="bg-primary px-4 py-3.5 flex items-center gap-3 shrink-0">
-        <div className="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center text-white font-bold text-sm shrink-0">
+      {/* Header — compact single row, close icon flush right */}
+      <div className="bg-primary px-3.5 py-2.5 flex items-center gap-2.5 shrink-0">
+        <div className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-white font-bold text-xs shrink-0">
           LS
         </div>
         <div className="flex-1 min-w-0">
@@ -215,19 +230,10 @@ function ChatPanel({ onClose, openWizard }) {
             <span className="text-white/70 text-xs">Online · usually replies instantly</span>
           </span>
         </div>
-        <button
-          onClick={onClose}
-          aria-label="Close chat"
-          className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors shrink-0"
-        >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-          </svg>
-        </button>
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-3.5 py-3 space-y-3 scrollbar-hide">
+      <div className="flex-1 overflow-y-auto px-3 py-3 space-y-3 scrollbar-hide min-h-0">
         {messages.map((msg) => (
           <MessageBubble key={msg.id} msg={msg} onChip={handleChip} />
         ))}
@@ -238,7 +244,7 @@ function ChatPanel({ onClose, openWizard }) {
       {/* Input */}
       <form
         onSubmit={handleSubmit}
-        className="shrink-0 px-3 py-2.5 border-t border-border flex gap-2 items-center bg-background"
+        className="shrink-0 px-3 py-2 border-t border-border flex gap-2 items-center bg-background"
       >
         <input
           ref={inputRef}
@@ -246,16 +252,16 @@ function ChatPanel({ onClose, openWizard }) {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Ask about programmes, fees, admission…"
-          className="flex-1 rounded-full border border-input bg-muted px-4 py-2 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all placeholder:text-muted-foreground"
+          placeholder="Ask about programmes, fees…"
+          className="flex-1 rounded-full border border-input bg-muted px-3.5 py-1.5 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all placeholder:text-muted-foreground"
         />
         <button
           type="submit"
           disabled={!input.trim()}
           aria-label="Send"
-          className="w-9 h-9 rounded-full bg-primary hover:bg-primary-hover disabled:opacity-40 flex items-center justify-center text-white transition-colors shrink-0"
+          className="w-8 h-8 rounded-full bg-primary hover:bg-primary-hover disabled:opacity-40 flex items-center justify-center text-white transition-colors shrink-0"
         >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
             <path d="M14.5 1.5L7 9M14.5 1.5l-5 13-2.5-5.5-5.5-2.5 13-5z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </button>

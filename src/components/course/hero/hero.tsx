@@ -10,9 +10,10 @@ import Image from "next/image";
 
 type HeroProps = {
   data: Course;
+  openWizard: () => void;
 };
 
-export default function Hero({ data }: HeroProps) {
+export default function Hero({ data, openWizard }: HeroProps) {
   return (
     <>
       <section id="course-hero" className="relative overflow-visible pt-10">
@@ -134,13 +135,13 @@ export default function Hero({ data }: HeroProps) {
 
               </div>
 
-              <HeroActions />
+              <HeroActions openWizard={openWizard} />
 
             </div>
 
             {/* RIGHT */}
 
-            <HeroInfoCard data={data} />
+            <HeroInfoCard data={data} openWizard={openWizard} />
 
           </div>
 

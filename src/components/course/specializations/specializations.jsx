@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import SpecializationTabs from "./specialization-tabs";
 import SpecializationDetails from "./specialization-details";
 
-export default function Specializations({ data }) {
+export default function Specializations({ data, openWizard }) {
   const [selected, setSelected] = useState(data.specializations[0]);
 
   return (
@@ -61,6 +61,7 @@ export default function Specializations({ data }) {
             >
               <SpecializationDetails
                 specialization={selected}
+                openWizard={openWizard}
               />
             </motion.div>
 

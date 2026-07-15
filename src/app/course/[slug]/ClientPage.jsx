@@ -64,15 +64,15 @@ export default function ClientPage({course}) {
     <div className="font-sans antialiased">
       <CourseNavbar scrolled={scrolled} openWizard={openWizard} heroVisible={heroVisible} course={course} />
       <main>
-        <Hero data={course} />
+        <Hero data={course} openWizard={openWizard} />
         <Highlights data={course} />
         <Snapshot data={course} />
-        <Fees data={course} />
-        <Specializations data={course} />
+        <Fees data={course} openWizard={openWizard} />
+        <Specializations data={course} openWizard={openWizard} />
         <AdmissionsSection openWizard={openWizard} />
-        <Curriculum data={course} />
+        <Curriculum data={course} openWizard={openWizard} />
         <Learning data={course} />
-        <DegreeSection />
+        <DegreeSection openWizard={openWizard} />
         <Careers data={course} openWizard={openWizard} />
         <Faculty data={course} />
         <Reviews data={course} />

@@ -25,7 +25,7 @@ const ICONS = {
   BriefcaseBusiness,
 };
 
-export default function SpecializationDetails({ specialization }) {
+export default function SpecializationDetails({ specialization, openWizard }) {
   const Icon = ICONS[specialization.icon];
 
   return (
@@ -162,6 +162,7 @@ export default function SpecializationDetails({ specialization }) {
                     transition
                     hover:brightness-95
                     "
+                    onClick={openWizard}
                 >
                     Talk to an Admission Expert
                 </button>

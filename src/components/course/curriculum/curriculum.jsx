@@ -1,7 +1,7 @@
 import CurriculumAccordion from "./curriculum-accordion";
 import  SyllabusButton from "./syllabus-button";
 
-export default function Curriculum({ data }) {
+export default function Curriculum({ data, openWizard }) {
   return (
     <section
       id="curriculum"
@@ -29,7 +29,7 @@ export default function Curriculum({ data }) {
 
           </div>
 
-          <SyllabusButton />
+          <SyllabusButton openWizard={openWizard} />
 
         </div>
 

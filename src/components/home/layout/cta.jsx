@@ -79,6 +79,7 @@ export default function CTASection({ openWizard }) {
                     </button>
 
                     <button
+                      onClick={openWizard}
                       className="
                         px-8 py-4
                         bg-[#25D366]

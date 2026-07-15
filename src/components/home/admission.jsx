@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import AccentDivider from "@/components/ui/accentdivider";
 import { TIMELINE_STEPS } from "@/data/home/timeline";
 
 export default function AdmissionsSection({ openWizard }) {
@@ -30,15 +31,13 @@ export default function AdmissionsSection({ openWizard }) {
         {/* Header */}
         <div className="py-8 grid lg:grid-cols-2 gap-12 items-end">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="h-px w-8 bg-accent" />
+              <AccentDivider />
               <span className="text-accent-dark text-xs font-semibold uppercase tracking-widest">
                 Admissions 2026
               </span>
-            </div>
             <h2 className="text-3xl sm:text-4xl font-black text-black leading-tight mb-5">
               Don't apply alone.{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-accent-light to-[#FFE79A]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-light">
                 Here's why.
               </span>
             </h2>

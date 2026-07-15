@@ -5,7 +5,7 @@ import {
   Download,
 } from "lucide-react";
 
-export default function FeeSummary({ data }) {
+export default function FeeSummary({ data, openWizard }) {
   return (
     <div className="flex flex-col justify-between">
 
@@ -66,6 +66,7 @@ export default function FeeSummary({ data }) {
       <div className="mt-6">
 
         <button
+          onClick={openWizard}
           className="
           inline-flex
           items-center

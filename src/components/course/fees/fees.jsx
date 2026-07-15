@@ -2,7 +2,7 @@ import FeeSummary from "./fee-summary";
 import FeeCard from "./fee-card";
 import ScholarshipBanner from "./scholarship-banner";
 
-export default function Fees({ data }) {
+export default function Fees({ data, openWizard }) {
   return (
     <section
       id="fees"
@@ -18,7 +18,7 @@ export default function Fees({ data }) {
 
             {/* Left */}
 
-            <FeeSummary data={data} />
+            <FeeSummary data={data} openWizard={openWizard} />
 
             {/* Right */}
 
@@ -43,7 +43,7 @@ export default function Fees({ data }) {
 
           </div>
 
-          <ScholarshipBanner />
+          <ScholarshipBanner openWizard={openWizard} />
 
         </div>
 

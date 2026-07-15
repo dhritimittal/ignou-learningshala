@@ -77,15 +77,13 @@ export default function CourseNavbar({ scrolled, openWizard, course, heroVisible
               Apply Now
             </button>
 
-            <a
-              href="https://wa.me/919999999999"
-              target="_blank"
+            <button
+              onClick={openWizard}
               className="text-sm font-semibold px-4 py-2 rounded-lg bg-[#25D366] text-white hover:bg-[#1EBE5D] transition-colors flex items-center gap-2"
             >
               <MessageCircle size={16} />
-
               Reach out on WhatsApp
-            </a>
+            </button>
           </div>
 
           {/* Mobile hamburger */}
@@ -114,12 +112,13 @@ export default function CourseNavbar({ scrolled, openWizard, course, heroVisible
             Apply Now
           </button>
 
-          <a
-            href="https://wa.me/919999999999"
-            className="text-sm font-semibold px-4 py-2 rounded-lg bg-[#25D366] text-white text-center"
+          <button
+            onClick={openWizard}
+            className="text-sm font-semibold px-4 py-2 rounded-lg bg-[#25D366] text-white text-center hover:bg-[#1EBE5D] transition-colors flex items-center gap-2 justify-center"
           >
+            <MessageCircle size={16} />
             Reach out on WhatsApp
-          </a>
+          </button>
         </div>
       )}
     </header>

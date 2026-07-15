@@ -4,7 +4,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-export default function ScholarshipBanner() {
+export default function ScholarshipBanner({openWizard}) {
   return (
     <div className="mt-8">
 
@@ -55,6 +55,7 @@ export default function ScholarshipBanner() {
             bg-primary
             text-white
           "
+          onClick={openWizard}
         >
 
           Check Eligibility

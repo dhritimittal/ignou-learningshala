@@ -1,8 +1,9 @@
 import { Download } from "lucide-react";
 
-export default function SyllabusButton() {
+export default function SyllabusButton({ openWizard }) {
   return (
     <button
+      onClick={openWizard}
       className="
         border-accent
         bg-accent

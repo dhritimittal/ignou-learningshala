@@ -9,9 +9,10 @@ import {
 
 type HeroInfoProps = {
   data: Course;
+  openWizard: () => void;
 };
 
-export default function HeroInfoCard({ data }: HeroInfoProps) {
+export default function HeroInfoCard({ data, openWizard }: HeroInfoProps) {
   const details = [
     {
       icon: Clock3,
@@ -89,6 +90,7 @@ export default function HeroInfoCard({ data }: HeroInfoProps) {
             {/* CTA */}
 
             <button
+              onClick={openWizard}
               className="
               w-full
               rounded-2xl
@@ -104,6 +106,7 @@ export default function HeroInfoCard({ data }: HeroInfoProps) {
             </button>
 
             <button
+              onClick={openWizard}
               className="
               mt-4
               flex

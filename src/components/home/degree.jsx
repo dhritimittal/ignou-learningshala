@@ -2,7 +2,7 @@
 
 import AccentDivider from "../ui/accentdivider";
 
-export default function DegreeSection() {
+export default function DegreeSection({ openWizard }) {
   return (
     <section id="degree" className="py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,9 +69,8 @@ export default function DegreeSection() {
 
             <div className="flex gap-4 flex-wrap">
 
-              <a
-                href="/degree.pdf"
-                download
+              <button
+                onClick={openWizard}
                 className="
                     inline-flex
                     items-center
@@ -88,7 +87,7 @@ export default function DegreeSection() {
                 "
                 >
                 Download Sample Degree
-                </a>
+                </button>
 
             </div>
 

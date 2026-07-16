@@ -121,7 +121,7 @@ export default function AdmissionsSection({ openWizard }) {
                 <div
                   key={i}
                   ref={(el) => (stepRefs.current[i] = el)}
-                  className="min-h-[60vh] flex items-center py-10 lg:py-16"
+                  className="min-h-0 lg:min-h-[60vh] flex items-center py-6 lg:py-16"
                 >
                   <div className={`w-full rounded-2xl p-6 sm:p-8 border transition-all duration-500 ${
                     isActive

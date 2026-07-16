@@ -10,8 +10,8 @@ export default function FAQSection() {
 
         <div className="grid lg:grid-cols-[1fr_360px] gap-16">
 
-          {/* Left Column */}
-          <div className="space-y-5">
+          {/* Left Column (FAQs) */}
+          <div className="space-y-5 order-2 lg:order-1">
 
             {FAQS.map((faq) => (
               <div
@@ -28,8 +28,8 @@ export default function FAQSection() {
               </div>
             ))}
           </div>
-          {/* Right Column */}
-          <div className="lg:sticky lg:top-24 h-fit">
+          {/* Right Column (Heading) */}
+          <div className="lg:sticky lg:top-24 h-fit order-1 lg:order-2">
 
             <p className="text-primary-light text-[10px] font-bold uppercase tracking-[0.25em] mb-3">
               Frequently Asked Questions

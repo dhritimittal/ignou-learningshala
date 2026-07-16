@@ -8,17 +8,16 @@ export default function ScholarshipBanner({openWizard}) {
   return (
     <div className="mt-8">
 
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 rounded-full bg-white px-8 py-3 shadow-sm">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 lg:gap-3 rounded-3xl lg:rounded-full bg-white px-6 py-6 lg:px-8 lg:py-3 shadow-sm">
 
         {/* Left */}
 
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
 
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-tint">
+          <div className="flex shrink-0 h-12 w-12 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-primary-tint">
 
             <GraduationCap
-              size={20}
-              className="text-primary"
+              className="text-primary w-6 h-6 sm:w-5 sm:h-5"
             />
 
           </div>
@@ -42,7 +41,7 @@ export default function ScholarshipBanner({openWizard}) {
         {/* Right */}
 
         <button
-          className="inline-flex items-center gap-2 rounded-xl border border-primary px-5 py-3 font-semibold bg-primary text-white"
+          className="inline-flex w-full lg:w-auto justify-center items-center gap-2 rounded-xl border border-primary px-5 py-3 font-semibold bg-primary text-white mt-2 lg:mt-0"
           onClick={openWizard}
         >
 

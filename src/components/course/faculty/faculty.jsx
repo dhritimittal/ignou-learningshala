@@ -38,7 +38,7 @@ export default function Faculty({ data }) {
 
         {/* Faculty Grid */}
 
-        <div className="mt-10 grid gap-6 grid-cols-5 xl:grid-cols-4">
+        <div className="mt-10 grid gap-6 grid-cols-2 lg:grid-cols-5 xl:grid-cols-5">
           {data.faculty.map((faculty, index) => (
             <FacultyCard
               key={faculty.id}

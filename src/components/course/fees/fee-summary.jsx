@@ -37,7 +37,7 @@ export default function FeeSummary({ data, openWizard }) {
 
           <IndianRupee
             size={22}
-            className="text-primary"
+            className="text-primary shrink-0"
           />
 
           <span className="text-lg text-foreground">
@@ -50,7 +50,7 @@ export default function FeeSummary({ data, openWizard }) {
 
           <GraduationCap
             size={22}
-            className="text-primary"
+            className="text-primary shrink-0"
           />
 
           <span className="text-lg text-foreground">
@@ -67,7 +67,7 @@ export default function FeeSummary({ data, openWizard }) {
 
         <button
           onClick={openWizard}
-          className="inline-flex items-center gap-3 rounded-2xl border border-primary px-6 py-4 font-semibold text-primary transition hover:bg-primary hover:text-white"
+          className="inline-flex w-full lg:w-auto justify-center items-center gap-3 rounded-2xl border border-primary px-6 py-4 font-semibold text-primary transition hover:bg-primary hover:text-white"
         >
 
           <Download size={18} />

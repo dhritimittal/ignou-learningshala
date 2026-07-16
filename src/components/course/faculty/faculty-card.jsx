@@ -21,47 +21,20 @@ export default function FacultyCard({
         y: -6,
       }}
       onClick={() => onClick(faculty)}
-      className="
-        group
-        flex
-        flex-col
-        items-center
-        rounded-3xl
-        bg-primary-dark
-        p-7
-        text-center
-        shadow-sm
-        transition-all
-        duration-300
-        hover:shadow-xl
-        hover:ring-1
-        hover:ring-accent-dark/30
-      "
+      className="group flex flex-col items-center rounded-3xl bg-primary-dark p-7 text-center shadow-sm transition-all duration-300 hover:shadow-xl hover:ring-1 hover:ring-accent-dark/30"
     >
       {/* Image */}
 
       <img
         src={faculty.image}
         alt={faculty.name}
-        className="
-          h-24
-          w-24
-          rounded-2xl
-          object-cover
-          shadow-md
-        "
+        className="h-24 w-24 rounded-2xl object-cover shadow-md"
       />
 
       {/* Name */}
 
       <h3
-        className="
-          mt-6
-          text-xl
-          font-semibold
-          leading-tight
-          text-white
-        "
+        className="mt-6 text-xl font-semibold leading-tight text-white"
       >
         {faculty.name}
       </h3>
@@ -69,11 +42,7 @@ export default function FacultyCard({
       {/* Designation */}
 
       <p
-        className="
-          mt-2
-          text-base
-          text-muted-foreground
-        "
+        className="mt-2 text-base text-muted-foreground"
       >
         {faculty.designation}
       </p>
@@ -85,17 +54,7 @@ export default function FacultyCard({
       {/* CTA */}
 
       <div
-        className="
-          mt-auto
-          flex
-          items-center
-          gap-2
-          font-semibold
-          text-accent
-          transition-all
-          duration-300
-          group-hover:gap-3
-        "
+        className="mt-auto flex items-center gap-2 font-semibold text-accent transition-all duration-300 group-hover:gap-3"
       >
         <span>View More</span>
 

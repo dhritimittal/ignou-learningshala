@@ -150,18 +150,7 @@ export default function SpecializationDetails({ specialization, openWizard }) {
                 </h4>
 
                 <button
-                    className="
-                    mt-5
-                    w-full
-                    rounded-xl
-                    bg-accent
-                    px-5
-                    py-3
-                    font-semibold
-                    text-accent-foreground
-                    transition
-                    hover:brightness-95
-                    "
+                    className="mt-5 w-full rounded-xl bg-accent px-5 py-3 font-semibold text-accent-foreground transition hover:brightness-95"
                     onClick={openWizard}
                 >
                     Talk to an Admission Expert

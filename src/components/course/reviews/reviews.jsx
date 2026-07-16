@@ -65,21 +65,7 @@ export default function Reviews({ data }) {
 
           <button
             onClick={() => setOpen(true)}
-            className="
-              inline-flex
-              items-center
-              gap-2
-              rounded-2xl
-              bg-primary
-              px-8
-              py-4
-              text-base
-              font-semibold
-              text-white
-              transition-all
-              duration-300
-              hover:bg-primary-dark
-            "
+            className="inline-flex items-center gap-2 rounded-2xl bg-primary px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-primary-dark"
           >
             View All Reviews
 

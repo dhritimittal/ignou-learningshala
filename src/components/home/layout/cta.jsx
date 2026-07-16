@@ -65,30 +65,14 @@ export default function CTASection({ openWizard }) {
 
                     <button
                       onClick={openWizard}
-                      className="
-                        px-8 py-4
-                        bg-primary
-                        hover:bg-primary-hover
-                        text-white
-                        font-semibold
-                        rounded-xl
-                        transition-all
-                      "
+                      className="px-8 py-4 bg-primary hover:bg-primary-hover text-white font-semibold rounded-xl transition-all"
                     >
                       Book a Free Call
                     </button>
 
                     <button
                       onClick={openWizard}
-                      className="
-                        px-8 py-4
-                        bg-[#25D366]
-                        hover:bg-[#1EBE5D]
-                        text-white
-                        font-semibold
-                        rounded-xl
-                        transition-all
-                      "
+                      className="px-8 py-4 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-semibold rounded-xl transition-all"
                     >
                       Reach Out on WhatsApp
                     </button>
@@ -103,15 +87,7 @@ export default function CTASection({ openWizard }) {
                 <img
                   src="/counsellor.png"
                   alt="Student Support"
-                  className="
-                    absolute
-                    bottom-0
-                    translate-y-12
-                    h-[520px]
-                    object-contain
-                    -translate-x-10
-                    z-20
-                  "
+                  className="absolute bottom-0 translate-y-12 h-[520px] object-contain -translate-x-10 z-20"
                 />
               </div>
 
@@ -120,17 +96,7 @@ export default function CTASection({ openWizard }) {
 
           {/* FOOTER CARD */}
           <div
-            className="
-              bg-white
-              relative
-              -mt-8
-              mx-3
-              sm:mx-5
-              lg:mx-6
-              rounded-[32px]
-              shadow-2xl
-              z-20
-            "
+            className="bg-white relative -mt-8 mx-3 sm:mx-5 lg:mx-6 rounded-[32px] shadow-2xl z-20"
           >
             <div className="px-5 py-8 sm:px-8 lg:px-14 lg:py-10">
 

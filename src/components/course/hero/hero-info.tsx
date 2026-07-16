@@ -91,39 +91,14 @@ export default function HeroInfoCard({ data, openWizard }: HeroInfoProps) {
 
             <button
               onClick={openWizard}
-              className="
-              w-full
-              rounded-2xl
-              bg-accent
-              py-3
-              font-semibold
-              text-accent-foreground
-              transition
-              hover:brightness-95
-            "
+              className="w-full rounded-2xl bg-accent py-3 font-semibold text-accent-foreground transition hover:brightness-95"
             >
               Apply Now
             </button>
 
             <button
               onClick={openWizard}
-              className="
-              mt-4
-              flex
-              w-full
-              items-center
-              justify-center
-              gap-2
-              rounded-2xl
-              border
-              border-primary
-              py-3
-              font-semibold
-              text-primary
-              transition
-              hover:bg-primary
-              hover:text-white
-            "
+              className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl border border-primary py-3 font-semibold text-primary transition hover:bg-primary hover:text-white"
             >
               <Download size={18} />
 

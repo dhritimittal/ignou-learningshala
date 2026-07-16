@@ -47,38 +47,13 @@ export default function FacultyModal({
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="
-                relative
-                w-full
-                max-w-md
-                rounded-3xl
-                bg-white
-                p-10
-                shadow-2xl
-                ring-1
-                ring-black/5
-              "
+              className="relative w-full max-w-md rounded-3xl bg-white p-10 shadow-2xl ring-1 ring-black/5"
             >
               {/* Close */}
 
               <button
                 onClick={onClose}
-                className="
-                  absolute
-                  right-5
-                  top-5
-                  flex
-                  h-10
-                  w-10
-                  items-center
-                  justify-center
-                  rounded-full
-                  border
-                  border-slate-200
-                  transition-all
-                  hover:border-accent-dark
-                  hover:bg-accent-tint
-                "
+                className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 transition-all hover:border-accent-dark hover:bg-accent-tint"
               >
                 <X className="h-5 w-5 text-muted-foreground" />
               </button>
@@ -89,26 +64,14 @@ export default function FacultyModal({
                 <img
                   src={faculty.image}
                   alt={faculty.name}
-                  className="
-                    h-32
-                    w-32
-                    rounded-2xl
-                    object-cover
-                    shadow-md
-                  "
+                  className="h-32 w-32 rounded-2xl object-cover shadow-md"
                 />
               </div>
 
               {/* Name */}
 
               <h3
-                className="
-                  mt-8
-                  text-center
-                  text-3xl
-                  font-bold
-                  text-primary
-                "
+                className="mt-8 text-center text-3xl font-bold text-primary"
               >
                 {faculty.name}
               </h3>
@@ -116,13 +79,7 @@ export default function FacultyModal({
               {/* Designation */}
 
               <p
-                className="
-                  mt-2
-                  text-center
-                  text-lg
-                  font-medium
-                  text-muted-foreground
-                "
+                className="mt-2 text-center text-lg font-medium text-muted-foreground"
               >
                 {faculty.designation}
               </p>

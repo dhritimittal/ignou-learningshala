@@ -110,14 +110,8 @@ export default function Hero({ data, openWizard }: HeroProps) {
                 {data.approvals.map((approvals) => (
 
                   <div
-                    className="
-                      flex items-center gap-2
-                      rounded-full
-                      border border-slate-200
-                      bg-white
-                      px-3 py-2
-                      shadow-sm
-                    "
+                    key={approvals.name}
+                    className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 shadow-sm"
                   >
                     <Image
                       src={approvals.logo}

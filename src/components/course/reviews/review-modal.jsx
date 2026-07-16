@@ -50,31 +50,12 @@ export default function ReviewModal({
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="
-                flex
-                h-[90vh]
-                w-full
-                max-w-5xl
-                flex-col
-                overflow-hidden
-                rounded-3xl
-                bg-white
-                shadow-2xl
-              "
+              className="flex h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-3xl bg-white shadow-2xl"
             >
               {/* Header */}
 
               <div
-                className="
-                  sticky
-                  top-0
-                  z-10
-                  border-b
-                  border-slate-200
-                  bg-white
-                  px-8
-                  py-6
-                "
+                className="sticky top-0 z-10 border-b border-slate-200 bg-white px-8 py-6"
               >
                 <div className="flex items-center justify-between">
 
@@ -92,19 +73,7 @@ export default function ReviewModal({
 
                   <button
                     onClick={onClose}
-                    className="
-                      flex
-                      h-11
-                      w-11
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-slate-200
-                      transition
-                      hover:border-primary
-                      hover:bg-primary-tint
-                    "
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 transition hover:border-primary hover:bg-primary-tint"
                   >
                     <X className="h-5 w-5 text-muted-foreground" />
                   </button>

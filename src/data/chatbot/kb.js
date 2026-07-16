@@ -110,7 +110,7 @@ export const BOT_KB = [
     chips: ["MBA fees", "MBA admission", "Talk to a Counsellor"],
   },
   {
-    keywords: ["mba exam pattern", "mba examination", "mba assessment", "mba assignment", "mba pass marks", "mba grading", "mba tee"],
+    keywords: ["mba exam pattern", "mca exam pattern", "exam pattern", "mba examination", "mba assessment", "mba assignment", "mba pass marks", "mba grading", "mba tee"],
     answer:
       "**IGNOU MBA Examination Pattern:**\n\n📝 **Continuous Assessment (30%):**\n• Quizzes, assignments, case studies, subjective assessments\n• Submitted each semester through the Samarth portal\n\n📖 **Term-End Examination (70%):**\n• Conducted twice a year — **June** and **December**\n• Computer-Based Tests (CBT) at designated centres\n• Students choose exam slots as per their academic cycle\n\n🗂️ **Project Work (Sem 4):**\n• Major project under faculty guidance\n• Must secure required passing grade\n\n✅ **Minimum to pass:** 40% in TEE + overall passing criteria\n\n📌 Flexible exam options — you can defer attempts to the next cycle if needed.",
     chips: ["MBA specialisations", "MBA careers", "Talk to a Counsellor"],
@@ -150,7 +150,7 @@ export const BOT_KB = [
     chips: ["BCA eligibility", "BCA to MCA", "BCA fees", "Talk to a Counsellor"],
   },
   {
-    keywords: ["bca eligibility", "bca 12th", "bca criteria", "bca maths", "bca without maths", "bca arts"],
+    keywords: ["bca eligibility", "bca 12th", "bca criteria", "bca maths", "bca without maths", "bca arts", "bca to mca"],
     answer:
       "**IGNOU BCA Eligibility:**\n\n✅ **10+2 pass** in any stream — Arts, Commerce, or Science\n✅ **No minimum percentage** required in most cases\n✅ **Mathematics NOT mandatory** at 10+2 level for admission (IGNOU includes bridge modules)\n✅ Any board — CBSE, State boards, NIOS, Open School all accepted\n✅ No entrance exam — direct admission\n\n✅ Age: No minimum or maximum age restriction.",
     chips: ["BCA fees", "BCA admission", "BCA to MCA", "Talk to a Counsellor"],
@@ -178,13 +178,13 @@ export const BOT_KB = [
   // ════════════════════════════════════════════════════════════════════════════
 
   {
-    keywords: ["bcom", "b.com", "bachelor of commerce", "commerce ug", "commerce degree", "online bcom", "distance bcom"],
+    keywords: ["bcom", "b.com", "bachelor of commerce", "commerce ug", "commerce degree", "online bcom", "distance bcom", "b.com eligibility", "bcom eligibility", "b.com to m.com", "bcom to mcom"],
     answer:
       "**IGNOU B.Com — Full Overview**\n\n📋 **Programme:** Bachelor of Commerce\n⏱️ **Duration:** 3 Years\n💰 **Fee:** ₹4,000/sem (Online) | ₹14,400 total (Distance)\n🎓 **Eligibility:** 10+2 pass in any stream\n🏛️ **Approvals:** UGC-DEB • NAAC A++\n\n**Core Subjects:**\n• Financial Accounting & Cost Accounting\n• Business Law & Company Law\n• Income Tax & GST\n• Economics & Statistics\n• Banking & Financial Services\n• Auditing & Corporate Governance\n\n**After B.Com:**\n• CA / CMA / CS (professional courses)\n• M.Com (higher studies)\n• Bank PO / Clerk examinations\n• Accountant / Finance roles — ₹2–5 LPA\n• Tax Consultant",
     chips: ["B.Com eligibility", "B.Com to M.Com", "B.Com fees", "Talk to a Counsellor"],
   },
   {
-    keywords: ["mcom", "m.com", "master of commerce", "commerce pg", "online mcom", "distance mcom"],
+    keywords: ["mcom", "m.com", "master of commerce", "commerce pg", "online mcom", "distance mcom", "mcom eligibility", "m.com eligibility"],
     answer:
       "**IGNOU M.Com — Full Overview**\n\n📋 **Programme:** Master of Commerce\n⏱️ **Duration:** 2 Years\n💰 **Fee:** ₹18,000 total (Online) | ₹9,300/sem (Distance)\n🎓 **Eligibility:** B.Com or equivalent with 50% marks\n\n**Core Subjects:**\n• Advanced Financial Accounting\n• Corporate Financial Management\n• International Business Finance\n• Research Methods in Commerce\n• Advanced Cost & Management Accounting\n• Financial Markets & Services\n\n**Career Scope:**\n• CA / CMA support roles\n• Financial Analyst — ₹4–10 LPA\n• Audit Manager\n• University Lecturer (with NET)\n• Banking — Senior Officer roles",
     chips: ["M.Com eligibility", "M.Com vs MBA", "Talk to a Counsellor"],
@@ -201,13 +201,13 @@ export const BOT_KB = [
   // ════════════════════════════════════════════════════════════════════════════
 
   {
-    keywords: ["ba", "bachelor of arts", "arts programme", "ug arts", "online ba", "distance ba"],
+    keywords: ["ba", "bachelor of arts", "arts programme", "ug arts", "online ba", "distance ba", "ba eligibility", "ba to ma"],
     answer:
       "**IGNOU BA — Full Overview**\n\n📋 **Programme:** Bachelor of Arts\n⏱️ **Duration:** 3 Years\n💰 **Fee:** ₹6,000/sem (Online) | ₹15,900 total (Distance)\n🎓 **Eligibility:** 10+2 pass in any stream\n\n**Available Subjects / Combinations:**\n• History, Political Science, Economics\n• Sociology, Psychology, Hindi / English Literature\n• Public Administration, Philosophy\n\n**After BA:**\n• MA (higher studies)\n• Civil Services (UPSC / State PSC)\n• Bank exams, SSC, Railways\n• Teaching (with B.Ed)\n• Journalism / Media roles",
     chips: ["BA eligibility", "BA to MA", "BA fees", "Talk to a Counsellor"],
   },
   {
-    keywords: ["ma", "master of arts", "arts pg", "pg arts", "online ma", "distance ma", "ma specialisation", "ma english", "ma hindi", "ma history"],
+    keywords: ["ma", "master of arts", "arts pg", "pg arts", "online ma", "distance ma", "ma specialisation", "ma english", "ma hindi", "ma history", "ma eligibility", "net/jrf", "net jrf", "ma for net/jrf"],
     answer:
       "**IGNOU MA — Full Overview**\n\n📋 **Programme:** Master of Arts\n⏱️ **Duration:** 2 Years\n💰 **Fee:** ₹6,000 total (Online) | ₹15,000 total (Distance)\n🎓 **Eligibility:** Any Bachelor's degree\n\n**Available Specialisations (Online — 3 | Distance — 2):**\n• English Literature\n• Hindi\n• History\n• Political Science\n• Economics\n• Sociology\n• Psychology\n• Philosophy\n\n**After MA:**\n• NET/JRF → University Teaching (₹50,000–₹1.5 L/month)\n• PhD admissions\n• Civil Services — UPSC, State PSC\n• Content Writing, Journalism\n• Social Work / NGO roles",
     chips: ["MA eligibility", "MA for NET/JRF", "Talk to a Counsellor"],
@@ -218,7 +218,7 @@ export const BOT_KB = [
   // ════════════════════════════════════════════════════════════════════════════
 
   {
-    keywords: ["diploma", "certificate", "short course", "pgd", "pg diploma", "6 months", "1 year", "short term"],
+    keywords: ["diploma", "certificate", "short course", "pgd", "pg diploma", "6 months", "1 year", "short term", "certificate eligibility", "diploma fees"],
     answer:
       "**Short-Term IGNOU Programmes:**\n\n📜 **Certificate (6 Months)**\n• Fee: ₹1,200 total\n• Eligibility: 10+2 or as per programme\n• Best for: Quick skill certification\n\n📜 **Diploma (1 Year)**\n• Fee: ₹3,000 total\n• Eligibility: 10+2 or as per programme\n\n📜 **PG Diploma (1–3 Years)**\n• Fee: ₹2,400/semester\n• Eligibility: Graduation\n• Best for: Specialised upskilling without a full PG degree\n\n**Popular options include:**\n• PG Diploma in Business Administration\n• Certificate in Computer Applications\n• Diploma in Nutrition & Health Education\n• PG Diploma in Rural Development\n\n💡 These programmes can often be **stacked towards a full degree** later.",
     chips: ["Certificate eligibility", "Diploma fees", "Admission Process", "Talk to a Counsellor"],
@@ -411,6 +411,13 @@ export const BOT_KB = [
   // ════════════════════════════════════════════════════════════════════════════
   // GENERAL FAQS
   // ════════════════════════════════════════════════════════════════════════════
+
+  {
+    keywords: ["faq", "faqs", "frequently asked questions", "common questions"],
+    answer:
+      "**Frequently Asked Questions:**\n\n• **Is the degree valid?** Yes, UGC-DEB approved and equal to regular degrees.\n• **Is there an age limit?** No age limit for any IGNOU programme.\n• **Are there exams online?** Yes, many programmes offer Computer-Based Tests.\n• **When do admissions open?** January and July every year.\n\nType any specific question you have, or tap below to explore!",
+    chips: ["Is the degree valid?", "Admission cycle dates", "Programmes & Fees"],
+  },
 
   {
     keywords: ["anywhere", "remote", "flexible", "work", "working professional", "part time", "can i work while studying", "job while studying"],

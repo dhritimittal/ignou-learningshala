@@ -67,21 +67,7 @@ export default function FeeSummary({ data, openWizard }) {
 
         <button
           onClick={openWizard}
-          className="
-          inline-flex
-          items-center
-          gap-3
-          rounded-2xl
-          border
-          border-primary
-          px-6
-          py-4
-          font-semibold
-          text-primary
-          transition
-          hover:bg-primary
-          hover:text-white
-        "
+          className="inline-flex items-center gap-3 rounded-2xl border border-primary px-6 py-4 font-semibold text-primary transition hover:bg-primary hover:text-white"
         >
 
           <Download size={18} />

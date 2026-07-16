@@ -42,19 +42,7 @@ export default function ScholarshipBanner({openWizard}) {
         {/* Right */}
 
         <button
-          className="
-            inline-flex
-            items-center
-            gap-2
-            rounded-xl
-            border
-            border-primary
-            px-5
-            py-3
-            font-semibold
-            bg-primary
-            text-white
-          "
+          className="inline-flex items-center gap-2 rounded-xl border border-primary px-5 py-3 font-semibold bg-primary text-white"
           onClick={openWizard}
         >
 

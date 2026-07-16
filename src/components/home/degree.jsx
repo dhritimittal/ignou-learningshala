@@ -71,20 +71,7 @@ export default function DegreeSection({ openWizard }) {
 
               <button
                 onClick={openWizard}
-                className="
-                    inline-flex
-                    items-center
-                    justify-center
-                    px-7
-                    py-3.5
-                    rounded-xl
-                    bg-primary
-                    hover:bg-primary-hover
-                    text-white
-                    font-semibold
-                    transition-all
-                    hover:-translate-y-0.5
-                "
+                className="inline-flex items-center justify-center px-7 py-3.5 rounded-xl bg-primary hover:bg-primary-hover text-white font-semibold transition-all hover:-translate-y-0.5"
                 >
                 Download Sample Degree
                 </button>
@@ -112,31 +99,13 @@ export default function DegreeSection({ openWizard }) {
             {/* certificate */}
 
             <div
-              className="
-                relative
-                z-10
-                bg-white
-                rounded-3xl
-                shadow-2xl
-                border
-                -muted-foreground
-                p-4
-                rotate-2
-                hover:rotate-0
-                transition-all
-                duration-300
-              "
+              className="relative z-10 bg-white rounded-3xl shadow-2xl border -muted-foreground p-4 rotate-2 hover:rotate-0 transition-all duration-300"
             >
 
               <img
                 src="/degree.png"
                 alt="Sample IGNOU Degree"
-                className="
-                  w-full
-                  max-w-[400px]
-                  max-h-[600px]
-                  rounded-xl
-                "
+                className="w-full max-w-[400px] max-h-[600px] rounded-xl"
               />
 
             </div>
@@ -144,19 +113,7 @@ export default function DegreeSection({ openWizard }) {
             {/* floating badge */}
 
             <div
-              className="
-                absolute
-                -left-6
-                top-10
-                bg-white
-                shadow-xl
-                rounded-2xl
-                px-5
-                py-4
-                z-10
-                border
-                -muted-foreground
-              "
+              className="absolute -left-6 top-10 bg-white shadow-xl rounded-2xl px-5 py-4 z-10 border -muted-foreground"
             >
 
               <div className="text-accent-dark text-xs font-bold uppercase tracking-widest mb-1">
@@ -172,19 +129,7 @@ export default function DegreeSection({ openWizard }) {
             {/* floating badge */}
 
             <div
-              className="
-                absolute
-                -right-6
-                bottom-10
-                bg-white
-                shadow-xl
-                rounded-2xl
-                px-5
-                py-4
-                z-20
-                border
-                -muted-foreground
-              "
+              className="absolute -right-6 bottom-10 bg-white shadow-xl rounded-2xl px-5 py-4 z-20 border -muted-foreground"
             >
 
               <div className="text-accent-dark text-xs font-bold uppercase tracking-widest mb-1">

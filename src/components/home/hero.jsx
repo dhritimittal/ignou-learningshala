@@ -21,29 +21,12 @@ export default function HeroSection({ openWizard }) {
         <img
           src="/ignou-campus.jpg"
           alt="IGNOU Campus"
-          className="
-            absolute
-            right-0
-            top-0
-            h-full
-            w-full
-            object-cover
-            object-center
-            opacity-90
-          "
+          className="absolute right-0 top-0 h-full w-full object-cover object-center opacity-90"
         />
 
         {/* Strong fade from left */}
         <div
-          className="
-            absolute
-            inset-0
-            bg-gradient-to-r
-            from-[#F7FAFC]
-            via-[#F7FAFC]/75
-            via-[#F7FAFC]/60
-            to-transparent
-          "
+          className="absolute inset-0 bg-gradient-to-r from-[#F7FAFC] via-[#F7FAFC]/75 via-[#F7FAFC]/60 to-transparent"
         />
         
       </div>

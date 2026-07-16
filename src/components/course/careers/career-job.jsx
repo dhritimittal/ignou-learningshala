@@ -15,18 +15,7 @@ export default function CareerJob({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.3, delay }}
-      className="
-        group
-        relative
-        rounded-xl
-        border
-        border-slate-200
-        p-4
-        transition-colors
-        duration-300
-        hover:border-accent-dark
-        hover:bg-accent-tint
-      "
+      className="group relative rounded-xl border border-slate-200 p-4 transition-colors duration-300 hover:border-accent-dark hover:bg-accent-tint"
     >
       {isTop && (
         <span className="absolute right-3 top-3 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide bg-accent-light text-primary">

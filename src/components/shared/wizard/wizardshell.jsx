@@ -33,9 +33,15 @@ export default function WizardShell({
             onClick={onClose}
         >
             <div 
-                className="w-screen max-w-full h-[85vh] lg:h-[88vh] lg:max-w-4xl overflow-hidden rounded-t-3xl rounded-b-none lg:rounded-3xl bg-card shadow-2xl"
+                className="relative w-screen max-w-full h-[85vh] lg:h-[88vh] lg:max-w-4xl overflow-hidden rounded-t-3xl rounded-b-none lg:rounded-3xl bg-card shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
             >
+                <button
+                    onClick={onClose}
+                    className="absolute hidden lg:flex right-5 top-5 z-50 h-8 w-8 items-center justify-center rounded-full bg-card text-primary border border-border shadow-sm hover:scale-105 transition-transform"
+                >
+                    ✕
+                </button>
                 
 
                 <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] h-full">

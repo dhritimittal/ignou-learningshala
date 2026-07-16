@@ -30,19 +30,16 @@ export default function AdmissionsSection({ openWizard }) {
         {/* Header */}
         <div className="py-8 grid lg:grid-cols-2 gap-12 items-end">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="h-px w-8 bg-primary" />
-              <span className="text-primary text-xs font-semibold uppercase tracking-widest">
-                Admissions 2026
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-black text-black leading-tight mb-5">
+            <span className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
+              Admissions 2026
+            </span>
+            <h2 className="mt-2 text-4xl font-bold tracking-tight text-foreground">
               Don't apply alone.{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-hover to-primary-light">
                 Here's why.
               </span>
             </h2>
-            <p className="text-black/70 text-sm leading-relaxed">
+            <p className="mt-3 max-w-3xl leading-8 text-muted-foreground">
               The IGNOU Samarth portal has no guidance built in. Most students pick the wrong programme,
               upload wrong documents, or miss fee deadlines — on their own. Our counsellors
               sit alongside you at every step so none of that happens to you.

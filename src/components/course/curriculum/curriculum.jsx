@@ -9,19 +9,19 @@ export default function Curriculum({ data, openWizard }) {
     >
       <div className="max-w-7xl mx-auto px-6">
 
-        <div className="flex items-end justify-between mb-5">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-5 mb-5 sm:gap-4">
 
           <div>
 
-            <span className="text-accent uppercase font-semibold text-sm tracking-widest">
+            <span className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
               Curriculum
             </span>
 
-            <h2 className="mt-2 text-4xl font-bold">
+            <h2 className="mt-2 text-4xl font-bold tracking-tight text-foreground">
               What you'll study.
             </h2>
 
-            <p className="mt-3 text-muted-foreground max-w-2xl">
+            <p className="mt-3 max-w-3xl leading-8 text-muted-foreground">
               Industry-relevant curriculum designed by IGNOU
               covering management fundamentals and advanced
               business concepts.

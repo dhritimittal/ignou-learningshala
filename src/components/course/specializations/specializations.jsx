@@ -20,15 +20,15 @@ export default function Specializations({ data, openWizard }) {
 
         <div>
 
-          <span className="text-accent uppercase font-semibold text-sm tracking-widest">
+          <span className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
             {data.specializations.length} Specializations
           </span>
 
-          <h2 className="mt-2 text-4xl font-bold">
+          <h2 className="mt-2 text-4xl font-bold tracking-tight text-foreground">
             Choose Your Specialization
           </h2>
 
-          <p className="mt-3 text-muted-foreground max-w-2xl">
+          <p className="mt-3 max-w-3xl leading-8 text-muted-foreground">
             Explore specializations aligned with your career goals.
           </p>
 

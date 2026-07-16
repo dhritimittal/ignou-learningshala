@@ -66,7 +66,7 @@ export default function Learning({ data }) {
     >
       <div className="mx-auto max-w-7xl px-6">
 
-        <span className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">
+        <span className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
           Learning Experience
         </span>
 
@@ -74,7 +74,7 @@ export default function Learning({ data }) {
           Learn Anywhere. Get Evaluated Fairly.
         </h2>
 
-        <p className="mt-4 max-w-3xl leading-8 text-muted-foreground">
+        <p className="mt-3 max-w-3xl leading-8 text-muted-foreground">
           IGNOU's Online MBA combines flexible digital learning,
           comprehensive study resources and a structured
           assessment process.

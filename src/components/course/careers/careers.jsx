@@ -47,7 +47,7 @@ export default function Careers({ data, openWizard }) {
 
         {/* Header */}
 
-        <span className="text-sm font-semibold uppercase tracking-[0.22em] text-accent-dark">
+        <span className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
           Career Outcomes
         </span>
 
@@ -55,7 +55,7 @@ export default function Careers({ data, openWizard }) {
           Build Your Career After IGNOU Online MBA
         </h2>
 
-        <p className="mt-4 max-w-4xl text-lg leading-8 text-muted-foreground">
+        <p className="mt-3 max-w-3xl leading-8 text-muted-foreground">
           {career.description}
         </p>
 

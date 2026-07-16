@@ -25,7 +25,7 @@ export default function Reviews({ data }) {
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
         >
-          <span className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
+          <span className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
             Reviews
           </span>
 
@@ -33,7 +33,7 @@ export default function Reviews({ data }) {
             Student Reviews & Ratings
           </h2>
 
-          <p className="mt-4 max-w-3xl text-lg leading-8 text-muted-foreground">
+          <p className="mt-3 max-w-3xl leading-8 text-muted-foreground">
             Hear directly from learners who have experienced the IGNOU Online
             MBA programme and shared their honest feedback.
           </p>

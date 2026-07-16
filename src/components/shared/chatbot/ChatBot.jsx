@@ -7,12 +7,12 @@ import CounsellingWizard from "@/components/shared/wizard/counsellingwizard";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-const BOT_NAME = "LearningShala Assistant";
+const BOT_NAME = "IGNOU Assistant";
 
 const GREETING = {
   id: "greeting",
   from: "bot",
-  text: "Hi there! 👋 I'm your **LearningShala assistant**.\n\nAsk me anything about IGNOU programmes, fees, admission, or exams — I'm here to help!",
+  text: "Hi there! 👋 I'm your **IGNOU assistant**.\n\nAsk me anything about IGNOU programmes, fees, admission, or exams — I'm here to help!",
   chips: ["Programmes & Fees", "Admission Process", "FAQs", "Talk to a Counsellor"],
 };
 
@@ -52,7 +52,7 @@ function MessageBubble({ msg, onChip }) {
     <div className={`flex gap-2 ${isBot ? "justify-start" : "justify-end"}`}>
       {isBot && (
         <div className="shrink-0 w-7 h-7 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold mt-0.5">
-          LS
+          IG
         </div>
       )}
       <div className="flex flex-col gap-1.5 max-w-[82%]">
@@ -101,7 +101,7 @@ function TypingIndicator() {
   return (
     <div className="flex gap-2 justify-start">
       <div className="shrink-0 w-7 h-7 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold">
-        LS
+        IG
       </div>
       <div className="bg-secondary rounded-2xl rounded-tl-sm px-4 py-3 flex gap-1 items-center">
         {[0, 1, 2].map((i) => (
@@ -221,7 +221,7 @@ function ChatPanel({ onClose, openWizard }) {
       {/* Header — compact single row, close icon flush right */}
       <div className="bg-primary px-3.5 py-2.5 flex items-center gap-2.5 shrink-0">
         <div className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-white font-bold text-xs shrink-0">
-          LS
+          IG
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-white font-semibold text-sm leading-tight">{BOT_NAME}</p>
@@ -284,7 +284,7 @@ function ChatBubble({ open, onClick, showDot }) {
       {/* Pulse ring */}
       {!open && (
         <motion.span
-          className="absolute inset-0 rounded-full bg-primary"
+          className="absolute inset-0 rounded-full bg-foreground"
           animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
         />

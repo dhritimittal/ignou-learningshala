@@ -1,5 +1,5 @@
 /**
- * Chatbot Knowledge Base — LearningShala × IGNOU
+ * Chatbot Knowledge Base — IGNOU
  *
  * Built from: faqs.js · programmes.js · timeline.js · services.js
  *             stats.js · course/mock.ts (all three programmes)
@@ -42,7 +42,7 @@ export const COUNSELLOR_KEYWORDS = [
 export const BOT_KB = [
 
   // ════════════════════════════════════════════════════════════════════════════
-  // ABOUT IGNOU & LEARNINGSHALA
+  // ABOUT IGNOU
   // ════════════════════════════════════════════════════════════════════════════
 
   {
@@ -70,9 +70,9 @@ export const BOT_KB = [
     chips: ["Programmes & Fees", "Admission Process", "Talk to a Counsellor"],
   },
   {
-    keywords: ["learningshala", "learning shala", "who are you", "this website", "this platform", "your service", "ls", "about you"],
+    keywords: ["who are you", "this website", "this platform", "your service", "about you"],
     answer:
-      "**LearningShala** is your dedicated IGNOU admission partner. We guide you through every step so you never get confused by the complex IGNOU process.\n\nWhat we do — **completely free**:\n\n📌 Match your goals to the right programme & specialisation\n📌 Verify your eligibility before you apply\n📌 Prepare an exact document checklist (right file sizes, formats)\n📌 Stay with you on call during Samarth portal registration\n📌 Set fee payment reminders and guide EMI setup\n📌 Support you through your entire IGNOU journey — not just admission\n\n💡 Most students who apply directly pick the **wrong specialisation**. We prevent that.",
+      "**We** are your dedicated IGNOU admission counsellors. We guide you through every step so you never get confused by the complex IGNOU process.\n\nWhat we do — **completely free**:\n\n📌 Match your goals to the right programme & specialisation\n📌 Verify your eligibility before you apply\n📌 Prepare an exact document checklist (right file sizes, formats)\n📌 Stay with you on call during Samarth portal registration\n📌 Set fee payment reminders and guide EMI setup\n📌 Support you through your entire IGNOU journey — not just admission\n\n💡 Most students who apply directly pick the **wrong specialisation**. We prevent that.",
     chips: ["Admission Process", "Talk to a Counsellor", "Programmes & Fees"],
   },
 
@@ -83,7 +83,7 @@ export const BOT_KB = [
   {
     keywords: ["programmes", "courses", "list", "what can i study", "available", "offer", "all programmes", "show programmes"],
     answer:
-      "LearningShala guides for all major IGNOU programmes:\n\n**🖥️ Online Programmes**\n• MBA — 2 Yrs • ₹14,000/sem\n• MCA — 2 Yrs • ₹12,700/sem\n• M.Com — 2 Yrs • ₹18,000 total\n• MA — 2 Yrs • ₹6,000 total\n• BBA — 3 Yrs • ₹39,000 total\n• BCA — 3 Yrs • ₹6,000/sem\n• B.Com — 3 Yrs • ₹4,000/sem\n• BA — 3 Yrs • ₹6,000/sem\n\n**📚 Distance Programmes**\n• MBA, MCA, M.Com, MA, M.Sc, MSW (PG)\n• BBA, BCA, B.Com, BA, B.Sc, BSW (UG)\n\n**📜 Short Programmes**\n• PG Diploma — 1–3 Yrs • ₹2,400/sem\n• Diploma — 1 Yr • ₹3,000 total\n• Certificate — 6 Months • ₹1,200 total\n\nWhich level are you looking for?",
+      "We offer guidance for all major IGNOU programmes:\n\n**🖥️ Online Programmes**\n• MBA — 2 Yrs • ₹14,000/sem\n• MCA — 2 Yrs • ₹12,700/sem\n• M.Com — 2 Yrs • ₹18,000 total\n• MA — 2 Yrs • ₹6,000 total\n• BBA — 3 Yrs • ₹39,000 total\n• BCA — 3 Yrs • ₹6,000/sem\n• B.Com — 3 Yrs • ₹4,000/sem\n• BA — 3 Yrs • ₹6,000/sem\n\n**📚 Distance Programmes**\n• MBA, MCA, M.Com, MA, M.Sc, MSW (PG)\n• BBA, BCA, B.Com, BA, B.Sc, BSW (UG)\n\n**📜 Short Programmes**\n• PG Diploma — 1–3 Yrs • ₹2,400/sem\n• Diploma — 1 Yr • ₹3,000 total\n• Certificate — 6 Months • ₹1,200 total\n\nWhich level are you looking for?",
     chips: ["MBA details", "MCA details", "BCA details", "BBA details", "Talk to a Counsellor"],
   },
 
@@ -254,7 +254,7 @@ export const BOT_KB = [
   {
     keywords: ["admission", "apply", "apply now", "how to apply", "process", "steps", "procedure", "register", "registration", "how do i join", "enroll", "enrol"],
     answer:
-      "**LearningShala's 7-Step Admission Process:**\n\n**Step 1 — Free Counselling** 🗣️\nWe map your goals, eligibility & budget to the right programme — so you don't waste fees on the wrong choice.\n\n**Step 2 — Eligibility Check** ✅\nWe verify your marksheets against IGNOU's criteria before you apply.\n\n**Step 3 — Document Checklist** 📋\nExact file names, sizes, formats for Aadhaar, marksheets, photo & signature.\n\n**Step 4 — Samarth Portal Registration** 🖥️\nCreate your IGNOU account, link APAAR & ABC ID. We stay on call with you.\n\n**Step 5 — Fee Payment** 💳\nWe explain the exact amount, semester vs. annual structure, and EMI setup.\n\n**Step 6 — Document Upload & Submit** 📤\nWith our checklist done, this takes under 10 minutes. We verify before you submit.\n\n**Step 7 — Confirmation & Onboarding** 🎉\nWe activate your Samarth portal access, explain your study schedule, and help you access eGyankosh.",
+      "**Our 7-Step Admission Process:**\n\n**Step 1 — Free Counselling** 🗣️\nWe map your goals, eligibility & budget to the right programme — so you don't waste fees on the wrong choice.\n\n**Step 2 — Eligibility Check** ✅\nWe verify your marksheets against IGNOU's criteria before you apply.\n\n**Step 3 — Document Checklist** 📋\nExact file names, sizes, formats for Aadhaar, marksheets, photo & signature.\n\n**Step 4 — Samarth Portal Registration** 🖥️\nCreate your IGNOU account, link APAAR & ABC ID. We stay on call with you.\n\n**Step 5 — Fee Payment** 💳\nWe explain the exact amount, semester vs. annual structure, and EMI setup.\n\n**Step 6 — Document Upload & Submit** 📤\nWith our checklist done, this takes under 10 minutes. We verify before you submit.\n\n**Step 7 — Confirmation & Onboarding** 🎉\nWe activate your Samarth portal access, explain your study schedule, and help you access eGyankosh.",
     chips: ["Documents needed", "Samarth portal", "Admission cycle dates", "Talk to a Counsellor"],
   },
   {
@@ -452,7 +452,7 @@ export const BOT_KB = [
   {
     keywords: ["statistics", "stats", "38 lakh", "how many students", "how big", "largest university"],
     answer:
-      "**IGNOU By The Numbers:**\n\n📊 **38 Lakh+** active students enrolled\n🎓 **20+** programmes on offer through LearningShala\n🏛️ **21** Schools of Studies\n📍 **67** Regional Centres across India\n🌍 **25+** countries served\n📚 **340+** MOOC courses available\n🏆 **NAAC A++** — highest accreditation grade\n🥇 **NIRF Rank 1** — among all Open Universities\n\nIGNOU is the **world's largest open university** by enrolment.",
+      "**IGNOU By The Numbers:**\n\n📊 **38 Lakh+** active students enrolled\n🎓 **20+** programmes on offer\n🏛️ **21** Schools of Studies\n📍 **67** Regional Centres across India\n🌍 **25+** countries served\n📚 **340+** MOOC courses available\n🏆 **NAAC A++** — highest accreditation grade\n🥇 **NIRF Rank 1** — among all Open Universities\n\nIGNOU is the **world's largest open university** by enrolment.",
     chips: ["Why choose IGNOU?", "Programmes & Fees", "Talk to a Counsellor"],
   },
 

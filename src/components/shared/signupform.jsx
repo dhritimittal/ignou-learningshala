@@ -22,6 +22,7 @@ export default function SignupForm({
     form,
     update,
     onSubmit,
+    context = "wizard",
   }) {
 
   const cities = useMemo(() => {
@@ -64,17 +65,17 @@ export default function SignupForm({
 
       <div className="lg:hidden">
 
-        <h2 className="text-2xl font-black text-foreground">
+        {context === "wizard" ? <div className="hidden" /> : 
+          <h2 className="text-2xl font-black text-foreground">
+          Find your perfect fit
+          </h2>
+        }
 
-            Save your picks
-
-        </h2>
-
-        <p className="mt-2 text-sm text-muted-foreground">
-
-            Create your free account to continue where you left off.
-
-        </p>
+        {context === "wizard" ? <div className="hidden"/> :
+          <p className="mt-2 text-sm text-muted-foreground">
+            Answer a few quick questions and we'll help you choose the right course.
+          </p>
+        }
 
       </div>
       {/* Name + Email */}

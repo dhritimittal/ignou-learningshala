@@ -27,7 +27,7 @@ export default function FeeCard({
     >
       {/* Top */}
 
-      <div className="flex items-start justify-between">
+      <div className="flex items-start justify-between gap-3">
 
         <div>
 
@@ -35,13 +35,13 @@ export default function FeeCard({
             {title}
           </p>
           
-          <div className="mt-3 flex items-end gap-3">
-            <h3 className="text-4xl font-black tracking-tight text-foreground">
+          <div className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1 sm:gap-x-3">
+            <h3 className="text-3xl sm:text-4xl font-black tracking-tight text-foreground">
                 {amount}
             </h3>
 
             {subtitle && (
-                <p className="mb-1 text-base text-muted-foreground">
+                <p className="text-sm sm:text-base sm:mb-1 text-muted-foreground">
                 {subtitle}
                 </p>
             )}

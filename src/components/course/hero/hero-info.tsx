@@ -45,9 +45,9 @@ export default function HeroInfoCard({ data, openWizard }: HeroInfoProps) {
 
           {/* Body */}
 
-          <div className="p-8">
+          <div className="p-5 sm:p-8">
 
-            <div className="space-y-5 flex grid grid-cols-2">
+            <div className="grid grid-cols-2 gap-y-6 gap-x-2 sm:gap-x-4">
 
               {details.map((item) => {
 
@@ -58,22 +58,21 @@ export default function HeroInfoCard({ data, openWizard }: HeroInfoProps) {
                     key={item.label}
                     className="flex gap-4"
                   >
-                    <div className="flex shrink-0 h-10 w-10 items-center justify-center rounded-full bg-slate-100">
+                    <div className="flex shrink-0 h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-slate-100">
 
                       <Icon
-                        size={20}
-                        className="text-primary"
+                        className="text-primary h-4 w-4 sm:h-5 sm:w-5"
                       />
 
                     </div>
 
-                    <div>
+                    <div className="min-w-0">
 
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xs sm:text-sm text-muted-foreground truncate">
                         {item.label}
                       </p>
 
-                      <p className="mt-1 text-lg font-semibold text-foreground">
+                      <p className="mt-0.5 sm:mt-1 text-sm sm:text-lg font-semibold text-foreground truncate">
                         {item.value}
                       </p>
 

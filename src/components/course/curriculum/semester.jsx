@@ -54,11 +54,11 @@ export default function SemesterItem({ semester }) {
             >
               {/* Left */}
 
-              <div className="flex items-center gap-6 flex-1">
+              <div className="flex items-center gap-3 md:gap-6 flex-1">
 
                 {/* Code */}
 
-                <div className="shrink-0 min-w-[130px]">
+                <div className="shrink-0 min-w-[80px] md:min-w-[130px]">
 
                   <span className="text-[11px] font-semibold text-accent-dark">
                     {subject.code}

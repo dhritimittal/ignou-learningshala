@@ -34,7 +34,7 @@ export default function CareerJob({
           />
         </div>
 
-        <h4 className="truncate text-sm font-semibold text-foreground">
+        <h4 className="text-sm font-semibold leading-tight text-foreground pr-2">
           {job.title}
         </h4>
 

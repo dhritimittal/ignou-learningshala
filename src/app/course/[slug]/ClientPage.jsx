@@ -61,7 +61,7 @@ export default function ClientPage({course}) {
   }, []);
 
   return (
-    <div className="font-sans antialiased overflow-x-hidden w-full">
+    <div className="font-sans antialiased">
       <CourseNavbar scrolled={scrolled} openWizard={openWizard} heroVisible={heroVisible} course={course} />
       <main>
         <Hero data={course} openWizard={openWizard} />

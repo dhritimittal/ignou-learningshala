@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { NAV_LINKS } from "@/data/home/navlinks";
 import { MessageCircle } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Navbar({ scrolled, openWizard}) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -70,29 +71,49 @@ export default function Navbar({ scrolled, openWizard}) {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-white border-t border-slate-200 px-4 py-4 flex flex-col gap-3">
-          {NAV_LINKS.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)} className="text-sm text-foreground font-medium py-1">
-              {l.label}
+      {/* Mobile hamburger dropdown — CTA buttons only */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="md:hidden overflow-hidden bg-white border-t border-slate-200"
+          >
+            <div className="px-4 py-4 flex flex-col gap-3">
+              <button
+                onClick={() => { openWizard(); setMenuOpen(false); }}
+                className="text-sm font-semibold px-4 py-2.5 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+              >
+                Apply Now
+              </button>
+              <button
+                onClick={() => { openWizard(); setMenuOpen(false); }}
+                className="text-sm font-semibold px-4 py-2.5 rounded-lg bg-[#25D366] text-white hover:bg-[#1EBE5D] transition-colors flex items-center gap-2 justify-center"
+              >
+                <MessageCircle size={16} />
+                Reach out on WhatsApp
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Mobile section navigation bar — always visible on mobile */}
+      <div className="md:hidden bg-white border-t border-slate-100">
+        <div className="flex overflow-x-auto scrollbar-hide gap-1 px-3 py-2">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="shrink-0 rounded-full px-3.5 py-1.5 text-xs font-semibold text-muted-foreground hover:text-primary hover:bg-primary-tint transition-colors whitespace-nowrap"
+            >
+              {link.label}
             </a>
           ))}
-          <button
-            onClick={openWizard}
-            className="text-sm font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary transition-colors"
-          >
-            Apply Now
-          </button>
-          <button
-            onClick={openWizard}
-            className="text-sm font-semibold px-4 py-2 rounded-lg bg-[#25D366] text-white hover:bg-[#1EBE5D] transition-colors flex items-center gap-2 justify-center"
-          >
-            <MessageCircle size={16} />
-            Reach out on WhatsApp
-          </button>
         </div>
-      )}
+      </div>
     </header>
   );
 }

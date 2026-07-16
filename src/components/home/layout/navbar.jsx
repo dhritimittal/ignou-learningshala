@@ -1,12 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { NAV_LINKS } from "@/data/home/navlinks";
 import { MessageCircle } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
 
 export default function Navbar({ scrolled, openWizard}) {
-  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header
@@ -56,49 +53,17 @@ export default function Navbar({ scrolled, openWizard}) {
             </button>
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            className={`md:hidden p-2 rounded ${scrolled ? "text-foreground" : "text-white"}`}
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="black" viewBox="0 0 24 24">
-              {menuOpen
-                ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
-            </svg>
-          </button>
+          {/* Mobile Apply button */}
+          <div className="md:hidden">
+            <button
+              onClick={openWizard}
+              className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary transition-colors"
+            >
+              Apply Now
+            </button>
+          </div>
         </div>
       </div>
-
-      {/* Mobile hamburger dropdown — CTA buttons only */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="md:hidden overflow-hidden bg-white border-t border-slate-200"
-          >
-            <div className="px-4 py-4 flex flex-col gap-3">
-              <button
-                onClick={() => { openWizard(); setMenuOpen(false); }}
-                className="text-sm font-semibold px-4 py-2.5 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
-              >
-                Apply Now
-              </button>
-              <button
-                onClick={() => { openWizard(); setMenuOpen(false); }}
-                className="text-sm font-semibold px-4 py-2.5 rounded-lg bg-[#25D366] text-white hover:bg-[#1EBE5D] transition-colors flex items-center gap-2 justify-center"
-              >
-                <MessageCircle size={16} />
-                Reach out on WhatsApp
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Mobile section navigation bar — always visible on mobile */}
       <div className="md:hidden bg-white border-t border-slate-100">

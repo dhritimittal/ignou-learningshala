@@ -484,7 +484,9 @@ export function isCounsellorIntent(input) {
  */
 function scoreEntry(entry, lower) {
   return entry.keywords.reduce((score, kw) => {
-    if (lower.includes(kw.toLowerCase())) return score + kw.length;
+    const escapedKw = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`(^|[\\s\\W_])${escapedKw}([\\s\\W_]|$)`, "i");
+    if (regex.test(lower)) return score + kw.length;
     return score;
   }, 0);
 }

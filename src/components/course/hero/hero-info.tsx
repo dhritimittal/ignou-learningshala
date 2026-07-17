@@ -1,4 +1,4 @@
-import { Course } from "@/types/course";
+import { Course } from "@/lib/types/course";
 import {
   Clock3,
   Laptop,

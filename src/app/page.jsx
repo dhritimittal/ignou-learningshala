@@ -1,90 +1,18 @@
-"use client";
+import IGNOUHomePage from "./university/ClientPage";
 
-import { useState, useEffect, useRef } from "react";
+import { getUniversity } from "@/lib/api/university";
+import { mapHero } from "@/lib/mappers/universityMapper";
 
-// ─── Data ────────────────────────────────────────────────────────────────────
+export default async function HomePage() {
+  // Fetch CMS data
+  const api = await getUniversity("ignou");
 
-
-import Navbar from "@/components/home/layout/navbar";
-import HeroSection from "@/components/home/hero";
-import AboutSection from "@/components/home/about";
-import DegreeSection from "@/components/home/degree";
-import ProgrammesSection from "@/components/home/programme";
-import StrengthsSection from "@/components/home/strength";
-import AdmissionsSection from "@/components/home/admission";
-import ServicesSection from "@/components/home/services";
-import FAQSection from "@/components/home/faqs";
-import CTASection from "@/components/home/layout/cta";
-import CounsellingWizard from "@/components/shared/wizard/counsellingwizard";
-import TestimonialsSection from "@/components/home/testimonials";
-// ─── Page Component ──────────────────────────────────────────────────────────
-
-export default function IGNOUHomePage() {
-  const [scrolled, setScrolled] = useState(false);
-  const [wizardOpen, setWizardOpen] = useState(false);
-  const [wizardProgramme, setWizardProgramme] = useState("");
-  const [wizardStartStep, setWizardStartStep] = useState(0);
-  const [wizardMode, setWizardMode] = useState("questionnaire");
-  const [selectedService, setSelectedService] = useState("");
-
-  const openWizard = () => {
-    setWizardMode("questionnaire");
-    setWizardProgramme("");
-    setWizardStartStep(0);
-    setSelectedService("");
-    setWizardOpen(true);
-  };
-
-  const openProgrammeWizard = (programme) => {
-    setWizardMode("questionnaire");
-    setWizardProgramme(programme);
-    setWizardStartStep(1);
-    setSelectedService("");
-    setWizardOpen(true);
-  };
-
-  const openServiceWizard = (service) => {
-    setWizardMode("service");
-    setSelectedService(service);
-    setWizardOpen(true);
-  };
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // Map sections
+  const hero = mapHero(api);
 
   return (
-    <div className="font-sans antialiased">
-      <Navbar scrolled={scrolled} openWizard={openWizard} />
-      <main>
-        <HeroSection openWizard={openWizard} />
-        <AboutSection openWizard={openWizard} />
-        <DegreeSection openWizard={openWizard} />
-        <ProgrammesSection openWizard={openWizard} openProgrammeWizard={openProgrammeWizard} />
-        <AdmissionsSection openWizard={openWizard} />
-        <StrengthsSection />
-        <ServicesSection openServiceWizard={openServiceWizard} />
-        <TestimonialsSection />
-        <FAQSection />
-        <CTASection openWizard={openWizard}/>
-      </main>
-      {wizardOpen && (
-        <CounsellingWizard
-          onClose={() => {
-            setWizardOpen(false);
-            setWizardMode("questionnaire");
-            setWizardProgramme("");
-            setWizardStartStep(0);
-            setSelectedService(null);
-          }}
-          initialProgramme={wizardProgramme}
-          initialStep={wizardStartStep}
-          mode={wizardMode}
-          service={selectedService}
-        />
-      )}
-    </div>
+    <IGNOUHomePage
+      hero={hero}
+    />
   );
 }

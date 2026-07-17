@@ -10,18 +10,22 @@ export default function AdmissionsSection({ openWizard }) {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const observers = stepRefs.current.map((el, i) => {
-      if (!el) return null;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveStep(i);
-        },
-        { threshold: 0.5, rootMargin: "0px 0px -30% 0px" }
-      );
-      obs.observe(el);
-      return obs;
-    });
-    return () => observers.forEach((obs) => obs?.disconnect());
+    const handleScroll = () => {
+      let newActive = 0;
+      stepRefs.current.forEach((el, i) => {
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.5) {
+            newActive = i;
+          }
+        }
+      });
+      setActiveStep(newActive);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -116,19 +120,26 @@ export default function AdmissionsSection({ openWizard }) {
             {TIMELINE_STEPS.map((step, i) => {
               const isLS = step.who === "ls";
               const isActive = activeStep === i;
+              const isPast = i < activeStep;
               return (
                 <div
                   key={i}
                   ref={(el) => (stepRefs.current[i] = el)}
-                  className="min-h-0 lg:min-h-[60vh] flex items-center py-6 lg:py-16"
+                  className="sticky w-full transition-all duration-700 ease-out mb-[8vh] lg:mb-[12vh]"
+                  style={{ 
+                    top: `calc(20vh + ${i * 16}px)`, 
+                    zIndex: i,
+                    transform: isPast 
+                      ? `scale(${1 - (activeStep - i) * 0.03}) translateY(-${(activeStep - i) * 12}px)` 
+                      : isActive 
+                        ? 'scale(1) translateY(0)'
+                        : 'scale(0.95) translateY(20px)',
+                    opacity: isPast ? 0.3 : isActive ? 1 : 0.4
+                  }}
                 >
                   <div className={`w-full rounded-2xl p-6 sm:p-8 border transition-all duration-500 ${
                     isActive
-                      ? isLS
-                        ? "bg-white/80 border-accent/40 shadow-xl shadow-accent/20"
-                        : "bg-white/80 border-accent/40 shadow-xl shadow-accent/20"
-                      : isLS
-                      ? "bg-accent-tint border-accent/20"
+                      ? "bg-white/90 border-accent/40 shadow-xl shadow-accent/20"
                       : "bg-accent-tint border-accent/20"
                   }`}>
 

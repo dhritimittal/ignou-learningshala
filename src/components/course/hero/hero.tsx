@@ -1,4 +1,4 @@
-import { Course } from "@/types/course";
+import { Course } from "@/lib/types/course";
 import HeroActions from "./hero-actions";
 import HeroInfoCard from "./hero-info";
 import {

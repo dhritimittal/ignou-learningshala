@@ -1,25 +1,31 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ANNOUNCEMENTS } from "@/data/home/announcements";
 import { STATS } from "@/data/home/stats";
 
-export default function HeroSection({ openWizard }) {
+
+export default function HeroSection({ hero, openWizard }) {
   const [announcementIdx, setAnnouncementIdx] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => {
-      setAnnouncementIdx((i) => (i + 1) % ANNOUNCEMENTS.length);
+    if (!hero?.latestUpdates?.length) return;
+
+    const interval = setInterval(() => {
+      setAnnouncementIdx((prev) => (prev + 1) % hero.latestUpdates.length);
     }, 4000);
-    return () => clearInterval(t);
-  }, []);
+
+    return () => clearInterval(interval);
+  }, [hero?.latestUpdates]);
+
+  const currentAnnouncement =
+    hero?.latestUpdates?.[announcementIdx];
 
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden bg-gradient-to-b from-[#FCFDFE] via-[#F7FAFC] to-[#EEF5F9]">
       {/* Hero Image */}
       <div className="absolute inset-0 pointer-events-none">
         <img
-          src="/ignou-campus.jpg"
+          src={hero.bannerImage}
           alt="IGNOU Campus"
           className="absolute right-0 top-0 h-full w-full object-cover object-center opacity-90"
         />
@@ -37,9 +43,32 @@ export default function HeroSection({ openWizard }) {
           <span className="flex-shrink-0 text-[10px] font-bold uppercase tracking-widest bg-accent text-accent-foreground px-2 py-0.5 rounded-full">
             Latest
           </span>
-          <p key={announcementIdx} className="text-xs text-muted-foreground truncate transition-all">
-            {ANNOUNCEMENTS[announcementIdx]}
-          </p>
+
+          {hero.latestUpdates.length > 0 ? (
+            <div
+              key={announcementIdx}
+              className="flex items-center w-full text-xs text-muted-foreground transition-all"
+            >
+              <span className="flex-1 truncate">
+                {hero.latestUpdates[announcementIdx].text}
+              </span>
+
+              {hero.latestUpdates[announcementIdx].link && (
+                <a
+                  href={hero.latestUpdates[announcementIdx].link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-4 flex-shrink-0 font-semibold text-primary hover:underline"
+                >
+                  {hero.latestUpdates[announcementIdx].cta ?? "Know More →"}
+                </a>
+              )}
+            </div>
+          ) : (
+            <p className="text-xs text-muted-foreground">
+              No latest updates available.
+            </p>
+          )}
         </div>
       </div>
 

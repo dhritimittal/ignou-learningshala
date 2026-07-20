@@ -2,7 +2,7 @@
 
 import AccentDivider from "../ui/accentdivider";
 
-export default function DegreeSection({ openWizard }) {
+export default function DegreeSection({ data, openWizard }) {
   return (
     <section id="degree" className="py-10 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,14 +13,14 @@ export default function DegreeSection({ openWizard }) {
           <div>
             <AccentDivider />
             <h2 className="text-4xl lg:text-4xl font-black text-foreground leading-tight mb-6">
-              An IGNOU degree that's
+              An {data.university.name} degree that's
               <span className="block bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
                 recognised everywhere.
               </span>
             </h2>
 
             <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-              Every online degree awarded by IGNOU is issued by the university
+              Every online degree is issued by the university
               itself and is recognised by UGC-DEB. The degree carries the same
               academic value and can be used for higher education, competitive
               examinations and most public & private sector opportunities.
@@ -28,12 +28,7 @@ export default function DegreeSection({ openWizard }) {
 
             <div className="grid sm:grid-cols-2 gap-4 mb-6">
 
-              {[
-                "UGC-DEB Approved",
-                "NAAC A++ Accredited",
-                "Valid for Higher Studies",
-                "Accepted by Employers",
-              ].map((item) => (
+              {data.degree.bullets.map((item) => (
                 <div
                   key={item}
                   className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3"
@@ -103,7 +98,7 @@ export default function DegreeSection({ openWizard }) {
             >
 
               <img
-                src="/degree.png"
+                src={data.degree.certificateImage}
                 alt="Sample IGNOU Degree"
                 className="w-full max-w-[400px] max-h-[600px] rounded-xl"
               />

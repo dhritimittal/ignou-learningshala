@@ -4,28 +4,28 @@ import { useState, useEffect } from "react";
 import { STATS } from "@/data/home/stats";
 
 
-export default function HeroSection({ hero, openWizard }) {
+export default function HeroSection({ data, openWizard }) {
   const [announcementIdx, setAnnouncementIdx] = useState(0);
 
   useEffect(() => {
-    if (!hero?.latestUpdates?.length) return;
+    if (!data.hero?.latestUpdates?.length) return;
 
     const interval = setInterval(() => {
-      setAnnouncementIdx((prev) => (prev + 1) % hero.latestUpdates.length);
+      setAnnouncementIdx((prev) => (prev + 1) % data.hero.latestUpdates.length);
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [hero?.latestUpdates]);
+  }, [data.hero?.latestUpdates]);
 
   const currentAnnouncement =
-    hero?.latestUpdates?.[announcementIdx];
+    data.hero?.latestUpdates?.[announcementIdx];
 
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden bg-gradient-to-b from-[#FCFDFE] via-[#F7FAFC] to-[#EEF5F9]">
       {/* Hero Image */}
       <div className="absolute inset-0 pointer-events-none">
         <img
-          src={hero.bannerImage}
+          src={data.hero.bannerImage}
           alt="IGNOU Campus"
           className="absolute right-0 top-0 h-full w-full object-cover object-center opacity-90"
         />
@@ -44,23 +44,23 @@ export default function HeroSection({ hero, openWizard }) {
             Latest
           </span>
 
-          {hero.latestUpdates.length > 0 ? (
+          {data.hero.latestUpdates.length > 0 ? (
             <div
               key={announcementIdx}
               className="flex items-center w-full text-xs text-muted-foreground transition-all"
             >
               <span className="flex-1 truncate">
-                {hero.latestUpdates[announcementIdx].text}
+                {data.hero.latestUpdates[announcementIdx].text}
               </span>
 
-              {hero.latestUpdates[announcementIdx].link && (
+              {data.hero.latestUpdates[announcementIdx].link && (
                 <a
-                  href={hero.latestUpdates[announcementIdx].link}
+                  href={data.hero.latestUpdates[announcementIdx].link}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ml-4 flex-shrink-0 font-semibold text-primary hover:underline"
                 >
-                  {hero.latestUpdates[announcementIdx].cta ?? "Know More →"}
+                  {data.hero.latestUpdates[announcementIdx].cta ?? "Know More →"}
                 </a>
               )}
             </div>
@@ -75,13 +75,7 @@ export default function HeroSection({ hero, openWizard }) {
       {/* Main hero content */}
       <div className="relative z-20 flex-1 flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="h-px w-8 bg-primary" />
-              <span className="text-primary text-xs font-semibold uppercase tracking-[0.2em]">
-                Established 1985 · Act of Parliament
-              </span>
-            </div>
+          <div className="max-w-4xl">
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-foreground leading-[1.05] tracking-tight mb-6">
               Education{" "}
@@ -92,9 +86,8 @@ export default function HeroSection({ hero, openWizard }) {
               Learning beyond borders.
             </h1>
 
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mb-10">
-              IGNOU's Centre for Online Education brings UGC-approved, NAAC A++ certified degrees to
-              38 lakh+ learners across 25 countries — at a price that's never a barrier.
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-4xl mb-10">
+              {data.hero.description}
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
@@ -114,24 +107,19 @@ export default function HeroSection({ hero, openWizard }) {
 
             {/* Inline trust badges */}
             <div className="flex flex-wrap gap-3">
-              {[
-                { label: "NAAC A++", logo: "/accreditations/naac.png" },
-                { label: "UGC-DEB Approved", logo: "/accreditations/ugc-deb.png" },
-                { label: "NIRF #1 Open Univ.", logo: "/accreditations/nirf.png" },
-                { label: "AICTE Recognised", logo: "/accreditations/aicte.png" },
-              ].map((b) => (
+              {data.university.approvals.map((b) => (
                 <span
-                  key={b.label}
+                  key={b.title}
                   className="flex items-center gap-2 text-sm font-semibold bg-card border-border text-foreground shadow-sm border border-primary rounded-full px-4 py-2"
                 >
                   <img
                     src={b.logo}
-                    alt={b.label}
+                    alt={b.title}
                     width={28}
                     height={28}
                     className="w-7 h-7 object-contain"
                   />
-                  {b.label}
+                  {b.title}
                 </span>
               ))}
             </div>

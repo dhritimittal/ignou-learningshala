@@ -1,27 +1,32 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { PROGRAMMES } from "@/data/home/programmes";
-import { FILTERS } from "@/data/home/filters";
 import AccentDivider from "@/components/ui/accentdivider";
 import Badge from "@/components/ui/badge";
 import Link from "next/link";
 
-export default function ProgrammesSection({ openWizard, openProgrammeWizard }) {
+export default function ProgrammesSection({ openWizard, data }) {
   const [filter, setFilter] = useState("All");
   const [expandCourses, setExpandCourses] = useState(false);
   const sectionRef = useRef(null);
 
-  const filtered = PROGRAMMES.filter((p) => {
+  const filters = [
+  "All",
+  ...new Set([
+    ...data.programmes.map((p) => p.mode),
+    ...data.programmes.map((p) => p.level),
+  ]),
+];
+  const filtered = data.programmes.filter((p) => {
     if (filter === "All") return true;
-    if (filter === "Online") return p.code.endsWith("OL") || p.slug.startsWith("online-");
-    if (filter === "Distance") return !p.code.endsWith("OL") && !p.slug.startsWith("online-");
+    if (filter === "Online") return p.mode === "Online";
+    if (filter === "Distance") return p.mode === "Distance";
     return p.level === filter;
   });
 
-  const isOnline = (p) => p.slug.startsWith("online-");
-  const displayedCourses = expandCourses ? filtered : filtered.slice(0, 8);
-  const hasMore = filtered.length > 8;
+  const isOnline = (p) => p.mode === "Online";
+  const displayedCourses = expandCourses ? filtered : filtered.slice(0, 9);
+  const hasMore = filtered.length > 9;
 
   const hasInteracted = useRef(false);
 
@@ -45,7 +50,7 @@ export default function ProgrammesSection({ openWizard, openProgrammeWizard }) {
 
         {/* Filter chips */}
         <div className="flex flex-wrap gap-2 justify-center mb-8">
-          {FILTERS.map((f) => (
+          {filters.map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
@@ -64,7 +69,7 @@ export default function ProgrammesSection({ openWizard, openProgrammeWizard }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {displayedCourses.map((prog) => (
             <div
-              key={prog.code}
+              key={prog.slug}
               className="group bg-white rounded-2xl border border-slate-200 p-5 hover:border-primary/40 hover:shadow-md transition-all duration-200 flex flex-col"
             >
               <div className="flex items-start justify-between mb-3">
@@ -72,8 +77,8 @@ export default function ProgrammesSection({ openWizard, openProgrammeWizard }) {
                   <Badge variant={prog.level === "PG" ? "blue" : prog.level === "UG" ? "green" : "amber"}>
                     {prog.level}
                   </Badge>
-                  <Badge variant={isOnline(prog) ? "navy" : "amber"}>
-                    {isOnline(prog) ? "Online" : "Distance"}
+                  <Badge variant={prog.mode === "Online" ? "navy" : "amber"}>
+                    {prog.mode}
                   </Badge>
                 </div>
               </div>

@@ -4,39 +4,32 @@ import { useState, useEffect } from "react";
 import AccentDivider from "@/components/ui/accentdivider";
 import Badge from "@/components/ui/badge";
 
-export default function AboutSection({ openWizard }) {
+export default function AboutSection({ data, openWizard }) {
   return (
     <section id="about" className="py-6 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
+        <div className="grid lg:grid-cols-4 gap-16 items-center">
+          <div className="col-span-3">
             <AccentDivider />
             <h2 className="text-3xl sm:text-4xl font-black text-foreground leading-tight mb-5">
-                India's{" "}
-                <span className="bg-gradient-to-r from-accent-dark to-accent bg-clip-text text-transparent">
-                    largest
-                </span>{" "}
-                open university — now fully online.
+              About {data.university.name}
             </h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              The Indira Gandhi National Open University (IGNOU), established by Parliament in 1985, has continuously
-              built an inclusive knowledge society by eliminating barriers of geography, age, and economics.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              Its Centre for Online Education (COE), launched in 2019, extends this mission to a fully digital format —
-              the same UGC-DEB accredited degrees, the same NAAC A++ quality, accessible from anywhere in the world
-              through the Samarth portal.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-8">
-              With 21 Schools of Studies, 20+ programmes, and partnerships with international institutions across
-              25 countries, IGNOU has ranked #1 in NIRF 2025 for open universities.
-            </p>
+            <div className="space-y-4 mb-8">
+                {data.about.paragraphs.map((paragraph, index) => (
+                    <p
+                        key={index}
+                        className="text-muted-foreground leading-relaxed"
+                    >
+                        {paragraph}
+                    </p>
+                ))}
+            </div>
             <div className="flex gap-4">
               <button
                 onClick={openWizard}
                 className="text-sm font-semibold text-primary hover:text-primary-hover flex items-center gap-1.5 transition-colors"
               >
-                Read more about IGNOU
+                {data.about.buttonText}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
@@ -45,7 +38,7 @@ export default function AboutSection({ openWizard }) {
           </div>
 
           {/* Credential cards */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="col-span-4 lg:col-span-1 grid grid-cols-2 lg:grid-cols-1 gap-4">
             {[
               { label: "NAAC Rating", value: "A++", sub: "Highest academic quality grade", color: "bg-accent border-accent/40" },
               { label: "NIRF Rank", value: "#1", sub: "Open Universities 2025", color: "bg-accent border-accent/40" },

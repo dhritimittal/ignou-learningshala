@@ -25,8 +25,8 @@ export default function ProgrammesSection({ openWizard, data }) {
   });
 
   const isOnline = (p) => p.mode === "Online";
-  const displayedCourses = expandCourses ? filtered : filtered.slice(0, 9);
-  const hasMore = filtered.length > 9;
+  const displayedCourses = expandCourses ? filtered : filtered.slice(0, 8);
+  const hasMore = filtered.length > 8;
 
   const hasInteracted = useRef(false);
 

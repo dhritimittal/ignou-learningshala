@@ -4,6 +4,13 @@ import type { UniversityData } from "@/lib/types/university";
 export function parseUniversity(api: any): UniversityData {
   const data = api.data.data;
 
+  const approvals=
+      data.approvals?.map((approval: any) => ({
+        id: approval.id,
+        title: approval.title,
+        logo: getMediaUrl(approval.logo),
+      })) ?? []
+
   return {
     id: data.id,
 
@@ -37,12 +44,15 @@ export function parseUniversity(api: any): UniversityData {
     authorSlug: data.author_slug,
 
     // Approvals
-    approvals:
-      data.approvals?.map((approval: any) => ({
-        id: approval.id,
-        title: approval.title,
-        logo: getMediaUrl(approval.logo),
-      })) ?? [],
+    approvals,
+
+    ugc: approvals.find((a: any) => a.title === "UGC-DEB"),
+
+    aicte: approvals.find((a: any) => a.title === "AICTE"),
+
+    nirf: approvals.find((a: any) => a.title === "NIRF"),
+
+    naac: approvals.find((a: any) => a.title === "NAAC A++"),
 
     // Stats (not currently provided by the API)
     rating: 0,

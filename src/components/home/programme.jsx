@@ -41,9 +41,9 @@ export default function ProgrammesSection({ openWizard, data }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <AccentDivider />
-          <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-3">Courses at IGNOU</h2>
+          <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-3">Courses at {data.university.name}</h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-sm">
-            23 UGC-DEB approved programmes across online and distance modes — from UG to PG, designed for
+            UGC-DEB approved programmes across online and distance modes — from UG to PG, designed for
             working professionals and fresh graduates alike.
           </p>
         </div>

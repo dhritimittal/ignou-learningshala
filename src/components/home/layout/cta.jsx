@@ -8,7 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-export default function CTASection({ openWizard }) {
+export default function CTASection({ openWizard, data }) {
 
   return (
     <section
@@ -109,15 +109,15 @@ export default function CTASection({ openWizard }) {
 
                     <div className="flex items-center gap-3">
                       <img
-                        src="/logo.png"
-                        alt=""
+                        src={data.university.logo}
+                        alt={data.university.name}
                         className="h-10"
                       />
                     </div>
 
                     <div className="flex items-center gap-3">
                       <img
-                        src="/accreditations/nirf.png"
+                        src={data.university.nirf.logo}
                         alt=""
                         className="h-10"
                       />
@@ -133,7 +133,7 @@ export default function CTASection({ openWizard }) {
 
                     <div className="flex items-center gap-3">
                       <img
-                        src="/accreditations/naac.png"
+                        src={data.university.naac.logo}
                         alt=""
                         className="h-10"
                       />
@@ -217,7 +217,7 @@ export default function CTASection({ openWizard }) {
                 <div>
 
                   <h3 className="font-bold text-foreground mb-5">
-                    IGNOU At A Glance
+                    {data.university.name} At A Glance
                   </h3>
 
                   <div className="space-y-4">
@@ -262,22 +262,22 @@ export default function CTASection({ openWizard }) {
                   
                   <div className="flex items-center gap-3">
                     <img
-                      src="/logo.png"
-                      alt="IGNOU"
+                      src={data.university.logo}
+                      alt={data.university.name}
                       className="h-10"
                     />
                   </div>
 
                   <div className="flex items-center gap-3">
                     <img
-                      src="/accreditations/nirf.png"
+                      src={data.university.nirf.logo}
                       className="h-10"
                       alt=""
                     />
                   </div>
                   <div className="flex items-center gap-3">
                     <img
-                      src="/accreditations/naac.png"
+                      src={data.university.naac.logo}
                       className="h-10"
                       alt=""
                     />

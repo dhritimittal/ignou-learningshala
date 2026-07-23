@@ -2,9 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 
-// ─── Data ────────────────────────────────────────────────────────────────────
-
-
 import Navbar from "@/components/home/layout/navbar";
 import HeroSection from "@/components/home/hero";
 import AboutSection from "@/components/home/about";
@@ -21,16 +18,8 @@ import TestimonialsSection from "@/components/home/testimonials";
 export default function IGNOUHomePage({data}) {
   const [scrolled, setScrolled] = useState(false);
   const [wizardOpen, setWizardOpen] = useState(false);
-  const [wizardProgramme, setWizardProgramme] = useState("");
-  const [wizardStartStep, setWizardStartStep] = useState(0);
-  const [wizardMode, setWizardMode] = useState("questionnaire");
-  const [selectedService, setSelectedService] = useState("");
 
   const openWizard = () => {
-    setWizardMode("questionnaire");
-    setWizardProgramme("");
-    setWizardStartStep(0);
-    setSelectedService("");
     setWizardOpen(true);
   };
 
@@ -43,17 +32,17 @@ export default function IGNOUHomePage({data}) {
 
   return (
     <div className="font-sans antialiased">
-      <Navbar scrolled={scrolled} openWizard={openWizard} />
+      <Navbar scrolled={scrolled} openWizard={openWizard} data={data} />
       <main>
         <HeroSection openWizard={openWizard} data={data}/>
         <AboutSection openWizard={openWizard} data={data} />
         <DegreeSection openWizard={openWizard} data={data} />
         <ProgrammesSection openWizard={openWizard} data={data} />
-        <AdmissionsSection openWizard={openWizard} />
-        <StrengthsSection />
+        <AdmissionsSection openWizard={openWizard} data={data} />
+        <StrengthsSection data={data} />
         <TestimonialsSection data={data} />
         <FAQSection data={data} />
-        <CTASection openWizard={openWizard}/>
+        <CTASection openWizard={openWizard} data={data}/>
       </main>
       {wizardOpen && (
         <CounsellingWizard

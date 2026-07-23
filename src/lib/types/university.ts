@@ -29,6 +29,10 @@ export interface UniversityData {
   authorSlug: string;
 
   approvals: Approval[];
+  nirf?: Approval;
+  aicte?: Approval;
+  ugc?: Approval;
+  naac?: Approval;
 
   rating: number;
   totalStudents: number;

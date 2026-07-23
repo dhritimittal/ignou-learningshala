@@ -99,7 +99,7 @@ export default function DegreeSection({ data, openWizard }) {
 
               <img
                 src={data.degree.certificateImage}
-                alt="Sample IGNOU Degree"
+                alt="Sample Degree"
                 className="w-full max-w-[400px] max-h-[600px] rounded-xl"
               />
 
@@ -116,7 +116,7 @@ export default function DegreeSection({ data, openWizard }) {
               </div>
 
               <div className="text-3xl font-black text-primary">
-                NAAC A++
+                {data.university.naac.title}
               </div>
 
             </div>
@@ -132,7 +132,7 @@ export default function DegreeSection({ data, openWizard }) {
               </div>
 
               <div className="text-lg font-bold text-foreground">
-                UGC-DEB Approved
+                {data.university.ugc.title} Approved
               </div>
 
             </div>

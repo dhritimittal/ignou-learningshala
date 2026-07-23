@@ -3,7 +3,7 @@
 import { NAV_LINKS } from "@/data/home/navlinks";
 import { MessageCircle } from "lucide-react";
 
-export default function Navbar({ scrolled, openWizard}) {
+export default function Navbar({ scrolled, openWizard, data}) {
 
   return (
     <header
@@ -16,8 +16,8 @@ export default function Navbar({ scrolled, openWizard}) {
           {/* Logo */}
           <div className="flex items-center gap-3">
             <img
-              src="/logo.png"
-              alt="IGNOU"
+              src={data.university.logo}
+              alt={data.university.name}
               className="h-10 w-auto object-contain"
             />
           </div>

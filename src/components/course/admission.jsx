@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { TIMELINE_STEPS } from "@/data/home/timeline";
+import { getTimelineSteps } from "@/data/home/timeline";
 
-export default function AdmissionsSection({ openWizard }) {
+export default function AdmissionsSection({ openWizard, data }) {
   const [activeStep, setActiveStep] = useState(0);
   const stepRefs = useRef([]);
   const sectionRef = useRef(null);
+  const TIMELINE_STEPS = getTimelineSteps(data.university.name);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,7 +45,7 @@ export default function AdmissionsSection({ openWizard }) {
               </span>
             </h2>
             <p className="mt-3 max-w-3xl leading-8 text-muted-foreground">
-              The IGNOU Samarth portal has no guidance built in. Most students pick the wrong programme,
+              Most students pick the wrong programme,
               upload wrong documents, or miss fee deadlines — on their own. Our counsellors
               sit alongside you at every step so none of that happens to you.
             </p>
@@ -82,7 +83,6 @@ export default function AdmissionsSection({ openWizard }) {
             <div className="relative flex flex-col gap-1">
               <div className="absolute left-8 top-5 bottom-5 w-px bg-primary/40" />
               {TIMELINE_STEPS.map((step, i) => {
-                const isLS = step.who === "ls";
                 const isActive = activeStep === i;
                 const isPast = i < activeStep;
                 return (
@@ -93,9 +93,7 @@ export default function AdmissionsSection({ openWizard }) {
                   >
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-black border transition-all duration-300 z-10 ${
                       isActive
-                        ? isLS
-                          ? "bg-primary border-primary-light text-white scale-110 shadow-lg shadow-primary/40"
-                          : "bg-primary border-primary-light text-white scale-110"
+                        ? "bg-primary border-primary-light text-white scale-110 shadow-lg shadow-primary/40"
                         : isPast
                         ? "bg-white border-primary-light text-primary"
                         : "bg-white border-primary-light text-primary"
@@ -116,7 +114,6 @@ export default function AdmissionsSection({ openWizard }) {
           {/* RIGHT — scrollable step cards */}
           <div className="flex-1 flex flex-col">
             {TIMELINE_STEPS.map((step, i) => {
-              const isLS = step.who === "ls";
               const isActive = activeStep === i;
               const isPast = i < activeStep;
               return (
@@ -146,9 +143,7 @@ export default function AdmissionsSection({ openWizard }) {
                       <div className="flex items-center gap-3 flex-wrap">
                         {/* Number badge */}
                         <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-black border-2 transition-all duration-500 ${
-                          isLS
-                            ? "bg-primary text-white border-primary-light"
-                            : "bg-primary text-white border-primary-light"
+                          "bg-primary text-white border-primary-light"
                         }`}>
                           {String(i + 1).padStart(2, "0")}
                         </div>
@@ -181,9 +176,7 @@ export default function AdmissionsSection({ openWizard }) {
                     {/* Highlight callout */}
                     <div className={`flex items-start gap-2 rounded-xl px-4 py-3 transition-all duration-500 ${
                       isActive
-                        ? isLS
-                          ? "bg-primary/[0.15] border border-primary/[0.25]"
-                          : "bg-primary/[0.15] border border-primary/[0.25]"
+                        ? "bg-primary/[0.15] border border-primary/[0.25]"
                         : "bg-transparent border border-transparent"
                     }`}>
                       <span className={`mt-0.5 flex-shrink-0 font-bold transition-colors duration-500 ${isActive ? "text-primary-hover" : "text-transparent"}`}></span>

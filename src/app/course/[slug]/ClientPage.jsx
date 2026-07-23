@@ -17,13 +17,9 @@ import Reviews from "@/components/course/reviews/reviews";
 import { useState, useEffect } from "react";
 import Hero from "@/components/course/hero/hero";
 
-export default function ClientPage({course}) {
+export default function ClientPage({course, data}) {
   const [scrolled, setScrolled] = useState(false);
   const [wizardOpen, setWizardOpen] = useState(false);
-  const [wizardProgramme, setWizardProgramme] = useState("");
-  const [wizardStartStep, setWizardStartStep] = useState(0);
-  const [wizardMode, setWizardMode] = useState("questionnaire");
-  const [selectedService, setSelectedService] = useState("");
   const [heroVisible, setHeroVisible] = useState(true);
 
   useEffect(() => {
@@ -47,10 +43,6 @@ export default function ClientPage({course}) {
   }, []);
 
   const openWizard = () => {
-    setWizardMode("questionnaire");
-    setWizardProgramme("");
-    setWizardStartStep(0);
-    setSelectedService("");
     setWizardOpen(true);
   };
 
@@ -69,29 +61,21 @@ export default function ClientPage({course}) {
         <Snapshot data={course} />
         <Fees data={course} openWizard={openWizard} />
         <Specializations data={course} openWizard={openWizard} />
-        <AdmissionsSection openWizard={openWizard} />
+        <AdmissionsSection openWizard={openWizard} data={data} />
         <Curriculum data={course} openWizard={openWizard} />
         <Learning data={course} />
-        <DegreeSection openWizard={openWizard} />
+        <DegreeSection openWizard={openWizard} data={data} />
         <Careers data={course} openWizard={openWizard} />
         <Faculty data={course} />
         <Reviews data={course} />
-        <FAQSection />
-        <CTASection openWizard={openWizard}/>
+        <FAQSection data={data} />
+        <CTASection openWizard={openWizard} data={data} />
       </main>
       {wizardOpen && (
         <CounsellingWizard
           onClose={() => {
             setWizardOpen(false);
-            setWizardMode("questionnaire");
-            setWizardProgramme("");
-            setWizardStartStep(0);
-            setSelectedService(null);
           }}
-          initialProgramme={wizardProgramme}
-          initialStep={wizardStartStep}
-          mode={wizardMode}
-          service={selectedService}
         />
       )}
     </div>

@@ -12,7 +12,7 @@ export default function AboutSection({ data, openWizard }) {
           <div className="col-span-3">
             <AccentDivider />
             <h2 className="text-3xl sm:text-4xl font-black text-foreground leading-tight mb-5">
-              About {data.university.name}
+              About {data.name}
             </h2>
             <div className="space-y-4 mb-8">
                 {data.about.paragraphs.map((paragraph, index) => (

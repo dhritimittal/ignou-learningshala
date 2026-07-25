@@ -107,7 +107,7 @@ export default function HeroSection({ data, openWizard }) {
 
             {/* Inline trust badges */}
             <div className="flex flex-wrap gap-3">
-              {data.university.approvals.map((b) => (
+              {data.approvals.map((b) => (
                 <span
                   key={b.title}
                   className="flex items-center gap-2 text-sm font-semibold bg-card border-border text-foreground shadow-sm border border-primary rounded-full px-4 py-2"

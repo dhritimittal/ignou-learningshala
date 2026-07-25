@@ -109,15 +109,15 @@ export default function CTASection({ openWizard, data }) {
 
                     <div className="flex items-center gap-3">
                       <img
-                        src={data.university.logo}
-                        alt={data.university.name}
+                        src={data.logo}
+                        alt={data.name}
                         className="h-10"
                       />
                     </div>
 
                     <div className="flex items-center gap-3">
                       <img
-                        src={data.university.nirf.logo}
+                        src={data.nirf.logo}
                         alt=""
                         className="h-10"
                       />
@@ -133,7 +133,7 @@ export default function CTASection({ openWizard, data }) {
 
                     <div className="flex items-center gap-3">
                       <img
-                        src={data.university.naac.logo}
+                        src={data.naac.logo}
                         alt=""
                         className="h-10"
                       />
@@ -217,7 +217,7 @@ export default function CTASection({ openWizard, data }) {
                 <div>
 
                   <h3 className="font-bold text-foreground mb-5">
-                    {data.university.name} At A Glance
+                    {data.name} At A Glance
                   </h3>
 
                   <div className="space-y-4">
@@ -262,22 +262,22 @@ export default function CTASection({ openWizard, data }) {
                   
                   <div className="flex items-center gap-3">
                     <img
-                      src={data.university.logo}
-                      alt={data.university.name}
+                      src={data.logo}
+                      alt={data.name}
                       className="h-10"
                     />
                   </div>
 
                   <div className="flex items-center gap-3">
                     <img
-                      src={data.university.nirf.logo}
+                      src={data.nirf.logo}
                       className="h-10"
                       alt=""
                     />
                   </div>
                   <div className="flex items-center gap-3">
                     <img
-                      src={data.university.naac.logo}
+                      src={data.naac.logo}
                       className="h-10"
                       alt=""
                     />

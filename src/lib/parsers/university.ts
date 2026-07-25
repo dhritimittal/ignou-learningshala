@@ -1,7 +1,5 @@
 import { getMediaUrl } from "@/lib/utils/media";
-import type { UniversityData } from "@/lib/types/university";
-
-export function parseUniversity(api: any): UniversityData {
+export function parseUniversity(api: any) {
   const data = api.data.data;
 
   const approvals=

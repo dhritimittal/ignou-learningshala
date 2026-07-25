@@ -41,7 +41,7 @@ export default function ProgrammesSection({ openWizard, data }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <AccentDivider />
-          <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-3">Courses at {data.university.name}</h2>
+          <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-3">Courses at {data.name}</h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-sm">
             UGC-DEB approved programmes across online and distance modes — from UG to PG, designed for
             working professionals and fresh graduates alike.
@@ -91,7 +91,7 @@ export default function ProgrammesSection({ openWizard, data }) {
                 <p className="text-[11px] text-foreground mt-1">{prog.specs} specialisations</p>
               )}
               <Link
-                href={`/course/${prog.slug}`}
+                href={`/course/ignou/${prog.slug}`}
                 className="mt-3 w-full py-2 rounded-lg bg-secondary hover:bg-primary text-primary hover:text-primary-foreground border border-primary/20 hover:border-primary text-xs font-semibold transition-all duration-200 text-center"
               >
                 Apply Now →

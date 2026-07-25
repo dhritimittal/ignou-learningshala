@@ -18,7 +18,7 @@ export default function FeeSummary({ data, openWizard }) {
         </span>
 
         <h3 className="mt-5 text-4xl lg:text-5xl font-black tracking-tight text-foreground">
-          {data.fee}
+          ₹{data.fees.totalFee.toLocaleString("en-IN")}
         </h3>
 
         <p className="mt-3 max-w-lg text-lg leading-7 text-muted-foreground">
@@ -66,7 +66,11 @@ export default function FeeSummary({ data, openWizard }) {
       <div className="mt-6">
 
         <button
-          onClick={openWizard}
+          onClick={() =>
+            data.fees.brochure
+              ? window.open(data.fees.brochure, "_blank")
+              : openWizard()
+          }
           className="inline-flex w-full lg:w-auto justify-center items-center gap-3 rounded-2xl border border-primary px-6 py-4 font-semibold text-primary transition hover:bg-primary hover:text-white"
         >
 

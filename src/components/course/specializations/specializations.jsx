@@ -7,7 +7,10 @@ import SpecializationTabs from "./specialization-tabs";
 import SpecializationDetails from "./specialization-details";
 
 export default function Specializations({ data, openWizard }) {
-  const [selected, setSelected] = useState(data.specializations[0]);
+  const [selected, setSelected] = useState(data.specializations?.[0] ?? null);
+  if (!selected) {
+    return null; // or render a "No specializations available" message
+  }
 
   return (
     <section

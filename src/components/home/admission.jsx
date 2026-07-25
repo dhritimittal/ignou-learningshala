@@ -8,7 +8,7 @@ export default function AdmissionsSection({ openWizard, data }) {
   const [activeStep, setActiveStep] = useState(0);
   const stepRefs = useRef([]);
   const sectionRef = useRef(null);
-  const TIMELINE_STEPS = getTimelineSteps(data.university.name);
+  const TIMELINE_STEPS = getTimelineSteps(data.name);
 
   useEffect(() => {
     const handleScroll = () => {

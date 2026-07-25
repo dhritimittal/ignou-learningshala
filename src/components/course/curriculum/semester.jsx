@@ -49,7 +49,7 @@ export default function SemesterItem({ semester }) {
           {semester.subjects.map((subject) => (
 
             <div
-              key={subject.code}
+              key={subject.id}
               className="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-3 py-2 transition-all hover:border-accent hover:shadow-sm"
             >
               {/* Left */}

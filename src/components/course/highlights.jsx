@@ -4,37 +4,22 @@ import {
   GraduationCap,
 } from "lucide-react";
 
-const items = [
-  {
-    icon: Users,
-    title: "Trusted by 3 Million Students",
-    description:
-      "India's most trusted open university with a massive learner base and proven academic excellence.",
-  },
-  {
-    icon: IndianRupee,
-    title: "Most Affordable Programs",
-    description:
-      "Quality education at the lowest cost, making higher education accessible to everyone.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Attractive Scholarships",
-    description:
-      "Multiple scholarships, stipend support and fee exemptions to reduce programme costs.",
-  },
+const icons = [
+  Users,
+  IndianRupee,
+  GraduationCap,
 ];
 
-export default function Highlights() {
+export default function Highlights({data}) {
   return (
     <section className="border-y border-slate-200 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         <div className="grid lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-slate-200">
 
-          {items.map((item) => {
+          {data.highlights.map((item, index) => {
 
-            const Icon = item.icon;
+            const Icon = icons[index] ?? GraduationCap;
 
             return (
               <div

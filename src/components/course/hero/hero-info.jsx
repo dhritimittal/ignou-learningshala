@@ -1,4 +1,3 @@
-import { Course } from "@/lib/types/course";
 import {
   Clock3,
   Laptop,
@@ -7,32 +6,27 @@ import {
   Download,
 } from "lucide-react";
 
-type HeroInfoProps = {
-  data: Course;
-  openWizard: () => void;
-};
-
-export default function HeroInfoCard({ data, openWizard }: HeroInfoProps) {
+export default function HeroInfoCard({ data, openWizard }) {
   const details = [
     {
       icon: Clock3,
       label: "Duration",
-      value: data.duration,
+      value: data.hero.duration,
     },
     {
       icon: Laptop,
       label: "Mode",
-      value: data.mode,
+      value: data.hero.mode,
     },
     {
       icon: IndianRupee,
       label: "Programme Fee",
-      value: data.fee,
+      value: data.hero.fee,
     },
     {
       icon: MapPin,
       label: "Study Centre",
-      value: data.location,
+      value: data.hero.location,
     },
   ];
 
@@ -84,7 +78,7 @@ export default function HeroInfoCard({ data, openWizard }: HeroInfoProps) {
 
             </div>
 
-            <hr className="mt-0 mb-5" />
+            <hr className="mt-5 mb-5" />
 
             {/* CTA */}
 
@@ -95,16 +89,17 @@ export default function HeroInfoCard({ data, openWizard }: HeroInfoProps) {
               Apply Now
             </button>
 
-            <button
-              onClick={openWizard}
+            <a
+              href={data.hero.brochure}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl border border-primary py-3 font-semibold text-primary transition hover:bg-primary hover:text-white"
             >
               <Download size={18} />
-
               Download Brochure
-            </button>
+            </a>
 
-            <hr className="my-8" />
+            <hr className="my-5" />
 
             {/* Social Proof */}
 

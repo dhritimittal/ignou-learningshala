@@ -1,27 +1,5 @@
 "use client";
 
-import {
-  Megaphone,
-  Landmark,
-  Users,
-  Factory,
-  ChartColumnIncreasing,
-  HeartPulse,
-  Package,
-  BriefcaseBusiness,
-} from "lucide-react";
-
-const ICONS = {
-  Megaphone,
-  Landmark,
-  Users,
-  Factory,
-  ChartColumnIncreasing,
-  HeartPulse,
-  Package,
-  BriefcaseBusiness,
-};
-
 export default function SpecializationTabs({
   items,
   selected,
@@ -30,7 +8,6 @@ export default function SpecializationTabs({
   return (
     <div className="flex flex-wrap justify-center gap-3">
       {items.map((item) => {
-        const Icon = ICONS[item.icon];
         const active = selected.id === item.id;
 
         return (
@@ -58,16 +35,6 @@ export default function SpecializationTabs({
               }
             `}
           >
-            {Icon && (
-              <Icon
-                size={18}
-                className={
-                  active
-                    ? "text-accent-foreground"
-                    : "text-muted-foreground group-hover:text-accent-dark"
-                }
-              />
-            )}
 
             <span>{item.title}</span>
           </button>

@@ -87,6 +87,14 @@ export default function FacultyModal({
               {/* Divider */}
 
               <div className="mx-auto mt-8 h-px w-24 bg-accent-dark/40" />
+
+              {faculty.qualification && (
+                <p>{faculty.qualification}</p>
+              )}
+
+              {faculty.linkedin && (
+                <a href={faculty.linkedin}>LinkedIn</a>
+              )}
             </div>
           </motion.div>
         </>

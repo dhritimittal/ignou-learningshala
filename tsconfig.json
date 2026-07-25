@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "src/components/course/layout/navbar.jsx", "src/components/course/layout/megamenu.jsx", "src/app/course/[slug]/ClientPage.jsx", "src/components/course/hero/hero-actions.tsx", "src/components/course/hero/hero-highlights.tsx", "src/components/course/hero/hero-info.tsx", "src/components/course/hero/hero.tsx", "src/components/course/fees/fees.jsx", "src/components/course/fees/fee-summary.jsx", "src/components/course/highlights.jsx", "src/components/course/specializations/specializations.jsx", "src/components/course/admission.jsx", "src/components/home/testimonials.jsx"  ],
+, "src/components/course/layout/navbar.jsx", "src/components/course/layout/megamenu.jsx", "src/app/course/[university]/[course]/ClientPage.jsx", "src/components/course/hero/hero-actions.tsx", "src/components/course/hero/hero-highlights.tsx", "src/components/course/hero/hero-info.tsx", "src/components/course/hero/hero.tsx", "src/components/course/fees/fees.jsx", "src/components/course/fees/fee-summary.jsx", "src/components/course/highlights.jsx", "src/components/course/specializations/specializations.jsx", "src/components/course/admission.jsx", "src/components/home/testimonials.jsx"  ],
   "exclude": ["node_modules"]
 }

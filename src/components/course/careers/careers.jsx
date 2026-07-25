@@ -62,7 +62,7 @@ export default function Careers({ data, openWizard }) {
         {/* Navy stat band */}
 
         <div className="mt-8 overflow-hidden rounded-t-2xl border border-accent/30 bg-accent-tint">
-          <div className="grid grid-cols-3 divide-x divide-accent/20">
+          <div className="grid grid-cols-2 divide-x divide-accent/20">
 
             <CareerStat
               icon={IndianRupee}
@@ -71,16 +71,9 @@ export default function Careers({ data, openWizard }) {
             />
 
             <CareerStat
-              icon={TrendingUp}
-              value={career.salaryHike}
-              label="Average salary hike"
-              accent
-            />
-
-            <CareerStat
               icon={Building2}
-              value={`${career.industries.length}+`}
-              label="Hiring industries"
+              value={career.jobs.length}
+              label="Career Roles"
             />
 
           </div>
@@ -165,7 +158,7 @@ export default function Careers({ data, openWizard }) {
               </h3>
 
               <p className="mt-3 max-w-2xl text-lg leading-7 text-muted-foreground">
-                Speak with an IGNOU admission expert to get personalized guidance on
+                Speak with an admission expert to get personalized guidance on
                 eligibility, specializations, fees, scholarships and the admission
                 process.
               </p>

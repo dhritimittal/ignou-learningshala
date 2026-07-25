@@ -17,7 +17,7 @@ import Reviews from "@/components/course/reviews/reviews";
 import { useState, useEffect } from "react";
 import Hero from "@/components/course/hero/hero";
 
-export default function ClientPage({course, data}) {
+export default function ClientPage({ course, university}) {
   const [scrolled, setScrolled] = useState(false);
   const [wizardOpen, setWizardOpen] = useState(false);
   const [heroVisible, setHeroVisible] = useState(true);
@@ -57,19 +57,19 @@ export default function ClientPage({course, data}) {
       <CourseNavbar scrolled={scrolled} openWizard={openWizard} heroVisible={heroVisible} course={course} />
       <main>
         <Hero data={course} openWizard={openWizard} />
-        <Highlights data={course} />
+        <Highlights data={university} />
         <Snapshot data={course} />
         <Fees data={course} openWizard={openWizard} />
         <Specializations data={course} openWizard={openWizard} />
-        <AdmissionsSection openWizard={openWizard} data={data} />
+        <AdmissionsSection openWizard={openWizard} data={university} />
         <Curriculum data={course} openWizard={openWizard} />
-        <Learning data={course} />
-        <DegreeSection openWizard={openWizard} data={data} />
+        <Learning data={university} />
+        <DegreeSection openWizard={openWizard} data={university} />
         <Careers data={course} openWizard={openWizard} />
-        <Faculty data={course} />
+        <Faculty data={university} />
         <Reviews data={course} />
-        <FAQSection data={data} />
-        <CTASection openWizard={openWizard} data={data} />
+        <FAQSection data={university} />
+        <CTASection openWizard={openWizard} data={university} />
       </main>
       {wizardOpen && (
         <CounsellingWizard

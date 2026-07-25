@@ -16,8 +16,8 @@ export default function Navbar({ scrolled, openWizard, data}) {
           {/* Logo */}
           <div className="flex items-center gap-3">
             <img
-              src={data.university.logo}
-              alt={data.university.name}
+              src={data.logo}
+              alt={data.name}
               className="h-10 w-auto object-contain"
             />
           </div>

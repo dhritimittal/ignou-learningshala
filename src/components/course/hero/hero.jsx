@@ -1,4 +1,3 @@
-import { Course } from "@/lib/types/course";
 import HeroActions from "./hero-actions";
 import HeroInfoCard from "./hero-info";
 import {
@@ -8,12 +7,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
-type HeroProps = {
-  data: Course;
-  openWizard: () => void;
-};
-
-export default function Hero({ data, openWizard }: HeroProps) {
+export default function Hero({ data, openWizard }) {
   return (
     <>
       <section id="course-hero" className="relative overflow-visible pt-10">
@@ -22,12 +16,12 @@ export default function Hero({ data, openWizard }: HeroProps) {
 
         <div className="absolute inset-0">
           <img
-            src={data.heroImage}
-            alt={data.name}
-            className="h-full w-full object-cover"
+            src={data.hero.heroImage}
+            alt={data.hero.name}
+            className="absolute right-0 top-0 h-full w-full object-cover object-center"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#F7FAFC] via-[#F7FAFC]/75 via-[#F7FAFC]/60 to-transparent" />
         </div>
 
         <div className="relative mx-auto max-w-[1440px] px-6 lg:px-8 pt-8 pb-10 lg:pt-10 lg:pb-12">
@@ -50,26 +44,26 @@ export default function Hero({ data, openWizard }: HeroProps) {
 
                 <ChevronRight size={15} />
 
-                <span>{data.name}</span>
+                <span>{data.hero.name}</span>
 
               </div>
 
               {/* Badge */}
 
               <span className="inline-flex rounded-full bg-primary border border-primary/50 px-4 py-2 text-sm font-semibold text-white backdrop-blur">
-                PG PROGRAMME
+                {data.hero.badge}
               </span>
 
               {/* Heading */}
 
               <h1 className="mt-5 text-5xl font-black leading-none text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-primary-light/50 lg:text-7xl">
-                {data.name}
+                {data.hero.name}
               </h1>
 
               {/* Description */}
 
               <p className="mt-4 max-w-2xl text-lg lg:text-xl leading-8 text-muted-foreground">
-                {data.description}
+                {data.hero.description}
               </p>
 
               {/* Rating */}
@@ -84,7 +78,7 @@ export default function Hero({ data, openWizard }: HeroProps) {
                   />
 
                   <span className="text-xl font-bold">
-                    {data.rating}/5
+                    {data.hero.rating}/{data.hero.reviewCount}
                   </span>
 
                 </div>
@@ -96,7 +90,7 @@ export default function Hero({ data, openWizard }: HeroProps) {
                   <Users size={20} />
 
                   <span className="text-xl font-medium">
-                    {data.students} Students Enrolled
+                    {data.hero.students} Students Enrolled
                   </span>
 
                 </div>
@@ -107,25 +101,21 @@ export default function Hero({ data, openWizard }: HeroProps) {
 
               <div className="mt-6 flex flex-wrap gap-3">
 
-                {data.approvals.map((approvals) => (
-
-                  <div
-                    key={approvals.name}
-                    className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 shadow-sm"
-                  >
-                    <Image
-                      src={approvals.logo}
-                      alt={approvals.name}
-                      width={28}
-                      height={28}
-                    />
-
-                    <span className="font-medium text-sm">
-                      {approvals.name}
-                    </span>
-                  </div>
-
-                ))}
+                {data.hero.approvals.map((b) => (
+                <span
+                  key={b.title}
+                  className="flex items-center gap-2 text-sm font-semibold bg-card border-border text-foreground shadow-sm border border-primary rounded-full px-4 py-2"
+                >
+                  <img
+                    src={b.logo}
+                    alt={b.title}
+                    width={28}
+                    height={28}
+                    className="w-7 h-7 object-contain"
+                  />
+                  {b.title}
+                </span>
+              ))}
 
               </div>
 

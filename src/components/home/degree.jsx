@@ -13,7 +13,7 @@ export default function DegreeSection({ data, openWizard }) {
           <div>
             <AccentDivider />
             <h2 className="text-4xl lg:text-4xl font-black text-foreground leading-tight mb-6">
-              An {data.university.name} degree that's
+              An {data.name} degree that's
               <span className="block bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
                 recognised everywhere.
               </span>
@@ -116,7 +116,7 @@ export default function DegreeSection({ data, openWizard }) {
               </div>
 
               <div className="text-3xl font-black text-primary">
-                {data.university.naac.title}
+                {data.naac.title}
               </div>
 
             </div>
@@ -132,7 +132,7 @@ export default function DegreeSection({ data, openWizard }) {
               </div>
 
               <div className="text-lg font-bold text-foreground">
-                {data.university.ugc.title} Approved
+                {data.ugc.title} Approved
               </div>
 
             </div>

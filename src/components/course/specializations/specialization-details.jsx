@@ -1,32 +1,12 @@
 "use client";
 
 import {
-  Megaphone,
-  Landmark,
-  Users,
-  Factory,
-  ChartColumnIncreasing,
-  HeartPulse,
-  Package,
-  BriefcaseBusiness,
-  TrendingUp,
   IndianRupee,
-  CheckCircle2,
+  Clock,
 } from "lucide-react";
 
-const ICONS = {
-  Megaphone,
-  Landmark,
-  Users,
-  Factory,
-  ChartColumnIncreasing,
-  HeartPulse,
-  Package,
-  BriefcaseBusiness,
-};
 
 export default function SpecializationDetails({ specialization, openWizard }) {
-  const Icon = ICONS[specialization.icon];
 
   return (
     <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white">
@@ -38,17 +18,6 @@ export default function SpecializationDetails({ specialization, openWizard }) {
         <div className="p-7 lg:p-8">
 
           <div className="flex items-center gap-5">
-
-            <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-accent-tint">
-
-              {Icon && (
-                <Icon
-                  size={26}
-                  className="text-accent-dark"
-                />
-              )}
-
-            </div>
 
             <div>
 
@@ -64,40 +33,12 @@ export default function SpecializationDetails({ specialization, openWizard }) {
 
           </div>
 
-          <p className="mt-5 max-w-2xl text-[17px] leading-7">
-            {specialization.description}
+          <p className="mt-5 max-w-2xl text-[17px] leading-7 text-muted-foreground">
+            This specialization prepares learners for careers in{" "}
+            <span className="font-semibold">{specialization.title}</span>.
+            The programme follows a {specialization.duration.toLowerCase()}
+            curriculum with industry-relevant coursework.
           </p>
-
-          <div className="mt-7">
-
-            <h4 className="text-lg font-semibold text-foreground">
-              Typical Career Roles
-            </h4>
-
-            <div className="mt-4 grid gap-x-8 gap-y-3 md:grid-cols-2">
-
-              {specialization.careers.map((career) => (
-
-                <div
-                  key={career}
-                  className="flex items-center gap-3"
-                >
-                  <CheckCircle2
-                    size={18}
-                    className="text-accent-dark"
-                  />
-
-                  <span className="text-foreground">
-                    {career}
-                  </span>
-
-                </div>
-
-              ))}
-
-            </div>
-
-          </div>
 
         </div>
 
@@ -111,16 +52,16 @@ export default function SpecializationDetails({ specialization, openWizard }) {
 
               <div className="flex items-center gap-2 text-accent-dark">
 
-                <IndianRupee size={18} />
+                <Clock size={18} />
 
                 <span className="text-sm font-semibold uppercase tracking-wider">
-                  Average Salary
+                  Program Duration
                 </span>
 
               </div>
 
               <p className="mt-1 text-[30px] font-black leading-none">
-                {specialization.salary}
+                {specialization.duration}
               </p>
 
             </div>
@@ -129,16 +70,16 @@ export default function SpecializationDetails({ specialization, openWizard }) {
 
               <div className="flex items-center gap-2 text-accent-dark">
 
-                <TrendingUp size={18} />
+                <IndianRupee size={18} />
 
                 <span className="text-sm font-semibold uppercase tracking-wider">
-                  Industry Demand
+                  Program Fee
                 </span>
 
               </div>
 
               <p className="mt-1 text-xl font-bold">
-                {specialization.demand}
+                {specialization.fee}
               </p>
 
             </div>

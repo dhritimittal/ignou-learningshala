@@ -1,4 +1,4 @@
-export default function HeroActions({ openWizard }: { openWizard: () => void }) {
+export default function HeroActions({ openWizard }) {
   return (
     <div className="mt-6 flex flex-wrap gap-4">
 

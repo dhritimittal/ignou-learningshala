@@ -29,26 +29,29 @@ export default function Curriculum({ data, openWizard }) {
 
           </div>
 
-          <SyllabusButton openWizard={openWizard} />
+          <SyllabusButton openWizard={openWizard} syllabus={data.curriculum.syllabus} />
 
         </div>
 
         <div className="flex flex-wrap items-center gap-3 mb-5 text-foreground">
 
             <span className="font-semibold">
-                96 Credits
+                {data.curriculum.credits}
             </span>
 
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
 
             <span className="font-semibold">
-                4 Semesters
+                {data.curriculum.semesters.length} Semesters
             </span>
 
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
 
             <span className="font-semibold">
-                24 Subjects
+                {data.curriculum.semesters.reduce(
+                  (total, semester) => total + semester.subjects.length,
+                  0
+                )} Subjects
             </span>
 
         </div>

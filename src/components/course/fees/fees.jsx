@@ -26,14 +26,14 @@ export default function Fees({ data, openWizard }) {
 
               <FeeCard
                 title="Semester Fee"
-                amount="₹14,000"
+                amount={`₹${(data.fees.semesterFee ?? 0).toLocaleString("en-IN")}`}
                 subtitle="Per Semester"
                 description="Pay semester-wise throughout the programme."
               />
 
               <FeeCard
                 title="Easy EMI"
-                amount="₹2,334"
+                amount={`₹${(data.fees.emi ?? 0).toLocaleString("en-IN")}`}
                 subtitle=" / month"
                 description="Flexible financing options through selected partners."
                 accent={true}

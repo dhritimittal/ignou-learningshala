@@ -5,10 +5,9 @@ import { parseSampleCertificate } from "@/lib/parsers/sampleCertificate";
 import { getMediaUrl } from "../utils/media";
 import { parseAbout } from "../parsers/about";
 import { parseUniversity } from "../parsers/university";
+import { extractParagraphs, extractDescription } from "../parsers/learning";
 
-import type { Hero, About, Degree, Programmes, UniversityPage, Testimonials, FAQs } from "@/lib/types/university";
-
-export function mapHero(api: any): Hero {
+export function mapHero(api: any) {
   const university = api.data.data;
   const sections = api.data.data.sections;
   const about = parseAboutUniversity(sections.About_University);
@@ -34,7 +33,7 @@ export function mapHero(api: any): Hero {
   };
 }
 
-export function mapAbout(api: any): About {
+export function mapAbout(api: any) {
   const university = api.data.data;
 
   const about = parseAbout(
@@ -50,7 +49,7 @@ export function mapAbout(api: any): About {
   };
 }
 
-export function mapDegree(api: any) : Degree{
+export function mapDegree(api: any) {
   const university = api.data.data;
 
   return {
@@ -97,7 +96,7 @@ function getFee(fees: any) {
   return "";
 }
 
-export function mapProgrammes(api: any) : Programmes {
+export function mapProgrammes(api: any) {
   return api.data.data.course_data.map((course : any) => ({
     name: course.name,
 
@@ -119,7 +118,7 @@ export function mapProgrammes(api: any) : Programmes {
   }));
 }
 
-export function mapTestimonials(api: any): Testimonials {
+export function mapTestimonials(api: any) {
   const section = api.data.data.sections;
 
   return {
@@ -131,7 +130,7 @@ export function mapTestimonials(api: any): Testimonials {
   };
 }
 
-export function mapFAQs(api: any): FAQs {
+export function mapFAQs(api: any) {
   return {
   faqs: (api.data.data.university_faqs ?? [])
     .sort(
@@ -163,13 +162,76 @@ export function mapFAQs(api: any): FAQs {
   };
 }
 
-export function mapUniversity(api: any): UniversityPage {
+function mapHighlights(api: any) {
+  const section = api.data.data.sections;
+
+  return (section.gridContent ?? []).map((item: any) => ({
+    title: item.title,
+    description: item.content.replace(/<[^>]*>/g, "").trim(),
+  }));
+}
+
+function mapLearning(api: any) {
+  const section = api.data.data.sections;
+
+  return {
+    learning: {
+      title: "Learning Management System (LMS)",
+
+      description: extractDescription(
+        section.Learning_Management_SystemLMS
+      ),
+
+      paragraphs: extractParagraphs(
+        section.Learning_Management_SystemLMS
+      ),
+    },
+
+    examination: {
+      title: "Examination Pattern",
+
+      description: extractDescription(
+        section.Examination_Pattern
+      ),
+
+      paragraphs: extractParagraphs(
+        section.Examination_Pattern
+      ),
+    },
+  };
+}
+
+function mapFaculty(api: any) {
+  const section = api.data.data.sections;
+
+  return {
+    faculty: (section.University_Faculties ?? []).map(
+      (item: any, index: number) => ({
+        id: index + 1,
+
+        name: item.name.trim(),
+
+        designation: item.designation,
+
+        image: getMediaUrl(item.img),
+
+        qualification: item.faculty_qualification || null,
+
+        description: item.desc || null,
+
+        linkedin: item["Linkedin Profile"] || null,
+      })
+    ),
+  };
+}
+
+export function mapUniversity(api: any) {
 
     const university = parseUniversity(api);
 
     return {
 
-        university,
+        ...university,
 
         hero: mapHero(api),
 
@@ -182,6 +244,12 @@ export function mapUniversity(api: any): UniversityPage {
         testimonials: mapTestimonials(api),
 
         faqs: mapFAQs(api),
+
+        highlights: mapHighlights(api),
+
+        ...mapLearning(api),
+
+        ...mapFaculty(api),
 
     };
 }

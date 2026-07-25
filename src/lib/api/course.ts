@@ -1,6 +1,6 @@
 // src/lib/api/course.ts
 
-const API_URL = process.env.API_URL;
+const API_URL = process.env.API_BASE_URL;
 const API_TOKEN = process.env.API_BEARER_TOKEN;
 
 if (!API_URL) {

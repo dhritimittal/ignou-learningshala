@@ -13,10 +13,10 @@ export default function ProgrammesSection({ openWizard, data }) {
   useEffect(() => {
     const mode = searchParams.get("mode");
     if (mode) {
-      setFilter(mode.toLowerCase());
-    } else {
-      setFilter("all");
-    }
+    setFilter(mode.toLowerCase());
+  } else {
+    setFilter("all");
+  }
 
   }, [searchParams]);
   
@@ -34,10 +34,13 @@ export default function ProgrammesSection({ openWizard, data }) {
   const filtered = data.programmes.filter((p) => {
     if (filter === "all") return true;
 
-    return (
-      p.mode.toLowerCase() === filter ||
-      p.level.toLowerCase() === filter
-    );
+    if (filter === "online")
+      return p.mode.toLowerCase() === "online";
+
+    if (filter === "distance")
+      return p.mode.toLowerCase() === "distance";
+
+    return p.level.toLowerCase() === filter;
   });
 
   const isOnline = (p) => p.mode === "Online";

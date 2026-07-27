@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { Suspense } from "react";
 
 import Navbar from "@/components/home/layout/navbar";
 import HeroSection from "@/components/home/hero";
@@ -39,7 +40,12 @@ export default function IGNOUHomePage({data}) {
         <Highlights data={data}/>
         <AboutSection openWizard={openWizard} data={data} />
         <DegreeSection openWizard={openWizard} data={data} />
-        <ProgrammesSection openWizard={openWizard} data={data} />
+        <Suspense fallback={null}>
+          <ProgrammesSection
+            openWizard={openWizard}
+            data={data}
+          />
+        </Suspense>
         <AdmissionsSection openWizard={openWizard} data={data} />
         <StrengthsSection data={data} />
         <TestimonialsSection data={data} />

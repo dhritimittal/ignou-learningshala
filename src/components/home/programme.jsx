@@ -22,28 +22,29 @@ export default function ProgrammesSection({ openWizard, data }) {
   
   const [expandCourses, setExpandCourses] = useState(false);
   const sectionRef = useRef(null);
+  useEffect(() => {
+    setExpandCourses(false);
+  }, [filter]);
 
   const filters = [
     "all",
-    ...new Set([
-      ...data.programmes.map((p) => p.mode.toLowerCase()),
-      ...data.programmes.map((p) => p.level.toLowerCase()),
-    ]),
+    ...new Set(
+      [
+        ...data.programmes.map(p => p.mode),
+        ...data.programmes.map(p => p.level),
+      ].map(v => v.toLowerCase())
+    ),
   ];
 
   const filtered = data.programmes.filter((p) => {
     if (filter === "all") return true;
 
-    if (filter === "online")
-      return p.mode.toLowerCase() === "online";
-
-    if (filter === "distance")
-      return p.mode.toLowerCase() === "distance";
-
-    return p.level.toLowerCase() === filter;
+    return (
+      p.mode.toLowerCase() === filter ||
+      p.level.toLowerCase() === filter
+    );
   });
 
-  const isOnline = (p) => p.mode === "Online";
   const displayedCourses = expandCourses ? filtered : filtered.slice(0, 8);
   const hasMore = filtered.length > 8;
 
@@ -79,9 +80,9 @@ export default function ProgrammesSection({ openWizard, data }) {
                   : "bg-white text-muted-foreground border border-slate-200 hover:border-primary/40"
               }`}
             >
-              {f === "all"
-                ? "All"
-                : f.charAt(0).toUpperCase() + f.slice(1)}
+              {["ug", "pg"].includes(f.toLowerCase())
+                ? f.toUpperCase()
+                : f.charAt(0).toUpperCase() + f.slice(1).toLowerCase()}
             </button>
           ))}
         </div>

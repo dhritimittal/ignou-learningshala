@@ -29,35 +29,36 @@ export default function Learning({ data }) {
   const learning = data.learning;
   const examination = data.examination;
 
-  const renderParagraphs = (paragraphs, icons) =>
-    paragraphs.map((paragraph, index) => {
-      const [title, ...body] = paragraph.split(":");
-      const Icon = icons[index % icons.length];
+  const renderParagraphs = (paragraphs = [], icons) =>
+  paragraphs.map((paragraph, index) => {
+    const Icon = icons[index % icons.length];
 
-      return (
-        <div
-          key={index}
-          className="flex gap-4 border-t border-slate-200 pt-5"
-        >
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-tint">
-            <Icon
-              className="h-5 w-5 text-primary"
-              strokeWidth={2}
-            />
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-foreground">
-              {title.trim()}
-            </h4>
-
-            <p className="mt-2 text-[15px] leading-7 text-muted-foreground">
-              {body.join(":").trim()}
-            </p>
-          </div>
+    return (
+      <div
+        key={index}
+        className="flex gap-4 border-t border-slate-200 pt-5"
+      >
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-tint">
+          <Icon
+            className="h-5 w-5 text-primary"
+            strokeWidth={2}
+          />
         </div>
-      );
-    });
+
+        <div>
+          {paragraph.title && (
+            <h4 className="font-semibold text-foreground">
+              {paragraph.title}
+            </h4>
+          )}
+
+          <p className="mt-2 text-[15px] leading-7 text-muted-foreground">
+            {paragraph.body}
+          </p>
+        </div>
+      </div>
+    );
+  });
 
   return (
     <section

@@ -13,6 +13,7 @@ import FAQSection from "@/components/home/faqs";
 import CTASection from "@/components/home/layout/cta";
 import CounsellingWizard from "@/components/shared/wizard/counsellingwizard";
 import TestimonialsSection from "@/components/home/testimonials";
+import Highlights from "@/components/course/highlights";
 // ─── Page Component ──────────────────────────────────────────────────────────
 
 export default function IGNOUHomePage({data}) {
@@ -35,6 +36,7 @@ export default function IGNOUHomePage({data}) {
       <Navbar scrolled={scrolled} openWizard={openWizard} data={data} />
       <main>
         <HeroSection openWizard={openWizard} data={data}/>
+        <Highlights data={data}/>
         <AboutSection openWizard={openWizard} data={data} />
         <DegreeSection openWizard={openWizard} data={data} />
         <ProgrammesSection openWizard={openWizard} data={data} />

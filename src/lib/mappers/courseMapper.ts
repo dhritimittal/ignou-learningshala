@@ -4,6 +4,8 @@ import { parseAboutUniversity } from "../parsers/aboutUniversity";
 import { parseKeyHighlights } from "../parsers/keyHighlights";
 import { parseCurriculum } from "../parsers/curriculum";
 import { parseCareer } from "../parsers/careers";
+import { extractParagraphs, extractDescription } from "../parsers/learning";
+import { mapFAQs } from "./faqMapper";
 
 
 function getFee(fees: any) {
@@ -58,27 +60,7 @@ export function mapCourseHero(api: any, university: any ) {
     (section: any) => section.section_key === "About_University"
   );
 
-  const reviewsSection = course.sections.find(
-    (section: any) => section.section_key === "Student_Ratings"
-  );
-
-  const reviews = reviewsSection?.props?.allReviews ?? [];
-
-  const reviewCount = reviews.length;
-
-  const rating =
-    reviewCount > 0
-      ? Number(
-          (
-            reviews.reduce(
-              (sum: number, review: any) =>
-                sum + Number(review.value ?? review["rating (1-5)"] ?? 0),
-              0
-            ) / reviewCount
-          ).toFixed(1)
-        )
-      : 0;
-
+  const reviewsSummary = mapReviews(api, university);
 
   const about = parseAboutUniversity(
     aboutSection?.props?.content ?? ""
@@ -111,8 +93,8 @@ export function mapCourseHero(api: any, university: any ) {
     students: "1.2L+",
     mode: university.educationMode,
     approvals: university.approvals,
-    rating,
-    reviewCount,
+    rating: reviewsSummary?.averageRating ?? 0,
+    reviewCount: reviewsSummary?.totalReviews ?? 0,
     location: university.city,
   };
 }
@@ -133,7 +115,7 @@ export function mapSnapshot(api: any, university: any) {
       highlights["Program Name"] ?? course.name,
 
     degreeLevel:
-      highlights["Degree Level"] ?? "",
+      highlights["Degree Level"] ?? null,
 
     university:
       highlights["University"] ??
@@ -162,7 +144,9 @@ export function mapSnapshot(api: any, university: any) {
       university.university.approvals,
 
     topSpecializations:
-      highlights["Top Specializations"] ?? "",
+        highlights["Top Specializations"] ??
+        highlights["No. of Specializations"] ??
+        null,
 
     lms:
       highlights["LMS"] ?? "",
@@ -223,6 +207,10 @@ export function mapFees(api: any) {
     }
   }
 
+  if (!totalFee && !semesterFee && !registrationFee) {
+    return null;
+  }
+
   return {
     totalFee,
 
@@ -276,6 +264,13 @@ export function mapCurriculum(api: any) {
     section?.props?.content ?? ""
   );
 
+  if (
+    parsed.semesters.length === 0 &&
+    !course.syllabus_file
+  ) {
+    return null;
+  }
+
   return {
     credits: course.credit_points,
 
@@ -296,6 +291,13 @@ export function mapCareer(api: any) {
     section?.props?.content ?? ""
   );
 
+  if (
+    !parsed.description &&
+    parsed.jobs.length === 0
+  ) {
+    return null;
+  }
+
   return {
     description: parsed.description,
 
@@ -305,81 +307,140 @@ export function mapCareer(api: any) {
   };
 }
 
-export function mapReviews(api: any) {
-  const course = api.data;
+interface NormalizedReview {
+  id: string | number;
+  name: string;
+  rating: number;
+  review: string;
+  date: string;
+}
 
-  const section = course.sections.find(
-    (s: any) => s.section_key === "Student_Ratings"
-  );
+const RATING_STARS = [5, 4, 3, 2, 1] as const;
 
-  const reviews = section?.props?.allReviews ?? [];
+/** A raw course review's rating can live under any of these keys. */
+function getRawRating(review: any): number {
+  return Number(review.rating ?? review.value ?? review["rating (1-5)"] ?? 0);
+}
 
-  const totalReviews = reviews.length;
+/** A raw course review's text can live under either of these keys. */
+function getRawReviewText(review: any): string {
+  return review.review ?? review.reviewContent ?? "";
+}
 
-  const averageRating =
-    totalReviews > 0
-      ? Number(
-          (
-            reviews.reduce(
-              (sum: number, review: any) =>
-                sum + Number(review.value ?? 0),
-              0
-            ) / totalReviews
-          ).toFixed(1)
-        )
-      : 0;
+/** A raw course review counts as valid if it has a name, text, or a real rating. */
+function isValidCourseReview(review: any): boolean {
+  const hasName = (review.name ?? "").trim() !== "";
+  const hasText = getRawReviewText(review).trim() !== "";
+  const hasRating = getRawRating(review) > 0;
+  return hasName || hasText || hasRating;
+}
 
-  const counts: Record<number, number> = {
-    5: 0,
-    4: 0,
-    3: 0,
-    2: 0,
-    1: 0,
-  };
-
-  reviews.forEach((review: any) => {
-    const rating = Number(review.value);
-
-    if (counts[rating] !== undefined) {
-      counts[rating]++;
-    }
-  });
-
-  const breakdown = [5, 4, 3, 2, 1].map((stars) => ({
-    stars,
-
-    percentage:
-      totalReviews === 0
-        ? 0
-        : Math.round(
-            (counts[stars] / totalReviews) * 100
-          ),
-  }));
-
+/**
+ * Normalizes a review from either source (course review or university
+ * testimonial) into the single shape the rest of the function works with.
+ * Note: `date` is intentionally always "Verified Student" — the source
+ * review's own `date` field is never surfaced, matching existing behavior.
+ */
+function normalizeReview(review: any, index: number): NormalizedReview {
   return {
-    averageRating,
-
-    totalReviews,
-
-    breakdown,
-
-    reviews: reviews.map(
-      (review: any, index: number) => ({
-        id: index + 1,
-
-        name: review.name,
-
-        rating: Number(review.value),
-
-        review: review.reviewContent,
-
-        date: "Verified Student",
-      })
-    ),
+    id: review.id ?? index + 1,
+    name: review.name ?? "Anonymous",
+    rating: getRawRating(review),
+    review: getRawReviewText(review),
+    date: "Verified Student",
   };
 }
 
-export function mapCourse(api: any, university: any) {
+function calculateAverageRating(reviews: NormalizedReview[]): number {
+  const total = reviews.reduce((sum, review) => sum + review.rating, 0);
+  return Number((total / reviews.length).toFixed(1));
+}
+
+function calculateBreakdown(reviews: NormalizedReview[]) {
+  const counts: Record<number, number> = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+
+  for (const review of reviews) {
+    if (review.rating >= 1 && review.rating <= 5) {
+      counts[review.rating]++;
+    }
+  }
+
+  return RATING_STARS.map((stars) => ({
+    stars,
+    percentage: Math.round((counts[stars] / reviews.length) * 100),
+  }));
+}
+
+export function mapReviews(api: any, university: any) {
+  const course = api.data;
+
+  const ratingsSection = course.sections.find(
+    (s: any) => s.section_key === "Student_Ratings"
+  );
+  const rawCourseReviews = ratingsSection?.props?.allReviews ?? [];
+  const validCourseReviews = rawCourseReviews.filter(isValidCourseReview);
+
+  const sourceReviews =
+    validCourseReviews.length > 0 ? validCourseReviews : university.testimonials;
+
+  if (sourceReviews.length === 0) {
+    return null;
+  }
+
+  const reviews = sourceReviews.map(normalizeReview);
+  const totalReviews = reviews.length;
+
+  return {
+    averageRating: calculateAverageRating(reviews),
+    totalReviews,
+    breakdown: calculateBreakdown(reviews),
+    reviews,
+  };
+}
+
+function mapLearning(api: any, university: any) {
+  const course = api.data;
+
+  const lmsSection = course.sections.find(
+    (s: any) => s.section_key === "Learning_Management_SystemLMS"
+  );
+
+  const examSection = course.sections.find(
+    (s: any) => s.section_key === "Examination_Pattern"
+  );
+
+  const lmsContent = lmsSection?.props?.content?.trim();
+  const examContent = examSection?.props?.content?.trim();
+
+  return {
+    learning: {
+      title: "Learning Management System (LMS)",
+
+      description: lmsContent
+        ? extractDescription(lmsContent)
+        : university.learning.description,
+
+      paragraphs: lmsContent
+        ? extractParagraphs(lmsContent)
+        : university.learning.paragraphs,
+    },
+
+    examination: {
+      title: "Examination Pattern",
+
+      description: examContent
+        ? extractDescription(examContent)
+        : university.examination.description,
+
+      paragraphs: examContent
+        ? extractParagraphs(examContent)
+        : university.examination.paragraphs,
+    },
+  };
+}
+
+export function mapCourse(api: any, university: any) { 
+
   return {
     hero: mapCourseHero(api, university),
     snapshot: mapSnapshot(api, university),
@@ -387,6 +448,8 @@ export function mapCourse(api: any, university: any) {
     specializations: mapSpecializations(api),
     curriculum: mapCurriculum(api),
     career: mapCareer(api),
-    reviews: mapReviews(api),
+    reviews: mapReviews(api, university),
+    faqs: mapFAQs(api.data),
+    ...mapLearning(api, university)
   };
 }

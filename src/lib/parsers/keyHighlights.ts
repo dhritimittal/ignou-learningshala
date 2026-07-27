@@ -8,9 +8,17 @@ export function parseKeyHighlights(html: string) {
 
   const stripHtml = (text: string) =>
     text
+      // Preserve spacing between block elements
+      .replace(/<\/(p|div|li|br|tr)>/gi, "\n")
+      .replace(/<(p|div|li|br|tr)[^>]*>/gi, "")
+      // Remove remaining HTML
       .replace(/<[^>]+>/g, "")
+      // Decode common entities
       .replace(/&nbsp;/g, " ")
       .replace(/&amp;/g, "&")
+      // Clean whitespace
+      .replace(/\n\s*\n/g, "\n")
+      .replace(/[ \t]+/g, " ")
       .trim();
 
   const rows = [...html.matchAll(rowRegex)];

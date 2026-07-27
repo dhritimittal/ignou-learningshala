@@ -1,39 +1,30 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, MessageCircle } from "lucide-react";
+import { ChevronDown, MessageCircle, } from "lucide-react";
 import ProgrammeMegaMenu from "./megamenu";
 import { AnimatePresence, motion } from "framer-motion";
-import { PROGRAMMES } from "@/data/home/programmes";
 import Link from "next/link";
 
-const SECTION_LINKS = [
-  { label: "Overview", href: "#overview" },
-  { label: "Fees", href: "#fees" },
-  { label: "Specializations", href: "#specializations" },
-  { label: "Admissions", href: "#admissions" },
-  { label: "Curriculum", href: "#curriculum" },
-  { label: "Careers", href: "#careers" },
-  { label: "Reviews", href: "#reviews" },
-];
-
-const programmeGroups = [
-  {
-    label: "Post Graduation",
-    programmes: PROGRAMMES.filter((p) => p.level === "PG"),
-  },
-  {
-    label: "Graduation",
-    programmes: PROGRAMMES.filter((p) => p.level === "UG"),
-  },
-  {
-    label: "Others",
-    programmes: PROGRAMMES.filter((p) => p.level === "Diploma"),
-  },
-];
-
-function MobileProgrammeMenu({ onNavigate }) {
+function MobileProgrammeMenu({ onNavigate, programmes }) {
   const [openGroup, setOpenGroup] = useState(null);
+
+  const programmeGroups = [
+    {
+      label: "Post Graduation",
+      programmes: programmes.filter(p => p.level === "PG"),
+    },
+    {
+      label: "Graduation",
+      programmes: programmes.filter(p => p.level === "UG"),
+    },
+    {
+      label: "Others",
+      programmes: programmes.filter(
+        p => !["PG", "UG"].includes(p.level)
+      ),
+    },
+  ].filter(group => group.programmes.length > 0);
 
   return (
     <div className="flex flex-col gap-1">
@@ -67,7 +58,7 @@ function MobileProgrammeMenu({ onNavigate }) {
                     {group.programmes.map((p) => (
                       <Link
                         key={p.slug}
-                        href={`/course/${p.slug}`}
+                        href={`/course/ignou/${p.slug}`}
                         onClick={onNavigate}
                         className="rounded-lg px-3 py-2 hover:bg-primary-tint transition-colors"
                       >
@@ -90,8 +81,33 @@ function MobileProgrammeMenu({ onNavigate }) {
   );
 }
 
-export default function CourseNavbar({ scrolled, openWizard, course, heroVisible}) {
+export default function CourseNavbar({ scrolled, openWizard, course, university, heroVisible}) {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const SECTION_LINKS = [
+    { label: "Overview", href: "#overview", show: true },
+    { label: "Fees", href: "#fees", show: !!course.fees },
+    {
+      label: "Specializations",
+      href: "#specializations",
+      show: course.specializations?.length > 0,
+    },
+    {
+      label: "Curriculum",
+      href: "#curriculum",
+      show: !!course.curriculum,
+    },
+    {
+      label: "Careers",
+      href: "#careers",
+      show: !!course.career,
+    },
+    {
+      label: "Reviews",
+      href: "#reviews",
+      show: !!course.reviews,
+    },
+  ].filter(link => link.show);
 
   return (
     <header
@@ -125,7 +141,7 @@ export default function CourseNavbar({ scrolled, openWizard, course, heroVisible
                   }}
                   className="flex items-center"
                 >
-                  <ProgrammeMegaMenu />
+                  <ProgrammeMegaMenu programmes={university.programmes} />
                 </motion.div>
               ) : (
                 <motion.div
@@ -142,12 +158,14 @@ export default function CourseNavbar({ scrolled, openWizard, course, heroVisible
                   <span className="font-semibold text-foreground whitespace-nowrap">
                     {course.name}
                   </span>
-                  <a href="#overview">Overview</a>
-                  <a href="#fees">Fees</a>
-                  <a href="#specializations">Specializations</a>
-                  <a href="#curriculum">Curriculum</a>
-                  <a href="#careers">Careers</a>
-                  <a href="#reviews">Reviews</a>
+                  {SECTION_LINKS.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
                   
                 </motion.div>
               )}
@@ -197,7 +215,7 @@ export default function CourseNavbar({ scrolled, openWizard, course, heroVisible
             className="md:hidden overflow-hidden bg-white border-t border-slate-200"
           >
             <div className="px-4 py-4 flex flex-col gap-3 max-h-[70vh] overflow-y-auto">
-              <MobileProgrammeMenu onNavigate={() => setMenuOpen(false)} />
+              <MobileProgrammeMenu onNavigate={() => setMenuOpen(false)} programmes={university.programmes} />
 
               <hr className="border-slate-100" />
 

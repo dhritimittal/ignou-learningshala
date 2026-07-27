@@ -6,6 +6,7 @@ import { getMediaUrl } from "../utils/media";
 import { parseAbout } from "../parsers/about";
 import { parseUniversity } from "../parsers/university";
 import { extractParagraphs, extractDescription } from "../parsers/learning";
+import { mapFAQs } from "./faqMapper";
 
 export function mapHero(api: any) {
   const university = api.data.data;
@@ -118,49 +119,59 @@ export function mapProgrammes(api: any) {
   }));
 }
 
+export function getProgrammeFilters(programmes: any[]) {
+  const filters = [];
+
+  const hasOnline = programmes.some(
+    (p) => p.mode?.toLowerCase() === "online"
+  );
+
+  const hasDistance = programmes.some(
+    (p) => p.mode?.toLowerCase() === "distance"
+  );
+
+  if (hasOnline) {
+    filters.push({
+      label: "Online Programmes",
+      mode: "online",
+    });
+  }
+
+  if (hasDistance) {
+    filters.push({
+      label: "Distance Learning",
+      mode: "distance",
+    });
+  }
+
+  filters.push({
+    label: "All Courses",
+    mode: "all",
+  });
+
+  return filters;
+}
+
 export function mapTestimonials(api: any) {
   const section = api.data.data.sections;
 
-  return {
-    testimonials: (section.Student_Ratings ?? []).map((item: any) => ({
-      name: item.name,
-      rating: Number(item.value),
-      content: item.reviewContent,
-    })),
-  };
+  return (section.Student_Ratings ?? []).map(
+    (item: any, index: number) => ({
+      id: index + 1,
+      name: item.name ?? "Anonymous",
+      rating: Number(item.value ?? 0),
+
+      // Existing field used by TestimonialsSection
+      content: item.reviewContent ?? "",
+
+      // New field used by Reviews fallback
+      review: item.reviewContent ?? "",
+
+      date: "Verified Student",
+    })
+  );
 }
 
-export function mapFAQs(api: any) {
-  return {
-  faqs: (api.data.data.university_faqs ?? [])
-    .sort(
-      (a: { priority: number }, b: { priority: number }) =>
-        a.priority - b.priority
-    )
-    .map(
-      (category: {
-        category: string;
-        priority: number;
-        items: {
-          question: string;
-          answer: string;
-        }[];
-      }) => ({
-        category: category.category,
-        priority: category.priority,
-        items: category.items.map(
-          (item: {
-            question: string;
-            answer: string;
-          }) => ({
-            question: item.question,
-            answer: item.answer.replace(/<[^>]*>/g, ""),
-          })
-        ),
-      })
-    ),
-  };
-}
 
 function mapHighlights(api: any) {
   const section = api.data.data.sections;
@@ -228,6 +239,7 @@ function mapFaculty(api: any) {
 export function mapUniversity(api: any) {
 
     const university = parseUniversity(api);
+    const programmes = mapProgrammes(api);
 
     return {
 
@@ -239,11 +251,13 @@ export function mapUniversity(api: any) {
 
         degree: mapDegree(api),
 
-        programmes: mapProgrammes(api),
+        programmes,
+
+        programmeFilters: getProgrammeFilters(programmes),
 
         testimonials: mapTestimonials(api),
 
-        faqs: mapFAQs(api),
+        faqs: mapFAQs(api.data.data),
 
         highlights: mapHighlights(api),
 

@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Link from "next/link";
 
 export default function CTASection({ openWizard, data }) {
 
@@ -100,7 +101,7 @@ export default function CTASection({ openWizard, data }) {
           >
             <div className="px-5 py-8 sm:px-8 lg:px-14 lg:py-10">
 
-              <div className="hidden lg:grid lg:grid-cols-5 gap-8">
+              <div className="hidden lg:grid lg:grid-cols-4 gap-8">
 
                 {/* ACCREDITATION COLUMN */}
                 <div>
@@ -156,41 +157,14 @@ export default function CTASection({ openWizard, data }) {
                     Programmes
                   </h3>
 
-                  {[
-                    "Online Programmes",
-                    "Distance Learning",
-                    "All Courses",
-                  ].map((item) => (
-                    <a
-                      key={item}
-                      href="#"
-                      className="block mb-3 text-muted-foreground hover:text-primary"
+                  {data.programmeFilters.map((filter) => (
+                    <Link
+                      key={filter.mode}
+                      href={`/?mode=${filter.mode}#programmes`}
+                      className="block mb-3 text-muted-foreground hover:text-primary transition-colors"
                     >
-                      {item}
-                    </a>
-                  ))}
-                </div>
-
-                {/* RESOURCES */}
-                <div>
-                  <h3 className="font-bold text-foreground mb-5">
-                    Resources
-                  </h3>
-
-                  {[
-                    "eGyankosh Library",
-                    "Samarth Portal",
-                    "Gyan Darshan",
-                    "FAQ",
-                    "Announcements",
-                  ].map((item) => (
-                    <a
-                      key={item}
-                      href="#"
-                      className="block mb-3 text-muted-foreground hover:text-primary"
-                    >
-                      {item}
-                    </a>
+                      {filter.label}
+                    </Link>
                   ))}
                 </div>
 
@@ -292,45 +266,15 @@ export default function CTASection({ openWizard, data }) {
                     </AccordionTrigger>
 
                     <AccordionContent>
-                      {[
-                        "Online Programmes",
-                        "Distance Learning",
-                        "All Courses",
-                      ].map((item) => (
-                        <a
-                          key={item}
-                          href="#"
-                          className="block py-2 text-muted-foreground hover:text-primary"
+                      {data.programmeFilters.map((filter) => (
+                        <Link
+                          key={filter.mode}
+                          href={`/?mode=${filter.mode}#programmes`}
+                          className="block mb-3 text-muted-foreground hover:text-primary transition-colors"
                         >
-                          {item}
-                        </a>
+                          {filter.label}
+                        </Link>
                       ))}
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  <AccordionItem value="resources">
-                    <AccordionTrigger>
-                      Resources
-                    </AccordionTrigger>
-
-                    <AccordionContent>
-                      <div className="flex flex-col gap-3 pt-2">
-                        {[
-                          "eGyankosh Library",
-                          "Samarth Portal",
-                          "Gyan Darshan",
-                          "FAQ",
-                          "Announcements",
-                        ].map((item) => (
-                          <a
-                            key={item}
-                            href="#"
-                            className="text-muted-foreground hover:text-primary transition-colors"
-                          >
-                            {item}
-                          </a>
-                        ))}
-                      </div>
                     </AccordionContent>
                   </AccordionItem>
 
@@ -360,7 +304,7 @@ export default function CTASection({ openWizard, data }) {
                 <div className="mt-6 border-t border-slate-200 pt-8">
 
                   <h3 className="font-bold text-foreground mb-3">
-                    IGNOU At A Glance
+                    {data.name} At A Glance
                   </h3>
 
                   <div className="grid grid-cols-3 gap-4">
@@ -404,7 +348,7 @@ export default function CTASection({ openWizard, data }) {
               <div className="border-t border-slate-200 mt-6 pt-6 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between text-sm text-muted-foreground">
                 
                 <p className="max-w-2xl">
-                  Disclaimer: We act solely as an information partner and do not conduct or facilitate admissions to IGNOU. For admissions, please visit the official IGNOU website or contact the university directly. IGNOU University holds full rights to request changes or removal of any non-relevant content. Images used are for illustrative purposes only and do not directly represent the respective colleges or universities.
+                  Disclaimer: We act solely as an information partner and do not conduct or facilitate admissions to {data.name}. For admissions, please visit the official {data.name} website or contact the university directly. {data.name} University holds full rights to request changes or removal of any non-relevant content. Images used are for illustrative purposes only and do not directly represent the respective colleges or universities.
                 </p>
     
                 <p> © {new Date().getFullYear()} All Rights Reserved </p>

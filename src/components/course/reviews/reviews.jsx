@@ -11,8 +11,10 @@ import ReviewModal from "./review-modal";
 export default function Reviews({ data }) {
   const [open, setOpen] = useState(false);
 
-  const reviews = data.reviews;
+   if (!data.reviews) return null;
 
+  const reviews = data.reviews;
+  
   return (
     <section id="reviews" className="py-10">
       <div className="mx-auto max-w-7xl px-6">

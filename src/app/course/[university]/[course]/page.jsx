@@ -13,6 +13,7 @@ export default async function CoursePage({ params }) {
   ]);
 
   const universityData = mapUniversity(universityApi);
+
   const courseData = mapCourse(courseApi, universityData);
 
   return (

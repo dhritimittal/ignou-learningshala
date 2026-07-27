@@ -17,17 +17,11 @@ export function parseCareer(html: string) {
 
   const rows = [...html.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)];
 
-  const jobs = [];
+  const jobs: { title: string; salary: string }[] = [];
 
   const cleanHtml = strip(html);
 
   const description = strip(html.split("<figure")[0] ?? "");
-
-  const salaryMatch = cleanHtml.match(
-    /₹?\s*\d+(?:\.\d+)?\s*(?:-|–|to)\s*₹?\s*\d+(?:\.\d+)?\s*LPA/i
-  );
-
-  const averagePackage = salaryMatch?.[0] ?? "";
 
   for (const row of rows) {
     const cells = [...row[1].matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)];
@@ -37,9 +31,13 @@ export function parseCareer(html: string) {
     const title = strip(cells[0][1]);
     const salary = strip(cells[1][1]);
 
+    const normalizedTitle = title.toLowerCase();
+    const normalizedSalary = salary.toLowerCase();
+
     if (
-      title === "Job Roles" ||
-      salary === "Average Salary"
+      normalizedTitle.includes("job role") ||
+      normalizedTitle.includes("job roles") ||
+      normalizedSalary.includes("salary")
     ) {
       continue;
     }
@@ -48,6 +46,30 @@ export function parseCareer(html: string) {
       title,
       salary,
     });
+  }
+
+  const salaryRanges = jobs
+    .map((job) => {
+      const matches = job.salary.match(/[\d,]+/g);
+
+      if (!matches || matches.length < 2) return null;
+
+      return {
+        min: Number(matches[0].replace(/,/g, "")),
+        max: Number(matches[1].replace(/,/g, "")),
+      };
+    })
+    .filter(
+      (range): range is { min: number; max: number } => range !== null
+    );
+
+  let averagePackage = "";
+
+  if (salaryRanges.length) {
+    const overallMin = Math.min(...salaryRanges.map((r) => r.min));
+    const overallMax = Math.max(...salaryRanges.map((r) => r.max));
+
+    averagePackage = `₹${overallMin.toLocaleString("en-IN")} – ₹${overallMax.toLocaleString("en-IN")}`;
   }
 
   return {

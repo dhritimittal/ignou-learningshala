@@ -9,11 +9,37 @@ export function stripHtml(html: string = "") {
 }
 
 export function extractParagraphs(html: string = "") {
-  const regex = /<li[^>]*>([\s\S]*?)<\/li>/gi;
+  // First try list items
+  const liMatches = [...html.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi)];
 
-  const matches = [...html.matchAll(regex)];
+  if (liMatches.length > 0) {
+    return liMatches.map((match) => {
+      const text = stripHtml(match[1]);
 
-  return matches.map((match) => stripHtml(match[1]));
+      const colonIndex = text.indexOf(":");
+
+      if (colonIndex !== -1) {
+        return {
+          title: text.slice(0, colonIndex).trim(),
+          body: text.slice(colonIndex + 1).trim(),
+        };
+      }
+
+      return {
+        title: "",
+        body: text,
+      };
+    });
+  }
+
+  // Otherwise fall back to paragraphs
+  const pMatches = [...html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)];
+
+  // Skip the first paragraph because it is already used as the description
+  return pMatches.slice(1).map((match) => ({
+    title: "",
+    body: stripHtml(match[1]),
+  }));
 }
 
 export function extractDescription(html: string = "") {

@@ -7,31 +7,45 @@ import {
   MotionNavigationMenuList,
   MotionNavigationMenuTrigger,
 } from "@/components/unlumen-ui/motion-navigation-menu";
-import { PROGRAMMES } from "@/data/home/programmes";
 
 const listHighlightClassName = "bg-primary/25 rounded-lg";
 const contentHighlightClassName =
   "bg-primary/25 rounded-lg";
 
-const pgProgrammes = PROGRAMMES.filter((p) => p.level === "PG");
-const pgonline = pgProgrammes.filter((p) =>
-  p.slug.startsWith("online-")
-);
-const pgdistance = pgProgrammes.filter((p) =>
-  p.slug.startsWith("distance-")
-);
 
-const ugProgrammes = PROGRAMMES.filter((p) => p.level === "UG");
-const ugonline = ugProgrammes.filter((p) =>
-  p.slug.startsWith("online-")
-);
-const ugdistance = ugProgrammes.filter((p) =>
-  p.slug.startsWith("distance-")
-);
+export default function ProgrammeMegaMenu({programmes = [], }) {
 
-const otherProgrammes = PROGRAMMES.filter((p) => p.level === "Diploma");
+  const pgProgrammes =
+    programmes.filter(p => p.level === "PG");
 
-export default function ProgrammeMegaMenu() {
+  const pgonline =
+      pgProgrammes.filter(
+          p => p.mode === "Online"
+      );
+
+  const pgdistance =
+      pgProgrammes.filter(
+          p => p.mode === "Distance"
+      );
+
+  const ugProgrammes =
+      programmes.filter(p => p.level === "UG");
+
+  const ugonline =
+      ugProgrammes.filter(
+          p => p.mode === "Online"
+      );
+
+  const ugdistance =
+      ugProgrammes.filter(
+          p => p.mode === "Distance"
+      );
+
+  const otherProgrammes =
+      programmes.filter(
+          p => !["PG", "UG"].includes(p.level)
+      );
+
   return (
     <MotionNavigationMenu
       viewportClassName="bg-surface border-none shadow-none"
@@ -51,7 +65,7 @@ export default function ProgrammeMegaMenu() {
                 {pgonline.map((programme) => (
                   <MotionNavigationMenuLink
                     key={programme.slug}
-                    href={`/course/${programme.slug}`}
+                    href={`/course/ignou/${programme.slug}`}
                   >
                     <span className="text-sm font-medium">
                       {programme.name}
@@ -69,7 +83,7 @@ export default function ProgrammeMegaMenu() {
                 {pgdistance.map((programme) => (
                   <MotionNavigationMenuLink
                     key={programme.slug}
-                    href={`/course/${programme.slug}`}
+                    href={`/course/ignou/${programme.slug}`}
                   >
                     <span className="text-sm font-medium">
                       {programme.name}
@@ -97,7 +111,7 @@ export default function ProgrammeMegaMenu() {
                 {ugonline.map((programme) => (
                   <MotionNavigationMenuLink
                     key={programme.slug}
-                    href={`/course/${programme.slug}`}
+                    href={`/course/ignou/${programme.slug}`}
                   >
                     <span className="text-sm font-medium">
                       {programme.name}
@@ -115,7 +129,7 @@ export default function ProgrammeMegaMenu() {
                 {ugdistance.map((programme) => (
                   <MotionNavigationMenuLink
                     key={programme.slug}
-                    href={`/course/${programme.slug}`}
+                    href={`/course/ignou/${programme.slug}`}
                   >
                     <span className="text-sm font-medium">
                       {programme.name}
@@ -141,7 +155,7 @@ export default function ProgrammeMegaMenu() {
                 {otherProgrammes.map((programme) => (
                   <MotionNavigationMenuLink
                     key={programme.slug}
-                    href={`/course/${programme.slug}`}
+                    href={`/course/ignou/${programme.slug}`}
                   >
                     <span className="text-sm font-medium">
                       {programme.name}

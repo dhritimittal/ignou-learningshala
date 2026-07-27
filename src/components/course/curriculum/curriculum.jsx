@@ -2,6 +2,9 @@ import CurriculumAccordion from "./curriculum-accordion";
 import  SyllabusButton from "./syllabus-button";
 
 export default function Curriculum({ data, openWizard }) {
+  if (!data?.curriculum.syllabus && !data?.curriculum.semesters?.length) {
+    return null;
+  }
   return (
     <section
       id="curriculum"
@@ -42,7 +45,10 @@ export default function Curriculum({ data, openWizard }) {
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
 
             <span className="font-semibold">
-                {data.curriculum.semesters.length} Semesters
+                {data.curriculum.semesters.length} {" "}
+                {data.curriculum.semesters[0]?.type === "Year"
+                  ? "Years"
+                  : "Semesters"}
             </span>
 
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />

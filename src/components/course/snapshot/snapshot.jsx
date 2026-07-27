@@ -29,7 +29,7 @@ export default function Snapshot({ data }) {
           label: "Programme Name",
           value: s.programmeName,
         },
-        {
+        s.degreeLevel && {
           icon: Award,
           label: "Degree Level",
           value: s.degreeLevel,
@@ -49,7 +49,7 @@ export default function Snapshot({ data }) {
           label: "Mode of Learning",
           value: s.modeOfLearning,
         },
-      ],
+      ].filter(Boolean),
     },
 
     {
@@ -81,12 +81,12 @@ export default function Snapshot({ data }) {
           label: "Approvals & Rankings",
           value: s.approvals,
         },
-        {
+        s.topSpecializations && {
           icon: Award,
           label: "Specializations",
           value: s.topSpecializations,
         },
-      ],
+      ].filter(Boolean),
     },
 
     {

@@ -4,24 +4,40 @@ import { useState, useEffect, useRef } from "react";
 import AccentDivider from "@/components/ui/accentdivider";
 import Badge from "@/components/ui/badge";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 export default function ProgrammesSection({ openWizard, data }) {
-  const [filter, setFilter] = useState("All");
+  const searchParams = useSearchParams();
+  const [filter, setFilter] = useState("all");
+
+  useEffect(() => {
+    const mode = searchParams.get("mode");
+    if (mode) {
+      setFilter(mode.toLowerCase());
+    } else {
+      setFilter("all");
+    }
+
+  }, [searchParams]);
+  
   const [expandCourses, setExpandCourses] = useState(false);
   const sectionRef = useRef(null);
 
   const filters = [
-  "All",
-  ...new Set([
-    ...data.programmes.map((p) => p.mode),
-    ...data.programmes.map((p) => p.level),
-  ]),
-];
+    "all",
+    ...new Set([
+      ...data.programmes.map((p) => p.mode.toLowerCase()),
+      ...data.programmes.map((p) => p.level.toLowerCase()),
+    ]),
+  ];
+
   const filtered = data.programmes.filter((p) => {
-    if (filter === "All") return true;
-    if (filter === "Online") return p.mode === "Online";
-    if (filter === "Distance") return p.mode === "Distance";
-    return p.level === filter;
+    if (filter === "all") return true;
+
+    return (
+      p.mode.toLowerCase() === filter ||
+      p.level.toLowerCase() === filter
+    );
   });
 
   const isOnline = (p) => p.mode === "Online";
@@ -60,7 +76,9 @@ export default function ProgrammesSection({ openWizard, data }) {
                   : "bg-white text-muted-foreground border border-slate-200 hover:border-primary/40"
               }`}
             >
-              {f}
+              {f === "all"
+                ? "All"
+                : f.charAt(0).toUpperCase() + f.slice(1)}
             </button>
           ))}
         </div>

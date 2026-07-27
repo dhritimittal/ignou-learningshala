@@ -3,6 +3,7 @@ import FeeCard from "./fee-card";
 import ScholarshipBanner from "./scholarship-banner";
 
 export default function Fees({ data, openWizard }) {
+  if (!data) return null;
   return (
     <section
       id="fees"

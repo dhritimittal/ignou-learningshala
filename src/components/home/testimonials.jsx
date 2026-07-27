@@ -60,17 +60,17 @@ export default function TestimonialsSection({data}) {
   // ── Auto-advance left panel counter ───────────────────────────────────────
   useEffect(() => {
     autoTimerRef.current = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % data.testimonials.testimonials.length);
+      setCurrent((prev) => (prev + 1) % data.testimonials.length);
     }, AUTO_ADVANCE_MS);
     return () => {
       if (autoTimerRef.current) clearInterval(autoTimerRef.current);
     };
   }, []);
 
-  const prev = () => setCurrent((c) => (c - 1 + data.testimonials.testimonials.length) % data.testimonials.testimonials.length);
-  const next = () => setCurrent((c) => (c + 1) % data.testimonials.testimonials.length);
+  const prev = () => setCurrent((c) => (c - 1 + data.testimonials.length) % data.testimonials.length);
+  const next = () => setCurrent((c) => (c + 1) % data.testimonials.length);
 
-  const featured = data.testimonials.testimonials[current];
+  const featured = data.testimonials[current];
 
   return (
     <section className="pt-8 pb-8 bg-primary-tint overflow-hidden">
@@ -99,7 +99,7 @@ export default function TestimonialsSection({data}) {
             <div className="flex items-center gap-3 mt-8">
               {/* Dot indicators */}
               <div className="flex gap-1.5 ml-1">
-                {data.testimonials.testimonials.map((_, i) => (
+                {data.testimonials.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setCurrent(i)}

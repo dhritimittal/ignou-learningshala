@@ -1,7 +1,14 @@
 "use client";
 
-import { NAV_LINKS } from "@/data/home/navlinks";
 import { MessageCircle } from "lucide-react";
+
+export const NAV_LINKS = [
+  { label: "About", href: "#about" },
+  { label: "Programmes", href: "#programmes" },
+  { label: "Admissions", href: "#admissions" },
+  { label: "FAQs", href: "#faq" },
+  { label: "Contact", href: "#contact" },
+];
 
 export default function Navbar({ scrolled, openWizard, data}) {
 

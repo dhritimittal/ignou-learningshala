@@ -54,7 +54,7 @@ export default function ClientPage({ course, university}) {
 
   return (
     <div className="font-sans antialiased">
-      <CourseNavbar scrolled={scrolled} openWizard={openWizard} heroVisible={heroVisible} course={course} />
+      <CourseNavbar scrolled={scrolled} openWizard={openWizard} heroVisible={heroVisible} course={course} university={university} />
       <main>
         <Hero data={course} openWizard={openWizard} />
         <Highlights data={university} />
@@ -63,12 +63,12 @@ export default function ClientPage({ course, university}) {
         <Specializations data={course} openWizard={openWizard} />
         <AdmissionsSection openWizard={openWizard} data={university} />
         <Curriculum data={course} openWizard={openWizard} />
-        <Learning data={university} />
+        <Learning data={course} />
         <DegreeSection openWizard={openWizard} data={university} />
         <Careers data={course} openWizard={openWizard} />
         <Faculty data={university} />
         <Reviews data={course} />
-        <FAQSection data={university} />
+        <FAQSection data={course} />
         <CTASection openWizard={openWizard} data={university} />
       </main>
       {wizardOpen && (

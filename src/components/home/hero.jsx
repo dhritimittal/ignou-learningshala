@@ -126,20 +126,6 @@ export default function HeroSection({ data, openWizard }) {
           </div>
         </div>
       </div>
-
-      {/* Stats bar */}
-      <div className="relative z-20 border-t border-primary-dark/60 bg-primary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 divide-x divide-blue-900/40">
-            {STATS.map((s) => (
-              <div key={s.label} className="py-5 px-4 text-center first:border-l-0">
-                <div className="text-2xl font-black text-primary-foreground">{s.value}</div>
-                <div className="text-[11px] text-primary-foreground/60 mt-0.5">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </section>
   );
 }

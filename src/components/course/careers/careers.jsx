@@ -40,7 +40,7 @@ export default function Careers({ data, openWizard }) {
   const topMax = sortedJobs.length ? parseMaxSalary(sortedJobs[0].salary) : 1;
   const visibleJobs = showAll ? sortedJobs : sortedJobs.slice(0, INITIAL_VISIBLE);
   const remaining = sortedJobs.length - visibleJobs.length;
-
+  if (!data) return null;
   return (
     <section id="careers" className="py-10">
       <div className="mx-auto max-w-7xl px-6">
@@ -65,13 +65,11 @@ export default function Careers({ data, openWizard }) {
           <div className="grid grid-cols-2 divide-x divide-accent/20">
 
             <CareerStat
-              icon={IndianRupee}
               value={career.averagePackage}
-              label="Average package"
+              label="Salary Range"
             />
 
             <CareerStat
-              icon={Building2}
               value={career.jobs.length}
               label="Career Roles"
             />

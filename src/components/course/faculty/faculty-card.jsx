@@ -42,7 +42,7 @@ export default function FacultyCard({
       {/* Designation */}
 
       <p
-        className="mt-2 text-base text-muted-foreground"
+        className="mt-2 text-base text-white"
       >
         {faculty.designation}
       </p>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { PROGRAMMES } from "@/data/home/programmes";
 
 const TABS = [
   {
@@ -22,21 +21,25 @@ export default function ProgrammeStep({
   value,
   onChange,
   onNext,
+  data,
 }) {
   const [activeTab, setActiveTab] = useState("PG");
+  const programmes = data?.programmes ?? [];
+  console.log(data);
+  console.log(programmes);
 
   const filtered = useMemo(() => {
-    return PROGRAMMES.filter(
+    return programmes.filter(
       (programme) => programme.level === activeTab
     );
-  }, [activeTab]);
+  }, [programmes, activeTab]);
 
-  const online = filtered.filter((programme) =>
-    programme.slug.startsWith("online")
+  const online = filtered.filter(
+    (programme) => programme.mode === "Online"
   );
 
-  const distance = filtered.filter((programme) =>
-    programme.slug.startsWith("distance")
+  const distance = filtered.filter(
+    (programme) => programme.mode === "Distance"
   );
 
   const renderProgramme = (programme) => {

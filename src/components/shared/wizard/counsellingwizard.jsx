@@ -87,6 +87,7 @@ const STEPS = [
 export default function CounsellingWizard({
     open = true,
     onClose,
+    data,
 }) {
     const [step, setStep] = useState(0);
 
@@ -147,6 +148,7 @@ export default function CounsellingWizard({
 
     return (
                 <WizardShell
+                    data={data}
                     step={step}
                     totalSteps={STEPS.length}
                     title={STEPS[step].title}
@@ -173,6 +175,7 @@ export default function CounsellingWizard({
 
                                 {step === 0 && (
                                     <ProgrammeStep
+                                    data={data}
                                     value={form.programme}
                                     onChange={(value) => update("programme", value)}
                                     onNext={next}

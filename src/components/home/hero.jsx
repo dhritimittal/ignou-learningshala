@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { STATS } from "@/data/home/stats";
 
 
 export default function HeroSection({ data, openWizard }) {

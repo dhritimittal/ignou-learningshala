@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 
 export default function WizardShell({
     children,
+    data,
     step,
     totalSteps,
     title,

@@ -57,6 +57,7 @@ export default function IGNOUHomePage({data}) {
           onClose={() => {
             setWizardOpen(false);
           }}
+          data={data}
         />
       )}
     </div>

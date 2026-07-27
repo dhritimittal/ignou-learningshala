@@ -76,6 +76,7 @@ export default function ClientPage({ course, university}) {
           onClose={() => {
             setWizardOpen(false);
           }}
+          data={university}
         />
       )}
     </div>

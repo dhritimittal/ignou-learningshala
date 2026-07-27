@@ -9,7 +9,9 @@ export function stripHtml(html: string = "") {
 }
 
 export function extractParagraphs(html: string = "") {
-  // First try list items
+  const items: { title: string; body: string }[] = [];
+
+  // Lists
   const liMatches = [...html.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi)];
 
   if (liMatches.length > 0) {
@@ -32,14 +34,36 @@ export function extractParagraphs(html: string = "") {
     });
   }
 
-  // Otherwise fall back to paragraphs
+  // Paragraphs
   const pMatches = [...html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)];
 
-  // Skip the first paragraph because it is already used as the description
-  return pMatches.slice(1).map((match) => ({
-    title: "",
-    body: stripHtml(match[1]),
-  }));
+  pMatches.slice(1).forEach((match) => {
+    items.push({
+      title: "",
+      body: stripHtml(match[1]),
+    });
+  });
+
+  // Tables
+  const tableRows = [...html.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)];
+
+  tableRows.forEach((row, index) => {
+    const cells = [
+      ...row[1].matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi),
+    ].map((c) => stripHtml(c[1]));
+
+    if (!cells.length) return;
+
+    // Skip header row
+    if (index === 0) return;
+
+    items.push({
+      title: cells[0],
+      body: cells.slice(1).join(" • "),
+    });
+  });
+
+  return items;
 }
 
 export function extractDescription(html: string = "") {

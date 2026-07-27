@@ -88,16 +88,17 @@ export default function HeroInfoCard({ data, openWizard }) {
             >
               Apply Now
             </button>
-
-            <a
-              href={data.hero.brochure}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() =>
+                data.hero.brochure
+                  ? window.open(data.hero.brochure, "_blank")
+                  : openWizard()
+              }
               className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl border border-primary py-3 font-semibold text-primary transition hover:bg-primary hover:text-white"
             >
               <Download size={18} />
               Download Brochure
-            </a>
+            </button>
 
             <hr className="my-5" />
 

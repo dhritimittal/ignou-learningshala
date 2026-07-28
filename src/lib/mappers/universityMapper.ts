@@ -8,6 +8,7 @@ import { parseUniversity } from "../parsers/university";
 import { extractParagraphs, extractDescription } from "../parsers/learning";
 import { mapFAQs } from "./faqMapper";
 import { parseWhyChoose, stripHtml } from "../parsers/highlights";
+import { mapSnapshot } from "./courseMapper";
 
 export function mapHero(api: any) {
   const university = api.data.data;
@@ -274,6 +275,8 @@ export function mapUniversity(api: any) {
         hero: mapHero(api),
 
         about: mapAbout(api),
+
+        snapshot: mapSnapshot(api),
 
         degree: mapDegree(api),
 

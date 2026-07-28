@@ -4,7 +4,7 @@ import AccentDivider from "../ui/accentdivider";
 
 export default function DegreeSection({ data, openWizard }) {
   return (
-    <section id="degree" className="py-10 bg-white overflow-hidden">
+    <section id="degree" className="py-8 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="grid lg:grid-cols-2 gap-10 items-center">

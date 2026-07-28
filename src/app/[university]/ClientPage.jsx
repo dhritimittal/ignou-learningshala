@@ -14,6 +14,10 @@ import FAQSection from "@/components/home/faqs";
 import CTASection from "@/components/home/layout/cta";
 import CounsellingWizard from "@/components/shared/wizard/counsellingwizard";
 import TestimonialsSection from "@/components/home/testimonials";
+import Snapshot from "@/components/course/snapshot/snapshot";
+import Learning from "@/components/course/learning";
+import Faculty from "@/components/course/faculty/faculty";
+import Careers from "@/components/course/careers/careers";
 import Highlights from "@/components/course/highlights";
 // ─── Page Component ──────────────────────────────────────────────────────────
 
@@ -39,7 +43,7 @@ export default function IGNOUHomePage({data}) {
         <HeroSection openWizard={openWizard} data={data}/>
         <Highlights data={data}/>
         <AboutSection openWizard={openWizard} data={data} />
-        <DegreeSection openWizard={openWizard} data={data} />
+        <Snapshot data={data}/>
         <Suspense fallback={null}>
           <ProgrammesSection
             openWizard={openWizard}
@@ -47,6 +51,11 @@ export default function IGNOUHomePage({data}) {
           />
         </Suspense>
         <AdmissionsSection openWizard={openWizard} data={data} />
+        
+        <Learning data={data}/>
+        <DegreeSection openWizard={openWizard} data={data} />
+        {/*<Careers/>*/}
+        <Faculty data={data} />
         <StrengthsSection data={data} />
         <TestimonialsSection data={data} />
         <FAQSection data={data} />

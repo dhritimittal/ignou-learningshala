@@ -10,7 +10,7 @@ export default function Faculty({ data }) {
   const [selectedFaculty, setSelectedFaculty] = useState(null);
 
   return (
-    <section id="faculty" className="py-10">
+    <section id="faculty" className="py-8">
       <div className="mx-auto max-w-7xl px-6">
 
         {/* Header */}

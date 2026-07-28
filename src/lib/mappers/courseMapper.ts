@@ -99,67 +99,60 @@ export function mapCourseHero(api: any, university: any ) {
   };
 }
 
-export function mapSnapshot(api: any, university: any) {
-  const course = api.data;
+function getSnapshotHtml(api: any) {
+  // Course page
+  if (Array.isArray(api.data?.sections)) {
+    const section = api.data.sections.find(
+      (s: any) => s.section_key === "Key_Highlights"
+    );
 
-  const section = course.sections.find(
-    (s: any) => s.section_key === "Key_Highlights"
-  );
+    return section?.props?.content ?? "";
+  }
 
-  const highlights = parseKeyHighlights(
-    section?.props?.content ?? ""
-  );
+  // University page
+  if (api.data?.data?.sections?.Key_Highlights) {
+    return api.data.data.sections.Key_Highlights;
+  }
 
-  return {
-    programmeName:
-      highlights["Program Name"] ?? course.name,
+  return "";
+}
 
-    degreeLevel:
-      highlights["Degree Level"] ?? null,
+function normalizeValue(value: any) {
+  if (value == null) return null;
 
-    university:
-      highlights["University"] ??
-      course.university_name,
+  if (Array.isArray(value)) {
+    return value.filter(Boolean);
+  }
 
-    duration:
-      highlights["Duration"] ??
-      course.duration,
+  if (typeof value === "string") {
+    const trimmed = value.trim();
 
-    modeOfLearning:
-      highlights["Mode of Learning"] ??
-      university.educationMode,
+    if (
+      trimmed === "" ||
+      trimmed === "-" ||
+      trimmed === "--" ||
+      trimmed === "N/A"
+    ) {
+      return null;
+    }
 
-    eligibility:
-      highlights["Eligibility"] ??
-      course.eligibility,
+    return trimmed;
+  }
 
-    entranceTest:
-      highlights["Entrance Test"] ?? "",
+  return value;
+}
 
-    admissionProcess:
-      highlights["Admission Process"] ?? "",
+export function mapSnapshot(api: any) {
+  const html = getSnapshotHtml(api);
 
-    approvals:
-      highlights["Approval/Rankings"] ??
-      university.university.approvals,
+  const highlights = parseKeyHighlights(html);
 
-    topSpecializations:
-        highlights["Top Specializations"] ??
-        highlights["No. of Specializations"] ??
-        null,
-
-    lms:
-      highlights["LMS"] ?? "",
-
-    examinations:
-      highlights["Exam"] ?? "",
-
-    placement:
-      highlights["Placement Assistance"] ?? "",
-
-    topRoles:
-      highlights["Top Job Roles"] ?? "",
-  };
+  return Object.entries(highlights)
+    .map(([label, value]) => ({
+      label: label.trim(),
+      value: normalizeValue(value),
+    }))
+    .filter((item) => item.value);
 }
 
 function getSemesterCount(duration: string): number | null {
@@ -484,7 +477,7 @@ export function mapCourse(api: any, university: any) {
 
   return {
     hero: mapCourseHero(api, university),
-    snapshot: mapSnapshot(api, university),
+    snapshot: mapSnapshot(api),
     fees: mapFees(api),
     specializations: mapSpecializations(api),
     curriculum: mapCurriculum(api),

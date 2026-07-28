@@ -101,7 +101,7 @@ export default function CTASection({ openWizard, data }) {
           >
             <div className="px-5 py-8 sm:px-8 lg:px-14 lg:py-10">
 
-              <div className="hidden lg:grid lg:grid-cols-4 gap-8">
+              <div className="hidden lg:grid lg:grid-cols-3 gap-8">
 
                 {/* ACCREDITATION COLUMN */}
                 <div>
@@ -187,46 +187,6 @@ export default function CTASection({ openWizard, data }) {
                   </p>
                 </div>
 
-                {/* STATS */}
-                <div>
-
-                  <h3 className="font-bold text-foreground mb-5">
-                    {data.name} At A Glance
-                  </h3>
-
-                  <div className="space-y-4">
-
-                    <div>
-                      <div className="text-2xl lg:text-3xl font-black text-primary">
-                        38L+
-                      </div>
-                      <div className="text-muted-foreground">
-                        Learners
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="text-3xl font-black text-primary">
-                        A++
-                      </div>
-                      <div className="text-muted-foreground">
-                        NAAC Grade
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="text-3xl font-black text-primary">
-                        1985
-                      </div>
-                      <div className="text-muted-foreground">
-                        Established
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-
               </div>
 
               <div className="lg:hidden">
@@ -299,49 +259,6 @@ export default function CTASection({ openWizard, data }) {
                   </AccordionItem>
 
                 </Accordion>
-
-                {/* Stats */}
-                <div className="mt-6 border-t border-slate-200 pt-8">
-
-                  <h3 className="font-bold text-foreground mb-3">
-                    {data.name} At A Glance
-                  </h3>
-
-                  <div className="grid grid-cols-3 gap-4">
-
-                    <div>
-                      <p className="text-2xl font-black text-primary">
-                        38L+
-                      </p>
-
-                      <p className="text-sm text-muted-foreground">
-                        Learners
-                      </p>
-                    </div>
-
-                    <div>
-                      <p className="text-2xl font-black text-primary">
-                        A++
-                      </p>
-
-                      <p className="text-sm text-muted-foreground">
-                        NAAC Grade
-                      </p>
-                    </div>
-
-                    <div>
-                      <p className="text-2xl font-black text-primary">
-                        1985
-                      </p>
-
-                      <p className="text-sm text-muted-foreground">
-                        Established
-                      </p>
-                    </div>
-
-                  </div>
-
-                </div>
 
               </div>
 

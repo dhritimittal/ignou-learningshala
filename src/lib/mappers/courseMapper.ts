@@ -438,6 +438,48 @@ function mapLearning(api: any, university: any) {
   };
 }
 
+function slugToName(slug: string = "") {
+  return slug
+    .split("-")
+    .map(
+      (word) =>
+        word.charAt(0).toUpperCase() +
+        word.slice(1).toLowerCase()
+    )
+    .join(" ");
+}
+
+export function mapByline(api: any) {
+  const data = api.data;
+
+  return {
+    author: {
+      name: slugToName(data.author_slug),
+      image: getMediaUrl(data.author_image),
+      slug: data.author_slug,
+      label: data.author_label,
+      bio: data.author_details,
+      verified: false,
+    },
+
+    reviewer: {
+      name: slugToName(data.verifier_slug),
+      image: getMediaUrl(data.verifier_image),
+      slug: data.verifier_slug,
+      label: data.verifier_label,
+      bio: data.verifier_details,
+      verified: true,
+    },
+
+    updatedAt:
+      data.updated_at ??
+      data.updatedAt ??
+      data.last_updated ??
+      data.modified_at ??
+      null,
+  };
+}
+
 export function mapCourse(api: any, university: any) { 
 
   return {
@@ -449,6 +491,7 @@ export function mapCourse(api: any, university: any) {
     career: mapCareer(api),
     reviews: mapReviews(api, university),
     faqs: mapFAQs(api.data),
+    byline: mapByline(api),
     ...mapLearning(api, university)
   };
 }

@@ -14,6 +14,8 @@ import FAQSection from "@/components/home/faqs";
 import Careers from "@/components/course/careers/careers";
 import Faculty from "@/components/course/faculty/faculty";
 import Reviews from "@/components/course/reviews/reviews";
+import AuthorByline from "@/components/course/author/authorbyline";
+
 import { useState, useEffect } from "react";
 import Hero from "@/components/course/hero/hero";
 
@@ -58,6 +60,7 @@ export default function ClientPage({ course, university}) {
       <main>
         <Hero data={course} openWizard={openWizard} />
         <Highlights data={university} />
+        <AuthorByline data={course} />
         <Snapshot data={course} />
         <Fees data={course} openWizard={openWizard} />
         <Specializations data={course} openWizard={openWizard} />

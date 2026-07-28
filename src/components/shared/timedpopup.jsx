@@ -6,7 +6,7 @@ import SignupForm from "./signupform";
 
 const STORAGE_KEY = "popup-last-shown";
 
-export default function TimedPopup() {
+export default function TimedPopup({data}) {
     const [open, setOpen] = useState(false);
 
     const [form, setForm] = useState({
@@ -101,7 +101,7 @@ export default function TimedPopup() {
                                 <div className="hidden lg:block relative overflow-hidden bg-primary text-white p-8">
                                     <div className="relative z-10">
                                         <img
-                                            src="/logo.png"
+                                            src={data.logo}
                                             className="h-12 mb-10"
                                         />
 

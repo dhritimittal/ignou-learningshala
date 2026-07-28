@@ -5,11 +5,11 @@ import ClientPage from "./ClientPage";
 import { getCourse } from "@/lib/api/course";
 
 export default async function CoursePage({ params }) {
-  const { course } = await params;
+  const { university, course } = await params;
 
   const [universityApi, courseApi] = await Promise.all([
-    getUniversity("ignou"),
-    getCourse("ignou", course),
+    getUniversity(university),
+    getCourse(university, course),
   ]);
 
   const universityData = mapUniversity(universityApi);

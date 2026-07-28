@@ -2,6 +2,7 @@
 
 export default function WizardSidebar({
     badge,
+    data,
     title,
     description,
     bullets,
@@ -10,7 +11,7 @@ export default function WizardSidebar({
         <div className="hidden lg:block relative overflow-hidden bg-primary text-white p-8">
             <div className="relative z-10">
                 <img
-                    src="/logo.png"
+                    src={data.logo}
                     className="h-12 mb-10"
                 />
 

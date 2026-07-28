@@ -13,7 +13,7 @@ const contentHighlightClassName =
   "bg-primary/25 rounded-lg";
 
 
-export default function ProgrammeMegaMenu({programmes = [], }) {
+export default function ProgrammeMegaMenu({programmes = [], university }) {
 
   const pgProgrammes =
     programmes.filter(p => p.level === "PG");
@@ -65,7 +65,7 @@ export default function ProgrammeMegaMenu({programmes = [], }) {
                 {pgonline.map((programme) => (
                   <MotionNavigationMenuLink
                     key={programme.slug}
-                    href={`/course/ignou/${programme.slug}`}
+                    href={`/${university.slug}/${programme.slug}`}
                   >
                     <span className="text-sm font-medium">
                       {programme.name}
@@ -83,7 +83,7 @@ export default function ProgrammeMegaMenu({programmes = [], }) {
                 {pgdistance.map((programme) => (
                   <MotionNavigationMenuLink
                     key={programme.slug}
-                    href={`/course/ignou/${programme.slug}`}
+                    href={`/${university.slug}/${programme.slug}`}
                   >
                     <span className="text-sm font-medium">
                       {programme.name}
@@ -111,7 +111,7 @@ export default function ProgrammeMegaMenu({programmes = [], }) {
                 {ugonline.map((programme) => (
                   <MotionNavigationMenuLink
                     key={programme.slug}
-                    href={`/course/ignou/${programme.slug}`}
+                    href={`/${university.slug}/${programme.slug}`}
                   >
                     <span className="text-sm font-medium">
                       {programme.name}
@@ -129,7 +129,7 @@ export default function ProgrammeMegaMenu({programmes = [], }) {
                 {ugdistance.map((programme) => (
                   <MotionNavigationMenuLink
                     key={programme.slug}
-                    href={`/course/ignou/${programme.slug}`}
+                    href={`/${university.slug}/${programme.slug}`}
                   >
                     <span className="text-sm font-medium">
                       {programme.name}
@@ -155,7 +155,7 @@ export default function ProgrammeMegaMenu({programmes = [], }) {
                 {otherProgrammes.map((programme) => (
                   <MotionNavigationMenuLink
                     key={programme.slug}
-                    href={`/course/ignou/${programme.slug}`}
+                    href={`/${university.slug}/${programme.slug}`}
                   >
                     <span className="text-sm font-medium">
                       {programme.name}

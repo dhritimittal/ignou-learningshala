@@ -160,7 +160,7 @@ export default function CTASection({ openWizard, data }) {
                   {data.programmeFilters.map((filter) => (
                     <Link
                       key={filter.mode}
-                      href={`/?mode=${filter.mode}#programmes`}
+                      href={`/${data.slug}/?mode=${filter.mode}#programmes`}
                       className="block mb-3 text-muted-foreground hover:text-primary transition-colors"
                     >
                       {filter.label}
@@ -269,7 +269,7 @@ export default function CTASection({ openWizard, data }) {
                       {data.programmeFilters.map((filter) => (
                         <Link
                           key={filter.mode}
-                          href={`/?mode=${filter.mode}#programmes`}
+                          href={`/${data.slug}/?mode=${filter.mode}#programmes`}
                           className="block mb-3 text-muted-foreground hover:text-primary transition-colors"
                         >
                           {filter.label}

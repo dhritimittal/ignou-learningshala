@@ -47,7 +47,7 @@ export default function WizardShell({
 
                 <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] h-full">
                     {/* Desktop Sidebar */}
-                    <WizardSidebar {...sidebar} />
+                    <WizardSidebar {...sidebar} data={data} />
 
                     {/* Right Panel */}
                     <div className="bg-background flex flex-col overflow-hidden h-full">

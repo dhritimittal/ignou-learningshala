@@ -6,7 +6,7 @@ import ProgrammeMegaMenu from "./megamenu";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 
-function MobileProgrammeMenu({ onNavigate, programmes }) {
+function MobileProgrammeMenu({ onNavigate, programmes, university }) {
   const [openGroup, setOpenGroup] = useState(null);
 
   const programmeGroups = [
@@ -58,7 +58,7 @@ function MobileProgrammeMenu({ onNavigate, programmes }) {
                     {group.programmes.map((p) => (
                       <Link
                         key={p.slug}
-                        href={`/course/ignou/${p.slug}`}
+                        href={`/${university.slug}/${p.slug}`}
                         onClick={onNavigate}
                         className="rounded-lg px-3 py-2 hover:bg-primary-tint transition-colors"
                       >
@@ -112,7 +112,7 @@ export default function CourseNavbar({ scrolled, openWizard, course, university,
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 backdrop-blur-sm shadow-sm border-b border-slate-200" : "bg-transparent"
+        scrolled ? "bg-white/95 backdrop-blur-sm shadow-sm border-b border-slate-200" : "bg-white/95 backdrop-blur-sm shadow-sm border-b border-slate-200"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -120,8 +120,8 @@ export default function CourseNavbar({ scrolled, openWizard, course, university,
           {/* Logo */}
           <div className="flex items-center gap-3">
             <img
-              src="/logo.png"
-              alt="IGNOU"
+              src={university.logo}
+              alt={university.name}
               className="h-10 w-auto object-contain"
             />
           </div>
@@ -141,7 +141,7 @@ export default function CourseNavbar({ scrolled, openWizard, course, university,
                   }}
                   className="flex items-center"
                 >
-                  <ProgrammeMegaMenu programmes={university.programmes} />
+                  <ProgrammeMegaMenu programmes={university.programmes} university={university} />
                 </motion.div>
               ) : (
                 <motion.div
@@ -215,7 +215,7 @@ export default function CourseNavbar({ scrolled, openWizard, course, university,
             className="md:hidden overflow-hidden bg-white border-t border-slate-200"
           >
             <div className="px-4 py-4 flex flex-col gap-3 max-h-[70vh] overflow-y-auto">
-              <MobileProgrammeMenu onNavigate={() => setMenuOpen(false)} programmes={university.programmes} />
+              <MobileProgrammeMenu onNavigate={() => setMenuOpen(false)} programmes={university.programmes} university={university} />
 
               <hr className="border-slate-100" />
 

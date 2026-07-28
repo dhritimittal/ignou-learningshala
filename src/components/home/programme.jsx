@@ -113,7 +113,7 @@ export default function ProgrammesSection({ openWizard, data }) {
                 <p className="text-[11px] text-foreground mt-1">{prog.specs} specialisations</p>
               )}
               <Link
-                href={`/course/ignou/${prog.slug}`}
+                href={`/${data.slug}/${prog.slug}`}
                 className="mt-3 w-full py-2 rounded-lg bg-secondary hover:bg-primary text-primary hover:text-primary-foreground border border-primary/20 hover:border-primary text-xs font-semibold transition-all duration-200 text-center"
               >
                 Apply Now →

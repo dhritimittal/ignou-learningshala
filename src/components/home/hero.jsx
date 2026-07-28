@@ -25,7 +25,7 @@ export default function HeroSection({ data, openWizard }) {
       <div className="absolute inset-0 pointer-events-none">
         <img
           src={data.hero.bannerImage}
-          alt="IGNOU Campus"
+          alt={data.name}
           className="absolute right-0 top-0 h-full w-full object-cover object-center opacity-90"
         />
 

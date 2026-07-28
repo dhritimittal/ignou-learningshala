@@ -44,13 +44,13 @@ export function parseUniversity(api: any) {
     // Approvals
     approvals,
 
-    ugc: approvals.find((a: any) => a.title === "UGC-DEB"),
+    ugc: approvals.find((a: any) => a.title.includes("UGC-DEB")),
 
-    aicte: approvals.find((a: any) => a.title === "AICTE"),
+    aicte: approvals.find((a: any) => a.title.includes("AICTE")),
 
-    nirf: approvals.find((a: any) => a.title === "NIRF"),
+    nirf: approvals.find((a: any) => a.title.includes("NIRF")),
 
-    naac: approvals.find((a: any) => a.title === "NAAC A++"),
+    naac: approvals.find((a: any) => a.title.includes("NAAC")),
 
     // Stats (not currently provided by the API)
     rating: 0,

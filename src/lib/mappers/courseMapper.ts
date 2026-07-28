@@ -219,7 +219,6 @@ export function mapFees(api: any) {
     registrationFee,
 
     emi:
-      course.emi_duration ??
       Math.round(semesterFee / 6),
 
     feeNote:

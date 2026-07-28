@@ -92,7 +92,7 @@ export default function TestimonialsSection({data}) {
               </span>
             </h2>
             <p className="mt-3 text-muted-foreground text-lg leading-relaxed max-w-md">
-              From career switchers to working professionals — hear directly from students whose lives changed with an IGNOU degree.
+              From career switchers to working professionals — hear directly from students whose lives changed with an {data.name} degree.
             </p>
 
             {/* Nav controls */}

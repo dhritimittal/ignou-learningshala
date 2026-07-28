@@ -7,6 +7,7 @@ import { parseAbout } from "../parsers/about";
 import { parseUniversity } from "../parsers/university";
 import { extractParagraphs, extractDescription } from "../parsers/learning";
 import { mapFAQs } from "./faqMapper";
+import { parseWhyChoose, stripHtml } from "../parsers/highlights";
 
 export function mapHero(api: any) {
   const university = api.data.data;
@@ -172,14 +173,39 @@ export function mapTestimonials(api: any) {
   );
 }
 
-
-function mapHighlights(api: any) {
+export function mapHighlights(api: any) {
   const section = api.data.data.sections;
 
-  return (section.gridContent ?? []).map((item: any) => ({
-    title: item.title,
-    description: item.content.replace(/<[^>]*>/g, "").trim(),
-  }));
+  const gridContent = section.gridContent ?? [];
+  const parsedHighlights = parseWhyChoose(section.Why_Choose);
+
+  // No gridContent -> use parsed list only
+  if (!gridContent.length) {
+    return parsedHighlights.map((item) => ({
+      ...item,
+      bgColor: "#f8fafc",
+    }));
+  }
+
+  return gridContent.map((item: any, index: number) => {
+    const parsed = parsedHighlights[index];
+
+    return {
+      title:
+        item.title?.trim() ||
+        parsed?.title ||
+        "",
+
+      description:
+        stripHtml(item.content || "") ||
+        parsed?.description ||
+        "",
+
+      bgColor:
+        item.bgColor ||
+        "#f8fafc",
+    };
+  });
 }
 
 function mapLearning(api: any) {

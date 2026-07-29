@@ -25,9 +25,7 @@ export default function Curriculum({ data, openWizard }) {
             </h2>
 
             <p className="mt-3 max-w-3xl leading-8 text-muted-foreground">
-              Industry-relevant curriculum designed by IGNOU
-              covering management fundamentals and advanced
-              business concepts.
+              Industry-relevant curriculum designed by {data.hero.universityName}.
             </p>
 
           </div>

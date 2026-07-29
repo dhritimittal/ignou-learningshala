@@ -279,24 +279,9 @@ export function mapCareer(api: any) {
     (s: any) => s.section_key === "Job_Opportunities"
   );
 
-  const parsed = parseCareer(
+  return parseCareer(
     section?.props?.content ?? ""
   );
-
-  if (
-    !parsed.description &&
-    parsed.jobs.length === 0
-  ) {
-    return null;
-  }
-
-  return {
-    description: parsed.description,
-
-    averagePackage: parsed.averagePackage,
-
-    jobs: parsed.jobs,
-  };
 }
 
 interface NormalizedReview {

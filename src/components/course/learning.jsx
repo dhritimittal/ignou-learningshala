@@ -76,7 +76,7 @@ export default function Learning({ data }) {
         </h2>
 
         <p className="mt-3 max-w-3xl leading-8 text-muted-foreground">
-          IGNOU's Online MBA combines flexible digital learning,
+          {data.hero.universityName}'s {data.hero.name} combines flexible digital learning,
           comprehensive study resources and a structured
           assessment process.
         </p>

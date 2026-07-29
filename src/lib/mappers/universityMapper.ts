@@ -5,6 +5,7 @@ import { parseSampleCertificate } from "@/lib/parsers/sampleCertificate";
 import { getMediaUrl } from "../utils/media";
 import { parseAbout } from "../parsers/about";
 import { parseUniversity } from "../parsers/university";
+import { parseCareer } from "../parsers/careers";
 import { extractParagraphs, extractDescription } from "../parsers/learning";
 import { mapFAQs } from "./faqMapper";
 import { parseWhyChoose, stripHtml } from "../parsers/highlights";
@@ -262,6 +263,52 @@ function mapFaculty(api: any) {
     ),
   };
 }
+// mapper/career.ts
+
+export function mapUniversityCareer(api: any) {
+  const html = api?.data?.data?.sections?.Placements_Details;
+
+  if (!html) return null;
+
+  const parsed = parseCareer(html);
+  
+  if (!parsed) return null;
+  
+  // Attach placement partners flag if needed by component
+  return {
+    ...parsed,
+    placementPartners: api.data.data.sections.placementPartners === "Yes",
+  };
+}
+
+export function mapAboutStats(api: any) {
+  const university = api.data.data;
+
+  return [
+    {
+      label: "Established",
+      value: university.establishment_year,
+      sub: "Year of establishment",
+    },
+    {
+      label: "University Type",
+      value: university.education_mode
+        ?.replace("University", "")
+        .trim(),
+      sub: "Recognized institution",
+    },
+    {
+      label: "Programmes",
+      value: `${university.course_data.length}+`,
+      sub: "Online & distance programmes",
+    },
+    {
+      label: "Study Mode",
+      value: university.education_mode,
+      sub: `${university.admission_mode} admission`,
+    },
+  ];
+}
 
 export function mapUniversity(api: any) {
 
@@ -273,6 +320,8 @@ export function mapUniversity(api: any) {
         ...university,
 
         hero: mapHero(api),
+
+        stats: mapAboutStats(api),
 
         about: mapAbout(api),
 
@@ -289,6 +338,8 @@ export function mapUniversity(api: any) {
         faqs: mapFAQs(api.data.data),
 
         highlights: mapHighlights(api),
+
+        career: mapUniversityCareer(api),
 
         ...mapLearning(api),
 

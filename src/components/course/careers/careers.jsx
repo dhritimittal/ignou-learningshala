@@ -1,188 +1,148 @@
 "use client";
 
-import { useState } from "react";
+import { Download, PhoneCall } from "lucide-react";
 
-import CareerStat from "./career-stat";
-import CareerJob from "./career-job";
+export default function Careers({ data, openWizard, type = "course" }) {
+  const career = data?.career;
 
-import {
-  IndianRupee,
-  TrendingUp,
-  Building2,
-  PhoneCall,
-} from "lucide-react";
+  if (!career || !career.blocks || career.blocks.length === 0) return null;
 
-const INITIAL_VISIBLE = 6;
-
-function parseMaxSalary(salary) {
-  const nums = salary.match(/\d+(\.\d+)?/g);
-  if (!nums) return 0;
-  return parseFloat(nums[nums.length - 1]);
-}
-
-export default function Careers({ data, openWizard }) {
-  const career = data.career;
-
-  const [showAll, setShowAll] = useState(false);
-  const [activeCategory, setActiveCategory] = useState("All");
-
-  const categories = [
-    "All",
-    ...new Set(career.jobs.map((job) => job.category).filter(Boolean)),
-  ];
-
-  const sortedJobs = [...career.jobs]
-    .filter(
-      (job) => activeCategory === "All" || job.category === activeCategory
-    )
-    .sort((a, b) => parseMaxSalary(b.salary) - parseMaxSalary(a.salary));
-
-  const topMax = sortedJobs.length ? parseMaxSalary(sortedJobs[0].salary) : 1;
-  const visibleJobs = showAll ? sortedJobs : sortedJobs.slice(0, INITIAL_VISIBLE);
-  const remaining = sortedJobs.length - visibleJobs.length;
-  if (!data) return null;
   return (
-    <section id="careers" className="py-10">
+    <section id={type === "university" ? "placements" : "careers"} className="py-10">
       <div className="mx-auto max-w-7xl px-6">
-
+        
         {/* Header */}
-
         <span className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
           Career Outcomes
         </span>
 
-        <h2 className="mt-2 text-4xl font-bold tracking-tight text-foreground">
-          Build Your Career After IGNOU Online MBA
+        <h2 className="mt-3 text-4xl font-bold tracking-tight text-foreground">
+          {type === "university" 
+            ? "Placements & Career Opportunities" 
+            : `Build Your Career After ${data.hero?.name || "Your Course"}`
+          }
         </h2>
 
-        <p className="mt-3 max-w-3xl leading-8 text-muted-foreground">
-          {career.description}
-        </p>
-
-        {/* Navy stat band */}
-
-        <div className="mt-8 overflow-hidden rounded-t-2xl border border-accent/30 bg-accent-tint">
-          <div className="grid grid-cols-2 divide-x divide-accent/20">
-
-            <CareerStat
-              value={career.averagePackage}
-              label="Salary Range"
-            />
-
-            <CareerStat
-              value={career.jobs.length}
-              label="Career Roles"
-            />
-
-          </div>
-        </div>
-
-        {/* Job grid card */}
-
-        <div className="rounded-b-2xl border border-t-0 border-slate-200 bg-white p-6">
-
-          <div className="flex items-center justify-between">
-            <h3 className="text-xl font-bold text-foreground">
-              Top career opportunities
-            </h3>
-            <span className="text-xs font-medium text-muted-foreground">
-              Sorted by package
-            </span>
-          </div>
-
-          {categories.length > 2 && (
-            <div className="mt-4 flex flex-wrap gap-2">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => {
-                    setActiveCategory(cat);
-                    setShowAll(false);
-                  }}
-                  className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-                    activeCategory === cat
-                      ? "bg-foreground text-white"
-                      : "border border-slate-200 text-muted-foreground hover:border-primary/40 hover:text-primary"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-          )}
-
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            {visibleJobs.map((job, index) => (
-              <CareerJob
-                key={job.title}
-                job={job}
-                isTop={index === 0 && activeCategory === "All"}
-                barPct={Math.max(
-                  30,
-                  Math.round((parseMaxSalary(job.salary) / topMax) * 100)
-                )}
-                delay={index * 0.05}
+        {career.blocks.map((block, index) => {
+          if (block.type === "text") {
+            return (
+              <div
+                key={index}
+                className="mt-3 max-w-3xl leading-8 text-muted-foreground"
+                dangerouslySetInnerHTML={{ __html: block.content }}
               />
-            ))}
-          </div>
+            );
+          }
 
-          {remaining > 0 && (
-            <button
-              onClick={() => setShowAll(true)}
-              className="mt-4 w-full rounded-xl border border-accent/30 py-2.5 text-sm font-medium text-accent-dark transition-colors hover:border-accent-dark hover:bg-accent-tint"
-            >
-              Show {remaining} more role{remaining > 1 ? "s" : ""}
-            </button>
-          )}
+          if (block.type === "table") {
+            const table = block.tableData;
+            if (!table) return null;
 
-        </div>
+            // Handle 2-column table specifically (Snapshot layout)
+            if (table.columnsCount === 2) {
+              return (
+                <div key={index} className="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                  {table.headers.length === 2 && (
+                    <div className="hidden md:grid grid-cols-2 divide-x divide-slate-200 border-b border-slate-200 bg-accent-tint">
+                      <div className="grid grid-cols-[240px_1fr] gap-4 px-6 py-4">
+                         <div className="font-semibold text-foreground">{table.headers[0]}</div>
+                         <div className="font-semibold text-foreground">{table.headers[1]}</div>
+                      </div>
+                      <div className="grid grid-cols-[240px_1fr] gap-4 px-6 py-4">
+                         <div className="font-semibold text-foreground">{table.headers[0]}</div>
+                         <div className="font-semibold text-foreground">{table.headers[1]}</div>
+                      </div>
+                    </div>
+                  )}
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 md:divide-x divide-slate-200">
+                    {table.rows.map((row, rowIndex) => {
+                      const visualRow = Math.floor(rowIndex / 2);
+                      const isLastVisualRow = Math.floor((table.rows.length - 1) / 2);
+                      const bgClass = visualRow % 2 === 0 ? "bg-white" : "bg-slate-50/50";
+                      const borderClass = visualRow < isLastVisualRow ? "border-b border-slate-200" : "";
 
-        {/* CTA */}
+                      return (
+                        <div 
+                          key={rowIndex}
+                          className={`grid gap-4 px-6 py-5 md:grid-cols-[240px_1fr] ${bgClass} ${borderClass}`}
+                        >
+                          <div className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">
+                            {row[0]}
+                          </div>
+                          <div className="text-[15px] leading-7 text-foreground">
+                            {row[1]}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            }
 
+            // Handle > 2 columns table
+            return (
+              <div key={index} className="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm overflow-x-auto">
+                <table className="w-full border-collapse text-left">
+                  <thead className="bg-accent-tint">
+                    <tr>
+                      {table.headers.map((h, i) => (
+                        <th key={i} className="px-6 py-4 font-semibold text-foreground border-b border-slate-200">
+                          {h}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {table.rows.map((row, i) => (
+                      <tr key={i} className="border-b border-slate-200 last:border-b-0 hover:bg-slate-50/50">
+                        {row.map((cell, j) => (
+                          <td key={j} className={`px-6 py-4 ${j === 0 ? 'font-medium text-foreground' : 'text-muted-foreground'}`}>
+                            {cell}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            );
+          }
+
+          return null;
+        })}
+        
+        {/* Call to Actions (CTA / Placement Report) */}
         <div className="mt-10 overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-r from-primary-tint via-white to-accent-tint">
-
           <div className="flex flex-col items-start justify-between gap-8 p-8 lg:flex-row lg:items-center">
-
-            {/* Left */}
-
-            <div className="max-w-2xl">
-
-              <span className="inline-flex rounded-full bg-accent-tint px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-accent-dark">
-                Take the Next Step
-              </span>
-
-              <h3 className="mt-4 text-3xl font-bold tracking-tight text-foreground">
-                Ready to Start Your MBA Journey?
-              </h3>
-
-              <p className="mt-3 max-w-2xl text-lg leading-7 text-muted-foreground">
-                Speak with an admission expert to get personalized guidance on
-                eligibility, specializations, fees, scholarships and the admission
-                process.
-              </p>
-
-            </div>
-
-            {/* Buttons */}
-
-            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-
-              <button
-                onClick={openWizard}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-primary-dark"
-              >
-                <PhoneCall className="h-5 w-5" />
-                Talk to an Admission Expert
-              </button>
-
-            </div>
-
+              <>
+                <div className="max-w-2xl">
+                  <span className="inline-flex rounded-full bg-accent-tint px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-accent-dark">
+                    Take the Next Step
+                  </span>
+                  <h3 className="mt-4 text-3xl font-bold tracking-tight text-foreground">
+                    Ready to Start Your Journey?
+                  </h3>
+                  <p className="mt-3 max-w-2xl text-lg leading-7 text-muted-foreground">
+                    Speak with an admission expert to get personalized guidance on
+                    eligibility, specializations, fees, scholarships and the admission
+                    process.
+                  </p>
+                </div>
+                
+                <button
+                  onClick={openWizard}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-primary-dark whitespace-nowrap"
+                >
+                  <PhoneCall className="h-5 w-5" />
+                  Talk to an Admission Expert
+                </button>
+              </>
           </div>
-
         </div>
 
       </div>
-
     </section>
   );
 }

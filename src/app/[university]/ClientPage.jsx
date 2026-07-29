@@ -54,7 +54,7 @@ export default function IGNOUHomePage({data}) {
         
         <Learning data={data}/>
         <DegreeSection openWizard={openWizard} data={data} />
-        {/*<Careers/>*/}
+        <Careers data={data} type="university" openWizard={openWizard} />
         <Faculty data={data} />
         <StrengthsSection data={data} />
         <TestimonialsSection data={data} />

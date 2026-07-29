@@ -39,15 +39,10 @@ export default function AboutSection({ data, openWizard }) {
 
           {/* Credential cards */}
           <div className="col-span-4 lg:col-span-1 grid grid-cols-2 lg:grid-cols-1 gap-4">
-            {[
-              { label: "NAAC Rating", value: "A++", sub: "Highest academic quality grade", color: "bg-accent border-accent/40" },
-              { label: "NIRF Rank", value: "#1", sub: "Open Universities 2025", color: "bg-accent border-accent/40" },
-              { label: "Programmes", value: "20+", sub: "Online & distance modes", color: "bg-accent border-accent/40" },
-              { label: "Students", value: "38L+", sub: "Active enrolled learners", color: "bg-accent border-accent/40" },
-            ].map((c) => (
-              <div key={c.label} className={`rounded-2xl border p-5 ${c.color}`}>
+            {data.stats.map((c) => (
+              <div key={c.label} className={`rounded-2xl border p-5 bg-accent border-accent/40`}>
                 <p className="text-xs font-semibold text-muted-foreground mb-1">{c.label}</p>
-                <p className="text-3xl font-black text-black mb-1">{c.value}</p>
+                <p className="text-2xl font-black text-black mb-1">{c.value}</p>
                 <p className="text-xs text-muted-foreground leading-tight">{c.sub}</p>
               </div>
             ))}

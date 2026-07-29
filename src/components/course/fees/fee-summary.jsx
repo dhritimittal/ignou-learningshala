@@ -24,7 +24,7 @@ export default function FeeSummary({ data, openWizard }) {
         <p className="mt-3 max-w-lg text-lg leading-7 text-muted-foreground">
           Complete programme fee inclusive of tuition charges.
           Examination fees and re-registration charges, if applicable,
-          are payable separately as per IGNOU guidelines.
+          are payable separately as per {data.hero.universityName} guidelines.
         </p>
 
       </div>

@@ -30,8 +30,7 @@ export default function Faculty({ data }) {
           </h2>
 
           <p className="mt-3 max-w-3xl leading-8 text-muted-foreground">
-            Learn from experienced professors guiding IGNOU's Online MBA
-            programme through a blend of academic expertise and practical
+            Learn from experienced professors guiding {data.name}'s programmes through a blend of academic expertise and practical
             industry insights.
           </p>
         </motion.div>

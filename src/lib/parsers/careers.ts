@@ -1,80 +1,109 @@
-export function parseCareer(html: string) {
-  if (!html) {
-    return {
-      description: "",
-      averagePackage: "",
-      jobs: [],
-    };
+import * as cheerio from "cheerio";
+import type { CheerioAPI, Cheerio, Element } from "cheerio";
+
+export interface TableData {
+  headers: string[];
+  rows: string[][];
+  columnsCount: number;
+}
+
+export interface CareerBlock {
+  type: "text" | "table";
+  content?: string;
+  tableData?: TableData;
+}
+
+export interface CareerParsedData {
+  blocks: CareerBlock[];
+}
+
+export function parseCareer(html: string): CareerParsedData | null {
+  if (!html) return null;
+
+  const $ = cheerio.load(html, null, false);
+  
+  // Remove inline styles that override our Tailwind classes
+  $('*').removeAttr('style');
+
+  const blocks: CareerBlock[] = [];
+
+  let currentTextHtml = "";
+
+  const pushText = () => {
+    if (currentTextHtml.trim()) {
+      blocks.push({ type: "text", content: currentTextHtml.trim() });
+      currentTextHtml = "";
+    }
+  };
+
+  $.root().children().each((_, el) => {
+    const $el = $(el);
+    const tagName = el.tagName.toLowerCase();
+
+    if (tagName === "figure" && $el.hasClass("table")) {
+      pushText();
+      const $table = $el.find("table");
+      if ($table.length > 0) {
+        parseTable($table, blocks, $);
+      }
+    } else if (tagName === "table") {
+      pushText();
+      parseTable($el, blocks, $);
+    } else {
+      // Accumulate text blocks
+      currentTextHtml += $.html(el);
+    }
+  });
+
+  pushText();
+
+  // If no blocks parsed but html has content, fallback to text block
+  if (blocks.length === 0 && html.trim()) {
+    blocks.push({ type: "text", content: html.trim() });
   }
 
-  const strip = (text: string) =>
-    text
-      .replace(/<[^>]+>/g, "")
-      .replace(/&nbsp;/g, " ")
-      .replace(/&amp;/g, "&")
-      .replace(/\s+/g, " ")
-      .trim();
+  return { blocks };
+}
 
-  const rows = [...html.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)];
+function extractCellText($td: cheerio.Cheerio): string {
+  let htmlContent = $td.html() || "";
+  htmlContent = htmlContent.replace(/<\/li>|<\/p>|<\/div>|<br\s*\/?>/gi, "|||");
+  
+  const rawText = cheerio.load(htmlContent).text();
+  
+  return rawText
+    .split("|||")
+    .map(s => s.trim())
+    .filter(Boolean)
+    .join(" • ");
+}
 
-  const jobs: { title: string; salary: string }[] = [];
+function parseTable($table: cheerio.Cheerio, blocks: CareerBlock[], $: cheerio.CheerioAPI) {
+  const headers: string[] = [];
+  const rows: string[][] = [];
 
-  const cleanHtml = strip(html);
+  const $trs = $table.find("tr");
+  if ($trs.length > 0) {
+    const $firstTr = $($trs[0]);
+    $firstTr.find("td, th").each((_, td) => {
+      headers.push(extractCellText($(td)));
+    });
 
-  const description = strip(html.split("<figure")[0] ?? "");
-
-  for (const row of rows) {
-    const cells = [...row[1].matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)];
-
-    if (cells.length < 2) continue;
-
-    const title = strip(cells[0][1]);
-    const salary = strip(cells[1][1]);
-
-    const normalizedTitle = title.toLowerCase();
-    const normalizedSalary = salary.toLowerCase();
-
-    if (
-      normalizedTitle.includes("job role") ||
-      normalizedTitle.includes("job roles") ||
-      normalizedSalary.includes("salary")
-    ) {
-      continue;
+    for (let i = 1; i < $trs.length; i++) {
+      const rowData: string[] = [];
+      $($trs[i]).find("td, th").each((_, td) => {
+        rowData.push(extractCellText($(td)));
+      });
+      rows.push(rowData);
     }
 
-    jobs.push({
-      title,
-      salary,
+    blocks.push({
+      type: "table",
+      tableData: {
+        headers,
+        rows,
+        columnsCount: headers.length || ($trs.length > 1 ? rows[0]?.length : 0) || 0
+      }
     });
   }
-
-  const salaryRanges = jobs
-    .map((job) => {
-      const matches = job.salary.match(/[\d,]+/g);
-
-      if (!matches || matches.length < 2) return null;
-
-      return {
-        min: Number(matches[0].replace(/,/g, "")),
-        max: Number(matches[1].replace(/,/g, "")),
-      };
-    })
-    .filter(
-      (range): range is { min: number; max: number } => range !== null
-    );
-
-  let averagePackage = "";
-
-  if (salaryRanges.length) {
-    const overallMin = Math.min(...salaryRanges.map((r) => r.min));
-    const overallMax = Math.max(...salaryRanges.map((r) => r.max));
-
-    averagePackage = `₹${overallMin.toLocaleString("en-IN")} – ₹${overallMax.toLocaleString("en-IN")}`;
-  }
-
-  return {
-    description,
-    averagePackage,
-    jobs,
-  };
 }

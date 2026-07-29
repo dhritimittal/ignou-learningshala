@@ -36,8 +36,7 @@ export default function Reviews({ data }) {
           </h2>
 
           <p className="mt-3 max-w-3xl leading-8 text-muted-foreground">
-            Hear directly from learners who have experienced the IGNOU Online
-            MBA programme and shared their honest feedback.
+            Hear directly from learners who have experienced the {data.hero.universityName} {data.hero.name} programme and shared their honest feedback.
           </p>
         </motion.div>
 

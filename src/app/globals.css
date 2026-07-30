@@ -62,81 +62,81 @@
 
 :root {
   /* Base */
- 
+
   --background: #ffffff;
-  --foreground: #2D1338;
- 
+  --foreground: #061122;
+
   /* Cards */
- 
+
   --card: #ffffff;
-  --card-foreground: #2D1338;
- 
+  --card-foreground: #061122;
+
   --popover: #ffffff;
-  --popover-foreground: #2D1338;
- 
+  --popover-foreground: #061122;
+
   /* Brand */
- 
-  --primary: #652B7C;
+
+  --primary: #0B6089;
   --primary-foreground: #ffffff;
- 
-  /* Soft Purple */
- 
-  --secondary: #F6F2F7;
-  --secondary-foreground: #56256A;
- 
-  /* Yellow */
- 
-  --accent: #FFCC00;
-  --accent-foreground: #2D1338;
- 
+
+  /* Soft Blue */
+
+  --secondary: #EBF4F9;
+  --secondary-foreground: #0B6089;
+
+  /* Gold */
+
+  --accent: #F6C94A;
+  --accent-foreground: #061122;
+
   /* Text */
- 
+
   --muted: #F8FAFC;
   --muted-foreground: #64748B;
- 
+
   /* Danger */
- 
+
   --destructive: #dc2626;
- 
+
   /* Borders */
- 
-  --border: #E5DCE8;
-  --input: #E5DCE8;
-  --ring: #652B7C;
- 
+
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #0B6089;
+
   /* Radius */
- 
+
   --radius: 0.625rem;
- 
+
   /* Charts (keep if unused) */
- 
-  --chart-1: #652B7C;
-  --chart-2: #9A42BD;
-  --chart-3: #FFCC00;
-  --chart-4: #B28F00;
-  --chart-5: #CBB6D2;
- 
+
+  --chart-1: #0B6089;
+  --chart-2: #4A9FC0;
+  --chart-3: #F6C94A;
+  --chart-4: #94A3B8;
+  --chart-5: #CBD5E1;
+
   /* Sidebar */
- 
+
   --sidebar: #ffffff;
-  --sidebar-foreground: #2D1338;
- 
-  --sidebar-primary: #652B7C;
+  --sidebar-foreground: #061122;
+
+  --sidebar-primary: #0B6089;
   --sidebar-primary-foreground: #ffffff;
- 
-  --sidebar-accent: #F6F2F7;
-  --sidebar-accent-foreground: #56256A;
- 
-  --sidebar-border: #E5DCE8;
-  --sidebar-ring: #652B7C;
- 
-  --accent-light: #FFDE5C;
-  --accent-tint: #FDF7DD;
-  --accent-dark: #B28F00;
-  --primary-light: #9A42BD;   /* same value as chart-2, kept separate for semantic naming */
-  --primary-tint: #F6F2F7;    /* same value as secondary */
-  --primary-hover: #441D53;
-  --primary-dark: #31153D;
+
+  --sidebar-accent: #EBF4F9;
+  --sidebar-accent-foreground: #0B6089;
+
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: #0B6089;
+
+  --accent-light: #FFE79A;
+  --accent-tint: #FFF9EB;
+  --accent-dark: #C79A22;
+  --primary-light: #4A9FC0;   /* same value as chart-2, kept separate for semantic naming */
+  --primary-tint: #EBF4F9;    /* same value as secondary */
+  --primary-hover: #0d70a0;
+  --primary-dark: #083d5a;
 }
 
 .dark {

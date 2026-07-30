@@ -28,7 +28,7 @@ export default function Careers({ data, openWizard, type = "course" }) {
             return (
               <div
                 key={index}
-                className="mt-3 max-w-3xl leading-8 text-muted-foreground"
+                className="mt-3 max-w-3xl [&_p]:mb-5 [&_p]:leading-8 [&_p]:text-muted-foreground [&_ul]:my-5 [&_ul]:ml-6 [&_ul]:list-disc [&_ul]:space-y-3 [&_ol]:my-5 [&_ol]:ml-6 [&_ol]:list-decimal [&_ol]:space-y-3 [&_li]:leading-8 [&_li]:text-muted-foreground [&_strong]:font-semibold [&_strong]:text-foreground [&_h2]:mt-8 [&_h2]:mb-4 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-foreground [&_h3]:mt-8 [&_h3]:mb-4 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-foreground [&_a]:text-primary [&_a]:font-medium hover:[&_a]:text-primary-dark"
                 dangerouslySetInnerHTML={{ __html: block.content }}
               />
             );
@@ -70,7 +70,7 @@ export default function Careers({ data, openWizard, type = "course" }) {
                           <div className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">
                             {row[0]}
                           </div>
-                          <div className="text-[15px] leading-7 text-foreground">
+                          <div className="leading-8 text-muted-foreground">
                             {row[1]}
                           </div>
                         </div>

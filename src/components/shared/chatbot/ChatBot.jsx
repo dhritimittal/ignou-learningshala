@@ -1,20 +1,25 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { getBotReply, isCounsellorIntent } from "@/data/chatbot/kb";
+import { useChatbotKB } from "@/lib/chatbot/useChatbotKB";
 import CounsellingWizard from "@/components/shared/wizard/counsellingwizard";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-const BOT_NAME = "IGNOU Assistant";
 
-const GREETING = {
-  id: "greeting",
-  from: "bot",
-  text: "Hi there! 👋 I'm your **IGNOU assistant**.\n\nAsk me anything about IGNOU programmes, fees, admission, or exams — I'm here to help!",
-  chips: ["Programmes & Fees", "Admission Process", "FAQs", "Talk to a Counsellor"],
-};
+
+// Route shape is /[university]/[course], e.g. /ignou/online-mba.
+// On the university's own page there's no second segment, so this
+// returns undefined there — exactly what we want.
+function deriveCourseSlugFromPath(pathname, universitySlug) {
+  if (!pathname) return undefined;
+  const segments = pathname.split("/").filter(Boolean);
+  const universityIndex = segments.indexOf(universitySlug);
+  if (universityIndex === -1) return undefined;
+  return segments[universityIndex + 1] || undefined;
+}
 
 function makeId() {
   return Math.random().toString(36).slice(2, 9);
@@ -52,7 +57,7 @@ function MessageBubble({ msg, onChip }) {
     <div className={`flex gap-2 ${isBot ? "justify-start" : "justify-end"}`}>
       {isBot && (
         <div className="shrink-0 w-7 h-7 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold mt-0.5">
-          IG
+          AI
         </div>
       )}
       <div className="flex flex-col gap-1.5 max-w-[82%]">
@@ -101,7 +106,7 @@ function TypingIndicator() {
   return (
     <div className="flex gap-2 justify-start">
       <div className="shrink-0 w-7 h-7 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold">
-        IG
+        AI
       </div>
       <div className="bg-secondary rounded-2xl rounded-tl-sm px-4 py-3 flex gap-1 items-center">
         {[0, 1, 2].map((i) => (
@@ -119,12 +124,23 @@ function TypingIndicator() {
 
 // ─── Chat Panel ──────────────────────────────────────────────────────────────
 
-function ChatPanel({ onClose, openWizard }) {
+function ChatPanel({ onClose, openWizard, universitySlug, courseSlug, data }) {
+  const BOT_NAME = `${data.name} Assistant`;
+
+  const GREETING = {
+    id: "greeting",
+    from: "bot",
+    text: `Hi there! 👋 I'm your **${data.name} assistant**.\n\nAsk me anything about ${data.name} programmes, fees, admission, or exams — I'm here to help!`,
+    chips: ["Programmes & Fees", "Admission Process", "Approvals", "Talk to a Counsellor"],
+  };
+  
   const [messages, setMessages] = useState([GREETING]);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
+
+  const { ready, getBotReply, isCounsellorIntent } = useChatbotKB(universitySlug, courseSlug);
 
   // Auto-scroll on new messages
   useEffect(() => {
@@ -170,7 +186,7 @@ function ChatPanel({ onClose, openWizard }) {
 
   function sendMessage(text) {
     const trimmed = text.trim();
-    if (!trimmed) return;
+    if (!trimmed || !ready) return;
 
     // If the user is asking for a counsellor, open wizard immediately
     if (isCounsellorIntent(trimmed)) {
@@ -184,17 +200,19 @@ function ChatPanel({ onClose, openWizard }) {
     setInput("");
     setTyping(true);
 
-    // Simulate bot thinking delay
-    setTimeout(() => {
+    const minDelay = new Promise((resolve) =>
+      setTimeout(resolve, 800 + Math.random() * 400)
+    );
+
+    Promise.all([getBotReply(trimmed), minDelay]).then(([entry]) => {
       setTyping(false);
-      const entry = getBotReply(trimmed);
-      const isFallback = entry.keywords?.[0] === "__fallback__";
+      const isFallback = entry.source === "fallback";
 
       addBotMessage(entry, {
         showCta: isFallback,
         onCta: openWizard,
       });
-    }, 800 + Math.random() * 400);
+    });
   }
 
   function handleSubmit(e) {
@@ -221,7 +239,7 @@ function ChatPanel({ onClose, openWizard }) {
       {/* Header — compact single row, close icon flush right */}
       <div className="bg-primary px-3.5 py-2.5 flex items-center gap-2.5 shrink-0">
         <div className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-white font-bold text-xs shrink-0">
-          IG
+          AI
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-white font-semibold text-sm leading-tight">{BOT_NAME}</p>
@@ -257,7 +275,7 @@ function ChatPanel({ onClose, openWizard }) {
         />
         <button
           type="submit"
-          disabled={!input.trim()}
+          disabled={!input.trim() || !ready}
           aria-label="Send"
           className="w-8 h-8 rounded-full bg-primary hover:bg-primary-hover disabled:opacity-40 flex items-center justify-center text-white transition-colors shrink-0"
         >
@@ -329,7 +347,10 @@ function ChatBubble({ open, onClick, showDot }) {
 
 // ─── Root ChatBot ─────────────────────────────────────────────────────────────
 
-export default function ChatBot() {
+export default function ChatBot({ universitySlug, courseSlug: courseSlugProp = undefined, data }) {
+  const pathname = usePathname();
+  const courseSlug = courseSlugProp ?? deriveCourseSlugFromPath(pathname, universitySlug);
+
   const [open, setOpen] = useState(false);
   const [showDot, setShowDot] = useState(false);
   const [wizardOpen, setWizardOpen] = useState(false);
@@ -359,6 +380,9 @@ export default function ChatBot() {
           <ChatPanel
             onClose={() => setOpen(false)}
             openWizard={openWizard}
+            universitySlug={universitySlug}
+            courseSlug={courseSlug}
+            data={data}
           />
         )}
       </AnimatePresence>
@@ -367,6 +391,7 @@ export default function ChatBot() {
         open={open}
         showDot={showDot}
         onClick={open ? () => setOpen(false) : handleOpen}
+        data={data}
       />
 
       {wizardOpen && (
@@ -374,6 +399,7 @@ export default function ChatBot() {
           onClose={() => {
             setWizardOpen(false);
           }}
+          data={data}
         />
       )}
     </>

@@ -24,7 +24,7 @@ export default async function UniversityLayout({
 
       <TimedPopup data={data} />
 
-      <ChatBot />
+      <ChatBot universitySlug={university} data={data}/>
     </>
   );
 }

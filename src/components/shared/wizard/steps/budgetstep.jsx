@@ -2,20 +2,20 @@
 
 const BUDGETS = [
   {
-    value: "under_10k",
-    title: "Under ₹10,000",
+    value: "under_1l",
+    title: "Under ₹1 Lakh",
   },
   {
-    value: "10k_25k",
-    title: "₹10,000 – ₹25,000",
+    value: "1l_5l",
+    title: "₹1 Lakh – ₹5 Lakhs",
   },
   {
-    value: "25k_50k",
-    title: "₹25,000 – ₹50,000",
+    value: "5l_10l",
+    title: "₹5 Lakhs – ₹10 Lakhs",
   },
   {
-    value: "above_50k",
-    title: "Above ₹50,000",
+    value: "above_10l",
+    title: "Above ₹10 Lakhs",
   },
 ];
 

@@ -28,9 +28,11 @@ export default function SignupForm({
   const cities = useMemo(() => {
     return STATES[form.state] || [];
   }, [form.state]);
+  const [selectedLocation, setSelectedLocation] = useState("");
 
   
   function chooseLocation(location) {
+    setSelectedLocation(location);
     switch (location) {
       case "Delhi NCR":
         update("state", "Delhi");
@@ -162,7 +164,14 @@ export default function SignupForm({
               key={location}
               type="button"
               onClick={() => chooseLocation(location)}
-              className="rounded-full border border-border px-3 py-2 text-xs font-medium hover:border-primary hover:bg-secondary transition-colors"
+              className={`
+              rounded-full border px-3 py-2 text-xs font-medium transition-colors
+              ${
+                selectedLocation === location
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border hover:border-primary hover:bg-secondary"
+              }
+            `}
             >
               {location}
             </button>

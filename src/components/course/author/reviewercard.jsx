@@ -30,9 +30,10 @@ export default function ReviewerCard({
           {reviewer.name}
         </h3>
 
-        <div className="mt-0.5 inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-medium text-emerald-700 ring-1 ring-emerald-200">
-          <BadgeCheck size={14} />
-          LS Verified Expert
+        <div className="mt-0.5 inline-flex items-center gap-0.5 sm:gap-1 rounded-full bg-emerald-50 px-1.5 py-0.5 sm:px-2 sm:py-0.5 text-[9px] sm:text-[10px] font-medium text-emerald-700 ring-1 ring-emerald-200">
+          <BadgeCheck size={12} className="sm:w-[14px] sm:h-[14px]" />
+            <span className="sm:hidden">LS Verified</span>
+            <span className="hidden sm:inline">LS Verified Expert</span>
         </div>
       </div>
 

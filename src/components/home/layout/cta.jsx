@@ -43,7 +43,7 @@ export default function CTASection({ openWizard, data }) {
         <div className="rounded-[28px] lg:rounded-[40px] overflow-hidden">
 
           {/* HERO */}
-          <div className="relative bg-[#0A1A30] rounded-[40px]">
+          <div className="relative bg-primary-dark rounded-[40px]">
 
             <div className="grid grid-cols-1 lg:grid-cols-2 min-h-auto lg:min-h-[320px] items-center">
 
@@ -58,7 +58,7 @@ export default function CTASection({ openWizard, data }) {
                   Write Your Career Story, Your Way
                 </h2>
 
-                <p className="text-primary-hover mb-10 max-w-full lg:max-w-lg">
+                <p className="text-primary-light mb-10 max-w-full lg:max-w-lg">
                   Because we stand by you in every step of the journey!
                 </p>
 

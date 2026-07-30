@@ -86,7 +86,7 @@ export default function TestimonialsSection({data}) {
               Student Stories
             </span>
             <h2 className="mt-3 text-3xl sm:text-4xl font-black text-foreground leading-tight">
-              38 lakh+ learners.{" "}
+              Real learners.{" "}
               <span className="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
                 Real results.
               </span>

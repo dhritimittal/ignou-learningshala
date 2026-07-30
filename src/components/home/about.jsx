@@ -40,10 +40,10 @@ export default function AboutSection({ data, openWizard }) {
           {/* Credential cards */}
           <div className="col-span-4 lg:col-span-1 grid grid-cols-2 lg:grid-cols-1 gap-4">
             {data.stats.map((c) => (
-              <div key={c.label} className={`rounded-2xl border p-5 bg-accent border-accent/40`}>
-                <p className="text-xs font-semibold text-muted-foreground mb-1">{c.label}</p>
-                <p className="text-2xl font-black text-black mb-1">{c.value}</p>
-                <p className="text-xs text-muted-foreground leading-tight">{c.sub}</p>
+              <div key={c.label} className={`rounded-2xl border p-5 bg-primary border-primary/40`}>
+                <p className="text-xs font-semibold text-white/75 mb-1">{c.label}</p>
+                <p className="text-2xl font-black text-white mb-1">{c.value}</p>
+                <p className="text-xs text-white/75 leading-tight">{c.sub}</p>
               </div>
             ))}
           </div>

@@ -1,5 +1,6 @@
 import * as cheerio from "cheerio";
-import type { CheerioAPI, Cheerio, Element } from "cheerio";
+import type { CheerioAPI, Cheerio } from "cheerio";
+import type { Element } from "domhandler";
 
 export interface TableData {
   headers: string[];
@@ -65,7 +66,7 @@ export function parseCareer(html: string): CareerParsedData | null {
   return { blocks };
 }
 
-function extractCellText($td: cheerio.Cheerio): string {
+function extractCellText($td: Cheerio<Element>): string {
   let htmlContent = $td.html() || "";
   htmlContent = htmlContent.replace(/<\/li>|<\/p>|<\/div>|<br\s*\/?>/gi, "|||");
   
@@ -78,7 +79,7 @@ function extractCellText($td: cheerio.Cheerio): string {
     .join(" • ");
 }
 
-function parseTable($table: cheerio.Cheerio, blocks: CareerBlock[], $: cheerio.CheerioAPI) {
+function parseTable($table: Cheerio<Element>, blocks: CareerBlock[], $: CheerioAPI) {
   const headers: string[] = [];
   const rows: string[][] = [];
 

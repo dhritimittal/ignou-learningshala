@@ -29,6 +29,14 @@ const SCROLL_SPEED = 0.6; // px per frame
 const AUTO_ADVANCE_MS = 4000;
 
 export default function TestimonialsSection({data}) {
+
+  if (
+    !data?.testimonials ||
+    data.testimonials.length === 0
+  ) {
+    return null;
+  }
+  
   const trackRef = useRef(null);
   const [paused, setPaused] = useState(false);
   const [current, setCurrent] = useState(0);

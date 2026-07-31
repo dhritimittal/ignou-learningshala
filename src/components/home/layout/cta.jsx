@@ -118,16 +118,16 @@ export default function CTASection({ openWizard, data }) {
 
                     <div className="flex items-center gap-3">
                       <img
-                        src={data.nirf.logo}
+                        src={data?.nirf?.logo ?? data?.ugc?.logo}
                         alt=""
                         className="h-10"
                       />
                       <div>
                         <p className="font-semibold text-foreground">
-                          NIRF Ranked
+                          Top Ranked
                         </p>
                         <p className="text-sm text-muted-foreground">
-                          Top Open University
+                          Open University
                         </p>
                       </div>
                     </div>
@@ -204,7 +204,7 @@ export default function CTASection({ openWizard, data }) {
 
                   <div className="flex items-center gap-3">
                     <img
-                      src={data.nirf.logo}
+                      src={data?.nirf?.logo ?? data?.ugc?.logo}
                       className="h-10"
                       alt=""
                     />

@@ -410,7 +410,7 @@ export function buildCourseFactEntries(course: RawCourse): KBEntry[] {
     });
   }
 
-  const curriculum = sectionText(sections, "Syllabus_Curriculum", 1100);
+  const curriculum = sectionText(sections, "Syllabus_Curriculum", 1500);
   if (curriculum) {
     entries.push({
       keywords: TOPIC_KEYWORDS.curriculum,

@@ -1,9 +1,14 @@
 import FeeSummary from "./fee-summary";
 import FeeCard from "./fee-card";
 import ScholarshipBanner from "./scholarship-banner";
+import ScholarshipModal from "./scholarship-modal";
+import { useState } from "react";
 
 export default function Fees({ data, openWizard }) {
+  const [scholarshipOpen, setScholarshipOpen] = useState(false);
+
   if (!data) return null;
+
   return (
     <section
       id="fees"
@@ -44,7 +49,17 @@ export default function Fees({ data, openWizard }) {
 
           </div>
 
-          <ScholarshipBanner openWizard={openWizard} />
+          <ScholarshipBanner
+            hasScholarship={!!data.scholarship}
+            onCheckScholarship={() => setScholarshipOpen(true)}
+            openWizard={openWizard}
+          />
+
+          <ScholarshipModal
+            open={scholarshipOpen}
+            onOpenChange={setScholarshipOpen}
+            scholarship={data.scholarship}
+          />
 
         </div>
 

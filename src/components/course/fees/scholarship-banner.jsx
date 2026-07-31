@@ -4,7 +4,8 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-export default function ScholarshipBanner({openWizard}) {
+export default function ScholarshipBanner({hasScholarship, onCheckScholarship, openWizard}) {
+  
   return (
     <div className="mt-8">
 
@@ -41,13 +42,15 @@ export default function ScholarshipBanner({openWizard}) {
         {/* Right */}
 
         <button
-          className="inline-flex w-full lg:w-auto justify-center items-center gap-2 rounded-xl border border-primary px-5 py-3 font-semibold bg-primary text-white mt-2 lg:mt-0"
-          onClick={openWizard}
+            className="inline-flex w-full lg:w-auto justify-center items-center gap-2 rounded-xl border border-primary px-5 py-3 font-semibold bg-primary text-white mt-2 lg:mt-0"
+            onClick={
+                hasScholarship
+                    ? onCheckScholarship
+                    : openWizard
+            }
         >
-
-          Check Eligibility
-
-          <ArrowRight size={18} />
+            Check Eligibility
+            <ArrowRight size={18} />
 
         </button>
 

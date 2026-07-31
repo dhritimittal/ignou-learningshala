@@ -310,6 +310,22 @@ export function mapAboutStats(api: any) {
   ];
 }
 
+function mapUniversityScholarship(api: any) {
+  const section = api.data.data.sections;
+
+  const content = section?.Scholarships_Program?.trim();
+
+  if (!content) {
+    return null;
+  }
+
+  return {
+    title: "Scholarships",
+    heading: section?.Scholarships_Program_heading ?? "",
+    content,
+  };
+}
+
 export function mapUniversity(api: any) {
 
     const university = parseUniversity(api);
@@ -340,6 +356,8 @@ export function mapUniversity(api: any) {
         highlights: mapHighlights(api),
 
         career: mapUniversityCareer(api),
+        
+        scholarship: mapUniversityScholarship(api),
 
         ...mapLearning(api),
 

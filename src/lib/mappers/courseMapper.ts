@@ -458,6 +458,43 @@ export function mapByline(api: any) {
   };
 }
 
+import { parseScholarship } from "@/lib/parsers/scholarship";
+
+export function mapScholarship(api: any, university: any) {
+  const course = api.data;
+
+  // Course scholarship section
+  const courseSection = course.sections?.find(
+    (section: any) =>
+      section.section_key === "Scholarships_Program"
+  );
+
+  // University scholarship section
+  const universityContent =
+    university?.scholarship?.content ?? "";
+
+  // Prefer course content unless it's empty
+  const content =
+    courseSection?.props?.content?.trim() ||
+    universityContent.trim();
+
+  if (!content) {
+    return null;
+  }
+
+  return {
+    title:
+      courseSection?.title || "Scholarships",
+
+    heading:
+      courseSection?.props?.heading ||
+      university?.scholarship?.heading ||
+      "",
+
+    blocks: parseScholarship(content),
+  };
+}
+
 export function mapCourse(api: any, university: any) { 
 
   return {
@@ -470,6 +507,7 @@ export function mapCourse(api: any, university: any) {
     reviews: mapReviews(api, university),
     faqs: mapFAQs(api.data),
     byline: mapByline(api),
+    scholarship: mapScholarship(api, university),
     ...mapLearning(api, university)
   };
 }

@@ -73,7 +73,7 @@ function truncateAtSentence(text: string, maxLength: number): string {
   );
 
   const cut = lastBreak > maxLength * 0.4 ? slice.slice(0, lastBreak + 1) : slice.replace(/\s+\S*$/, "");
-  return `${cut.trim()}\n\n_(more detail on the course page \u2014 ask me anything specific!)_`;
+  return `${cut.trim()}\n\n(More detail on the course page — ask me anything specific!)`;
 }
 
 export function htmlToChatText(html: string | null | undefined, maxLength = 900): string {

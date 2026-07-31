@@ -17,7 +17,7 @@ if (!API_BASE_URL) {
 
 export async function getUniversity(slug: string) {
   const response = await fetch(
-    `${API_BASE_URL}/api/cms/universities/${slug}`,
+    `${API_BASE_URL}/universities/${slug}`,
     {
       headers: {
         Authorization: `Bearer ${API_TOKEN}`,

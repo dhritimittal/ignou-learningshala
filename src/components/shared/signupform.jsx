@@ -18,6 +18,8 @@ const STATES = {
   TamilNadu: ["Chennai", "Coimbatore"],
 };
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export default function SignupForm({
     form,
     update,
@@ -29,41 +31,104 @@ export default function SignupForm({
     return STATES[form.state] || [];
   }, [form.state]);
   const [selectedLocation, setSelectedLocation] = useState("");
+  const [errors, setErrors] = useState({});
+
+  // Wraps `update` so editing a field clears its error immediately,
+  // instead of the message sitting there until the next submit attempt.
+  function setField(field, value) {
+    update(field, value);
+    setErrors((prev) => {
+      if (!(field in prev)) return prev;
+      const next = { ...prev };
+      delete next[field];
+      return next;
+    });
+  }
+
+  function handlePhoneChange(e) {
+    // Only digits, capped at 10 — invalid characters never make it into state.
+    const digitsOnly = e.target.value.replace(/\D/g, "").slice(0, 10);
+    setField("phone", digitsOnly);
+  }
+
+  function validate() {
+    const nextErrors = {};
+
+    if (!form.name?.trim()) {
+      nextErrors.name = "Name is required";
+    }
+
+    if (!form.email?.trim()) {
+      nextErrors.email = "Email is required";
+    } else if (!EMAIL_RE.test(form.email.trim())) {
+      nextErrors.email = "Enter a valid email address";
+    }
+
+    if (!form.phone) {
+      nextErrors.phone = "Phone number is required";
+    } else if (form.phone.length !== 10) {
+      nextErrors.phone = "Enter a 10-digit phone number";
+    }
+
+    if (!form.state) {
+      nextErrors.state = "Select your state";
+    }
+
+    if (!form.city) {
+      nextErrors.city = "Select your city";
+    }
+
+    setErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (validate()) {
+      onSubmit(e);
+    }
+  }
+
+  function fieldClasses(field) {
+    return errors[field]
+      ? "border-red-400 focus:border-red-400"
+      : "border-border focus:border-primary";
+  }
 
   
   function chooseLocation(location) {
     setSelectedLocation(location);
     switch (location) {
       case "Delhi NCR":
-        update("state", "Delhi");
-        update("city", "New Delhi");
+        setField("state", "Delhi");
+        setField("city", "New Delhi");
         break;
 
       case "Mumbai":
-        update("state", "Maharashtra");
-        update("city", "Mumbai");
+        setField("state", "Maharashtra");
+        setField("city", "Mumbai");
         break;
 
       case "Bangalore":
-        update("state", "Karnataka");
-        update("city", "Bangalore");
+        setField("state", "Karnataka");
+        setField("city", "Bangalore");
         break;
 
       case "Hyderabad":
-        update("state", "Telangana");
-        update("city", "Hyderabad");
+        setField("state", "Telangana");
+        setField("city", "Hyderabad");
         break;
 
       case "Chennai":
-        update("state", "TamilNadu");
-        update("city", "Chennai");
+        setField("state", "TamilNadu");
+        setField("city", "Chennai");
         break;
     }
   }
 
 
   return (
-    <form onSubmit={onSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} noValidate className="space-y-5">
 
       <div className="lg:hidden">
 
@@ -92,10 +157,14 @@ export default function SignupForm({
 
           <input
             value={form.name}
-            onChange={(e) => update("name", e.target.value)}
+            onChange={(e) => setField("name", e.target.value)}
             placeholder="Your full name"
-            className="w-full rounded-xl border border-border bg-card px-4 py-3 outline-none focus:border-primary"
+            className={`w-full rounded-xl border bg-card px-4 py-3 outline-none ${fieldClasses("name")}`}
           />
+
+          {errors.name && (
+            <p className="mt-1 text-xs text-red-500">{errors.name}</p>
+          )}
 
         </div>
 
@@ -108,10 +177,14 @@ export default function SignupForm({
           <input
             type="email"
             value={form.email}
-            onChange={(e) => update("email", e.target.value)}
+            onChange={(e) => setField("email", e.target.value)}
             placeholder="your@email.com"
-            className="w-full rounded-xl border border-border bg-card px-4 py-3 outline-none focus:border-primary"
+            className={`w-full rounded-xl border bg-card px-4 py-3 outline-none ${fieldClasses("email")}`}
           />
+
+          {errors.email && (
+            <p className="mt-1 text-xs text-red-500">{errors.email}</p>
+          )}
 
         </div>
 
@@ -126,11 +199,18 @@ export default function SignupForm({
         </label>
 
         <input
+          type="tel"
+          inputMode="numeric"
+          maxLength={10}
           value={form.phone}
-          onChange={(e) => update("phone", e.target.value)}
-          placeholder="+91 XXXXX XXXXX"
-          className="w-full rounded-xl border border-border bg-card px-4 py-3 outline-none focus:border-primary"
+          onChange={handlePhoneChange}
+          placeholder="10-digit mobile number"
+          className={`w-full rounded-xl border bg-card px-4 py-3 outline-none ${fieldClasses("phone")}`}
         />
+
+        {errors.phone && (
+          <p className="mt-1 text-xs text-red-500">{errors.phone}</p>
+        )}
 
       </div>
 
@@ -194,10 +274,10 @@ export default function SignupForm({
           <select
             value={form.state}
             onChange={(e) => {
-              update("state", e.target.value);
-              update("city", "");
+              setField("state", e.target.value);
+              setField("city", "");
             }}
-            className="w-full rounded-xl border border-border bg-card px-4 py-3"
+            className={`w-full rounded-xl border bg-card px-4 py-3 ${fieldClasses("state")}`}
           >
             <option value="">Select your state</option>
 
@@ -206,6 +286,10 @@ export default function SignupForm({
             ))}
 
           </select>
+
+          {errors.state && (
+            <p className="mt-1 text-xs text-red-500">{errors.state}</p>
+          )}
 
         </div>
 
@@ -217,9 +301,9 @@ export default function SignupForm({
 
           <select
             value={form.city}
-            onChange={(e) => update("city", e.target.value)}
+            onChange={(e) => setField("city", e.target.value)}
             disabled={!form.state}
-            className="w-full rounded-xl border border-border bg-card px-4 py-3"
+            className={`w-full rounded-xl border bg-card px-4 py-3 ${fieldClasses("city")}`}
           >
             <option value="">
               {form.state
@@ -232,6 +316,10 @@ export default function SignupForm({
             ))}
 
           </select>
+
+          {errors.city && (
+            <p className="mt-1 text-xs text-red-500">{errors.city}</p>
+          )}
 
         </div>
 

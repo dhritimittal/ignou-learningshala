@@ -6,6 +6,8 @@ import ProgrammeStep from "./steps/programmestep";
 import BudgetStep from "./steps/budgetstep";
 import QualificationStep from "./steps/qualificationstep";
 import SignupForm from "../signupform";
+import { buildLead } from "@/lib/leads/buildLead";
+import { submitLead } from "@/lib/leads/submitLead";
 
 import WizardShell from "@/components/shared/wizard/wizardshell";
 
@@ -109,14 +111,49 @@ export default function CounsellingWizard({
         }));
     };
 
-    const submit = (e) => {
-        e.preventDefault();
+    const submit = async (e) => {
+            e.preventDefault();
+    
+            try {
+    
+                const payload = buildLead(
+                    {
+                        ...form,
+    
+                        university: data.name,
+                    },
+    
+                    "MultiStepWizard"
+                );
+    
+                const result = await submitLead(payload);
+    
+                console.log("Lead submitted", result);
+    
+                // Close the wizard
+                onClose?.();
 
-        console.log(form);
+                // Reset form
+                setForm({
+                programme: "",
+                budget: "",
+                qualification: "",
+                name: "",
+                phone: "",
+                email: "",
+                state: "",
+                city: "",
+                });
 
-        // TODO
-        // CRM API
-    };
+    
+            } catch (err) {
+    
+                console.error("Lead submission failed", err);
+    
+                alert("Something went wrong. Please try again.");
+    
+            }
+        };
 
     const next = () => {
         if (step < STEPS.length - 1) {

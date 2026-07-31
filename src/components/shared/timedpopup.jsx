@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SignupForm from "./signupform";
+import { buildLead } from "@/lib/leads/buildLead";
+import { submitLead } from "@/lib/leads/submitLead";
 
 const STORAGE_KEY = "popup-last-shown";
 
@@ -24,26 +26,47 @@ export default function TimedPopup({data}) {
         }));
     };
 
-    const submit = (e) => {
+    const submit = async (e) => {
         e.preventDefault();
 
-        console.log(form);
+        try {
 
-        // TODO
-        // CRM API
+            const payload = buildLead(
+                {
+                    ...form,
 
-        setOpen(false);
+                    programme: "Online MBA",
+
+                    university: data.name,
+                },
+
+                "AutoPopup"
+            );
+
+            const result = await submitLead(payload);
+
+            console.log("Lead submitted", result);
+
+            setOpen(false);
+
+            setForm({
+                name: "",
+                email: "",
+                phone: "",
+                state: "",
+                city: "",
+            });
+
+        } catch (err) {
+
+            console.error("Lead submission failed", err);
+
+            alert("Something went wrong. Please try again.");
+
+        }
     };
 
     useEffect(() => {
-        /*const lastShown = localStorage.getItem(STORAGE_KEY);
-
-        if (lastShown) {
-            const diff = Date.now() - Number(lastShown);
-
-        // 24 hours
-        if (diff < 24 * 60 * 60 * 1000) return;
-        }*/
         const timer = setTimeout(() => {
             setOpen(true);
             localStorage.setItem(STORAGE_KEY, Date.now().toString());

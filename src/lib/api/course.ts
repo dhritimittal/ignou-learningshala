@@ -14,7 +14,7 @@ export async function getCourse(
   courseSlug: string
 ) {
   const response = await fetch(
-    `${API_URL}/api/cms/university-courses/${universitySlug}/${courseSlug}`,
+    `${API_URL}/university-courses/${universitySlug}/${courseSlug}`,
     {
       headers: {
         Authorization: `Bearer ${API_TOKEN}`,

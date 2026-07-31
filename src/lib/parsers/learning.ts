@@ -4,14 +4,23 @@ import { decode } from "html-entities";
 // Public types
 // ---------------------------------------------------------------------------
 
-export interface ContentItem {
+export interface ItemBlock {
+  type: "item";
   title: string;
   body: string;
 }
 
+export interface TableBlock {
+  type: "table";
+  headers: string[];
+  rows: string[][];
+}
+
+export type ParsedBlock = ItemBlock | TableBlock;
+
 export interface ParsedContent {
   description: string;
-  items: ContentItem[];
+  blocks: ParsedBlock[];
 }
 
 // ---------------------------------------------------------------------------
@@ -172,7 +181,7 @@ function findFirstList(
  * Joins a set of items into one line of text, e.g. for folding a nested list
  * into its parent's body: "Title: body • Title: body • body".
  */
-function joinItemsAsText(items: ContentItem[]): string {
+function joinItemsAsText(items: ItemBlock[]): string {
   return items
     .map((item) => (item.title ? `${item.title}: ${item.body}` : item.body))
     .filter(Boolean)
@@ -187,18 +196,18 @@ function joinItemsAsText(items: ContentItem[]): string {
  * than kept as a separate tree) — this keeps the item shape flat ({title,
  * body}) all the way down, however many levels of nesting the source has.
  */
-function buildItem(rawHtml: string): ContentItem {
+function buildItem(rawHtml: string): ItemBlock {
   const { title, rest } = extractTitle(rawHtml);
   const nested = findFirstList(rest);
 
   if (!nested) {
-    return { title, body: stripHtml(rest) };
+    return { type: "item", title, body: stripHtml(rest) };
   }
 
   const surroundingText = stripHtml(rest.slice(0, nested.startIndex) + " " + rest.slice(nested.endIndex));
   const nestedText = joinItemsAsText(extractNestedList(nested.outerHtml));
 
-  return { title, body: [surroundingText, nestedText].filter(Boolean).join(" • ") };
+  return { type: "item", title, body: [surroundingText, nestedText].filter(Boolean).join(" • ") };
 }
 
 /**
@@ -207,12 +216,12 @@ function buildItem(rawHtml: string): ContentItem {
  * calls back into extractNestedList() whenever it finds another list inside
  * an item, so lists of any depth are supported without special-casing depth.
  */
-function extractNestedList(listOuterHtml: string): ContentItem[] {
+function extractNestedList(listOuterHtml: string): ItemBlock[] {
   return extractTopLevelListItems(listOuterHtml).map(buildItem);
 }
 
 /** Parses ALL top-level list items found anywhere in a block of HTML. */
-function extractList(html: string): ContentItem[] {
+function extractList(html: string): ItemBlock [] {
   return extractTopLevelListItems(html).map(buildItem);
 }
 
@@ -228,9 +237,9 @@ export function extractDescription(html: string = ""): string {
 }
 
 /** Every <p> AFTER the first becomes an item (title/body split the same way as list items). */
-function extractPlainParagraphItems(html: string): ContentItem[] {
+function extractPlainParagraphItems(html: string): ItemBlock[] {
   const paragraphs = [...html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)];
-  return paragraphs.slice(1).map((match) => buildItem(match[1]));
+  return paragraphs.slice(1).map((match) => buildItem(match[1])).filter(item => item.title || item.body);
 }
 
 // ---------------------------------------------------------------------------
@@ -243,21 +252,43 @@ function extractPlainParagraphItems(html: string): ContentItem[] {
  * skipped — same assumption the original parser made; if a table genuinely
  * has no header row, its first data row will still be dropped.
  */
-function extractTable(html: string): ContentItem[] {
-  const rows = [...html.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)];
 
-  return rows.flatMap((row, index) => {
-    if (index === 0) return [];
+function extractTable(html: string): TableBlock[] {
+  const tableMatch = html.match(
+    /<table[\s\S]*?>([\s\S]*?)<\/table>/i
+  );
 
-    const cells = [...row[1].matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].map((cell) =>
-      stripHtml(cell[1])
-    );
-    if (cells.length === 0) return [];
+  if (!tableMatch) return [];
 
-    return [{ title: cells[0], body: cells.slice(1).join(" • ") }];
-  });
+  const rows = [
+    ...tableMatch[1].matchAll(
+      /<tr[^>]*>([\s\S]*?)<\/tr>/gi
+    ),
+  ];
+
+  if (!rows.length) return [];
+
+  const parseCells = (row: string) =>
+    [
+      ...row.matchAll(
+        /<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi
+      ),
+    ].map(cell => stripHtml(cell[1]));
+
+  const headers = parseCells(rows[0][1]);
+
+  const bodyRows = rows
+    .slice(1)
+    .map(row => parseCells(row[1]));
+
+  return [
+    {
+      type: "table",
+      headers,
+      rows: bodyRows,
+    },
+  ];
 }
-
 // ---------------------------------------------------------------------------
 // Main entry points
 // ---------------------------------------------------------------------------
@@ -269,21 +300,30 @@ function extractTable(html: string): ContentItem[] {
  * compatibility with existing callers — despite the name, it has always
  * returned the combined item set, not literally just paragraphs.
  */
-export function extractParagraphs(html: string = ""): ContentItem[] {
+export function extractBlocks(
+    html: string = ""
+): ParsedBlock[] {
   const normalized = removePresentationalMarkup(html);
 
+  const blocks: ParsedBlock[] = [];
+
   const listItems = extractList(normalized);
+
   if (listItems.length > 0) {
-    return listItems;
+      blocks.push(...listItems);
+  } else {
+      blocks.push(...extractPlainParagraphItems(normalized));
   }
 
-  return [...extractPlainParagraphItems(normalized), ...extractTable(normalized)];
+  blocks.push(...extractTable(normalized));
+
+  return blocks;
 }
 
 /** Convenience wrapper matching the { description, items } shape used across the app. */
 export function parseContent(html: string = ""): ParsedContent {
   return {
     description: extractDescription(html),
-    items: extractParagraphs(html),
+    blocks: extractBlocks(html),
   };
 }

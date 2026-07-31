@@ -2,7 +2,7 @@ import CurriculumAccordion from "./curriculum-accordion";
 import  SyllabusButton from "./syllabus-button";
 
 export default function Curriculum({ data, openWizard }) {
-  if (!data?.curriculum.syllabus && !data?.curriculum.semesters?.length) {
+  if (!data?.curriculum?.syllabus && !data?.curriculum?.semesters?.length) {
     return null;
   }
   return (

@@ -29,8 +29,8 @@ export default function Learning({ data }) {
   const learning = data.learning;
   const examination = data.examination;
 
-  const renderParagraphs = (paragraphs = [], icons) =>
-  paragraphs.map((paragraph, index) => {
+  const renderBlocks = (blocks = [], icons) =>
+  blocks.map((paragraph, index) => {
     const Icon = icons[index % icons.length];
 
     return (
@@ -71,58 +71,49 @@ export default function Learning({ data }) {
           Learning Experience
         </span>
 
-        <h2 className="mt-2 text-4xl font-bold tracking-tight text-foreground">
-          Learn Anywhere. Get Evaluated Fairly.
-        </h2>
-
-        <p className="mt-3 max-w-3xl leading-8 text-muted-foreground">
-          {data.name} combines flexible digital learning,
-          comprehensive study resources and a structured
-          assessment process.
-        </p>
-
         <div className="mt-6 grid gap-8 lg:grid-cols-2">
 
           {/* LEFT */}
+          <div>
+          <h2 className="my-2 text-4xl font-bold tracking-tight text-foreground">
+            {learning.title}
+          </h2>
 
           <div className="rounded-3xl border border-slate-200 bg-white p-8">
-
-            <h3 className="text-xl font-bold text-foreground">
-              {learning.title}
-            </h3>
 
             <p className="mt-3 text-muted-foreground leading-7">
               {learning.description}
             </p>
 
             <div className="mt-8 space-y-3">
-              {renderParagraphs(
+              {renderBlocks(
                 learning.paragraphs,
                 learningIcons
               )}
+            </div>
             </div>
 
           </div>
 
           {/* RIGHT */}
-
+          <div>
+          <h2 className="mt-2 mb-2 lg:mb-12 text-4xl font-bold tracking-tight text-foreground">
+            {examination.title}
+          </h2>
           <div className="rounded-3xl border border-slate-200 bg-white p-8">
-
-            <h3 className="text-xl font-bold text-foreground">
-              {examination.title}
-            </h3>
 
             <p className="mt-3 text-muted-foreground leading-7">
               {examination.description}
             </p>
 
             <div className="mt-8 space-y-3">
-              {renderParagraphs(
+              {renderBlocks(
                 examination.paragraphs,
                 examIcons
               )}
             </div>
 
+          </div>
           </div>
 
         </div>

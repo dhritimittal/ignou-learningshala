@@ -4,7 +4,7 @@ import { parseAboutUniversity } from "../parsers/aboutUniversity";
 import { parseKeyHighlights } from "../parsers/keyHighlights";
 import { parseCurriculum } from "../parsers/curriculum";
 import { parseCareer } from "../parsers/careers";
-import { extractParagraphs, extractDescription } from "../parsers/learning";
+import { extractBlocks, extractDescription } from "../parsers/learning";
 import { mapFAQs } from "./faqMapper";
 
 
@@ -398,7 +398,7 @@ function mapLearning(api: any, university: any) {
         : university.learning.description,
 
       paragraphs: lmsContent
-        ? extractParagraphs(lmsContent)
+        ? extractBlocks(lmsContent)
         : university.learning.paragraphs,
     },
 
@@ -410,7 +410,7 @@ function mapLearning(api: any, university: any) {
         : university.examination.description,
 
       paragraphs: examContent
-        ? extractParagraphs(examContent)
+        ? extractBlocks(examContent)
         : university.examination.paragraphs,
     },
   };

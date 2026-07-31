@@ -6,7 +6,7 @@ import { getMediaUrl } from "../utils/media";
 import { parseAbout } from "../parsers/about";
 import { parseUniversity } from "../parsers/university";
 import { parseCareer } from "../parsers/careers";
-import { extractParagraphs, extractDescription } from "../parsers/learning";
+import { extractBlocks, extractDescription } from "../parsers/learning";
 import { mapFAQs } from "./faqMapper";
 import { parseWhyChoose, stripHtml } from "../parsers/highlights";
 import { mapSnapshot } from "./courseMapper";
@@ -221,7 +221,7 @@ function mapLearning(api: any) {
         section.Learning_Management_SystemLMS
       ),
 
-      paragraphs: extractParagraphs(
+      paragraphs: extractBlocks(
         section.Learning_Management_SystemLMS
       ),
     },
@@ -233,7 +233,7 @@ function mapLearning(api: any) {
         section.Examination_Pattern
       ),
 
-      paragraphs: extractParagraphs(
+      paragraphs: extractBlocks(
         section.Examination_Pattern
       ),
     },

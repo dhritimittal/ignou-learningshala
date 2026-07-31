@@ -30,7 +30,50 @@ export default function Learning({ data }) {
   const examination = data.examination;
 
   const renderBlocks = (blocks = [], icons) =>
-  blocks.map((paragraph, index) => {
+  blocks.map((block, index) => {
+    if (block.type === "table") {
+      return (
+        <div
+          key={index}
+          className="border-t border-slate-200 pt-5"
+        >
+          <div className="overflow-hidden rounded-xl border border-slate-200">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-slate-50">
+                <tr>
+                  {block.headers.map((header, hIndex) => (
+                    <th
+                      key={hIndex}
+                      className="px-4 py-3 font-semibold uppercase tracking-wide text-primary"
+                    >
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200">
+                {block.rows.map((row, rIndex) => (
+                  <tr
+                    key={rIndex}
+                    className="odd:bg-white even:bg-slate-50/50"
+                  >
+                    {row.map((cell, cIndex) => (
+                      <td
+                        key={cIndex}
+                        className="px-4 py-3 align-top text-[15px] leading-7 text-muted-foreground"
+                      >
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+    }
+
     const Icon = icons[index % icons.length];
 
     return (
@@ -46,14 +89,14 @@ export default function Learning({ data }) {
         </div>
 
         <div>
-          {paragraph.title && (
+          {block.title && (
             <h4 className="font-semibold text-foreground">
-              {paragraph.title}
+              {block.title}
             </h4>
           )}
 
           <p className="mt-2 text-[15px] leading-7 text-muted-foreground">
-            {paragraph.body}
+            {block.body}
           </p>
         </div>
       </div>
@@ -71,7 +114,7 @@ export default function Learning({ data }) {
           Learning Experience
         </span>
 
-        <div className="mt-6 grid gap-8 lg:grid-cols-2">
+        <div className="mt-2 grid gap-8 lg:grid-cols-2">
 
           {/* LEFT */}
           <div>

@@ -4,19 +4,18 @@ import { decode } from "html-entities";
 // Public types
 // ---------------------------------------------------------------------------
 
-export interface ItemBlock {
-  type: "item";
+export interface ContentItem {
   title: string;
   body: string;
 }
 
-export interface TableBlock {
-  type: "table";
-  headers: string[];
-  rows: string[][];
-}
-
-export type ParsedBlock = ItemBlock | TableBlock;
+export type ParsedBlock =
+  | ({ type: "item" } & ContentItem)
+  | {
+      type: "table";
+      headers: string[];
+      rows: string[][];
+    };
 
 export interface ParsedContent {
   description: string;
@@ -181,7 +180,7 @@ function findFirstList(
  * Joins a set of items into one line of text, e.g. for folding a nested list
  * into its parent's body: "Title: body • Title: body • body".
  */
-function joinItemsAsText(items: ItemBlock[]): string {
+function joinItemsAsText(items: ContentItem[]): string {
   return items
     .map((item) => (item.title ? `${item.title}: ${item.body}` : item.body))
     .filter(Boolean)
@@ -196,18 +195,18 @@ function joinItemsAsText(items: ItemBlock[]): string {
  * than kept as a separate tree) — this keeps the item shape flat ({title,
  * body}) all the way down, however many levels of nesting the source has.
  */
-function buildItem(rawHtml: string): ItemBlock {
+function buildItem(rawHtml: string): ContentItem {
   const { title, rest } = extractTitle(rawHtml);
   const nested = findFirstList(rest);
 
   if (!nested) {
-    return { type: "item", title, body: stripHtml(rest) };
+    return { title, body: stripHtml(rest) };
   }
 
   const surroundingText = stripHtml(rest.slice(0, nested.startIndex) + " " + rest.slice(nested.endIndex));
   const nestedText = joinItemsAsText(extractNestedList(nested.outerHtml));
 
-  return { type: "item", title, body: [surroundingText, nestedText].filter(Boolean).join(" • ") };
+  return { title, body: [surroundingText, nestedText].filter(Boolean).join(" • ") };
 }
 
 /**
@@ -216,12 +215,12 @@ function buildItem(rawHtml: string): ItemBlock {
  * calls back into extractNestedList() whenever it finds another list inside
  * an item, so lists of any depth are supported without special-casing depth.
  */
-function extractNestedList(listOuterHtml: string): ItemBlock[] {
+function extractNestedList(listOuterHtml: string): ContentItem[] {
   return extractTopLevelListItems(listOuterHtml).map(buildItem);
 }
 
 /** Parses ALL top-level list items found anywhere in a block of HTML. */
-function extractList(html: string): ItemBlock [] {
+function extractList(html: string): ContentItem[] {
   return extractTopLevelListItems(html).map(buildItem);
 }
 
@@ -237,9 +236,9 @@ export function extractDescription(html: string = ""): string {
 }
 
 /** Every <p> AFTER the first becomes an item (title/body split the same way as list items). */
-function extractPlainParagraphItems(html: string): ItemBlock[] {
+function extractPlainParagraphItems(html: string): ContentItem[] {
   const paragraphs = [...html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)];
-  return paragraphs.slice(1).map((match) => buildItem(match[1])).filter(item => item.title || item.body);
+  return paragraphs.slice(1).map((match) => buildItem(match[1]));
 }
 
 // ---------------------------------------------------------------------------
@@ -247,80 +246,64 @@ function extractPlainParagraphItems(html: string): ItemBlock[] {
 // ---------------------------------------------------------------------------
 
 /**
- * Parses table rows into items: first column -> title, remaining columns ->
- * body (joined with " • "). The first row is assumed to be a header and
- * skipped — same assumption the original parser made; if a table genuinely
- * has no header row, its first data row will still be dropped.
+ * Parses every top-level <table> in the HTML into its own block: first row
+ * as headers, remaining rows as data. A content blob can (and often does)
+ * contain more than one table back to back — each becomes a separate block
+ * rather than flattening every table's rows into one.
  */
+function extractTable(html: string): ParsedBlock[] {
+  const tableMatches = [...html.matchAll(/<table[\s\S]*?>([\s\S]*?)<\/table>/gi)];
 
-function extractTable(html: string): TableBlock[] {
-  const tableMatch = html.match(
-    /<table[\s\S]*?>([\s\S]*?)<\/table>/i
-  );
+  return tableMatches.flatMap((tableMatch): ParsedBlock[] => {
+    const rows = [...tableMatch[1].matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)];
+    if (rows.length === 0) return [];
 
-  if (!tableMatch) return [];
+    const parseCells = (row: string) =>
+      [...row.matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].map((cell) => stripHtml(cell[1]));
 
-  const rows = [
-    ...tableMatch[1].matchAll(
-      /<tr[^>]*>([\s\S]*?)<\/tr>/gi
-    ),
-  ];
+    const headers = parseCells(rows[0][1]);
+    const bodyRows = rows.slice(1).map((row) => parseCells(row[1]));
 
-  if (!rows.length) return [];
+    if (bodyRows.length === 0) return [];
 
-  const parseCells = (row: string) =>
-    [
-      ...row.matchAll(
-        /<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi
-      ),
-    ].map(cell => stripHtml(cell[1]));
-
-  const headers = parseCells(rows[0][1]);
-
-  const bodyRows = rows
-    .slice(1)
-    .map(row => parseCells(row[1]));
-
-  return [
-    {
-      type: "table",
-      headers,
-      rows: bodyRows,
-    },
-  ];
+    return [{ type: "table", headers, rows: bodyRows }];
+  });
 }
+
 // ---------------------------------------------------------------------------
 // Main entry points
 // ---------------------------------------------------------------------------
 
 /**
- * Returns the items for a block of CMS HTML: a list (recursively, with
- * nested children) if one exists, otherwise paragraphs (after the first)
- * plus any table rows. Kept as `extractParagraphs` for backwards
- * compatibility with existing callers — despite the name, it has always
- * returned the combined item set, not literally just paragraphs.
+ * Returns the blocks for a piece of CMS HTML: a list (recursively, with
+ * nested children folded into item bodies) if one exists, otherwise
+ * paragraphs (after the first) plus any tables — each table as its own
+ * `{ type: "table" }` block, everything else as `{ type: "item" }`.
  */
-export function extractBlocks(
-    html: string = ""
-): ParsedBlock[] {
-  const normalized = removePresentationalMarkup(html);
-
-  const blocks: ParsedBlock[] = [];
-
-  const listItems = extractList(normalized);
-
-  if (listItems.length > 0) {
-      blocks.push(...listItems);
-  } else {
-      blocks.push(...extractPlainParagraphItems(normalized));
-  }
-
-  blocks.push(...extractTable(normalized));
-
-  return blocks;
+/** True for an item block that has nothing left to show after stripping — e.g. a stray "<p>&nbsp;</p>" spacer paragraph. */
+function isEmptyItem(block: ParsedBlock): boolean {
+  return block.type === "item" && !block.title && !block.body;
 }
 
-/** Convenience wrapper matching the { description, items } shape used across the app. */
+export function extractBlocks(html: string = ""): ParsedBlock[] {
+  const normalized = removePresentationalMarkup(html);
+
+  const listItems = extractList(normalized);
+  if (listItems.length > 0) {
+    return listItems
+      .map((item) => ({ type: "item" as const, ...item }))
+      .filter((block) => !isEmptyItem(block));
+  }
+
+  return [
+    ...extractPlainParagraphItems(normalized)
+      .map((item) => ({ type: "item" as const, ...item }))
+      .filter((block) => !isEmptyItem(block)),
+    ...extractTable(normalized),
+  ];
+}
+
+/** Convenience wrapper matching the { description, blocks } shape used across the app. */
 export function parseContent(html: string = ""): ParsedContent {
   return {
     description: extractDescription(html),
